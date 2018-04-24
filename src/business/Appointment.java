@@ -12,8 +12,15 @@ import java.util.Date;
  * @author Bruger
  */
 public class Appointment {
+
     private Date date;
     private String cpr;
     private String note;
-    
+
+    public Appointment(Date date, String cpr, String note) {
+        this.date = date;
+        this.cpr = cpr;
+        this.note = note;
+    }
+
 }

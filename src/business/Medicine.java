@@ -10,8 +10,15 @@ package business;
  * @author Bruger
  */
 public class Medicine {
+
     private String name;
-    private double amount;
-    private double dosage;
-    
+    private String amount;
+    private String dosage;
+
+    public Medicine(String name, String amount, String dosage) {
+        this.name = name;
+        this.amount = amount;
+        this.dosage = dosage;
+    }
+
 }

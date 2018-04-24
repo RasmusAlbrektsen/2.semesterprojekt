@@ -6,19 +6,26 @@
 package business;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Bruger
  */
 public class Case {
+
     private int caseNumber;
-    private Date date;
+    private Date creationDate;
     private String CPR;
     private boolean isActive;
-    private Appointment appointment;
-    private Medicine medicine;
+    private List<Appointment> appointments;
+    private List<Medicine> medicine;
     private Offer offer;
+    private User caseWorker;
+    private List<DailyNote>dailyNotes;
 
-    
+    public Case(String CPR) {
+        this.CPR = CPR;
+    }
+
 }
