@@ -10,6 +10,16 @@ package business;
  * @author Bruger
  */
 public class Citizen {
-    private String cpr;
+
+    private String CPR;
     private boolean nemIDAccept;
+
+    public Citizen(String CPR) {
+        this.CPR = CPR;
+    }
+    
+    private boolean login(String un, String pw){
+        return true;
+    }
+
 }

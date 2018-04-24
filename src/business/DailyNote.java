@@ -9,10 +9,18 @@ import java.util.Date;
 
 /**
  *
- * @author Bruger
+ * @author rasmusstamm
  */
-public class Log {
+class DailyNote {
+
     private Date date;
-    private String logInformation;
-    
+    private String note;
+    private User user;
+
+    public DailyNote(String note, User user) {
+        this.note = note;
+        this.user = user;
+        date = new Date();
+    }
+
 }
