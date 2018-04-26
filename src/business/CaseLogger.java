@@ -41,4 +41,10 @@ public class CaseLogger implements ICaseLogger {
         return date;
     }
 
+    @Override
+    public String toString(){
+        String s = "CaseNum: " + caseNumber + " UserID: " + userIDNumber + " Date: " + date;
+        return s;
+    }
+
 }

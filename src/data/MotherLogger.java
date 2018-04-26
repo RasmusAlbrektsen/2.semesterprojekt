@@ -13,6 +13,5 @@ import java.util.Date;
  * @author Bruger
  */
 public abstract class MotherLogger implements Serializable{
-    private int userIDNumber;
-    private Date date;
+    
 }

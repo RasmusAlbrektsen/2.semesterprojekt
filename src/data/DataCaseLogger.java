@@ -42,5 +42,13 @@ public class DataCaseLogger extends MotherLogger implements ICaseLogger {
     public Date getDate() {
         return date;
     }
+    
+    @Override
+    public String toString(){
+        String s = "CaseNum: " + caseNumber + " UserID: " + userIDNumber + " Date: " + date;
+        return s;
+    }
+
+    
 
 }

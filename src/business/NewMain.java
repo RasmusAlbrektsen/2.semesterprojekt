@@ -20,8 +20,10 @@ public class NewMain {
      */
     public static void main(String[] args) {
         data = new JSONDatabase();
-        ICaseLogger cl = new CaseLogger(5, 198092);
+        ICaseLogger cl = new CaseLogger(6, 38878949);
         data.saveCaseLogger(cl);
+        ICaseLogger cl1 = data.loadCaseLogger();
+        System.out.println(cl1);
     }
     
 }

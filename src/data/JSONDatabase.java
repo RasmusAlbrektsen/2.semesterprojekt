@@ -13,7 +13,10 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect.Type;
@@ -42,6 +45,18 @@ public class JSONDatabase {
     public void saveCaseLogger(ICaseLogger cl) {
         saveData(cl, fileCaseLogger);
     }
+    
+    public ICaseLogger loadCaseLogger(){
+        try (FileReader reader = new FileReader(fileCaseLogger)){
+            JsonReader jsonReader = new JsonReader(reader);
+            ICaseLogger caseLogger = new Gson().fromJson(jsonReader, DataCaseLogger.class);
+            
+            return caseLogger;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     private void saveData(ICaseLogger o, File file) {
         Gson gson = new GsonBuilder().create();
@@ -57,7 +72,7 @@ public class JSONDatabase {
             try {
                 fileCaseLogger.createNewFile();
             } catch (IOException ex) {
-                System.out.println("lort");
+                ex.printStackTrace();
             }
         }
     }
