@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package Acq;
+
+import java.util.Date;
 
 /**
  *
- * @author Bruger
+ * @author Rasmus
  */
-public class CaseLogger extends MotherLogger{
-    private int caseNumber;
-    
+public interface ICaseLogger {
+   int getCaseNumber();
+   int getUserID();
+   Date getDate();
 }

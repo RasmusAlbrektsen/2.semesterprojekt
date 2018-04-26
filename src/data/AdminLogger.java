@@ -10,5 +10,12 @@ package data;
  * @author Bruger
  */
 public class AdminLogger extends MotherLogger {
-    
+
+    public static void logSave() {
+
+    }
+
+    public static void logLoad() {
+
+    }
 }
