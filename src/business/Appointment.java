@@ -21,6 +21,9 @@ public class Appointment {
         this.date = date;
         this.cpr = cpr;
         this.note = note;
+        System.out.println("motherfucker");
+        System.out.println("motherrucker");
     }
+    
 
 }
