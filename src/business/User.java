@@ -5,6 +5,7 @@
  */
 package business;
 
+import Acq.IUser;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author Bruger
  */
-public class User {
+public class User implements IUser{
 
     private int IDNumber;
     private boolean caseAccess;

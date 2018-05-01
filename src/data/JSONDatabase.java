@@ -5,7 +5,12 @@
  */
 package data;
 
+import Acq.IAdminLogger;
+import Acq.IAppointment;
+import Acq.ICase;
 import Acq.ICaseLogger;
+import Acq.IMedicine;
+import Acq.IUser;
 import business.CaseLogger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,7 +24,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect.Type;
+import java.lang.reflect.Type;
+import java.util.Map;
 
 /**
  *
@@ -28,9 +34,33 @@ import java.lang.ProcessBuilder.Redirect.Type;
 public class JSONDatabase {
 
     private final File fileCaseLogger = new File("caseLogger.json");
+    private final File fileAdminLogger = new File("adminLogger.json");
+    private final File fileMedicine = new File("medicine.json");
+    private final File fileUser = new File("user.json");
 
     public JSONDatabase() {
         loadDatabase();
+    }
+
+    private class UserDeserializer implements JsonDeserializer<IUser> {
+
+        @Override
+        public IUser deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            Gson g = new GsonBuilder()
+                    .registerTypeHierarchyAdapter(ICase.class, new DataCase())
+                    .registerTypeHierarchyAdapter(IAppointment.class, new DataAppointment())
+                    .create();
+            return (DataUser) g.fromJson(json, DataUser.class);
+        }
+    }
+
+    private class MedicineDeserializer implements JsonDeserializer<IMedicine> {
+
+        @Override
+        public IMedicine deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            Gson g = new Gson();
+            return (DataMedicine) g.fromJson(json, DataMedicine.class);
+        }
     }
 
     private class CaseLoggerDeserializer implements JsonDeserializer<ICaseLogger> {
@@ -42,15 +72,63 @@ public class JSONDatabase {
         }
     }
 
+    private class AdminLoggerDeserializer implements JsonDeserializer<IAdminLogger> {
+
+        @Override
+        public IAdminLogger deserialize(JsonElement json, java.lang.reflect.Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            Gson g = new Gson();
+            return (DataAdminLogger) g.fromJson(json, DataAdminLogger.class);
+        }
+    }
+
+    public Map<String, IMedicine> getMedicine() {
+        try (FileReader reader = new FileReader(fileMedicine)) {
+            JsonReader jsonReader = new JsonReader(reader);
+            Gson g = new GsonBuilder()
+                    .registerTypeHierarchyAdapter(IMedicine.class, new MedicineDeserializer())
+                    .create();
+            Type type = new TypeToken<Map<String, IMedicine>>() {
+            }.getType();
+
+            Map<String, IMedicine> obj = g.fromJson(jsonReader, type);
+            return obj;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public Map<String, IUser> getUser() {
+        try (FileReader reader = new FileReader(fileUser)) {
+            JsonReader jsonReader = new JsonReader(reader);
+            Gson g = new GsonBuilder()
+                    .registerTypeHierarchyAdapter(IUser.class, new UserDeserializer())
+                    .create();
+            Type type = new TypeToken<Map<String, IUser>>() {
+            }.getType();
+            Map<String, IUser> obj = g.fromJson(jsonReader, type);
+            return obj;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public void saveCaseLogger(ICaseLogger cl) {
         saveData(cl, fileCaseLogger);
     }
-    
-    public ICaseLogger loadCaseLogger(){
-        try (FileReader reader = new FileReader(fileCaseLogger)){
+
+    public void saveAdminLogger(IAdminLogger al) {
+        saveData(al, fileAdminLogger);
+    }
+
+    public void saveMedicine(Map<String, IMedicine> medMap) {
+        saveData(medMap, fileMedicine);
+    }
+
+    public ICaseLogger loadCaseLogger() {
+        try (FileReader reader = new FileReader(fileCaseLogger)) {
             JsonReader jsonReader = new JsonReader(reader);
             ICaseLogger caseLogger = new Gson().fromJson(jsonReader, DataCaseLogger.class);
-            
+
             return caseLogger;
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,7 +136,19 @@ public class JSONDatabase {
         return null;
     }
 
-    private void saveData(ICaseLogger o, File file) {
+    public IAdminLogger loadAdminLogger() {
+        try (FileReader reader = new FileReader(fileAdminLogger)) {
+            JsonReader jsonReader = new JsonReader(reader);
+            IAdminLogger adminLogger = new Gson().fromJson(jsonReader, DataAdminLogger.class);
+
+            return adminLogger;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private <E> void saveData(E o, File file) {
         Gson gson = new GsonBuilder().create();
         try (FileWriter writer = new FileWriter(file)) {
             gson.toJson(o, writer);
@@ -71,6 +161,13 @@ public class JSONDatabase {
         if (!fileCaseLogger.exists()) {
             try {
                 fileCaseLogger.createNewFile();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        if (!fileAdminLogger.exists()) {
+            try {
+                fileAdminLogger.createNewFile();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
