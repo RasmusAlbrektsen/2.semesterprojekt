@@ -8,6 +8,7 @@ package data;
 import Acq.IAppointment;
 import Acq.ICase;
 import Acq.IUser;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,41 +27,24 @@ public class DataUser implements IUser {
     private List<ICase> cases;
     private List<IAppointment> appointments;
 
-    public int getIDNumber() {
-        return IDNumber;
+    @Override
+    public boolean createCase(String CPR) {
+        return true;
     }
 
-    public boolean isCaseAccess() {
-        return caseAccess;
+    @Override
+    public boolean createAppointment(Date date, String CPR, String note) {
+        return true;
     }
 
-    public boolean isMedicine() {
-        return medicine;
-    }
-
-    public boolean isAppointment() {
-        return appointment;
-    }
-
-    public boolean isLog() {
-        return log;
-    }
-
+    @Override
     public String getUsername() {
         return username;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
 
-    public List<ICase> getCases() {
-        return cases;
-    }
-
-    public List<IAppointment> getAppointments() {
-        return appointments;
-    }
-
-    
 }

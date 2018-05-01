@@ -37,7 +37,9 @@ public class User implements IUser{
         return true;
     }
 
+    @Override
     public boolean createCase(String CPR) {
+        cases.add(new Case(CPR));
         return true;
     }
 
@@ -61,7 +63,9 @@ public class User implements IUser{
         return true;
     }
 
+    @Override
     public boolean createAppointment(Date date, String CPR, String note) {
+        appointments.add(new Appointment(date, CPR, note));
         return true;
     }
 
@@ -87,5 +91,15 @@ public class User implements IUser{
     
     public boolean updateUserAccess(int IDnum, boolean ca, boolean med, boolean ap, boolean log, boolean handleUsers){
         return true;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 }

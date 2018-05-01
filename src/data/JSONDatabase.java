@@ -43,7 +43,7 @@ public class JSONDatabase {
         loadDatabase();
     }
 
-    private static class CaseDeserializer implements JsonDeserializer<ICase>{
+    private static class CaseDeserializer implements JsonDeserializer<ICase> {
 
         public CaseDeserializer() {
         }
@@ -55,7 +55,7 @@ public class JSONDatabase {
         }
     }
 
-    private static class AppointmentDeserializer implements JsonDeserializer<IAppointment>{
+    private static class AppointmentDeserializer implements JsonDeserializer<IAppointment> {
 
         public AppointmentDeserializer() {
         }
@@ -147,6 +147,10 @@ public class JSONDatabase {
 
     public void saveMedicine(Map<String, IMedicine> medMap) {
         saveData(medMap, fileMedicine);
+    }
+
+    public void saveUser(Map<String, IUser> uMap) {
+        saveData(uMap, fileUser);
     }
 
     public ICaseLogger loadCaseLogger() {

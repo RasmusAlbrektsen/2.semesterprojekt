@@ -9,6 +9,8 @@ import Acq.IAdminLogger;
 import data.JSONDatabase;
 import Acq.ICaseLogger;
 import Acq.IMedicine;
+import Acq.IUser;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +27,7 @@ public class NewMain {
      */
     public static void main(String[] args) {
         data = new JSONDatabase();
-        ICaseLogger cl = new CaseLogger(6, 38878949);
+        /*ICaseLogger cl = new CaseLogger(6, 38878949);
         data.saveCaseLogger(cl);
         ICaseLogger cl1 = data.loadCaseLogger();
         System.out.println(cl1);
@@ -42,7 +44,16 @@ public class NewMain {
         Map<String, IMedicine> medMap1 = data.getMedicine();
         for (String s : medMap1.keySet()) {
             System.out.println(medMap1.get(s));
-        }
+        }*/
+        Map<String, IUser> uMap = new HashMap<>();
+        
+        IUser u = new User("rasta17@gmail.com", "kys", 0);
+        u.createCase("18037892");
+        u.createAppointment(new Date(), "1289053", "This is a note");
+        uMap.put(u.getUsername(), u);
+        data.saveUser(uMap);
+        
+        Map<String, IUser> uMap2 = data.getUser();
+        System.out.println(uMap2.toString());
     }
-
 }
