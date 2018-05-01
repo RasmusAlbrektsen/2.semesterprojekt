@@ -11,6 +11,7 @@ import Acq.ICase;
 import Acq.ICaseLogger;
 import Acq.IMedicine;
 import Acq.IUser;
+import business.Appointment;
 import business.CaseLogger;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,13 +43,37 @@ public class JSONDatabase {
         loadDatabase();
     }
 
+    private static class CaseDeserializer implements JsonDeserializer<ICase>{
+
+        public CaseDeserializer() {
+        }
+
+        @Override
+        public ICase deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            Gson g = new Gson();
+            return (DataCase) g.fromJson(json, DataCase.class);
+        }
+    }
+
+    private static class AppointmentDeserializer implements JsonDeserializer<IAppointment>{
+
+        public AppointmentDeserializer() {
+        }
+
+        @Override
+        public IAppointment deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            Gson g = new Gson();
+            return (DataAppointment) g.fromJson(json, DataAppointment.class);
+        }
+    }
+
     private class UserDeserializer implements JsonDeserializer<IUser> {
 
         @Override
         public IUser deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             Gson g = new GsonBuilder()
-                    .registerTypeHierarchyAdapter(ICase.class, new DataCase())
-                    .registerTypeHierarchyAdapter(IAppointment.class, new DataAppointment())
+                    .registerTypeHierarchyAdapter(ICase.class, new CaseDeserializer())
+                    .registerTypeHierarchyAdapter(IAppointment.class, new AppointmentDeserializer())
                     .create();
             return (DataUser) g.fromJson(json, DataUser.class);
         }

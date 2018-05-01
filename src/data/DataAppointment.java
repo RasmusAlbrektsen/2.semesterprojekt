@@ -5,10 +5,15 @@
  */
 package data;
 
+import Acq.IAppointment;
+
 /**
  *
  * @author rasmusstamm
  */
-public class DataAppointment {
+class DataAppointment implements IAppointment{
+
+    public DataAppointment() {
+    }
     
 }
