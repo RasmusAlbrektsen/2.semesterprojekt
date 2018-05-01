@@ -32,11 +32,8 @@ public class User {
         appointments = new ArrayList<>();
     }
 
-    public boolean login(String username, String password) {
-        return true;
-    }
-
     public boolean createCase(String CPR) {
+        Case c = new Case(CPR);
         return true;
     }
 
@@ -44,36 +41,30 @@ public class User {
         return true;
     }
 
-    public boolean createMedicine(String name, String amount, String dose) {
-        return true;
-    }
-
-    public boolean updateMedicine(Medicine medicine, String amount, String dose) {
-        return true;
-    }
-
-    public boolean createOffer(String residence, Date startDate) {
-        return true;
-    }
-
-    public boolean createOffer(String residence, Date startDate, Date endDate) {
-        return true;
-    }
-
     public boolean createAppointment(Date date, String CPR, String note) {
+        appointments.add(new Appointment(date, CPR, note));
         return true;
     }
 
     public boolean updateAppointment(Appointment ap, Date date, String note) {
-        return true;
+        for (Appointment appointment : appointments) {
+            if(appointment == ap) {
+               appointment.setDate(date);
+               appointment.setNote(note);
+               return true;
+            }
+        }
+        return false;
     }
 
     public boolean removeAppointment(Appointment ap) {
-        return true;
-    }
-
-    public boolean createDailyNote() {
-        return true;
+         for (Appointment appointment : appointments) {
+            if(appointment == ap) {
+               appointments.remove(ap);
+               return true;
+            }
+        }
+        return false;
     }
     
     public boolean createUser(String un, String pw, int accessLevel){
