@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Bruger
  */
-public class User implements IUser{
+public class User implements IUser {
 
     private int IDNumber;
     private boolean caseAccess;
@@ -28,7 +28,7 @@ public class User implements IUser{
 
     public User(String username, String password, int accessLevel) {
         this.username = username;
-        this.password = password;
+        this.password = Integer.toString(password.hashCode());
         cases = new ArrayList<>();
         appointments = new ArrayList<>();
     }
@@ -80,16 +80,16 @@ public class User implements IUser{
     public boolean createDailyNote() {
         return true;
     }
-    
-    public boolean createUser(String un, String pw, int accessLevel){
+
+    public boolean createUser(String un, String pw, int accessLevel) {
         return true;
     }
-    
-    public boolean deleteUser(int IDNumber){
+
+    public boolean deleteUser(int IDNumber) {
         return true;
     }
-    
-    public boolean updateUserAccess(int IDnum, boolean ca, boolean med, boolean ap, boolean log, boolean handleUsers){
+
+    public boolean updateUserAccess(int IDnum, boolean ca, boolean med, boolean ap, boolean log, boolean handleUsers) {
         return true;
     }
 

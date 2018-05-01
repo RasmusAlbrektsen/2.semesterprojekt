@@ -13,6 +13,7 @@ import Acq.IUser;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -46,14 +47,30 @@ public class NewMain {
             System.out.println(medMap1.get(s));
         }*/
         Map<String, IUser> uMap = new HashMap<>();
-        
-        IUser u = new User("rasta17@gmail.com", "kys", 0);
+
+        IUser u = new User("rasta", "kys", 0);
         u.createCase("18037892");
         u.createAppointment(new Date(), "1289053", "This is a note");
         uMap.put(u.getUsername(), u);
         data.saveUser(uMap);
-        
+
         Map<String, IUser> uMap2 = data.getUser();
-        System.out.println(uMap2.toString());
+        System.out.println(uMap2.get("rasta").getPassword());
+        Scanner s = new Scanner(System.in);
+        boolean loggedIn = false;
+        String user;
+        while (!loggedIn) {
+            user = s.nextLine();
+            if (uMap2.containsKey(user)) {
+                if (Integer.toString(s.nextLine().hashCode()).equals(uMap2.get(user).getPassword())) {
+                    System.out.println("logged in as: " + user);
+                    loggedIn = true;
+                } else {
+                    System.out.println("password din't match");
+                }
+            } else {
+                System.out.println("user does not exist in database");
+            }
+        }
     }
 }
