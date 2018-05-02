@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package Acq;
 
 /**
  *
- * @author Bruger
+ * @author rasmusstamm
  */
-public class AdminLogger extends MotherLogger {
-    
+public interface IMedicine {
+    String getName();
+    String getAmount();
+    String getDosage();
 }
