@@ -21,4 +21,27 @@ public class Medicine {
         this.dosage = dosage;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public String getDosage() {
+        return dosage;
+    }
+    
+    
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+    
+    
 }

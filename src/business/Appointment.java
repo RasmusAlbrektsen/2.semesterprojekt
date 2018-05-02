@@ -23,4 +23,25 @@ public class Appointment {
         this.note = note;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getCpr() {
+        return cpr;
+    }
+
+    public String getNote() {
+        return note;
+    }
+    
+    
 }
