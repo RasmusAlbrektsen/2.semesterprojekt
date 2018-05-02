@@ -9,10 +9,6 @@ package business;
  *
  * @author Bruger
  */
-public class System {
-    
-     public boolean login(String username, String password) {
-        return true;
-    }
+public class Bootstrap {
     
 }
