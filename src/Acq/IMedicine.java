@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business;
+package Acq;
 
 /**
  *
- * @author Bruger
+ * @author rasmusstamm
  */
-public class System {
-    
-     public boolean login(String username, String password) {
-        return true;
-    }
-    
+public interface IMedicine {
+    String getName();
+    String getAmount();
+    String getDosage();
 }

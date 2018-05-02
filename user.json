@@ -1,0 +1,1 @@
+{"rasta":{"IDNumber":0,"caseAccess":false,"medicine":false,"appointment":false,"log":false,"username":"rasta","password":"106693","cases":[{"caseNumber":0,"creationDate":"May 2, 2018 11:00:29 AM","CPR":"18037892","isActive":false,"appointments":[],"medicineList":[],"dailyNotes":[]}],"appointments":[{"date":"May 2, 2018 11:00:29 AM","cpr":"1289053","note":"This is a note"}]}}

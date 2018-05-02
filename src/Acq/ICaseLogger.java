@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package Acq;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
- * @author Bruger
+ * @author Rasmus
  */
-public abstract class MotherLogger implements Serializable{
-    
+public interface ICaseLogger {
+   int getCaseNumber();
+   int getUserID();
+   Date getDate();
 }
