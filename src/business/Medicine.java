@@ -43,12 +43,6 @@ public class Medicine implements IMedicine {
         String s = "Name: " + name + " amount: " + amount + " dosage: " + dosage;
         return s;
     }
-  
-    public String getDosage() {
-        return dosage;
-    }
-    
-    
 
     public void setAmount(String amount) {
         this.amount = amount;

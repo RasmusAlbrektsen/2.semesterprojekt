@@ -40,9 +40,6 @@ public class User implements IUser {
     @Override
     public boolean createCase(String CPR) {
         cases.add(new Case(CPR));
-
-    public boolean createCase(String CPR) {
-        Case c = new Case(CPR);
         return true;
     }
 
