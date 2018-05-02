@@ -5,13 +5,15 @@
  */
 package data;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Bruger
  */
-public abstract class MotherLogger implements Serializable{
+public abstract class MotherLogger {
+    private int userIDNumber;
+    private Date date;
+    
     
 }

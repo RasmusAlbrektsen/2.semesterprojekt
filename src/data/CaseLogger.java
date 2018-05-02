@@ -5,15 +5,11 @@
  */
 package data;
 
-import Acq.IAppointment;
-
 /**
  *
- * @author rasmusstamm
+ * @author Bruger
  */
-class DataAppointment implements IAppointment{
-
-    public DataAppointment() {
-    }
+public class CaseLogger extends MotherLogger{
+    private int caseNumber;
     
 }
