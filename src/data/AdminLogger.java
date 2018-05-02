@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acq;
+package data;
 
 /**
  *
- * @author rasmusstamm
+ * @author Bruger
  */
-public interface IAppointment {
+public class AdminLogger extends MotherLogger {
     
 }
