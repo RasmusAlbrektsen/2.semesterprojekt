@@ -29,11 +29,17 @@ public class Medicine {
         return amount;
     }
 
+
+    @Override
     public String getDosage() {
         return dosage;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        String s = "Name: " + name + " amount: " + amount + " dosage: " + dosage;
+        return s;
+    }
 
     public void setAmount(String amount) {
         this.amount = amount;

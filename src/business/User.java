@@ -32,8 +32,13 @@ public class User {
         appointments = new ArrayList<>();
     }
 
+    public boolean login(String username, String password) {
+        return true;
+    }
+
+    @Override
     public boolean createCase(String CPR) {
-        Case c = new Case(CPR);
+        cases.add(new Case(CPR));
         return true;
     }
 
