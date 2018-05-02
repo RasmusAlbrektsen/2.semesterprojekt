@@ -5,7 +5,6 @@
  */
 package business;
 
-import Acq.IUser;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author Bruger
  */
-public class User implements IUser {
+public class User {
 
     private int IDNumber;
     private boolean caseAccess;
@@ -28,18 +27,10 @@ public class User implements IUser {
 
     public User(String username, String password, int accessLevel) {
         this.username = username;
-        this.password = Integer.toString(password.hashCode());
+        this.password = password;
         cases = new ArrayList<>();
         appointments = new ArrayList<>();
     }
-
-    public boolean login(String username, String password) {
-        return true;
-    }
-
-    @Override
-    public boolean createCase(String CPR) {
-        cases.add(new Case(CPR));
 
     public boolean createCase(String CPR) {
         Case c = new Case(CPR);
@@ -50,23 +41,6 @@ public class User implements IUser {
         return true;
     }
 
-    public boolean createMedicine(String name, String amount, String dose) {
-        return true;
-    }
-
-    public boolean updateMedicine(Medicine medicine, String amount, String dose) {
-        return true;
-    }
-
-    public boolean createOffer(String residence, Date startDate) {
-        return true;
-    }
-
-    public boolean createOffer(String residence, Date startDate, Date endDate) {
-        return true;
-    }
-
-    @Override
     public boolean createAppointment(Date date, String CPR, String note) {
         appointments.add(new Appointment(date, CPR, note));
         return true;
@@ -92,26 +66,16 @@ public class User implements IUser {
         }
         return false;
     }
-
-    public boolean createUser(String un, String pw, int accessLevel) {
+    
+    public boolean createUser(String un, String pw, int accessLevel){
         return true;
     }
-
-    public boolean deleteUser(int IDNumber) {
+    
+    public boolean deleteUser(int IDNumber){
         return true;
     }
-
-    public boolean updateUserAccess(int IDnum, boolean ca, boolean med, boolean ap, boolean log, boolean handleUsers) {
+    
+    public boolean updateUserAccess(int IDnum, boolean ca, boolean med, boolean ap, boolean log, boolean handleUsers){
         return true;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
     }
 }
