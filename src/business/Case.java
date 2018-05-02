@@ -5,6 +5,7 @@
  */
 package business;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,13 +20,88 @@ public class Case {
     private String CPR;
     private boolean isActive;
     private List<Appointment> appointments;
-    private List<Medicine> medicine;
+    private List<Medicine> medicineList;
     private Offer offer;
     private User caseWorker;
-    private List<DailyNote>dailyNotes;
+    private List<DailyNote> dailyNotes;
 
     public Case(String CPR) {
         this.CPR = CPR;
+        creationDate = new Date();
+        dailyNotes = new ArrayList<>();
+        appointments = new ArrayList<>();
+        medicineList = new ArrayList<>();
     }
 
+    public boolean createMedicine(String name, String amount, String dose) {
+        medicineList.add(new Medicine(name, amount, dose));
+        return true;
+    }
+
+    public boolean updateMedicine(Medicine medicine, String amount, String dose) {
+        for (Medicine med : medicineList) {
+            if(med == medicine) {
+                med.setAmount(amount);
+                med.setDosage(dose);
+                
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean createOffer(String residence, Date startDate) {
+        return true;
+    }
+
+    public boolean createOffer(String residence, Date startDate, Date endDate) {
+        return true;
+    }
+    
+    public boolean createDailyNote() {
+        dailyNotes.add(new DailyNote(CPR, caseWorker));
+        return true;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public int getCaseNumber() {
+        return caseNumber;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public String getCPR() {
+        return CPR;
+    }
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public List<Medicine> getMedicine() {
+        return medicineList;
+    }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public User getCaseWorker() {
+        return caseWorker;
+    }
+
+    public List<DailyNote> getDailyNotes() {
+        return dailyNotes;
+    }
+    
+    
 }

@@ -40,6 +40,9 @@ public class User implements IUser {
     @Override
     public boolean createCase(String CPR) {
         cases.add(new Case(CPR));
+
+    public boolean createCase(String CPR) {
+        Case c = new Case(CPR);
         return true;
     }
 
@@ -70,15 +73,24 @@ public class User implements IUser {
     }
 
     public boolean updateAppointment(Appointment ap, Date date, String note) {
-        return true;
+        for (Appointment appointment : appointments) {
+            if(appointment == ap) {
+               appointment.setDate(date);
+               appointment.setNote(note);
+               return true;
+            }
+        }
+        return false;
     }
 
     public boolean removeAppointment(Appointment ap) {
-        return true;
-    }
-
-    public boolean createDailyNote() {
-        return true;
+         for (Appointment appointment : appointments) {
+            if(appointment == ap) {
+               appointments.remove(ap);
+               return true;
+            }
+        }
+        return false;
     }
 
     public boolean createUser(String un, String pw, int accessLevel) {
