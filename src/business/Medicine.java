@@ -5,13 +5,11 @@
  */
 package business;
 
-import Acq.IMedicine;
-
 /**
  *
  * @author Bruger
  */
-public class Medicine implements IMedicine {
+public class Medicine {
 
     private String name;
     private String amount;
@@ -23,15 +21,14 @@ public class Medicine implements IMedicine {
         this.dosage = dosage;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public String getAmount() {
         return amount;
     }
+
 
     @Override
     public String getDosage() {
@@ -51,4 +48,6 @@ public class Medicine implements IMedicine {
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
+    
+    
 }
