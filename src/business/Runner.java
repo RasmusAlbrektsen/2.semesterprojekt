@@ -11,11 +11,11 @@ import java.util.Scanner;
  *
  * @author Bruger
  */
-public class System {
+public class Runner {
     private Parser parser;
     private boolean loggedIn = false;
 
-    public System() {
+    public Runner() {
         parser = new Parser();
     }
     
