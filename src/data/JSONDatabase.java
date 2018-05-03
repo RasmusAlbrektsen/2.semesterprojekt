@@ -26,6 +26,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,6 +39,8 @@ public class JSONDatabase {
     private final File fileAdminLogger = new File("adminLogger.json");
     private final File fileMedicine = new File("medicine.json");
     private final File fileUser = new File("user.json");
+    private final File fileCase = new File("case.json");
+    private final File fileAppointment = new File("appointment.json");
 
     public JSONDatabase() {
         loadDatabase();
@@ -122,7 +125,7 @@ public class JSONDatabase {
         return null;
     }
 
-    public Map<String, IUser> getUser() {
+    public Map<String, IUser> getUsers() {
         try (FileReader reader = new FileReader(fileUser)) {
             JsonReader jsonReader = new JsonReader(reader);
             Gson g = new GsonBuilder()
@@ -132,6 +135,36 @@ public class JSONDatabase {
             }.getType();
             Map<String, IUser> obj = g.fromJson(jsonReader, type);
             return obj;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public List<ICase> getCases() {
+        try (FileReader reader = new FileReader(fileCase)) {
+            JsonReader jsonReader = new JsonReader(reader);
+            Gson g = new GsonBuilder()
+                    .registerTypeHierarchyAdapter(ICase.class, new CaseDeserializer())
+                    .create();
+
+            Type type = new TypeToken<List<ICase>>() {
+            }.getType();
+            List<ICase> obj = g.fromJson(jsonReader, type);
+            return obj;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public List<IAppointment> getAppointments(){
+        try (FileReader reader = new FileReader(fileAppointment)){
+            JsonReader jsonReader = new JsonReader(reader);
+            Gson g = new GsonBuilder()
+                    .registerTypeHierarchyAdapter(IAppointment.class, new AppointmentDeserializer())
+                    .create();
+            Type type = new TypeToken<List<IAppointment>>(){}.getType();
+            List<IAppointment> obj = g.fromJson(jsonReader, type);
+            return  obj;
         } catch (Exception e) {
         }
         return null;
@@ -151,6 +184,14 @@ public class JSONDatabase {
 
     public void saveUser(Map<String, IUser> uMap) {
         saveData(uMap, fileUser);
+    }
+
+    public void saveCase(List<ICase> cList) {
+        saveData(cList, fileCase);
+    }
+
+    public void saveAppointment(List<IAppointment> aList) {
+        saveData(aList, fileAppointment);
     }
 
     public ICaseLogger loadCaseLogger() {
