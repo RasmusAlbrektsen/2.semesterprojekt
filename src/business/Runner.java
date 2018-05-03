@@ -43,13 +43,20 @@ public class Runner {
         Map<String, IUser> users2 = new HashMap<>();
         IUser u = new User("rasta", "kys", 0, 28);
         List<ICase> cases2 = new ArrayList<>();
-        cases.add(new Case("81272739", 28));
-        cases.add(new Case("918764", 28));
         List<IAppointment> appointments2 = new ArrayList<>();
+        
+        cases2.add(new Case("81272739", 28));
+        cases2.add(new Case("918764", 28));
         appointments2.add(new Appointment(new Date(), "2881823", "This is a note", 28));
         users2.put(u.getUsername(), u);
+        
         data.saveUser(users2);
+        data.saveCase(cases2);
+        data.saveAppointment(appointments2);
+        
         users = data.getUsers();
+        cases = data.getCases();
+        appointments = data.getAppointments();
         
         Scanner s = new Scanner(System.in);
         boolean loggedIn = false;

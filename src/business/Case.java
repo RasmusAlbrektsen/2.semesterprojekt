@@ -21,7 +21,7 @@ public class Case implements ICase{
     private Date creationDate;
     private String CPR;
     private boolean isActive;
-    private List<Appointment> appointments;
+    //private List<Appointment> appointments;
     private List<Medicine> medicineList;
     private Offer offer;
     private User caseWorker;
@@ -32,7 +32,7 @@ public class Case implements ICase{
         this.IDNum = IDNum;
         creationDate = new Date();
         dailyNotes = new ArrayList<>();
-        appointments = new ArrayList<>();
+        //appointments = new ArrayList<>();
         medicineList = new ArrayList<>();
     }
 
@@ -86,9 +86,9 @@ public class Case implements ICase{
         return isActive;
     }
 
-    public List<Appointment> getAppointments() {
+    /*public List<Appointment> getAppointments() {
         return appointments;
-    }
+    }*/
 
     public List<Medicine> getMedicine() {
         return medicineList;
