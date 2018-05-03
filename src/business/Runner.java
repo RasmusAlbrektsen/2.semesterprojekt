@@ -12,65 +12,77 @@ import data.JSONDatabase;
 import Acq.ICaseLogger;
 import Acq.IMedicine;
 import Acq.IUser;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
-/**
- *
- * @author Rasmus
+ * @author Bruger
  */
 public class Runner {
+    private Parser parser;
+    private boolean loggedIn = false;
 
-    private static JSONDatabase data;
-
-    /**
-     * @param args the command line arguments
-     */
-    private Map<String, IUser> users;
-    private List<ICase> cases = new ArrayList<>();
-    private List<IAppointment> appointments = new ArrayList<>();
-    private Scanner s;
-    private IUser currentUser;
-
-    public void run() {
-        data = new JSONDatabase();
-        s = new Scanner(System.in);
-        
-        Map<String, IUser> users2 = new HashMap<>();
-        IUser u = new User("rasta", "kys", 0, 28);
-        List<ICase> cases2 = new ArrayList<>();
-        List<IAppointment> appointments2 = new ArrayList<>();
-        
-        cases2.add(new Case("81272739", 28));
-        cases2.add(new Case("918764", 28));
-        appointments2.add(new Appointment(new Date(), "2881823", "This is a note", 28));
-        users2.put(u.getUsername(), u);
-        
-        data.saveUser(users2);
-        data.saveCase(cases2);
-        data.saveAppointment(appointments2);
-        
-        users = data.getUsers();
-        cases = data.getCases();
-        appointments = data.getAppointments();
-        
-        Scanner s = new Scanner(System.in);
-        boolean loggedIn = false;
-        String user;
-        String pass;
-        while (!loggedIn) {
-            user = s.nextLine();
-            pass = s.nextLine();
-            if (login(user, pass)) {
-                currentUser = users.get(user);
-                loggedIn = true;
-            }
-        }
+    public Runner() {
+        parser = new Parser();
     }
+    
+    
+    public void run() 
+    {            
+        
+        printHelp();
+
+        boolean finished = false;
+        while (! finished) {
+            Command command = parser.getCommand();
+            finished = commandSwitch(command);
+        }
+        java.lang.System.out.println("System closing...");
+    }
+     
+     private boolean commandSwitch(Command command) 
+    {
+        boolean wantToQuit = false;
+        CommandEnum commandWord = command.getCommandWord();
+
+        switch (commandWord) {
+            
+            case UNKNOWN: java.lang.System.out.println("\nThe command isn't valid, here are the commands: \n");
+            printHelp();
+            break;
+            
+            case CREATE: 
+            break;
+            
+            case UPDATE: 
+            break;
+            
+            case LOGIN:  
+                
+            break;
+            
+            case HELP: printHelp();
+            break;
+            
+            case QUIT: wantToQuit = true;
+            break;
+            
+        }
+        return wantToQuit;
+    }
+    
+    /**
+     * Prints a message showing the commands available.
+     */
+    private void printHelp() {
+        java.lang.System.out.println("Here's a list over the available commands:\n");
+        java.lang.System.out.println("login: Log in to acces the system. \n");
+        java.lang.System.out.println("create: Create a new case or appointment. \n");
+        java.lang.System.out.println("update: Update a case or an appointment \n");
+        java.lang.System.out.println("quit: Exits the system.\n");
+        
+        parser.showCommands();
+        java.lang.System.out.println("Type your command: ");
+   
+        }
 
     public boolean login(String username, String password) {
         if (users.containsKey(username)) {

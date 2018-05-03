@@ -10,6 +10,7 @@ package business;
  * @author Bruger
  */
 public class Bootstrap {
+
     public static void main(String[] args){
         Runner r = new Runner();
         r.run();
