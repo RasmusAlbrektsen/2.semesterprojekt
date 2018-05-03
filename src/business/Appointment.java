@@ -5,22 +5,29 @@
  */
 package business;
 
+import Acq.IAppointment;
 import java.util.Date;
 
 /**
  *
  * @author Bruger
  */
-public class Appointment {
+public class Appointment implements IAppointment{
 
     private Date date;
     private String cpr;
     private String note;
+    private int IDNum;
 
-    public Appointment(Date date, String cpr, String note) {
+    public Appointment(Date date, String cpr, String note, int IDNum) {
         this.date = date;
         this.cpr = cpr;
         this.note = note;
+        this.IDNum = IDNum;
+    }
+
+    public int getIDNum() {
+        return IDNum;
     }
 
     public void setDate(Date date) {

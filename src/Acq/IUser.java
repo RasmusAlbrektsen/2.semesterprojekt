@@ -13,10 +13,6 @@ import java.util.Date;
  */
 public interface IUser {
 
-    public boolean createCase(String CPR);
-
-    public boolean createAppointment(Date date, String CPR, String note);
-
     public String getUsername();
 
     public String getPassword();

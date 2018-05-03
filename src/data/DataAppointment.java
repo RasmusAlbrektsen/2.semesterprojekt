@@ -11,9 +11,13 @@ import Acq.IAppointment;
  *
  * @author rasmusstamm
  */
-class DataAppointment implements IAppointment{
+class DataAppointment implements IAppointment {
 
-    public DataAppointment() {
+    private int IDNum;
+
+    @Override
+    public int getIDNum() {
+        return IDNum;
     }
-    
+
 }

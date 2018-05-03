@@ -27,7 +27,7 @@ public class DataUser implements IUser {
     private List<ICase> cases;
     private List<IAppointment> appointments;
 
-    @Override
+    /*@Override
     public boolean createCase(String CPR) {
         return true;
     }
@@ -35,7 +35,7 @@ public class DataUser implements IUser {
     @Override
     public boolean createAppointment(Date date, String CPR, String note) {
         return true;
-    }
+    }*/
 
     @Override
     public String getUsername() {

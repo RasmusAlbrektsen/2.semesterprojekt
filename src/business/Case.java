@@ -5,6 +5,7 @@
  */
 package business;
 
+import Acq.ICase;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,23 +14,25 @@ import java.util.List;
  *
  * @author Bruger
  */
-public class Case {
+public class Case implements ICase{
 
     private int caseNumber;
+    private int IDNum;
     private Date creationDate;
     private String CPR;
     private boolean isActive;
-    private List<Appointment> appointments;
+    //private List<Appointment> appointments;
     private List<Medicine> medicineList;
     private Offer offer;
     private User caseWorker;
     private List<DailyNote> dailyNotes;
 
-    public Case(String CPR) {
+    public Case(String CPR, int IDNum) {
         this.CPR = CPR;
+        this.IDNum = IDNum;
         creationDate = new Date();
         dailyNotes = new ArrayList<>();
-        appointments = new ArrayList<>();
+        //appointments = new ArrayList<>();
         medicineList = new ArrayList<>();
     }
 
@@ -83,9 +86,9 @@ public class Case {
         return isActive;
     }
 
-    public List<Appointment> getAppointments() {
+    /*public List<Appointment> getAppointments() {
         return appointments;
-    }
+    }*/
 
     public List<Medicine> getMedicine() {
         return medicineList;

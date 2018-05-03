@@ -10,5 +10,5 @@ package Acq;
  * @author rasmusstamm
  */
 public interface IAppointment {
-    
+    public int getIDNum();
 }

@@ -5,10 +5,15 @@
  */
 package business;
 
+import Acq.IAdminLogger;
+import Acq.IAppointment;
+import Acq.ICase;
+import data.JSONDatabase;
+import Acq.ICaseLogger;
+import Acq.IMedicine;
+import Acq.IUser;
 import java.util.Scanner;
 
-/**
- *
  * @author Bruger
  */
 public class Runner {
@@ -31,10 +36,6 @@ public class Runner {
             finished = commandSwitch(command);
         }
         java.lang.System.out.println("System closing...");
-    }
-    
-     public boolean login(String username, String password) {
-        return true;
     }
      
      private boolean commandSwitch(Command command) 
@@ -71,8 +72,7 @@ public class Runner {
     /**
      * Prints a message showing the commands available.
      */
-    private void printHelp() 
-    {
+    private void printHelp() {
         java.lang.System.out.println("Here's a list over the available commands:\n");
         java.lang.System.out.println("login: Log in to acces the system. \n");
         java.lang.System.out.println("create: Create a new case or appointment. \n");
@@ -81,5 +81,18 @@ public class Runner {
         
         parser.showCommands();
         java.lang.System.out.println("Type your command: ");
+   
+        }
+
+    public boolean login(String username, String password) {
+        if (users.containsKey(username)) {
+            if (password.equals(users.get(username).getPassword())) {
+                System.out.println("logged in as: " + username);
+                return true;
+            } else {
+                System.out.println("password didn't match");
+            }
+        }
+        return false;
     }
 }
