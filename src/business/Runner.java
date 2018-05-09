@@ -14,8 +14,7 @@ import Acq.IMedicine;
 import Acq.IUser;
 import java.util.Scanner;
 
- * @author Bruger
- */
+
 public class Runner {
     private Parser parser;
     private boolean loggedIn = false;
