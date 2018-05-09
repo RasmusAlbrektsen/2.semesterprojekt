@@ -6,9 +6,12 @@
 package business;
 
 import Acq.IUser;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,15 +26,15 @@ public class User implements IUser {
     private boolean log;
     private String username;
     private String password;
-    //private List<Case> cases;
-    //private List<Appointment> appointments;
+//    private List<Case> cases;
+    private List<Appointment> appointments;
 
     public User(String username, String password, int accessLevel, int IDNumber) {
         this.username = username;
         this.password = password;
         this.IDNumber = IDNumber;
         //cases = new ArrayList<>();
-        //appointments = new ArrayList<>();
+        appointments = new ArrayList<>();
     }
 
     /*public boolean login(String username, String password) {
@@ -61,10 +64,14 @@ public class User implements IUser {
 
     public boolean createOffer(String residence, Date startDate, Date endDate) {
         return true;
-    }
+    } */
 
-    public boolean createAppointment(Date date, String CPR, String note) {
-        //appointments.add(new Appointment(date, CPR, note));
+    public boolean createAppointment(String date, String CPR, String note, int IDNum) {
+        try {
+            appointments.add(new Appointment(date, CPR, note, IDNum));
+        } catch (ParseException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return true;
     }
 
@@ -88,6 +95,13 @@ public class User implements IUser {
         }
         return false;
     }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+    
+    
+    /*
 
     public boolean createUser(String un, String pw, int accessLevel) {
         return true;

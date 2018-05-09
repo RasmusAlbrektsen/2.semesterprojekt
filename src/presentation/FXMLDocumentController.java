@@ -1,7 +1,10 @@
 package presentation;
 
+import business.Calendar;
+import business.User;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -11,11 +14,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -33,6 +41,30 @@ public class FXMLDocumentController implements Initializable {
     private Tab mainTab;
     @FXML
     private Tab sagTab;
+    @FXML
+    private GridPane frontpageDateGrid;
+    @FXML
+    private Label frontpageDateLabel;
+    @FXML
+    private AnchorPane sagAnchor;
+    @FXML
+    private ChoiceBox<?> monthSelectorBox;
+    @FXML
+    private Text firstDayText;
+    @FXML
+    private Text seconddDayText;
+    @FXML
+    private Text thirddDayText;
+    @FXML
+    private Text fourthDayText;
+    @FXML
+    private Text fifthDayText;
+    @FXML
+    private Text sixthDayText;
+    @FXML
+    private Text seventhDayText;
+    @FXML
+    private TextArea todaysCalendarField;
     
 
     
@@ -40,6 +72,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
 
     @FXML
@@ -49,10 +82,6 @@ public class FXMLDocumentController implements Initializable {
         
         
         tabPane.getTabs().add(new Tab("Ny sag", root));
-        
-       
-        
-
         
     }
     
