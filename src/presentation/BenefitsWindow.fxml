@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.BenefitsWindowController">
+   <children>
+      <CheckBox layoutX="15.0" layoutY="60.0" mnemonicParsing="false" text="Aktivitets- og samværsydelse" />
+      <Label layoutX="35.0" layoutY="95.0" text="Befordring">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="35.0" layoutY="115.0" mnemonicParsing="false" text="befordring til og fra et tilbud" />
+      <CheckBox layoutX="35.0" layoutY="135.0" mnemonicParsing="false" text="individuel befordring" />
+      <Label layoutX="35.0" layoutY="165.0" text="Behandling">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="35.0" layoutY="185.0" mnemonicParsing="false" text="psykologisk behandling" />
+      <CheckBox layoutX="35.0" layoutY="205.0" mnemonicParsing="false" text="speciallægelig behandling" />
+      <CheckBox layoutX="35.0" layoutY="225.0" mnemonicParsing="false" text="terapi" />
+      <CheckBox layoutX="35.0" layoutY="245.0" mnemonicParsing="false" text="misbrugsbehandling" />
+      <CheckBox layoutX="15.0" layoutY="290.0" mnemonicParsing="false" text="Beskyttet beskæftigelseydelse" />
+      <CheckBox layoutX="15.0" layoutY="325.0" mnemonicParsing="false" text="Dagaflastning" />
+      <Label layoutX="35.0" layoutY="355.0" text="Kontantydelse">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="35.0" layoutY="375.0" mnemonicParsing="false" text="aflønning" />
+      <CheckBox layoutX="35.0" layoutY="395.0" mnemonicParsing="false" text="dækning af merudgift" />
+      <Label layoutX="35.0" layoutY="430.0" text="Kontrolordning">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="35.0" layoutY="450.0" mnemonicParsing="false" text="fastholdelse" />
+      <CheckBox layoutX="35.0" layoutY="470.0" mnemonicParsing="false" text="kontrol med færden" />
+      <Label layoutX="35.0" layoutY="505.0" text="Ophold">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="35.0" layoutY="525.0" mnemonicParsing="false" text="døgnaflastning" />
+      <CheckBox layoutX="35.0" layoutY="545.0" mnemonicParsing="false" text="længerevarende ophold" />
+      <CheckBox layoutX="35.0" layoutY="565.0" mnemonicParsing="false" text="midlertidigt ophold" />
+      <CheckBox layoutX="15.0" layoutY="604.0" mnemonicParsing="false" text="Personlig hjælp og pleje" />
+      <CheckBox layoutX="15.0" layoutY="637.0" mnemonicParsing="false" text="Praktisk hjælp" />
+      <Label layoutX="21.0" layoutY="14.0" text="Ydelser">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="315.0" layoutY="60.0" text="Socialpædagogisk støtte">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="315.0" layoutY="80.0" mnemonicParsing="false" text="støtte til administration" />
+      <CheckBox layoutX="315.0" layoutY="100.0" mnemonicParsing="false" text="støtte til indkøb og kost" />
+      <CheckBox layoutX="315.0" layoutY="120.0" mnemonicParsing="false" text="støtte til kontakt og samvær" />
+      <CheckBox layoutX="315.0" layoutY="140.0" mnemonicParsing="false" text="støtte til medicinhåndtering" />
+      <CheckBox layoutX="315.0" layoutY="160.0" mnemonicParsing="false" text="støtte til personlig pleje" />
+      <CheckBox layoutX="315.0" layoutY="180.0" mnemonicParsing="false" text="støtte til praktiske opgaver i hjemmet" />
+      <CheckBox layoutX="315.0" layoutY="200.0" mnemonicParsing="false" text="støtte til uddannelse og beskæftigelse" />
+      <CheckBox layoutX="315.0" layoutY="220.0" mnemonicParsing="false" text="støtte til  varetagelse af forældrerollen" />
+      <Label layoutX="315.0" layoutY="250.0" text="Støttepersonordning">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="315.0" layoutY="270.0" mnemonicParsing="false" text="afløsning" />
+      <CheckBox layoutX="315.0" layoutY="290.0" mnemonicParsing="false" text="borgerstyret personlig assistance" />
+      <CheckBox layoutX="315.0" layoutY="310.0" mnemonicParsing="false" text="kontaktperson for døvblinde" />
+      <CheckBox layoutX="315.0" layoutY="330.0" mnemonicParsing="false" text="ledsageordning" />
+      <CheckBox layoutX="315.0" layoutY="350.0" mnemonicParsing="false" text="pasning af pårørende" />
+      <Label layoutX="315.0" layoutY="375.0" text="Støtteredskab">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="315.0" layoutY="395.0" mnemonicParsing="false" text="hjælpemiddel" />
+      <CheckBox layoutX="315.0" layoutY="415.0" mnemonicParsing="false" text="støtte til bil" />
+      <CheckBox layoutX="315.0" layoutY="455.0" mnemonicParsing="false" text="støtte til boligindretning" />
+      <CheckBox layoutX="315.0" layoutY="435.0" mnemonicParsing="false" text="støtte til forbrugsgode" />
+      <Label layoutX="315.0" layoutY="480.0" text="Træning">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="315.0" layoutY="500.0" mnemonicParsing="false" text="genoptræning" />
+      <CheckBox layoutX="315.0" layoutY="520.0" mnemonicParsing="false" text="vedligelseholdelsestræning" />
+      <Label layoutX="315.0" layoutY="545.0" text="Undervisning">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="315.0" layoutY="565.0" mnemonicParsing="false" text="kompenserende specialundervisning" />
+      <CheckBox layoutX="315.0" layoutY="575.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="212.0" text="ungdomsuddannelse for unge med &#10;særlige behov" />
+      <Label layoutX="313.0" layoutY="626.0" text="Ikke-visiterede ydelser">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="313.0" layoutY="646.0" mnemonicParsing="false" text="rådgivning" />
+      <CheckBox layoutX="313.0" layoutY="666.0" mnemonicParsing="false" text="støtte- og kontaktperson" />
+      <Label layoutX="600.0" layoutY="60.0" text="Ambulant tilbud til voksne">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="600.0" layoutY="80.0" mnemonicParsing="false" text="ambulant behandlingstilbud til voksne" />
+      <Label layoutX="600.0" layoutY="14.0" text="Tilbud">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="600.0" layoutY="110.0" text="Dagtilbud til voksne">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="600.0" layoutY="130.0" mnemonicParsing="false" text="aktivitets- og samværstilbud" />
+      <CheckBox layoutX="600.0" layoutY="150.0" mnemonicParsing="false" text="beskyttet beskæftigelsestilbud" />
+      <CheckBox layoutX="600.0" layoutY="170.0" mnemonicParsing="false" text="dagbehandlingstilbud til voksne" />
+      <CheckBox layoutX="600.0" layoutY="190.0" mnemonicParsing="false" text="uddannelsestilbud til voksne" />
+      <Label layoutX="600.0" layoutY="220.0" text="Botilbud til voksne">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="600.0" layoutY="240.0" mnemonicParsing="false" text="almen plejebolig" />
+      <CheckBox layoutX="600.0" layoutY="260.0" mnemonicParsing="false" text="almen ældrebolig/handicapvenlig bolig" />
+      <CheckBox layoutX="600.0" layoutY="280.0" mnemonicParsing="false" text="bofællesskab" />
+      <CheckBox layoutX="600.0" layoutY="300.0" mnemonicParsing="false" text="døgnbehandlingstilbud til voksne" />
+      <CheckBox layoutX="600.0" layoutY="320.0" mnemonicParsing="false" text="forsorgshjem/herberg" />
+      <CheckBox layoutX="600.0" layoutY="340.0" mnemonicParsing="false" text="krisecenter" />
+      <CheckBox layoutX="600.0" layoutY="360.0" mnemonicParsing="false" text="sikret botilbud" />
+      <CheckBox layoutX="600.0" layoutY="380.0" mnemonicParsing="false" text="andet længerevarende botilbud til voksne" />
+      <CheckBox layoutX="600.0" layoutY="400.0" mnemonicParsing="false" text="midlertidigt botildbud til voksne" />
+      <CheckBox layoutX="600.0" layoutY="420.0" mnemonicParsing="false" text="plejehjem" />
+      <CheckBox layoutX="600.0" layoutY="440.0" mnemonicParsing="false" text="rehabiliteringstilbud" />
+      <CheckBox layoutX="600.0" layoutY="490.0" mnemonicParsing="false" text="Tilbud med myndighedsbeføjelse" />
+      <CheckBox layoutX="600.0" layoutY="534.0" mnemonicParsing="false" text="Udgående tilbud til voksne" />
+   </children>
+</AnchorPane>
