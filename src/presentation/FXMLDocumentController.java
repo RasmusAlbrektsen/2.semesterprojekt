@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
@@ -90,6 +91,10 @@ public class FXMLDocumentController implements Initializable {
     private Tab newCaseTab;
     @FXML
     private Tab calendarTab;
+    @FXML
+    private Hyperlink openCalendarLink;
+    @FXML
+    private Button caseChecklistButton;
 
     
     
@@ -100,7 +105,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void createNewCaseLinkAction(ActionEvent event) throws IOException {
-        
+        tabPane.getSelectionModel().select(newCaseTab);
+    }
+    
+    @FXML
+    private void openCalendarLinkAction(ActionEvent event) {
+        tabPane.getSelectionModel().select(calendarTab);
     }
     
     private void updateDailyCalendar(User user) {
@@ -130,4 +140,20 @@ public class FXMLDocumentController implements Initializable {
             alert.showAndWait();
         }
     }    
+
+    @FXML
+    private void caseChecklistButtonAction(ActionEvent event) {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("BenefitsWindow.fxml"));
+            Scene scene = new Scene(root);
+            
+            stage.setScene(scene);
+            stage.show();
+        } catch(IOException e) {
+            
+        }
+    }
+
+    
 }
