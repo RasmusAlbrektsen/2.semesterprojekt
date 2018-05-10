@@ -7,9 +7,14 @@ package business;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -17,14 +22,13 @@ import java.util.logging.Logger;
  */
 public class Calendar {
     private User user;
-    
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     
     public Calendar() {
         
     }
     
-    public String getDailyAppointments(String date) {
+    public String getDailyAppointments(String date, User user) {
         String s = "";
         
         for(Appointment ap : user.getAppointments()) {
@@ -46,4 +50,8 @@ public class Calendar {
         return s;
     }
     
+    public String formatLocalDate(LocalDate date) {
+        String s = date.format(DateTimeFormatter.ofPattern("dd-MM-uuuu"));
+        return s;
+    }
 }

@@ -124,4 +124,10 @@ public class User implements IUser {
     public String getPassword() {
         return password;
     }
+
+    public int getIDNumber() {
+        return IDNumber;
+    }
+    
+    
 }

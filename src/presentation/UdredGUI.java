@@ -36,8 +36,5 @@ public class UdredGUI extends Application {
         launch(args);
     }
     
-    public void createNewTab() {
-        
-    }
     
 }
