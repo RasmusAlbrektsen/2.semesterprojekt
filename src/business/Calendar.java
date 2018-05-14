@@ -33,7 +33,7 @@ public class Calendar {
         
         for(Appointment ap : user.getAppointments()) {
             try {
-                if(ap.getDate().equals(sdf.parse(getTodaysDate()))) {
+                if(ap.getDate().equals(sdf.parse(getTodaysDateString()))) {
                     s += ap.getNote() + "\n";
                 }
             } catch (ParseException ex) {
@@ -44,14 +44,24 @@ public class Calendar {
         return s;
     }
     
-    public String getTodaysDate() {
+    public String getTodaysDateString() {
         Date todaysDate = new Date();
         String s = sdf.format(todaysDate);
         return s;
     }
     
+    public Date getTodaysDate() {
+        Date todaysDate = new Date();
+        return todaysDate;
+    }
+    
     public String formatLocalDate(LocalDate date) {
         String s = date.format(DateTimeFormatter.ofPattern("dd-MM-uuuu"));
+        return s;
+    }
+    
+    public String formatToString(Date date) {
+        String s = sdf.format(date);
         return s;
     }
 }

@@ -1,5 +1,6 @@
 package presentation;
 
+import business.Appointment;
 import business.Calendar;
 import business.User;
 import java.io.IOException;
@@ -10,6 +11,8 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +26,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
@@ -68,10 +72,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Text seventhDayText;
     @FXML
-    private TextArea todaysCalendarField;
-    
-    private Calendar c = new Calendar();
-    @FXML
     private Hyperlink newAppointmentLink;
     @FXML
     private DatePicker datePicker;
@@ -85,8 +85,6 @@ public class FXMLDocumentController implements Initializable {
     private ToggleGroup consent;
     @FXML
     private ToggleGroup consentInfo;
-    
-    private User user = new User("ralle", "ralle", 10, 10);
     @FXML
     private Tab newCaseTab;
     @FXML
@@ -95,11 +93,18 @@ public class FXMLDocumentController implements Initializable {
     private Hyperlink openCalendarLink;
     @FXML
     private Button caseChecklistButton;
+    @FXML
+    private ListView<String> dailyCalendarListView;
+    
+    private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
+    private User user = new User("ralle", "ralle", 10, 10);
+    private Calendar c = new Calendar();
 
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        dailyCalendarListView.setItems(dailyAppointmentList);
         updateDailyCalendar(user);
     }    
 
@@ -114,8 +119,14 @@ public class FXMLDocumentController implements Initializable {
     }
     
     private void updateDailyCalendar(User user) {
-        todaysCalendarField.setText(c.getDailyAppointments(c.getTodaysDate(), user));
-        frontpageDateLabel.setText(c.getTodaysDate());
+        frontpageDateLabel.setText(c.getTodaysDateString());
+        dailyAppointmentList.clear();
+        for (Appointment appointment : user.getAppointments()) {
+            //if virker ikke
+            if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
+                dailyAppointmentList.add(appointment.getNote());
+            }
+        }
     }
 
     @FXML
