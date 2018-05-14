@@ -10,6 +10,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -57,6 +58,12 @@
                               <Hyperlink text="Opret ny medicindata" />
                               <Hyperlink fx:id="newAppointmentLink" onAction="#newAppointmentLinkAction" text="Opret ny kalenderaftale" />
                               <DatePicker fx:id="datePicker" editable="false" prefHeight="20.0" prefWidth="123.0" showWeekNumbers="true" />
+                              <HBox prefHeight="42.0" prefWidth="126.0">
+                                 <children>
+                                    <Spinner fx:id="hourSpinner" prefHeight="25.0" prefWidth="58.0" />
+                                    <Spinner fx:id="minuteSpinner" prefHeight="25.0" prefWidth="58.0" />
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                         <VBox layoutX="20.0" layoutY="255.0" prefHeight="211.0" prefWidth="134.0">
@@ -88,11 +95,14 @@
                               </GridPane>
                            </children>
                         </VBox>
-                        <DatePicker layoutX="545.0" layoutY="113.0" />
-                        <TextField layoutX="545.0" layoutY="163.0" />
-                        <TextField layoutX="545.0" layoutY="211.0" />
-                        <Button layoutX="543.0" layoutY="259.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Søg " />
+                        <DatePicker fx:id="searchDatePicker" layoutX="543.0" layoutY="78.0" />
+                        <TextField fx:id="searchCPRField" layoutX="545.0" layoutY="117.0" />
+                        <TextField fx:id="searchNameField" layoutX="545.0" layoutY="149.0" />
+                        <Button fx:id="searchButton" layoutX="543.0" layoutY="176.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Søg " />
                         <Button layoutX="453.0" layoutY="33.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Mine sager" />
+                        <ListView fx:id="medicinListView" layoutX="543.0" layoutY="319.0" prefHeight="224.0" prefWidth="200.0" />
+                        <Button fx:id="addMedicinButton" layoutX="543.0" layoutY="282.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Tilføj Medicin" />
+                        <Button fx:id="removeMedicinButton" layoutX="643.0" layoutY="282.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Fjern Medicn" />
                      </children>
                   </AnchorPane>
             </content>

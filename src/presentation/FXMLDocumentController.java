@@ -27,6 +27,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
@@ -99,6 +101,26 @@ public class FXMLDocumentController implements Initializable {
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
     private User user = new User("ralle", "ralle", 10, 10);
     private Calendar c = new Calendar();
+    @FXML
+    private Spinner<Integer> hourSpinner;
+    @FXML
+    private Spinner<Integer> minuteSpinner;
+    private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
+    private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
+    @FXML
+    private DatePicker searchDatePicker;
+    @FXML
+    private TextField searchCPRField;
+    @FXML
+    private TextField searchNameField;
+    @FXML
+    private Button searchButton;
+    @FXML
+    private ListView<?> medicinListView;
+    @FXML
+    private Button addMedicinButton;
+    @FXML
+    private Button removeMedicinButton;
 
     
     
@@ -106,7 +128,12 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         dailyCalendarListView.setItems(dailyAppointmentList);
         updateDailyCalendar(user);
-    }    
+        svf1.setWrapAround(true);
+        svf2.setWrapAround(true);
+        hourSpinner.setValueFactory(svf1);
+        minuteSpinner.setValueFactory(svf2);
+    }   
+    
 
     @FXML
     private void createNewCaseLinkAction(ActionEvent event) throws IOException {
@@ -133,15 +160,16 @@ public class FXMLDocumentController implements Initializable {
     private void newAppointmentLinkAction(ActionEvent event) {
         if(datePicker.getValue() != null) {
         LocalDate date = datePicker.getValue();
-        
+        String hour = Integer.toString(hourSpinner.getValue());
+        String minute = Integer.toString(minuteSpinner.getValue());
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Kalenderaftale");
-        dialog.setHeaderText("Kalenderaftale til datoen: " + c.formatLocalDate(date));
+        dialog.setHeaderText("Kalenderaftale til datoen: " + c.formatLocalDate(date) + " Til tidspunktet: " + hour + ":" + minute  );
         dialog.setContentText("Note til aftalen: ");
 
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
-            user.createAppointment(c.formatLocalDate(date), "Ingen cpr", dialog.getResult(), user.getIDNumber());
+            user.createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult(), user.getIDNumber());
         }
         updateDailyCalendar(user); 
         } else {
