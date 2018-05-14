@@ -14,8 +14,7 @@ import Acq.IMedicine;
 import Acq.IUser;
 import java.util.Scanner;
 
- * @author Bruger
- */
+
 public class Runner {
     private Parser parser;
     private boolean loggedIn = false;
@@ -84,7 +83,7 @@ public class Runner {
    
         }
 
-    public boolean login(String username, String password) {
+    /*public boolean login(String username, String password) {
         if (users.containsKey(username)) {
             if (password.equals(users.get(username).getPassword())) {
                 System.out.println("logged in as: " + username);
@@ -94,5 +93,5 @@ public class Runner {
             }
         }
         return false;
-    }
+    }*/
 }

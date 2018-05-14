@@ -5,6 +5,8 @@
  */
 package business;
 
+import data.SQLDatabase;
+
 /**
  *
  * @author Bruger
@@ -12,6 +14,8 @@ package business;
 public class Bootstrap {
 
     public static void main(String[] args){
+        SQLDatabase fisk = new SQLDatabase();
+        fisk.loadData();
         Runner r = new Runner();
         r.run();
     }
