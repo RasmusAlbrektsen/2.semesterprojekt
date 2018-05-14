@@ -5,7 +5,10 @@
  */
 package data;
 
+import Acq.IUser;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,14 +20,17 @@ public class SQLDatabase {
         String url = "jdbc:postgresql://horton.elephantsql.com:5432/zibscemz";
         String username = "zibscemz";
         String passwd = "7A1e6LvgBXjitm0pjGI3tIOf5aCpr0Qe";
+        List<IUser> users = new ArrayList<>();
 
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM users");
             while (rs.next()) {
-                System.out.println(rs.getString(3));
+                users.add(new DataUser(Integer.parseInt(rs.getString("id")), rs.getString("username"), rs.getString("password")));
             }
+            System.out.println(users.get(3).getUsername());
+            db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
