@@ -5,10 +5,21 @@
  */
 package business;
 
+import Acq.IBusiness;
+import Acq.IData;
+
 /**
  *
  * @author Bruger
  */
-public class Bootstrap {
+public class BusinessFacade implements IBusiness {
+    
+    private IData data;
+
+    
+    @Override
+    public void injectData(IData data) {
+        this.data = data;
+    }
 
 }

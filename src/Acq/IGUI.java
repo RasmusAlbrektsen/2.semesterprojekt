@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business;
+package Acq;
+
+import javafx.stage.Stage;
 
 /**
- *
- * @author Bruger
+ * Interface for GUI
  */
-public class Bootstrap {
+public interface IGUI {
+
+    public void injectBusiness(IBusiness business);
 
 }
