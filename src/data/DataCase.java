@@ -13,4 +13,7 @@ import Acq.ICase;
  */
 public class DataCase implements ICase{
     
+    public void GetCase(String CPR){
+        
+    }
 }

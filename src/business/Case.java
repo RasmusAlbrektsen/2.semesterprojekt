@@ -25,11 +25,13 @@ public class Case implements ICase{
     private List<Medicine> medicineList;
     private Offer offer;
     private User caseWorker;
+    private String directory;
     private List<DailyNote> dailyNotes;
 
-    public Case(String CPR, int IDNum) {
+    public Case(String CPR, int IDNum, String directory) {
         this.CPR = CPR;
         this.IDNum = IDNum;
+        this.directory = directory;
         creationDate = new Date();
         dailyNotes = new ArrayList<>();
         //appointments = new ArrayList<>();
