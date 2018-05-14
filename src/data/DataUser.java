@@ -24,7 +24,6 @@ public class DataUser implements IUser {
     private boolean log;
     private String username;
     private String password;
-    private List<ICase> cases;
     private List<IAppointment> appointments;
 
     public DataUser(int IDNumber, String username, String password){

@@ -12,14 +12,25 @@ import data.JSONDatabase;
 import Acq.ICaseLogger;
 import Acq.IMedicine;
 import Acq.IUser;
+import data.SQLDatabase;
+import java.sql.SQLData;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 
 public class Runner {
     private Parser parser;
     private boolean loggedIn = false;
+    private SQLDatabase database = new SQLDatabase();
+    private Map<String, IUser> users = new HashMap<>();
+    private List<ICase> cases = new ArrayList<>();
 
     public Runner() {
+        users = database.getUsers();
+        //cases = database.getCases();
         parser = new Parser();
     }
     
@@ -83,7 +94,7 @@ public class Runner {
    
         }
 
-    /*public boolean login(String username, String password) {
+    public boolean login(String username, String password) {
         if (users.containsKey(username)) {
             if (password.equals(users.get(username).getPassword())) {
                 System.out.println("logged in as: " + username);
@@ -93,5 +104,5 @@ public class Runner {
             }
         }
         return false;
-    }*/
+    }
 }
