@@ -132,6 +132,7 @@ public class FXMLDocumentController implements Initializable {
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
+        
     }   
     
 

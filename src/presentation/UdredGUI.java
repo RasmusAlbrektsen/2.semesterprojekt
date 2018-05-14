@@ -1,5 +1,6 @@
 package presentation;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,6 @@ public class UdredGUI extends Application {
         stage.setScene(scene);
         stage.show();
         
-        
     }
 
     /**
@@ -35,6 +35,5 @@ public class UdredGUI extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
     
 }
