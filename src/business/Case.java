@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import Acq.ICase;
 import Acq.IDailyNote;
 import Acq.IMedicine;
+import Acq.IOffer;
+import Acq.IUser;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,8 +22,8 @@ public class Case implements ICase{
     private boolean isActive;
     //private List<Appointment> appointments;
     private List<IMedicine> medicineList;
-    private Offer offer;
-    private User caseWorker;
+    private IOffer offer;
+    private IUser caseWorker;
     private List<IDailyNote> dailyNotes;
 
     public Case(String CPR, int IDNum) {
@@ -108,12 +105,12 @@ public class Case implements ICase{
     }
 
     @Override
-    public Offer getOffer() {
+    public IOffer getOffer() {
         return offer;
     }
 
     @Override
-    public User getCaseWorker() {
+    public IUser getCaseWorker() {
         return caseWorker;
     }
 

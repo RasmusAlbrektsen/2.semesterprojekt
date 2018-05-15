@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acq;
 
 /**
@@ -10,7 +5,10 @@ package Acq;
  * @author rasmusstamm
  */
 public interface IMedicine {
-    String getName();
-    String getAmount();
-    String getDosage();
+    public String getName();
+    public String getAmount();
+    public String getDosage();
+    public String toString();
+    public void setAmount(String amount);
+    public void setDosage(String dosage);
 }

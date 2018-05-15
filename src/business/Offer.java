@@ -5,11 +5,13 @@
  */
 package business;
 
+import Acq.IOffer;
+
 /**
  *
  * @author Bruger
  */
-public class Offer {
+public class Offer implements IOffer{
     private String residence;
     private String startDate;
     private String endDate;

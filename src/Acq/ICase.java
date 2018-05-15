@@ -5,9 +5,6 @@
  */
 package Acq;
 
-import business.Medicine;
-import business.Offer;
-import business.User;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +25,7 @@ public interface ICase {
     public boolean isIsActive();
 //    public List<Appointment> getAppointments();
     public List<IMedicine> getMedicine();
-    public Offer getOffer();
-    public User getCaseWorker();
+    public IOffer getOffer();
+    public IUser getCaseWorker();
     public List<IDailyNote> getDailyNotes();
             }
