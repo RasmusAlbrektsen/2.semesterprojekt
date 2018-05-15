@@ -5,24 +5,28 @@
  */
 package business;
 
+import java.util.HashMap;
+
 
 public class Runner {
     private boolean loggedIn = false;
+    private HashMap<String, String> userMap = new HashMap<>();
 
     public Runner() {
     }
     
     
      
-//    public boolean login(String username, String password) {
-//        if (users.containsKey(username)) {
-//            if (password.equals(users.get(username).getPassword())) {
-//                System.out.println("logged in as: " + username);
-//                return true;
-//            } else {
-//                System.out.println("password didn't match");
-//            }
-//        }
-//        return false;
-//    }
+    public boolean login(String username, String password) {
+        
+        User admin = new User("admin", "admin", 10, 10);
+        userMap.put("admin", "admin");
+        if (userMap.containsKey(username)) {
+            if (password.equals(userMap.get(username))) {
+                return true;
+            } else {
+            }
+        }
+        return false;
+    }
 }

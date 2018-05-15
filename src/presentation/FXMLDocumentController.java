@@ -97,16 +97,10 @@ public class FXMLDocumentController implements Initializable {
     private Button caseChecklistButton;
     @FXML
     private ListView<String> dailyCalendarListView;
-    
-    private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
-    private User user = new User("ralle", "ralle", 10, 10);
-    private Calendar c = new Calendar();
     @FXML
     private Spinner<Integer> hourSpinner;
     @FXML
     private Spinner<Integer> minuteSpinner;
-    private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
-    private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     @FXML
     private DatePicker searchDatePicker;
     @FXML
@@ -121,6 +115,13 @@ public class FXMLDocumentController implements Initializable {
     private Button addMedicinButton;
     @FXML
     private Button removeMedicinButton;
+    
+    
+    private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
+    private User user = new User("ralle", "ralle", 10, 10);
+    private Calendar c = new Calendar();
+    private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
+    private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
 
     
     
@@ -132,6 +133,7 @@ public class FXMLDocumentController implements Initializable {
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
+        
     }   
     
 
