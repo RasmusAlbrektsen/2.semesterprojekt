@@ -6,6 +6,8 @@
 package business;
 
 import Acq.ICase;
+import Acq.IDailyNote;
+import Acq.IMedicine;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,10 +24,10 @@ public class Case implements ICase{
     private String CPR;
     private boolean isActive;
     //private List<Appointment> appointments;
-    private List<Medicine> medicineList;
+    private List<IMedicine> medicineList;
     private Offer offer;
     private User caseWorker;
-    private List<DailyNote> dailyNotes;
+    private List<IDailyNote> dailyNotes;
 
     public Case(String CPR, int IDNum) {
         this.CPR = CPR;
@@ -36,13 +38,15 @@ public class Case implements ICase{
         medicineList = new ArrayList<>();
     }
 
+    @Override
     public boolean createMedicine(String name, String amount, String dose) {
         medicineList.add(new Medicine(name, amount, dose));
         return true;
     }
 
-    public boolean updateMedicine(Medicine medicine, String amount, String dose) {
-        for (Medicine med : medicineList) {
+    @Override
+    public boolean updateMedicine(IMedicine medicine, String amount, String dose) {
+        for (IMedicine med : medicineList) {
             if(med == medicine) {
                 med.setAmount(amount);
                 med.setDosage(dose);
@@ -53,35 +57,43 @@ public class Case implements ICase{
         return false;
     }
 
+    @Override
     public boolean createOffer(String residence, Date startDate) {
         return true;
     }
 
+    @Override
     public boolean createOffer(String residence, Date startDate, Date endDate) {
         return true;
     }
     
+    @Override
     public boolean createDailyNote() {
         dailyNotes.add(new DailyNote(CPR, caseWorker));
         return true;
     }
 
+    @Override
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
+    @Override
     public int getCaseNumber() {
         return caseNumber;
     }
 
+    @Override
     public Date getCreationDate() {
         return creationDate;
     }
 
+    @Override
     public String getCPR() {
         return CPR;
     }
 
+    @Override
     public boolean isIsActive() {
         return isActive;
     }
@@ -90,19 +102,23 @@ public class Case implements ICase{
         return appointments;
     }*/
 
-    public List<Medicine> getMedicine() {
+    @Override
+    public List<IMedicine> getMedicine() {
         return medicineList;
     }
 
+    @Override
     public Offer getOffer() {
         return offer;
     }
 
+    @Override
     public User getCaseWorker() {
         return caseWorker;
     }
 
-    public List<DailyNote> getDailyNotes() {
+    @Override
+    public List<IDailyNote> getDailyNotes() {
         return dailyNotes;
     }
     

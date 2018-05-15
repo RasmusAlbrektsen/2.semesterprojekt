@@ -29,26 +29,32 @@ public class Appointment implements IAppointment{
         this.IDNum = IDNum;
     }
 
+    @Override
     public int getIDNum() {
         return IDNum;
     }
 
+    @Override
     public void setDate(Date date) {
         this.date = date;
     }
 
+    @Override
     public void setNote(String note) {
         this.note = note;
     }
 
+    @Override
     public Date getDate() {
         return date;
     }
 
+    @Override
     public String getCpr() {
         return cpr;
     }
 
+    @Override
     public String getNote() {
         return note;
     }

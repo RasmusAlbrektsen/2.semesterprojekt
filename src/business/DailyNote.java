@@ -5,13 +5,14 @@
  */
 package business;
 
+import Acq.IDaylyNote;
 import java.util.Date;
 
 /**
  *
  * @author rasmusstamm
  */
-class DailyNote {
+class DailyNote implements IDaylyNote{
 
     private Date date;
     private String note;
