@@ -1,26 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
+import Acq.ICalendar;
+import Acq.IUser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.ObservableList;
 
 /**
  *
  * @author Bruger
  */
-public class Calendar {
+public class Calendar implements ICalendar{
     private User user;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     
@@ -28,7 +20,7 @@ public class Calendar {
         
     }
     
-    public String getDailyAppointments(String date, User user) {
+    public String getDailyAppointments(String date, IUser user) {
         String s = "";
         
         for(Appointment ap : user.getAppointments()) {
