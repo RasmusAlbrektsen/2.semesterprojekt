@@ -102,7 +102,7 @@
                         <Button layoutX="453.0" layoutY="33.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Mine sager" />
                         <ListView fx:id="medicinListView" layoutX="543.0" layoutY="319.0" prefHeight="224.0" prefWidth="200.0" />
                         <Button fx:id="addMedicinButton" layoutX="543.0" layoutY="282.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Tilføj Medicin" />
-                        <Button fx:id="removeMedicinButton" layoutX="643.0" layoutY="282.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Fjern Medicn" />
+                        <Button fx:id="removeMedicinButton" layoutX="643.0" layoutY="282.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Fjern Medicin" />
                      </children>
                   </AnchorPane>
             </content>

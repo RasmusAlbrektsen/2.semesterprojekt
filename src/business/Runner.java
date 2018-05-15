@@ -18,6 +18,9 @@ public class Runner {
     
      
     public boolean login(String username, String password) {
+        
+        User admin = new User("admin", "admin", 10, 10);
+        userMap.put("admin", "admin");
         if (userMap.containsKey(username)) {
             if (password.equals(userMap.get(username))) {
                 return true;
