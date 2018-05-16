@@ -26,11 +26,17 @@ public class DataUser implements IUser {
     private String password;
     private List<IAppointment> appointments;
 
-    public DataUser(int IDNumber, String username, String password){
+    public DataUser(int IDNumber, boolean caseAccess, boolean medicine, boolean appointment, boolean log, String username, String password) {
         this.IDNumber = IDNumber;
+        this.caseAccess = caseAccess;
+        this.medicine = medicine;
+        this.appointment = appointment;
+        this.log = log;
         this.username = username;
         this.password = password;
     }
+
+   
     
     /*@Override
     public boolean createCase(String CPR) {

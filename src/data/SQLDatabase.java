@@ -27,6 +27,18 @@ public class SQLDatabase {
         
     }
     
+    public List<ICase> getCases(){
+        List<ICase> cases = new ArrayList<>();
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM cases");
+            db.close();
+        }
+        catch (Exception e){}
+        return null;
+    }
+    
     public Map<String, IUser> getUsers() {
         Map<String, IUser> users = new HashMap<>();
         try {
