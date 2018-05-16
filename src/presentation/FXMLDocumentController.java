@@ -113,7 +113,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button removeMedicinButton;
     
-    private IBusiness business = UdredGUI.
+    private IBusiness business = UdredGUI.getInstance().getBusiness();
     
     
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
@@ -124,7 +124,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dailyCalendarListView.setItems(dailyAppointmentList);
-        updateDailyCalendar(user);
+        updateDailyCalendar(business.getCurrentUser());
         svf1.setWrapAround(true);
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
@@ -167,9 +167,9 @@ public class FXMLDocumentController implements Initializable {
 
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
-            user.createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult(), user.getIDNumber());
+            business.getCurrentUser().createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult(), business.getCurrentUser().getIDNumber());
         }
-        updateDailyCalendar(user); 
+        updateDailyCalendar(business.getCurrentUser()); 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Dato mangler!");

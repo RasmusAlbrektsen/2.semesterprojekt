@@ -16,6 +16,7 @@ import javafx.stage.Stage;
  */
 public class UdredGUI extends Application {
     
+    private static UdredGUI ui;
     private IBusiness business;
 
     public UdredGUI(Stage stage, IBusiness business) {
@@ -37,5 +38,13 @@ public class UdredGUI extends Application {
         stage.setScene(scene);
         stage.show();
         
+    }
+    
+    public static UdredGUI getInstance(){
+        return ui;
+    }
+    
+    public IBusiness getBusiness(){
+        return business;
     }
 }

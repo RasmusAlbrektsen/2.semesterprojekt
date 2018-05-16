@@ -7,6 +7,7 @@ package business;
 
 import Acq.IBusiness;
 import Acq.IData;
+import Acq.IUser;
 
 /**
  *
@@ -25,6 +26,11 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean login(String username, String password) {
         return bus.login(username, password);
+    }
+
+    @Override
+    public IUser getCurrentUser() {
+        return bus.getCurrentUser();
     }
     
 
