@@ -6,6 +6,7 @@
 package business;
 
 import Acq.IBusiness;
+import Acq.ICalendar;
 import Acq.IData;
 import Acq.IUser;
 
@@ -31,6 +32,11 @@ public class BusinessFacade implements IBusiness {
     @Override
     public IUser getCurrentUser() {
         return bus.getCurrentUser();
+    }
+
+    @Override
+    public ICalendar getCalendar(){
+        return bus.getCalendar();
     }
     
 
