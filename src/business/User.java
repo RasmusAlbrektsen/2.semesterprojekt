@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
+import Acq.IAppointment;
 import Acq.IUser;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -27,7 +23,7 @@ public class User implements IUser {
     private String username;
     private String password;
 //    private List<Case> cases;
-    private List<Appointment> appointments;
+    private List<IAppointment> appointments;
 
     public User(String username, String password, int accessLevel, int IDNumber) {
         this.username = username;
@@ -66,6 +62,7 @@ public class User implements IUser {
         return true;
     } */
 
+    @Override
     public boolean createAppointment(String date, String CPR, String note, int IDNum) {
         try {
             appointments.add(new Appointment(date, CPR, note, IDNum));
@@ -75,8 +72,9 @@ public class User implements IUser {
         return true;
     }
 
-    public boolean updateAppointment(Appointment ap, Date date, String note) {
-        for (Appointment appointment : appointments) {
+    @Override
+    public boolean updateAppointment(IAppointment ap, Date date, String note) {
+        for (IAppointment appointment : appointments) {
             if(appointment == ap) {
                appointment.setDate(date);
                appointment.setNote(note);
@@ -86,8 +84,9 @@ public class User implements IUser {
         return false;
     }
 
-    public boolean removeAppointment(Appointment ap) {
-         for (Appointment appointment : appointments) {
+    @Override
+    public boolean removeAppointment(IAppointment ap) {
+         for (IAppointment appointment : appointments) {
             if(appointment == ap) {
                appointments.remove(ap);
                return true;
@@ -96,7 +95,8 @@ public class User implements IUser {
         return false;
     }
 
-    public List<Appointment> getAppointments() {
+    @Override
+    public List<IAppointment> getAppointments() {
         return appointments;
     }
     
@@ -125,9 +125,8 @@ public class User implements IUser {
         return password;
     }
 
+    @Override
     public int getIDNumber() {
         return IDNumber;
     }
-    
-    
 }

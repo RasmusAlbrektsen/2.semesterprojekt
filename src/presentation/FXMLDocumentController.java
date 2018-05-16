@@ -1,5 +1,6 @@
 package presentation;
 
+import Acq.IAppointment;
 import business.Appointment;
 import business.Calendar;
 import business.User;
@@ -150,7 +151,7 @@ public class FXMLDocumentController implements Initializable {
     private void updateDailyCalendar(User user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
-        for (Appointment appointment : user.getAppointments()) {
+        for (IAppointment appointment : user.getAppointments()) {
             //if virker ikke
             if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
                 dailyAppointmentList.add(appointment.getNote());

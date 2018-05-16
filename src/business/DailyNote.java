@@ -5,19 +5,21 @@
  */
 package business;
 
+import Acq.IDailyNote;
+import Acq.IUser;
 import java.util.Date;
 
 /**
  *
  * @author rasmusstamm
  */
-class DailyNote {
+class DailyNote implements IDailyNote{
 
     private Date date;
     private String note;
-    private User user;
+    private IUser user;
 
-    public DailyNote(String note, User user) {
+    public DailyNote(String note, IUser user) {
         this.note = note;
         this.user = user;
         date = new Date();

@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
+
+import Acq.ICitizen;
 
 /**
  *
  * @author Bruger
  */
-public class Citizen {
+public class Citizen implements ICitizen{
 
     private String CPR;
     private boolean nemIDAccept;
@@ -18,8 +15,7 @@ public class Citizen {
         this.CPR = CPR;
     }
     
-    private boolean login(String un, String pw){
+    public boolean login(String un, String pw){
         return true;
     }
-
 }
