@@ -5,10 +5,28 @@
  */
 package business;
 
+import Acq.IBusiness;
+import Acq.IData;
+import Acq.IGUI;
+import data.DataFacade;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import presentation.GUIFacade;
+
 /**
  *
  * @author Bruger
  */
-public class Bootstrap {
+public class Bootstrap extends Application{
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        IGUI gui = new GUIFacade();
+        IBusiness business = new BusinessFacade();
+        IData data = new DataFacade();
+        gui.injectBusiness(business);
+        business.injectData(data);
+        
+    }
 
 }

@@ -5,7 +5,7 @@
  */
 package presentation;
 
-import business.Runner;
+import business.Business;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,7 +37,7 @@ public class LoginWindowController implements Initializable {
     private TextField usernameField;
     @FXML
     private Button logInButton;
-    Runner r = new Runner();
+    Business r = new Business();
     @FXML
     private AnchorPane loginPane;
 

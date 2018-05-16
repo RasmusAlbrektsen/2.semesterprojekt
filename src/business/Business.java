@@ -8,11 +8,11 @@ package business;
 import java.util.HashMap;
 
 
-public class Runner {
+public class Business {
     private boolean loggedIn = false;
     private HashMap<String, String> userMap = new HashMap<>();
 
-    public Runner() {
+    public Business() {
     }
     
     
