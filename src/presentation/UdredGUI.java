@@ -20,8 +20,8 @@ public class UdredGUI extends Application {
     private IBusiness business;
 
     public UdredGUI(Stage stage, IBusiness business) {
-    this.business = business;
-    
+        this.business = business;
+        ui = this;
         try {
             start(stage);   
         } catch (Exception e) {
