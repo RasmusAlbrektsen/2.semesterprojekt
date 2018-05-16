@@ -5,13 +5,14 @@
  */
 package business;
 
+import Acq.IUser;
 import java.util.HashMap;
 
 
 public class Business {
     private boolean loggedIn = false;
     private HashMap<String, String> userMap = new HashMap<>();
-    private User currentUser;
+    private IUser currentUser;
     public Business() {
     }
     
@@ -33,7 +34,7 @@ public class Business {
     /**
      * @return the currentUser
      */
-    public User getCurrentUser() {
+    public IUser getCurrentUser() {
         return currentUser;
     }
 }

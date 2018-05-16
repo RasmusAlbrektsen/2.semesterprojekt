@@ -1,6 +1,7 @@
 package presentation;
 
 import Acq.IAppointment;
+import Acq.IBusiness;
 import Acq.IUser;
 import Acq.ICalendar;
 import business.Calendar;
@@ -112,14 +113,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button removeMedicinButton;
     
+    private IBusiness business = UdredGUI.
+    
     
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = new Calendar();
-    private IUser user = new User();
-
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
