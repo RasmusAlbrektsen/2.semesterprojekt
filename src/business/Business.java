@@ -5,14 +5,15 @@
  */
 package business;
 
+import Acq.IUser;
 import java.util.HashMap;
 
 
-public class Runner {
+public class Business {
     private boolean loggedIn = false;
-    private HashMap<String, String> userMap = new HashMap<>();
-
-    public Runner() {
+    private HashMap<String, IUser> userMap = new HashMap<>();
+    private IUser currentUser;
+    public Business() {
     }
     
     
@@ -20,13 +21,21 @@ public class Runner {
     public boolean login(String username, String password) {
         
         User admin = new User("admin", "admin", 10, 10);
-        userMap.put("admin", "admin");
+        userMap.put("admin", admin);
         if (userMap.containsKey(username)) {
-            if (password.equals(userMap.get(username))) {
+            if (password.equals(userMap.get(username).getPassword())) {
+                currentUser = userMap.get(username);
                 return true;
             } else {
             }
         }
         return false;
+    }
+
+    /**
+     * @return the currentUser
+     */
+    public IUser getCurrentUser() {
+        return currentUser;
     }
 }

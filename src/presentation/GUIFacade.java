@@ -19,6 +19,10 @@ public class GUIFacade implements IGUI {
      */
     private IBusiness business;
 
+    public IBusiness getBusiness(){
+        return business;
+    }
+    
     /**
      * A method to inject game
      *
@@ -29,5 +33,9 @@ public class GUIFacade implements IGUI {
         this.business = business;
     }
 
-    
+    @Override
+    public void start(Stage stage) throws Exception {
+        new UdredGUI(stage, business);
+        
+    }
 }

@@ -5,7 +5,8 @@
  */
 package presentation;
 
-import business.Runner;
+import Acq.IBusiness;
+import business.Business;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,10 +38,11 @@ public class LoginWindowController implements Initializable {
     private TextField usernameField;
     @FXML
     private Button logInButton;
-    Runner r = new Runner();
     @FXML
     private AnchorPane loginPane;
 
+    private IBusiness r = UdredGUI.getInstance().getBusiness();
+    
     /**
      * Initializes the controller class.
      */
@@ -89,7 +91,7 @@ public class LoginWindowController implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
         } catch(IOException e) {
-            
+            e.printStackTrace();
         }
     }
 }

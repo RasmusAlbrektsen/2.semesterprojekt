@@ -1,5 +1,6 @@
 package Acq;
 
+
 /**
  *
  * @author Bruger
@@ -7,4 +8,6 @@ package Acq;
 public interface IBusiness {
     
     public void injectData(IData data);
+    boolean login(String username, String password);
+    IUser getCurrentUser();
 }

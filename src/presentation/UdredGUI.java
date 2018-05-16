@@ -1,5 +1,6 @@
 package presentation;
 
+import Acq.IBusiness;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -15,8 +16,21 @@ import javafx.stage.Stage;
  */
 public class UdredGUI extends Application {
     
+    private static UdredGUI ui;
+    private IBusiness business;
+
+    public UdredGUI(Stage stage, IBusiness business) {
+        this.business = business;
+        ui = this;
+        try {
+            start(stage);   
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
         
         Scene scene = new Scene(root);
@@ -26,11 +40,11 @@ public class UdredGUI extends Application {
         
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+    public static UdredGUI getInstance(){
+        return ui;
     }
     
+    public IBusiness getBusiness(){
+        return business;
+    }
 }

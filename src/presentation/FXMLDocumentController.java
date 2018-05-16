@@ -1,24 +1,22 @@
 package presentation;
 
 import Acq.IAppointment;
-import business.Appointment;
+import Acq.IBusiness;
+import Acq.IUser;
+import Acq.ICalendar;
 import business.Calendar;
 import business.User;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -32,11 +30,9 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -117,19 +113,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button removeMedicinButton;
     
+    private IBusiness business = UdredGUI.getInstance().getBusiness();
+    
     
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
-    private User user = new User("ralle", "ralle", 10, 10);
-    private Calendar c = new Calendar();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
-
-    
+    private ICalendar c = new Calendar();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dailyCalendarListView.setItems(dailyAppointmentList);
-        updateDailyCalendar(user);
+        updateDailyCalendar(business.getCurrentUser());
         svf1.setWrapAround(true);
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
@@ -148,11 +143,11 @@ public class FXMLDocumentController implements Initializable {
         tabPane.getSelectionModel().select(calendarTab);
     }
     
-    private void updateDailyCalendar(User user) {
+    private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
+        System.out.println("hey");
         for (IAppointment appointment : user.getAppointments()) {
-            //if virker ikke
             if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
                 dailyAppointmentList.add(appointment.getNote());
             }
@@ -172,9 +167,9 @@ public class FXMLDocumentController implements Initializable {
 
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
-            user.createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult(), user.getIDNumber());
+            business.getCurrentUser().createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult(), business.getCurrentUser().getIDNumber());
         }
-        updateDailyCalendar(user); 
+        updateDailyCalendar(business.getCurrentUser()); 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Dato mangler!");
