@@ -25,7 +25,7 @@ public class User implements IUser {
 //    private List<Case> cases;
     private List<IAppointment> appointments;
 
-    public User(String username, String password, int accessLevel, int IDNumber) throws ParseException {
+    public User(String username, String password, int accessLevel, int IDNumber) {
         this.username = username;
         this.password = password;
         this.IDNumber = IDNumber;

@@ -146,12 +146,12 @@ public class FXMLDocumentController implements Initializable {
     private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
-//        for (IAppointment appointment : user.getAppointments()) {
-//            //if virker ikke
-//            if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
-//                dailyAppointmentList.add(appointment.getNote());
-//            }
-//        }
+        System.out.println("hey");
+        for (IAppointment appointment : user.getAppointments()) {
+            if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
+                dailyAppointmentList.add(appointment.getNote());
+            }
+        }
     }
 
     @FXML
