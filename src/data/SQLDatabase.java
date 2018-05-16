@@ -28,6 +28,26 @@ public class SQLDatabase {
 
     }
 
+    public void saveUser(IUser user) {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO "
+                    + "users(name, username, password, log, caseaccess, medicine, appointment) "
+                    + "VALUES('" + user.getName() 
+                    + "', '" + user.getUsername() 
+                    + "', '" + user.getPassword() 
+                    + "', '" + user.getLog() 
+                    + "', '" + user.getCaseaccess() 
+                    + "', '" + user.getMedicine() 
+                    + "', '" + user.getAppointment()
+                    + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<ICase> getCases() {
         List<ICase> cases = new ArrayList<>();
         try {

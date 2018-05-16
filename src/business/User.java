@@ -23,16 +23,22 @@ public class User implements IUser {
     private boolean log;
     private String username;
     private String password;
+    private String name;
     //private List<Case> cases;
     //private List<Appointment> appointments;
 
-    public User(String username, String password, int accessLevel, int IDNumber) {
+    public User(String name, String username, String password, boolean log, boolean medicine, boolean appointment, boolean caseAccess) {
+        this.caseAccess = caseAccess;
+        this.medicine = medicine;
+        this.appointment = appointment;
+        this.log = log;
         this.username = username;
         this.password = password;
-        this.IDNumber = IDNumber;
-        //cases = new ArrayList<>();
-        //appointments = new ArrayList<>();
+        this.name = name;
     }
+
+   
+
 
     /*public boolean login(String username, String password) {
         return true;
@@ -100,7 +106,6 @@ public class User implements IUser {
     public boolean updateUserAccess(int IDnum, boolean ca, boolean med, boolean ap, boolean log, boolean handleUsers) {
         return true;
     }*/
-
     @Override
     public String getUsername() {
         return username;
@@ -109,5 +114,30 @@ public class User implements IUser {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean getLog() {
+        return log;
+    }
+
+    @Override
+    public boolean getMedicine() {
+        return medicine;
+    }
+
+    @Override
+    public boolean getCaseaccess() {
+        return caseAccess;
+    }
+
+    @Override
+    public boolean getAppointment() {
+        return appointment;
     }
 }

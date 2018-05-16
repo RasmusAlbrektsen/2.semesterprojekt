@@ -16,4 +16,14 @@ public interface IUser {
     public String getUsername();
 
     public String getPassword();
+
+    public String getName();
+
+    public boolean getLog();
+
+    public boolean getMedicine();
+    
+    public boolean getCaseaccess();
+    
+    public boolean getAppointment();
 }

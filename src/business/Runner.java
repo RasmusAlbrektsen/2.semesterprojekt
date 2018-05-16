@@ -27,13 +27,20 @@ public class Runner {
     private SQLDatabase database = new SQLDatabase();
     private Map<String, IUser> users = new HashMap<>();
     private List<ICase> cases = new ArrayList<>();
+    
 
     public Runner() {
+        IUser test = new User("fisk","fiskebasse", "supersecret", true, true, true, true);
+        database.saveUser(test);
+        
+        
+        /*
         users = database.getUsers();
         System.out.println(users);
         
         cases = database.getCases();
         System.out.println(cases);
+        */
         
         parser = new Parser();
     }
