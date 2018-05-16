@@ -119,7 +119,7 @@ public class FXMLDocumentController implements Initializable {
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
-    private ICalendar c = new Calendar();
+    private ICalendar c = business.getCalendar();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -146,7 +146,6 @@ public class FXMLDocumentController implements Initializable {
     private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
-        System.out.println("hey");
         for (IAppointment appointment : user.getAppointments()) {
             if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
                 dailyAppointmentList.add(appointment.getNote());

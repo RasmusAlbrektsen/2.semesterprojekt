@@ -5,6 +5,7 @@
  */
 package business;
 
+import Acq.ICalendar;
 import Acq.IUser;
 import java.util.HashMap;
 
@@ -13,7 +14,10 @@ public class Business {
     private boolean loggedIn = false;
     private HashMap<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
+    private ICalendar calendar;
+    
     public Business() {
+        calendar = new Calendar();
     }
     
     
@@ -37,5 +41,9 @@ public class Business {
      */
     public IUser getCurrentUser() {
         return currentUser;
+    }
+    
+    public ICalendar getCalendar(){
+        return calendar;
     }
 }
