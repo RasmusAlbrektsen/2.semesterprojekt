@@ -18,6 +18,10 @@ import presentation.GUIFacade;
  * @author Bruger
  */
 public class Bootstrap extends Application{
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -26,6 +30,8 @@ public class Bootstrap extends Application{
         IData data = new DataFacade();
         gui.injectBusiness(business);
         business.injectData(data);
+        gui.start(primaryStage);
+        
         
     }
 

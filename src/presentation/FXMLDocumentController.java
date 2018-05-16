@@ -3,6 +3,8 @@ package presentation;
 import Acq.IAppointment;
 import Acq.IUser;
 import Acq.ICalendar;
+import business.Calendar;
+import business.User;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -114,6 +116,8 @@ public class FXMLDocumentController implements Initializable {
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
+    private ICalendar c = new Calendar();
+    private IUser user = new User();
 
     
     
@@ -139,7 +143,7 @@ public class FXMLDocumentController implements Initializable {
         tabPane.getSelectionModel().select(calendarTab);
     }
     
-    private void updateDailyCalendar(User user) {
+    private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
         for (IAppointment appointment : user.getAppointments()) {

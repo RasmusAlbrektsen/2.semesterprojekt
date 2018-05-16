@@ -5,10 +5,12 @@
  */
 package data;
 
+import Acq.IData;
+
 /**
  *
  * @author nitra
  */
-public class DataFacade {
+public class DataFacade implements IData{
     
 }

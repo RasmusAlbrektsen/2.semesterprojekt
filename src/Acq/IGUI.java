@@ -1,5 +1,7 @@
 package Acq;
 
+import javafx.stage.Stage;
+
 
 /**
  * Interface for GUI
@@ -7,5 +9,5 @@ package Acq;
 public interface IGUI {
 
     public void injectBusiness(IBusiness business);
-
+    void start(Stage stage) throws Exception;
 }

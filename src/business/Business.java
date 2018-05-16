@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class Business {
     private boolean loggedIn = false;
     private HashMap<String, String> userMap = new HashMap<>();
-
+    private User currentUser;
     public Business() {
     }
     
@@ -28,5 +28,12 @@ public class Business {
             }
         }
         return false;
+    }
+
+    /**
+     * @return the currentUser
+     */
+    public User getCurrentUser() {
+        return currentUser;
     }
 }
