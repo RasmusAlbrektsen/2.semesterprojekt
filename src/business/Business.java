@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class Business {
     private boolean loggedIn = false;
-    private HashMap<String, String> userMap = new HashMap<>();
+    private HashMap<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
     public Business() {
     }
@@ -21,9 +21,10 @@ public class Business {
     public boolean login(String username, String password) {
         
         User admin = new User("admin", "admin", 10, 10);
-        userMap.put("admin", "admin");
+        userMap.put("admin", admin);
         if (userMap.containsKey(username)) {
-            if (password.equals(userMap.get(username))) {
+            if (password.equals(userMap.get(username).getPassword())) {
+                currentUser = userMap.get(username);
                 return true;
             } else {
             }
