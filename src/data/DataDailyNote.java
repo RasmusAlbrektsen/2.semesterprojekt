@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acq;
+package data;
 
 /**
  *
- * @author rasmusstamm
+ * @author hejoo
  */
-public interface IMedicine {
-    String getDosage();
-    String getVNR();
-    String getName();
+public class DataDailyNote {
+    
 }

@@ -13,24 +13,28 @@ import Acq.IMedicine;
  */
 public class Medicine implements IMedicine {
 
-    private String name;
-    private String amount;
     private String dosage;
+    private String name;
+    private String VNR;
 
-    public Medicine(String name, String amount, String dosage) {
+    public void setName(String name) {
         this.name = name;
-        this.amount = amount;
-        this.dosage = dosage;
     }
 
-    @Override
+    public void setVNR(String VNR) {
+        this.VNR = VNR;
+    }
+
     public String getName() {
         return name;
     }
 
-    @Override
-    public String getAmount() {
-        return amount;
+    public String getVNR() {
+        return VNR;
+    }
+
+    public Medicine(String name, String amount, String dosage) {
+        this.dosage = dosage;
     }
 
     @Override
@@ -40,12 +44,8 @@ public class Medicine implements IMedicine {
 
     @Override
     public String toString() {
-        String s = "Name: " + name + " amount: " + amount + " dosage: " + dosage;
+        String s ="Dosage: " + dosage;
         return s;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
     }
 
     public void setDosage(String dosage) {

@@ -12,6 +12,7 @@ import data.JSONDatabase;
 import Acq.ICaseLogger;
 import Acq.IMedicine;
 import Acq.IUser;
+import data.DataMedicine;
 import data.SQLDatabase;
 import java.sql.SQLData;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class Runner {
     private List<ICase> cases = new ArrayList<>();
 
     public Runner() {
-        users = database.getUsers();
+      //  users = database.getUsers();
         //cases = database.getCases();
         parser = new Parser();
     }
