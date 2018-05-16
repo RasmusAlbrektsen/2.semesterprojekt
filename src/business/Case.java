@@ -6,6 +6,7 @@
 package business;
 
 import Acq.ICase;
+import Acq.IDailyNote;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Case implements ICase{
     private List<Medicine> medicineList;
     private Offer offer;
     private User caseWorker;
-    private List<DailyNote> dailyNotes;
+    private List<IDailyNote> dailyNotes;
 
     public Case(String CPR, int IDNum) {
         this.CPR = CPR;
@@ -61,8 +62,8 @@ public class Case implements ICase{
         return true;
     }
     
-    public boolean createDailyNote() {
-        dailyNotes.add(new DailyNote(CPR, caseWorker));
+    public boolean createDailyNote(String note) {
+        dailyNotes.add(new DailyNote(note));
         return true;
     }
 
@@ -102,7 +103,7 @@ public class Case implements ICase{
         return caseWorker;
     }
 
-    public List<DailyNote> getDailyNotes() {
+    public List<IDailyNote> getDailyNotes() {
         return dailyNotes;
     }
     

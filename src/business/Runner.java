@@ -30,7 +30,11 @@ public class Runner {
 
     public Runner() {
         users = database.getUsers();
-        //cases = database.getCases();
+        System.out.println(users);
+        
+        cases = database.getCases();
+        System.out.println(cases);
+        
         parser = new Parser();
     }
     

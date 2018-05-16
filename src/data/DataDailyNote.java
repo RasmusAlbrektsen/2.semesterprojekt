@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business;
+package data;
 
 import Acq.IDailyNote;
+import business.User;
 import java.util.Date;
 
 /**
  *
  * @author rasmusstamm
  */
-class DailyNote implements IDailyNote{
-
+public class DataDailyNote implements IDailyNote{
     private Date date;
     private String note;
 
-    public DailyNote(String note) {
+    public DataDailyNote(Date date, String note) {
+        this.date = date;
         this.note = note;
-        date = new Date();
     }
-
+    
 }
