@@ -19,35 +19,54 @@ import java.util.Map;
  * @author rasmusstamm
  */
 public class SQLDatabase {
-
+    
     String url = "jdbc:postgresql://horton.elephantsql.com:5432/zibscemz";
     String username = "zibscemz";
     String passwd = "7A1e6LvgBXjitm0pjGI3tIOf5aCpr0Qe";
-
+    
     public void loadData() {
-
+        
     }
-
-    public void saveUser(IUser user) {
+    
+    public void saveCase(String date) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO "
-                    + "users(name, username, password, log, caseaccess, medicine, appointment) "
-                    + "VALUES('" + user.getName() 
-                    + "', '" + user.getUsername() 
-                    + "', '" + user.getPassword() 
-                    + "', '" + user.getLog() 
-                    + "', '" + user.getCaseaccess() 
-                    + "', '" + user.getMedicine() 
-                    + "', '" + user.getAppointment()
-                    + "');");
+            ResultSet rs = st.executeQuery("INSERT INTO cases"
+                    + "(creation_date, is_active) "
+                    + "VALUES('" + date
+                    + "', 'true') RETURNING caseid;");
+            rs.next();
+            System.out.println(rs.getInt("caseid"));
+            st.execute("UPDATE cases "
+                    + "SET case_directory = '\\\\root\\older\\case" 
+                    + rs.getInt("caseid") + "' WHERE caseid = '" 
+                    + rs.getInt("caseid") + "'");
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
+    public void saveUser(IUser user) {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO users"
+                    + "(name, username, password, log, caseaccess, medicine, appointment) "
+                    + "VALUES('" + user.getName()
+                    + "', '" + user.getUsername()
+                    + "', '" + user.getPassword()
+                    + "', '" + user.getLog()
+                    + "', '" + user.getCaseaccess()
+                    + "', '" + user.getMedicine()
+                    + "', '" + user.getAppointment() + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public List<ICase> getCases() {
         List<ICase> cases = new ArrayList<>();
         try {
@@ -71,7 +90,7 @@ public class SQLDatabase {
         }
         return null;
     }
-
+    
     public Map<String, IUser> getUsers() {
         Map<String, IUser> users = new HashMap<>();
         try {
