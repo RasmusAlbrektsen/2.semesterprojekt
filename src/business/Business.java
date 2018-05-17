@@ -29,7 +29,6 @@ public class Business {
             if (password.equals(userMap.get(username).getPassword())) {
                 currentUser = userMap.get(username);
                 return true;
-            } else {
             }
         }
         return false;
@@ -47,6 +46,16 @@ public class Business {
     }
     
     public void setUserMap(Map<String, IUser> users){
-        this.userMap = users;
+    
+        for (Map.Entry<String, IUser> entry : users.entrySet()){
+            userMap.put(entry.getKey(), new User(entry.getValue().getName(),
+                                                 entry.getValue().getUsername(),
+                                                 entry.getValue().getPassword(),
+                                                 entry.getValue().getLog(),
+                                                 entry.getValue().getMedicine(),
+                                                 entry.getValue().getAppointment(),
+                                                 entry.getValue().getCaseaccess()));
+        }
+  
     }
 }

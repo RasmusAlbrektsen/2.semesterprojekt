@@ -9,6 +9,7 @@ import Acq.IAppointment;
 import Acq.ICase;
 import Acq.IUser;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class DataUser implements IUser {
         this.log = log;
         this.username = username;
         this.password = password;
+        appointments = new ArrayList<>();
     }
 
     /*@Override

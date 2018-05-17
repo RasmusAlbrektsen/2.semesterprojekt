@@ -4,8 +4,6 @@ import Acq.IAppointment;
 import Acq.IBusiness;
 import Acq.IUser;
 import Acq.ICalendar;
-import business.Calendar;
-import business.User;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -146,11 +144,11 @@ public class FXMLDocumentController implements Initializable {
     private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
-//        for (IAppointment appointment : user.getAppointments()) {
-//            if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
-//                dailyAppointmentList.add(appointment.getNote());
-//            }
-//        }
+        for (IAppointment appointment : user.getAppointments()) {
+            if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
+                dailyAppointmentList.add(appointment.getNote());
+            }
+        }
     }
 
     @FXML
