@@ -74,7 +74,8 @@ public class Case implements ICase{
     public int getCaseNumber() {
         return caseNumber;
     }
-
+    
+    @Override
     public Date getCreationDate() {
         return creationDate;
     }
@@ -82,8 +83,9 @@ public class Case implements ICase{
     public String getCPR() {
         return CPR;
     }
-
-    public boolean isIsActive() {
+    
+    @Override
+    public boolean isActive() {
         return isActive;
     }
 
@@ -106,6 +108,4 @@ public class Case implements ICase{
     public List<IDailyNote> getDailyNotes() {
         return dailyNotes;
     }
-    
-    
 }

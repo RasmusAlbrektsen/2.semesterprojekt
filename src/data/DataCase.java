@@ -34,5 +34,20 @@ public class DataCase implements ICase{
         this.creationDate = creationDate;
         this.dailyNotes = dailyNotes;
     }
+
+    @Override
+    public int getCaseNumber() {
+        return caseNumber;
+    }
+
+    @Override
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    @Override
+    public boolean isActive() {
+        return isActive;
+    }
     
 }

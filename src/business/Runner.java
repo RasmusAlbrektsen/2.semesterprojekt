@@ -33,7 +33,8 @@ public class Runner {
         IUser test = new User("fisk","fiskebasse", "supersecret", true, true, true, true);
         database.saveUser(test);
         
-        database.saveCase("2018-05-05");
+        ICase testCase = new Case("2712720", 12343);
+        database.saveCase(testCase);
         
         /*
         users = database.getUsers();

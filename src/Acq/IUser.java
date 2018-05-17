@@ -13,17 +13,17 @@ import java.util.Date;
  */
 public interface IUser {
 
-    public String getUsername();
+    String getUsername();
 
-    public String getPassword();
+    String getPassword();
 
-    public String getName();
+    String getName();
 
-    public boolean getLog();
+    boolean getLog();
 
-    public boolean getMedicine();
-    
-    public boolean getCaseaccess();
-    
-    public boolean getAppointment();
+    boolean getMedicine();
+
+    boolean getCaseaccess();
+
+    boolean getAppointment();
 }
