@@ -36,6 +36,39 @@ public class User implements IUser {
         this.IDNumber = IDNumber;
         appointments = new ArrayList<>();
     }
+    
+    
+    public User(String name, String username, String password, int accessLevel){
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        appointments = new ArrayList<>();
+        
+        
+        //TODO MISSING IDNUMBER!
+        
+        switch (accessLevel) {
+            case 1:
+                appointment = true;
+                caseAccess = false;
+                medicine = false;
+                log = false;
+                break;
+            case 2:
+                appointment = true;
+                caseAccess = true;
+                medicine = true;
+                log = false;
+                break;
+            case 3:
+                appointment = true;
+                caseAccess = true;
+                medicine = true;
+                log = true;
+                break;
+        }
+        
+    }
 
    
 
