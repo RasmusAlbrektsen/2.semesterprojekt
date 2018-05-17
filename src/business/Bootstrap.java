@@ -14,8 +14,6 @@ import data.SQLDatabase;
 public class Bootstrap {
 
     public static void main(String[] args){
-        SQLDatabase fisk = new SQLDatabase();
-        fisk.loadData();
         Runner r = new Runner();
         r.run();
     }

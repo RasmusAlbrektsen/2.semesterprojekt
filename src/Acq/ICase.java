@@ -5,10 +5,18 @@
  */
 package Acq;
 
+import java.util.Date;
+
 /**
  *
  * @author rasmusstamm
  */
 public interface ICase {
+
+    int getCaseNumber();
+
+    Date getCreationDate();
     
+    boolean isActive();
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import Acq.IAdminLogger;
@@ -28,10 +23,13 @@ public class Runner {
     private SQLDatabase database = new SQLDatabase();
     private Map<String, IUser> users = new HashMap<>();
     private List<ICase> cases = new ArrayList<>();
+    
 
     public Runner() {
-      //  users = database.getUsers();
-        //cases = database.getCases();
+        
+        ICase testCase = new Case("2712720", 12343);
+        database.saveCase(testCase);
+       
         parser = new Parser();
     }
     

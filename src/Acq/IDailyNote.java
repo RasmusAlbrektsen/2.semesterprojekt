@@ -5,17 +5,10 @@
  */
 package Acq;
 
-import java.util.Date;
-
 /**
  *
- * @author Rasmus
+ * @author rasmusstamm
  */
-public interface ICaseLogger {
-
-    int getCaseNumber();
-
-    int getUserID();
-
-    Date getDate();
+public interface IDailyNote {
+    
 }
