@@ -206,6 +206,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void myCasesButtonAction(ActionEvent event) {
+        
     }
 
     @FXML
@@ -218,15 +219,23 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void allCasesButtonAction(ActionEvent event) {
-        updateCases();
+        updateAllCases();
     }
     
-    public void updateCases(){
+    public void updateAllCases(){
         caseList.clear();
         for (ICase aCase : business.getData().getData().getCases()) {
             caseList.add(aCase.toString());
         }
     }
 
+    public void updateMyCases(){
+        caseList.clear();
+        for (ICase aCase : business.getData().getData().getCases()) {
+            if (aCase.) {
+                //RASTA17 LAVER DET
+            }
+        }
+    }
     
 }
