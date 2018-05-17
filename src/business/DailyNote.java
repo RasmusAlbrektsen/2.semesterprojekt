@@ -9,10 +9,7 @@ import Acq.IDailyNote;
 import Acq.IUser;
 import java.util.Date;
 
-/**
- *
- * @author rasmusstamm
- */
+
 class DailyNote implements IDailyNote{
 
     private Date date;
@@ -21,7 +18,6 @@ class DailyNote implements IDailyNote{
 
     public DailyNote(String note, IUser user) {
         this.note = note;
-        this.user = user;
         date = new Date();
     }
 

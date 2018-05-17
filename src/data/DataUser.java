@@ -24,9 +24,21 @@ public class DataUser implements IUser {
     private boolean log;
     private String username;
     private String password;
-    private List<ICase> cases;
+    private String name;
     private List<IAppointment> appointments;
 
+    public DataUser(int IDNumber, boolean caseAccess, boolean medicine, boolean appointment, boolean log, String username, String password) {
+        this.IDNumber = IDNumber;
+        this.caseAccess = caseAccess;
+        this.medicine = medicine;
+        this.appointment = appointment;
+        this.log = log;
+        this.username = username;
+        this.password = password;
+    }
+
+   
+    
     /*@Override
     public boolean createCase(String CPR) {
         return true;
@@ -45,6 +57,31 @@ public class DataUser implements IUser {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean getLog() {
+        return log;
+    }
+
+    @Override
+    public boolean getMedicine() {
+        return medicine;
+    }
+
+    @Override
+    public boolean getCaseaccess() {
+        return caseAccess;
+    }
+
+    @Override
+    public boolean getAppointment() {
+        return appointment;
     }
 
 }

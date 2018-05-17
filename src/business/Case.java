@@ -2,17 +2,16 @@ package business;
 
 import Acq.ICase;
 import Acq.IDailyNote;
+
 import Acq.IMedicine;
 import Acq.IOffer;
 import Acq.IUser;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Bruger
- */
+
 public class Case implements ICase{
 
     private int caseNumber;
@@ -20,10 +19,10 @@ public class Case implements ICase{
     private Date creationDate;
     private String CPR;
     private boolean isActive;
-    //private List<Appointment> appointments;
+    
     private List<IMedicine> medicineList;
     private IOffer offer;
-    private IUser caseWorker;
+
     private List<IDailyNote> dailyNotes;
 
     public Case(String CPR, int IDNum) {
@@ -41,6 +40,7 @@ public class Case implements ICase{
         return true;
     }
 
+
     @Override
     public boolean updateMedicine(IMedicine medicine, String amount, String dose) {
         for (IMedicine med : medicineList) {
@@ -54,6 +54,7 @@ public class Case implements ICase{
         return false;
     }
 
+
     @Override
     public boolean createOffer(String residence, Date startDate) {
         return true;
@@ -65,8 +66,8 @@ public class Case implements ICase{
     }
     
     @Override
-    public boolean createDailyNote() {
-        dailyNotes.add(new DailyNote(CPR, caseWorker));
+    public boolean createDailyNote(String note) {
+        dailyNotes.add(new DailyNote(note));
         return true;
     }
 
@@ -89,15 +90,11 @@ public class Case implements ICase{
     public String getCPR() {
         return CPR;
     }
-
+    
     @Override
-    public boolean isIsActive() {
+    public boolean isActive() {
         return isActive;
     }
-
-    /*public List<Appointment> getAppointments() {
-        return appointments;
-    }*/
 
     @Override
     public List<IMedicine> getMedicine() {
@@ -114,10 +111,9 @@ public class Case implements ICase{
         return caseWorker;
     }
 
+
     @Override
     public List<IDailyNote> getDailyNotes() {
         return dailyNotes;
     }
-    
-    
 }
