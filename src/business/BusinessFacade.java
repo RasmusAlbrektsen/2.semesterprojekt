@@ -43,5 +43,9 @@ public class BusinessFacade implements IBusiness {
         return bus;
     }
     
+    public IData getData(){
+        return data; 
+    }
+    
 
 }

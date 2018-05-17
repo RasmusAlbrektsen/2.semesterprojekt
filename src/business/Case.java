@@ -2,15 +2,11 @@ package business;
 
 import Acq.ICase;
 import Acq.IDailyNote;
-
 import Acq.IMedicine;
 import Acq.IOffer;
-import Acq.IUser;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 
 public class Case implements ICase{
 
@@ -19,10 +15,8 @@ public class Case implements ICase{
     private Date creationDate;
     private String CPR;
     private boolean isActive;
-    
     private List<IMedicine> medicineList;
     private IOffer offer;
-
     private List<IDailyNote> dailyNotes;
 
     public Case(String CPR, int IDNum) {
@@ -45,14 +39,12 @@ public class Case implements ICase{
     public boolean updateMedicine(IMedicine medicine, String amount, String dose) {
         for (IMedicine med : medicineList) {
             if(med == medicine) {
-                med.setDosage(dose);
-                
+                med.setDosage(dose);                
                 return true;
             }
         }
         return false;
     }
-
 
     @Override
     public boolean createOffer(String residence, Date startDate) {

@@ -14,4 +14,5 @@ public interface IBusiness {
     IUser getCurrentUser();
     ICalendar getCalendar();
     Business getBus();
+    IData getData();
 }

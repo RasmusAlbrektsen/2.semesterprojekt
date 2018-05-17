@@ -4,6 +4,7 @@ import Acq.IAppointment;
 import Acq.IBusiness;
 import Acq.IUser;
 import Acq.ICalendar;
+import Acq.ICase;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -101,20 +102,27 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField searchCPRField;
     @FXML
-    private TextField searchNameField;
-    @FXML
-    private Button searchButton;
-    @FXML
     private ListView<?> medicinListView;
     @FXML
-    private Button addMedicinButton;
+    private ListView<?> caseListView;
     @FXML
-    private Button removeMedicinButton;
+    private TextField searchNumberField;
+    @FXML
+    private Button searchCasesButton;
+    @FXML
+    private Button myCasesButton;
+    @FXML
+    private Button addMedicineButton;
+    @FXML
+    private Button removeMedicineButton;
+    @FXML
+    private Button allCasesButton;
+    @FXML
+    private Button allCasesButton1;
     
-    private IBusiness business = UdredGUI.getInstance().getBusiness();
-    
-    
+    private IBusiness business = UdredGUI.getInstance().getBusiness();    
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
+    private ObservableList<String> caseList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = business.getCalendar();
@@ -127,6 +135,9 @@ public class FXMLDocumentController implements Initializable {
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
+        
+        
+        
         
     }   
     
@@ -186,6 +197,34 @@ public class FXMLDocumentController implements Initializable {
             stage.show();
         } catch(IOException e) {
             
+        }
+    }
+
+    @FXML
+    private void searchCasesButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void myCasesButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void addMedicineButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void removeMedicineButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void allCasesButtonAction(ActionEvent event) {
+        updateCases();
+    }
+    
+    public void updateCases(){
+        caseList.clear();
+        for (ICase aCase : business.getData().getData().getCases()) {
+            caseList.add(aCase.toString());
         }
     }
 

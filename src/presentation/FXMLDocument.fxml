@@ -33,8 +33,8 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="main-tab" stylesheets="@styles.css">
                      <children>
-                        <ListView layoutX="207.0" layoutY="77.0" prefHeight="466.0" prefWidth="325.0" />
-                        <Separator layoutX="147.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="476.0" prefWidth="25.0" />
+                        <ListView fx:id="caseListView" layoutX="207.0" layoutY="77.0" prefHeight="466.0" prefWidth="325.0" />
+                        <Separator layoutX="147.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="568.0" prefWidth="25.0" />
                         <Separator layoutX="-6.0" layoutY="45.0" prefHeight="17.0" prefWidth="166.0" />
                         <Text layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
                            <font>
@@ -95,14 +95,19 @@
                               </GridPane>
                            </children>
                         </VBox>
-                        <DatePicker fx:id="searchDatePicker" layoutX="543.0" layoutY="78.0" />
-                        <TextField fx:id="searchCPRField" layoutX="545.0" layoutY="117.0" />
-                        <TextField fx:id="searchNameField" layoutX="545.0" layoutY="149.0" />
-                        <Button fx:id="searchButton" layoutX="543.0" layoutY="176.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Søg " />
-                        <Button layoutX="453.0" layoutY="33.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Mine sager" />
+                        <DatePicker fx:id="searchDatePicker" layoutX="543.0" layoutY="78.0" prefHeight="25.0" prefWidth="128.0" />
+                        <TextField fx:id="searchCPRField" layoutX="543.0" layoutY="109.0" prefHeight="25.0" prefWidth="130.0" />
+                        <TextField fx:id="searchNumberField" layoutX="543.0" layoutY="139.0" prefHeight="25.0" prefWidth="130.0" />
+                        <Button fx:id="searchCasesButton" layoutX="543.0" layoutY="176.0" mnemonicParsing="false" onAction="#searchCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Søg " />
+                        <Button fx:id="myCasesButton" layoutX="453.0" layoutY="33.0" mnemonicParsing="false" onAction="#myCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Mine sager" />
                         <ListView fx:id="medicinListView" layoutX="543.0" layoutY="319.0" prefHeight="224.0" prefWidth="200.0" />
-                        <Button fx:id="addMedicinButton" layoutX="543.0" layoutY="282.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Tilføj Medicin" />
-                        <Button fx:id="removeMedicinButton" layoutX="643.0" layoutY="282.0" mnemonicParsing="false" styleClass="main-button" stylesheets="@styles.css" text="Fjern Medicin" />
+                        <Button fx:id="addMedicineButton" layoutX="543.0" layoutY="282.0" mnemonicParsing="false" onAction="#addMedicineButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Tilføj Medicin" />
+                        <Button fx:id="removeMedicineButton" layoutX="643.0" layoutY="282.0" mnemonicParsing="false" onAction="#removeMedicineButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Fjern Medicin" />
+                        <Label layoutX="683.0" layoutY="143.0" text="ID Nummer" />
+                        <Label layoutX="683.0" layoutY="113.0" text="CPR" />
+                        <Label layoutX="681.0" layoutY="83.0" text="Dato" />
+                        <Button fx:id="allCasesButton" layoutX="207.0" layoutY="33.0" mnemonicParsing="false" onAction="#allCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Alle sager" />
+                        <Button fx:id="allCasesButton1" layoutX="24.0" layoutY="236.0" mnemonicParsing="false" onAction="#allCasesButtonAction" prefHeight="39.0" prefWidth="125.0" styleClass="main-button" stylesheets="@styles.css" text="Administratorvindue" />
                      </children>
                   </AnchorPane>
             </content>
