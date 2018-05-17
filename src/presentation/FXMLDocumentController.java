@@ -232,10 +232,6 @@ public class FXMLDocumentController implements Initializable {
     public void updateMyCases(){
         caseList.clear();
         for (ICase aCase : business.getData().getData().getCases()) {
-            if (aCase.) {
-                //RASTA17 LAVER DET
             }
         }
-    }
-    
 }
