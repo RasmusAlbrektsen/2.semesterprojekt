@@ -10,10 +10,7 @@ package Acq;
  * @author rasmusstamm
  */
 public interface IMedicine {
-
-    String getName();
-
-    String getAmount();
-
     String getDosage();
+    String getVNR();
+    String getName();
 }

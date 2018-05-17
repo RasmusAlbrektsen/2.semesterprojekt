@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import Acq.IAdminLogger;
@@ -12,6 +7,7 @@ import data.JSONDatabase;
 import Acq.ICaseLogger;
 import Acq.IMedicine;
 import Acq.IUser;
+import data.DataMedicine;
 import data.SQLDatabase;
 import java.sql.SQLData;
 import java.util.ArrayList;
@@ -30,20 +26,10 @@ public class Runner {
     
 
     public Runner() {
-        IUser test = new User("fisk","fiskebasse", "supersecret", true, true, true, true);
-        database.saveUser(test);
         
         ICase testCase = new Case("2712720", 12343);
         database.saveCase(testCase);
-        
-        /*
-        users = database.getUsers();
-        System.out.println(users);
-        
-        cases = database.getCases();
-        System.out.println(cases);
-        */
-        
+       
         parser = new Parser();
     }
     

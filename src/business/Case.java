@@ -42,7 +42,7 @@ public class Case implements ICase{
         return true;
     }
 
-    public boolean updateMedicine(Medicine medicine, String amount, String dose) {
+   /* public boolean updateMedicine(Medicine medicine, String amount, String dose) {
         for (Medicine med : medicineList) {
             if(med == medicine) {
                 med.setAmount(amount);
@@ -53,7 +53,7 @@ public class Case implements ICase{
         }
         return false;
     }
-
+    */
     public boolean createOffer(String residence, Date startDate) {
         return true;
     }
