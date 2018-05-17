@@ -20,6 +20,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -67,6 +68,26 @@ public class OpenCaseWindowController implements Initializable {
     private TextArea særligeForholdTextBox;
     @FXML
     private TextArea kommuneTextBox;
+    @FXML
+    private RadioButton borgerSøgButtonJa;
+    @FXML
+    private RadioButton borgerSøgButtonNej;
+    @FXML
+    private RadioButton borgerIndforståetButtonJa;
+    @FXML
+    private RadioButton borgerIndforståetButtonNej;
+    @FXML
+    private RadioButton borgerInfoButtonJa;
+    @FXML
+    private RadioButton borgerInfoButtonNej;
+    @FXML
+    private RadioButton samtykkeButtonJa;
+    @FXML
+    private RadioButton samtykkeButtonNej;
+    @FXML
+    private RadioButton mundtligSamtykkeButton;
+    @FXML
+    private RadioButton skriftligSamtykkeButton;
 
     /**
      * Initializes the controller class.
@@ -77,8 +98,19 @@ public class OpenCaseWindowController implements Initializable {
     }
 
     public String getCaseStuff() {
-        String caseCombined = henvendelseTextBox.getText() + "\\" + ydelsesTextBox.getText() + "\\" + henvendelseFraTextBox.getText() + "\\" + aftaleForløbTextBox.getText() + "\\" + værgeMålTexBox.getText() + "\\" + rettighederTextBox.getText() + "\\" + loadOplysningerTextBox.getText() + "\\" + særligeForholdTextBox.getText() + "\\" + kommuneTextBox.getText();
-        return caseCombined;
+        StringBuilder caseCombined = new StringBuilder();
+        caseCombined.append(henvendelseTextBox.getText() + "\\" + ydelsesTextBox.getText() + "\\" + henvendelseFraTextBox.getText() + "\\" + aftaleForløbTextBox.getText() + "\\" + værgeMålTexBox.getText() + "\\" + rettighederTextBox.getText() + "\\" + loadOplysningerTextBox.getText() + "\\" + særligeForholdTextBox.getText() + "\\" + kommuneTextBox.getText());
+        caseCombined.append(borgerSøgButtonJa.isSelected() + "\\"
+                + borgerSøgButtonNej.isSelected() + "\\"
+                + borgerIndforståetButtonJa.isSelected() + "\\"
+                + borgerIndforståetButtonNej.isSelected() + "\\"
+                + borgerInfoButtonJa.isSelected() + "\\"
+                + borgerInfoButtonNej.isSelected() + "\\"
+                + samtykkeButtonJa.isSelected() + "\\"
+                + samtykkeButtonNej.isSelected() + "\\"
+                + mundtligSamtykkeButton.isSelected() + "\\"
+                + skriftligSamtykkeButton.isSelected());
+        return caseCombined.toString();
     }
 
     public void loadCaseStuff(String string) {
@@ -92,6 +124,16 @@ public class OpenCaseWindowController implements Initializable {
         loadOplysningerTextBox.setText(caseSplitter[6]);
         særligeForholdTextBox.setText(caseSplitter[7]);
         kommuneTextBox.setText(caseSplitter[8]);
+//        borgerSøgButtonJa.f
+//        borgerSøgButtonNej;
+//        borgerIndforståetButtonJa;
+//        borgerIndforståetButtonNej;
+//        borgerInfoButtonJa;
+//        borgerInfoButtonNej;
+//        samtykkeButtonJa;
+//        samtykkeButtonNej;
+//        mundtligSamtykkeButton;
+//        skriftligSamtykkeButton
     }
 
     @FXML
