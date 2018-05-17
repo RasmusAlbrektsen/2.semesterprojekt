@@ -18,9 +18,7 @@ import java.util.List;
  * @author rasmusstamm
  */
 public class DataMedicine implements IMedicine {
-    String url = "jdbc:postgresql://horton.elephantsql.com:5432/zibscemz";
-    String username = "zibscemz";
-    String passwd = "7A1e6LvgBXjitm0pjGI3tIOf5aCpr0Qe";
+
     private String dosage;
     private String VNR;
     private String name;
@@ -35,17 +33,25 @@ public class DataMedicine implements IMedicine {
     public String getName() {
         return name;
     }
+
     @Override
     public String getVNR() {
         return VNR;
     }
+
     @Override
     public String getDosage() {
         return dosage;
     }
+
     @Override
     public String toString() {
         String s = "Name: " + name + " dosage: " + dosage + " VNR: " + VNR;
         return s;
+    }
+
+    @Override
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
     }
 }

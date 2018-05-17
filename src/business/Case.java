@@ -35,8 +35,8 @@ public class Case implements ICase{
     }
 
     @Override
-    public boolean createMedicine(String name, String amount, String dose) {
-        medicineList.add(new Medicine(name, amount, dose));
+    public boolean createMedicine(String name, String VNR, String dosage) {
+        medicineList.add(new Medicine(name, dosage, VNR));
         return true;
     }
 
@@ -45,7 +45,6 @@ public class Case implements ICase{
     public boolean updateMedicine(IMedicine medicine, String amount, String dose) {
         for (IMedicine med : medicineList) {
             if(med == medicine) {
-                med.setAmount(amount);
                 med.setDosage(dose);
                 
                 return true;
@@ -69,11 +68,6 @@ public class Case implements ICase{
     public boolean createDailyNote(String note) {
         dailyNotes.add(new DailyNote(note));
         return true;
-    }
-
-    @Override
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
     }
 
     @Override
@@ -105,12 +99,6 @@ public class Case implements ICase{
     public IOffer getOffer() {
         return offer;
     }
-
-    @Override
-    public IUser getCaseWorker() {
-        return caseWorker;
-    }
-
 
     @Override
     public List<IDailyNote> getDailyNotes() {

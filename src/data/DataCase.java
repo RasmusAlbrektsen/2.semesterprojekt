@@ -7,6 +7,8 @@ package data;
 
 import Acq.ICase;
 import Acq.IDailyNote;
+import Acq.IMedicine;
+import Acq.IOffer;
 import business.Medicine;
 import business.Offer;
 import business.User;
@@ -17,14 +19,14 @@ import java.util.List;
  *
  * @author rasmusstamm
  */
-public class DataCase implements ICase{
+public class DataCase implements ICase {
+
     private int caseNumber;
     private int IDNum;
     private Date creationDate;
     private String CPR;
     private boolean isActive;
-    //private List<Appointment> appointments;
-    private List<Medicine> medicineList;
+    private List<IMedicine> medicineList;
     private Offer offer;
     private User caseWorker;
     private List<IDailyNote> dailyNotes;
@@ -49,5 +51,59 @@ public class DataCase implements ICase{
     public boolean isActive() {
         return isActive;
     }
-    
+
+    @Override
+    public String getCPR() {
+        return CPR;
+    }
+
+    @Override
+    public List<IMedicine> getMedicine() {
+        return medicineList;
+    }
+
+    @Override
+    public IOffer getOffer() {
+        return offer;
+    }
+
+    @Override
+    public List<IDailyNote> getDailyNotes() {
+        return dailyNotes;
+    }
+
+    @Override
+    public boolean createMedicine(String name, String dose, String CPR) {
+        medicineList.add(new DataMedicine(name, dose, CPR));
+        return true;
+    }
+
+    @Override
+    public boolean updateMedicine(IMedicine medicine, String amount, String dose) {
+        for (IMedicine med : medicineList) {
+            if (med == medicine) {
+                med.setDosage(dose);
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean createOffer(String residence, Date startDate) {
+        return true;
+    }
+
+    @Override
+    public boolean createOffer(String residence, Date startDate, Date endDate) {
+        return true;
+    }
+
+    @Override
+    public boolean createDailyNote(String note) {
+        dailyNotes.add(new DataDailyNote(note));
+        return true;}
+
+
 }

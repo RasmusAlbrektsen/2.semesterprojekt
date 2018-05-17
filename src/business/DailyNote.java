@@ -14,9 +14,8 @@ class DailyNote implements IDailyNote{
 
     private Date date;
     private String note;
-    private IUser user;
 
-    public DailyNote(String note, IUser user) {
+    public DailyNote(String note) {
         this.note = note;
         date = new Date();
     }

@@ -70,9 +70,9 @@ public class User implements IUser {
     } */
 
     @Override
-    public boolean createAppointment(String date, String CPR, String note, int IDNum) {
+    public boolean createAppointment(String date, String CPR, String note) {
         try {
-            appointments.add(new Appointment(date, CPR, note, IDNum));
+            appointments.add(new Appointment(date, CPR, note));
         } catch (ParseException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,6 +8,7 @@ package data;
 import Acq.IAppointment;
 import Acq.ICase;
 import Acq.IUser;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -37,8 +38,6 @@ public class DataUser implements IUser {
         this.password = password;
     }
 
-   
-    
     /*@Override
     public boolean createCase(String CPR) {
         return true;
@@ -48,7 +47,6 @@ public class DataUser implements IUser {
     public boolean createAppointment(Date date, String CPR, String note) {
         return true;
     }*/
-
     @Override
     public String getUsername() {
         return username;
@@ -82,6 +80,49 @@ public class DataUser implements IUser {
     @Override
     public boolean getAppointment() {
         return appointment;
+    }
+
+    @Override
+    public boolean createAppointment(String date, String CPR, String note) {
+        try {
+            appointments.add(new DataAppointment(date, CPR, note));
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean updateAppointment(IAppointment ap, Date date, String note) {
+        for (IAppointment appointment : appointments) {
+            if (appointment == ap) {
+                appointment.setDate(date);
+                appointment.setNote(note);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean removeAppointment(IAppointment ap) {
+        for (IAppointment appointment : appointments) {
+            if (appointment == ap) {
+                appointments.remove(ap);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public List<IAppointment> getAppointments() {
+        return appointments;
+    }
+
+    @Override
+    public int getIDNumber() {
+        return IDNumber;
     }
 
 }

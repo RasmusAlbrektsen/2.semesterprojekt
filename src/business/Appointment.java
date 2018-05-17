@@ -22,11 +22,10 @@ public class Appointment implements IAppointment{
     private int IDNum;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-    public Appointment(String date, String cpr, String note, int IDNum) throws ParseException {
+    public Appointment(String date, String cpr, String note) throws ParseException {
         this.date = sdf.parse(date);
         this.cpr = cpr;
         this.note = note;
-        this.IDNum = IDNum;
     }
 
     @Override

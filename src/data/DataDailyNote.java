@@ -14,6 +14,11 @@ public class DataDailyNote implements IDailyNote{
         this.date = date;
         this.note = note;
     }
+    
+    public DataDailyNote(String note){
+        date = new Date();
+        this.note = note;
+    }
 
     
 }
