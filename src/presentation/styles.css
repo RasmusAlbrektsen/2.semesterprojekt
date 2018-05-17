@@ -1,0 +1,46 @@
+.main-tabPane {
+    -fx-background-color: #69727f,
+        linear-gradient(white, #313631),
+        linear-gradient(#69727f 0%, #f4e5bc 20%, #364b36 80%, #364b36 100%),
+        linear-gradient(#69727f, #283628);
+    -fx-border-width: 5;
+    -fx-border-color: #ba693e;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.main-tab {
+    -fx-background-color: #97c697,
+        linear-gradient(#919191, #919191),
+        linear-gradient(#69727f 0%, #919191 20%, #919191 80%, #364b36 100%),
+        linear-gradient(#97c697, #97c697);
+    -fx-border-width: 5;
+    -fx-border-radius: 5;
+}
+
+.main-button {
+    -fx-background-color: 
+        #c7ccc7,
+        rgba(0,0,0,0.05),
+        linear-gradient(#69727f, #69727f),
+        linear-gradient(#69727f 0%, #f4e5bc 20%, #e6c75d 80%, #cc0606 100%),
+        linear-gradient(#b2f4b2, #b2f4b2);
+    -fx-background-insets: 0 ,10 10 9 10,8,2,2;
+    -fx-background-radius: 10;
+    -fx-padding: 7 7 7 7;
+    -fx-font-family: "Helvetica";
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-text-fill: #0c0f0c;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);
+}
+
+.main-button:hover {
+    -fx-background-color: #69727f;
+}
+
+.main-button:pressed {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+

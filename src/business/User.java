@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
+import Acq.IAppointment;
 import Acq.IUser;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,8 +23,7 @@ public class User implements IUser {
     private String username;
     private String password;
     private String name;
-    //private List<Case> cases;
-    //private List<Appointment> appointments;
+    private List<IAppointment> appointments;
 
     public User(String name, String username, String password, boolean log, boolean medicine, boolean appointment, boolean caseAccess) {
         this.caseAccess = caseAccess;
@@ -35,6 +33,8 @@ public class User implements IUser {
         this.username = username;
         this.password = password;
         this.name = name;
+        this.IDNumber = IDNumber;
+        appointments = new ArrayList<>();
     }
 
    
@@ -67,15 +67,21 @@ public class User implements IUser {
 
     public boolean createOffer(String residence, Date startDate, Date endDate) {
         return true;
-    }
+    } */
 
-    public boolean createAppointment(Date date, String CPR, String note) {
-        //appointments.add(new Appointment(date, CPR, note));
+    @Override
+    public boolean createAppointment(String date, String CPR, String note, int IDNum) {
+        try {
+            appointments.add(new Appointment(date, CPR, note, IDNum));
+        } catch (ParseException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return true;
     }
 
-    public boolean updateAppointment(Appointment ap, Date date, String note) {
-        for (Appointment appointment : appointments) {
+    @Override
+    public boolean updateAppointment(IAppointment ap, Date date, String note) {
+        for (IAppointment appointment : appointments) {
             if(appointment == ap) {
                appointment.setDate(date);
                appointment.setNote(note);
@@ -85,8 +91,9 @@ public class User implements IUser {
         return false;
     }
 
-    public boolean removeAppointment(Appointment ap) {
-         for (Appointment appointment : appointments) {
+    @Override
+    public boolean removeAppointment(IAppointment ap) {
+         for (IAppointment appointment : appointments) {
             if(appointment == ap) {
                appointments.remove(ap);
                return true;
@@ -94,6 +101,14 @@ public class User implements IUser {
         }
         return false;
     }
+
+    @Override
+    public List<IAppointment> getAppointments() {
+        return appointments;
+    }
+    
+    
+    /*
 
     public boolean createUser(String un, String pw, int accessLevel) {
         return true;
@@ -139,5 +154,9 @@ public class User implements IUser {
     @Override
     public boolean getAppointment() {
         return appointment;
+    }
+  
+    public int getIDNumber() {
+        return IDNumber;
     }
 }
