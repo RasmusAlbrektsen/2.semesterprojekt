@@ -19,7 +19,7 @@ public interface IUser {
     boolean getCaseaccess();
 
     boolean getAppointment();
-    boolean createAppointment(String date, String CPR, String note, int IDNum);
+    boolean createAppointment(String date, String CPR, String note);
     boolean updateAppointment(IAppointment ap, Date date, String note);
     boolean removeAppointment(IAppointment ap);
     List<IAppointment> getAppointments();
