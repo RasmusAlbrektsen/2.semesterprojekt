@@ -97,7 +97,7 @@ public class OpenCaseWindowController implements Initializable {
         // TODO
     }
 
-    public String getCaseStuff() {
+    public String getCaseInformation() {
         StringBuilder caseCombined = new StringBuilder();
         caseCombined.append(henvendelseTextBox.getText() + "\\" + ydelsesTextBox.getText() + "\\" + henvendelseFraTextBox.getText() + "\\" + aftaleForløbTextBox.getText() + "\\" + værgeMålTexBox.getText() + "\\" + rettighederTextBox.getText() + "\\" + loadOplysningerTextBox.getText() + "\\" + særligeForholdTextBox.getText() + "\\" + kommuneTextBox.getText());
         caseCombined.append(borgerSøgButtonJa.isSelected() + "\\"
@@ -113,7 +113,7 @@ public class OpenCaseWindowController implements Initializable {
         return caseCombined.toString();
     }
 
-    public void loadCaseStuff(String string) {
+    public void loadCaseInformation(String string) {
         String[] caseSplitter = string.split("\\");
         henvendelseTextBox.setText(caseSplitter[0]);
         ydelsesTextBox.setText(caseSplitter[1]);
@@ -124,16 +124,32 @@ public class OpenCaseWindowController implements Initializable {
         loadOplysningerTextBox.setText(caseSplitter[6]);
         særligeForholdTextBox.setText(caseSplitter[7]);
         kommuneTextBox.setText(caseSplitter[8]);
-//        borgerSøgButtonJa.f
-//        borgerSøgButtonNej;
-//        borgerIndforståetButtonJa;
-//        borgerIndforståetButtonNej;
-//        borgerInfoButtonJa;
-//        borgerInfoButtonNej;
-//        samtykkeButtonJa;
-//        samtykkeButtonNej;
-//        mundtligSamtykkeButton;
-//        skriftligSamtykkeButton
+        if(caseSplitter[9].equalsIgnoreCase("true")) {
+          borgerSøgButtonJa.fire();
+        } else {
+            borgerSøgButtonNej.fire();
+        }
+        if(caseSplitter[11].equalsIgnoreCase("true")) {
+            borgerIndforståetButtonJa.fire();
+        } else {
+            borgerIndforståetButtonNej.fire();
+        }
+        if(caseSplitter[13].equalsIgnoreCase("true")) {
+            borgerInfoButtonJa.fire();
+        } else {
+            borgerInfoButtonNej.fire();
+        }
+        if(caseSplitter[15].equalsIgnoreCase("true")) {
+            samtykkeButtonJa.fire();
+        } else {
+            samtykkeButtonNej.fire();
+        }
+        if(caseSplitter[17].equalsIgnoreCase("true")) {
+            mundtligSamtykkeButton.fire();
+        } 
+        if(caseSplitter[18].equalsIgnoreCase("true")) {
+            skriftligSamtykkeButton.fire();
+        }
     }
 
     @FXML
