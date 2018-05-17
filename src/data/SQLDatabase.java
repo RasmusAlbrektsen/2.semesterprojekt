@@ -28,7 +28,7 @@ public class SQLDatabase {
     }
     
 
-    public List<DataMedicine> GetMedicine(String caseID){
+    public List<DataMedicine> getMedicine(String caseID){
         
         List<DataMedicine> Medicine = new ArrayList<>();
         try {
@@ -51,7 +51,7 @@ public class SQLDatabase {
         
     }
     
-    public void SaveNote(String note, String caseID, String Date){
+    public void saveNote(String note, String caseID, String Date){
         String id;
         try {
         Connection db = DriverManager.getConnection(url, username, passwd);
@@ -65,7 +65,7 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-        public void SaveNote(String dosage, String caseID){
+        public void saveMedicine(String dosage, String caseID){
         String id;
         try {
         Connection db = DriverManager.getConnection(url, username, passwd);
