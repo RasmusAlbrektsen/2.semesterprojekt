@@ -48,7 +48,8 @@ public class Business {
     public void setUserMap(Map<String, IUser> users){
     
         for (Map.Entry<String, IUser> entry : users.entrySet()){
-            userMap.put(entry.getKey(), new User(entry.getValue().getName(),
+            userMap.put(entry.getKey(), new User(entry.getValue().getIDNumber(),
+                                                 entry.getValue().getName(),
                                                  entry.getValue().getUsername(),
                                                  entry.getValue().getPassword(),
                                                  entry.getValue().getLog(),

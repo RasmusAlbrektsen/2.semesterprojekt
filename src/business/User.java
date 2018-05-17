@@ -25,7 +25,8 @@ public class User implements IUser {
     private String name;
     private List<IAppointment> appointments;
 
-    public User(String name, String username, String password, boolean log, boolean medicine, boolean appointment, boolean caseAccess) {
+    public User(int IDNumber, String name, String username, String password, boolean log, boolean medicine, boolean appointment, boolean caseAccess) {
+        this.IDNumber = IDNumber;
         this.caseAccess = caseAccess;
         this.medicine = medicine;
         this.appointment = appointment;
@@ -38,15 +39,13 @@ public class User implements IUser {
     }
     
     
-    public User(String name, String username, String password, int accessLevel){
+    public User(int IDNumber, String name, String username, String password, int accessLevel){
+        this.IDNumber = IDNumber;
         this.name = name;
         this.username = username;
         this.password = password;
         appointments = new ArrayList<>();
-        
-        
-        //TODO MISSING IDNUMBER!
-        
+
         switch (accessLevel) {
             case 1:
                 appointment = true;
@@ -66,8 +65,7 @@ public class User implements IUser {
                 medicine = true;
                 log = true;
                 break;
-        }
-        
+        } 
     }
 
    
