@@ -2,10 +2,7 @@
 package data;
 
 
-public class DataDailyNote {
-
 import Acq.IDailyNote;
-import business.User;
 import java.util.Date;
 
 
