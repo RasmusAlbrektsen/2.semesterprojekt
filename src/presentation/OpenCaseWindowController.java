@@ -23,6 +23,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
@@ -48,6 +49,24 @@ public class OpenCaseWindowController implements Initializable {
     private ToggleGroup consent;
     @FXML
     private ToggleGroup consentInfo;
+    @FXML
+    private TextArea henvendelseTextBox;
+    @FXML
+    private TextArea ydelsesTextBox;
+    @FXML
+    private TextArea henvendelseFraTextBox;
+    @FXML
+    private TextArea aftaleForløbTextBox;
+    @FXML
+    private TextArea værgeMålTexBox;
+    @FXML
+    private TextArea rettighederTextBox;
+    @FXML
+    private TextArea loadOplysningerTextBox;
+    @FXML
+    private TextArea særligeForholdTextBox;
+    @FXML
+    private TextArea kommuneTextBox;
 
     /**
      * Initializes the controller class.
@@ -55,21 +74,38 @@ public class OpenCaseWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    public String getCaseStuff() {
+        String caseCombined = henvendelseTextBox.getText() + "\\" + ydelsesTextBox.getText() + "\\" + henvendelseFraTextBox.getText() + "\\" + aftaleForløbTextBox.getText() + "\\" + værgeMålTexBox.getText() + "\\" + rettighederTextBox.getText() + "\\" + loadOplysningerTextBox.getText() + "\\" + særligeForholdTextBox.getText() + "\\" + kommuneTextBox.getText();
+        return caseCombined;
+    }
+
+    public void loadCaseStuff(String string) {
+        String[] caseSplitter = string.split("\\");
+        henvendelseTextBox.setText(caseSplitter[0]);
+        ydelsesTextBox.setText(caseSplitter[1]);
+        henvendelseFraTextBox.setText(caseSplitter[2]);
+        aftaleForløbTextBox.setText(caseSplitter[3]);
+        værgeMålTexBox.setText(caseSplitter[4]);
+        rettighederTextBox.setText(caseSplitter[5]);
+        loadOplysningerTextBox.setText(caseSplitter[6]);
+        særligeForholdTextBox.setText(caseSplitter[7]);
+        kommuneTextBox.setText(caseSplitter[8]);
+    }
 
     @FXML
     private void caseChecklistButtonAction(ActionEvent event) {
-         try {
+        try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("BenefitsWindow.fxml"));
             Scene scene = new Scene(root);
-            
+
             stage.setScene(scene);
             stage.show();
-        } catch(IOException e) {
-            
+        } catch (IOException e) {
+
         }
     }
 
-    
 }
