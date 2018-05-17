@@ -6,7 +6,7 @@ import java.util.Date;
  *
  * @author rasmusstamm
  */
-public interface IAdminLogger {
+public interface IUserLogger {
 
     int getChangedUserID();
 

@@ -5,36 +5,36 @@
  */
 package data;
 
-import Acq.ICaseLogger;
+import java.util.Date;
+import Acq.IUserLogger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author Bruger
  */
-public class DataCaseLogger implements ICaseLogger {
-   
-    private String url = "jdbc:postgresql://horton.elephantsql.com:5432/ozylgaur";
-    private String username = "ozylgaur";
-    private String passwd = "yTyBQ5nyU85ChDPE0qdp2i4kUj5vIKa9";
-    private int caseNumber;
-    private int userIDNumber;
+public class DataUserLogger implements IUserLogger{
+    
+    private String url = "jdbc:postgresql://horton.elephantsql.com:5432/vyqzasrf";
+    private String username = "vyqzasrf";
+    private String passwd = "9x84zI_uCZ854jTf8T304wNGsNj8XipH";
+    private int changedUserID;
+    private int userID;
     private Date date;
     
     @Override
-    public int getCaseNumber() {
-        return caseNumber;
+    public int getChangedUserID() {
+        return changedUserID;
     }
 
     @Override
     public int getUserID() {
-        return userIDNumber;
+        return userID;
     }
 
     @Override
@@ -44,15 +44,15 @@ public class DataCaseLogger implements ICaseLogger {
     
     @Override
     public String toString(){
-        String s = "CaseNum: " + caseNumber + " UserID: " + userIDNumber + " Date: " + date;
+        String s = "ChangedUser: " + changedUserID + " UserID: " + userID + " Date: " + date;
         return s;
     }
     
-    public void saveToCaseLog(int caseID, int userID, String date, String time){
+    public void saveToCaseLog(int userID, int changedUserID, String date, String time){
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','CaseID:" + caseID + "','" + date + "','" + time + "');");
+            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','UserID:" + changedUserID + "','" + date + "','" + time + "');");
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,12 +82,12 @@ public class DataCaseLogger implements ICaseLogger {
     }
     
     
-     public List<DataLog> getCaseLogFromUser(String UserID){
+     public List<DataLog> getUserLogFromUser(String UserID){
         List<DataLog> Log = new ArrayList<>();
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM caselog WHERE UserID = " + UserID + ";");
+            ResultSet rs = st.executeQuery("SELECT * FROM userlog WHERE UserID = " + UserID + ";");
             db.close();
             while (rs.next()) {
                 Log.add(new DataLog(rs.getString("UserID"),
@@ -102,12 +102,12 @@ public class DataCaseLogger implements ICaseLogger {
         return null;
     }
      
-      public List<DataLog> getCaseLogFromCase(String CaseID){
+      public List<DataLog> getUserLogFromChangedUser(String ChangedUserID){
         List<DataLog> Log = new ArrayList<>();
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM caselog WHERE CaseID = " + CaseID + ";");
+            ResultSet rs = st.executeQuery("SELECT * FROM userlog WHERE ChangedUserID = " + ChangedUserID + ";");
             db.close();
             while (rs.next()) {
                 Log.add(new DataLog(rs.getString("UserID"),
@@ -122,12 +122,12 @@ public class DataCaseLogger implements ICaseLogger {
         return null;
     }
       
-    public List<DataLog> getCaseLogFromDate(String Date){
+    public List<DataLog> getUserLogFromDate(String Date){
         List<DataLog> Log = new ArrayList<>();
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM caselog WHERE Date = " + Date + ";");
+            ResultSet rs = st.executeQuery("SELECT * FROM userlog WHERE Date = " + Date + ";");
             db.close();
             while (rs.next()) {
                 Log.add(new DataLog(rs.getString("UserID"),
@@ -141,6 +141,4 @@ public class DataCaseLogger implements ICaseLogger {
         }
         return null;
     }
-
-
 }

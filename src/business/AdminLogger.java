@@ -5,14 +5,14 @@
  */
 package business;
 
-import Acq.IAdminLogger;
 import java.util.Date;
+import Acq.IUserLogger;
 
 /**
  *
  * @author rasmusstamm
  */
-public class AdminLogger implements IAdminLogger{
+public class AdminLogger implements IUserLogger{
 
     private int changedUserID;
     private int userID;
