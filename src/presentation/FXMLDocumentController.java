@@ -117,8 +117,6 @@ public class FXMLDocumentController implements Initializable {
     private Button removeMedicineButton;
     @FXML
     private Button allCasesButton;
-    @FXML
-    private Button allCasesButton1;
     
     private IBusiness business = UdredGUI.getInstance().getBusiness();    
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
@@ -126,6 +124,8 @@ public class FXMLDocumentController implements Initializable {
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = business.getCalendar();
+    @FXML
+    private Button adminWindowButton;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -220,14 +220,20 @@ public class FXMLDocumentController implements Initializable {
     
     public void updateAllCases(){
         caseList.clear();
-        for (ICase aCase : business.getData().getData().getCases()) {
+        for (ICase aCase : business.getData().getCases()) {
             caseList.add(aCase.toString());
         }
     }
 
     public void updateMyCases(){
         caseList.clear();
-        for (ICase aCase : business.getData().getData().getCases()) {
+        for (ICase aCase : business.getData().getCases()) {
             }
         }
+
+    @FXML
+    private void adminWindowAction(ActionEvent event) {
+        Stage stage = new Stage();
+        UdredGUI.getInstance().loadController(stage, "AdministratorWindow");
+    }
 }

@@ -9,6 +9,7 @@ import Acq.IBusiness;
 import Acq.ICalendar;
 import Acq.IData;
 import Acq.IUser;
+import java.util.Map;
 
 /**
  *
@@ -17,7 +18,7 @@ import Acq.IUser;
 public class BusinessFacade implements IBusiness {
     
     private IData data;
-    private Business bus = new Business();
+    private Business bus = Business.getInstance();
     
     @Override
     public void injectData(IData data) {
@@ -39,12 +40,13 @@ public class BusinessFacade implements IBusiness {
         return bus.getCalendar();
     }
     
-    public Business getBus(){
-        return bus;
-    }
-    
+    @Override
     public IData getData(){
         return data; 
+    }
+    @Override
+    public void setUserMap(Map map){
+        bus.setUserMap(map);
     }
     
 

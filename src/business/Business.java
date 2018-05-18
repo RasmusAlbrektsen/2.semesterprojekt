@@ -12,16 +12,23 @@ import java.util.Map;
 
 
 public class Business {
+    private static Business business = null;
     private boolean loggedIn = false;
     private Map<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
     private ICalendar calendar;
     
-    public Business() {
+    private Business() {
         calendar = new Calendar();
+        business = this;
     }
     
-    
+    public static Business getInstance(){
+        if (business == null){
+            business = new Business();
+        }
+        return business;
+    }
      
     public boolean login(String username, String password) {
         

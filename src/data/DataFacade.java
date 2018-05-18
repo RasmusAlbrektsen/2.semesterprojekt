@@ -5,7 +5,11 @@
  */
 package data;
 
+import Acq.ICase;
 import Acq.IData;
+import Acq.IUser;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -14,10 +18,17 @@ import Acq.IData;
 public class DataFacade implements IData{
  
     private SQLDatabase data = new SQLDatabase();
-    
-    public SQLDatabase getData(){
-        return data;
+
+    @Override
+    public Map<String, IUser> getUsers() {
+        return data.getUsers();
     }
+
+    @Override
+    public List<ICase> getCases() {
+        return data.getCases();
+    }
+
     
     
 }

@@ -5,8 +5,10 @@
  */
 package presentation;
 
+import Acq.IBusiness;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -31,6 +33,10 @@ public class AdministratorWindowController implements Initializable {
     private Button removeUserButton;
     @FXML
     private Button showLogButton;
+    @FXML
+    private Button updateUserButton;
+    
+    private IBusiness business = UdredGUI.getInstance().getBusiness();
 
     /**
      * Initializes the controller class.
@@ -39,5 +45,25 @@ public class AdministratorWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void showUsersAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void addUserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void removeUserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateUserAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void showLogAction(ActionEvent event) {
+    }
     
 }

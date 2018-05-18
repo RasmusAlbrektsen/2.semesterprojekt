@@ -11,13 +11,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
+<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="170.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="200.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="170.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="103.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="277.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
@@ -28,22 +27,23 @@
    <children>
       <ListView fx:id="userListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <ListView fx:id="logListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Button fx:id="showUsersButton" mnemonicParsing="false" text="Vis brugere" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+      <Button fx:id="showUsersButton" mnemonicParsing="false" onAction="#showUsersAction" text="Vis brugere" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets top="60.0" />
          </GridPane.margin>
       </Button>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <children>
-            <Button fx:id="addUserButton" mnemonicParsing="false" prefWidth="70.0" text="Tilføj" />
-            <Button fx:id="removeUserButton" mnemonicParsing="false" prefWidth="70.0" text="Fjern" />
+            <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUserAction" prefWidth="70.0" text="Tilføj" />
+            <Button fx:id="removeUserButton" mnemonicParsing="false" onAction="#removeUserAction" prefWidth="70.0" text="Fjern" />
+            <Button fx:id="updateUserButton" mnemonicParsing="false" onAction="#updateUserAction" prefWidth="70.0" text="Opdater" />
          </children>
          <padding>
             <Insets left="20.0" />
          </padding>
       </VBox>
       <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
-      <Button fx:id="showLogButton" mnemonicParsing="false" text="Vis log" GridPane.columnIndex="3">
+      <Button fx:id="showLogButton" mnemonicParsing="false" onAction="#showLogAction" text="Vis log" GridPane.columnIndex="3">
          <GridPane.margin>
             <Insets top="60.0" />
          </GridPane.margin>

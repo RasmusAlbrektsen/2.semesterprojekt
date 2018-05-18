@@ -1,11 +1,13 @@
 package Acq;
 
-import data.SQLDatabase;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Bruger
  */
 public interface IData {
-    SQLDatabase getData();
+    Map<String, IUser> getUsers();
+    List<ICase> getCases();
 }
