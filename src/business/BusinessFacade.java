@@ -7,8 +7,11 @@ package business;
 
 import Acq.IBusiness;
 import Acq.ICalendar;
+import Acq.ICase;
 import Acq.IData;
 import Acq.IUser;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,6 +50,41 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void setUserMap(Map map){
         bus.setUserMap(map);
+    }
+
+    @Override
+    public List<ICase> searchCases(Date date) {
+        return bus.searchCases(date);
+    }
+
+    @Override
+    public List<ICase> searchCases(String CPR) {
+        return bus.searchCases(CPR);
+    }
+
+    @Override
+    public List<ICase> searchCases(int id) {
+        return bus.searchCases(id);
+    }
+
+    @Override
+    public List<ICase> searchCases(Date date, String CPR) {
+        return bus.searchCases(date, CPR);
+    }
+
+    @Override
+    public List<ICase> searchCases(Date date, int id) {
+        return bus.searchCases(date, id);
+    }
+
+    @Override
+    public List<ICase> searchCases(String CPR, int id) {
+        return bus.searchCases(CPR, id);
+    }
+
+    @Override
+    public List<ICase> searchCases(Date date, String CPR, int id) {
+        return bus.searchCases(date, CPR, id);
     }
     
 
