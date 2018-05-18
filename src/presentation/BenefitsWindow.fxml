@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <ScrollPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.BenefitsWindowController">
    <content>
-      <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="900.0">
+      <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="720.0" prefWidth="900.0">
          <children>
             <CheckBox layoutX="15.0" layoutY="60.0" mnemonicParsing="false" text="Aktivitets- og samværsydelse" />
             <Label layoutX="35.0" layoutY="95.0" text="Befordring">
