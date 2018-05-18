@@ -68,7 +68,7 @@
                         </VBox>
                         <VBox layoutX="19.0" layoutY="318.0" prefHeight="211.0" prefWidth="134.0">
                            <children>
-                              <Hyperlink fx:id="openCalendarLink" onAction="#openCalendarLinkAction" text="Åben kalender" />
+                              <Hyperlink fx:id="openCalendarLink" text="Åben kalender" />
                               <GridPane fx:id="frontpageDateGrid" prefHeight="243.0" prefWidth="134.0" style="-fx-background-color: white; -fx-background-radius: 5;">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
