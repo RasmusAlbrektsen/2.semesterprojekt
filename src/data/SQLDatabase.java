@@ -45,29 +45,64 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-
-    public List<DataMedicine> getMedicine(String caseID) {
-
-        List<DataMedicine> Medicine = new ArrayList<>();
+    
+    
+    public String getMedicineDosage(int caseID){
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
+            ResultSet rs = st.executeQuery("SELECT dosage FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
             db.close();
-            while (rs.next()) {
-
-                Medicine.add(new DataMedicine(rs.getString("name"),
-                        rs.getString("dosage"),
-                        rs.getString("VNR")));
-            }
-            System.out.println(Medicine);
-            return Medicine;
+            rs.next();
+            return rs.getString(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
-
     }
+    
+    public String getMedicineName(int caseID){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT name FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
+            db.close();
+            rs.next();
+            return rs.getString(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public String getMedicineVNR(int caseID){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT vnr FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
+            db.close();
+            rs.next();
+            return rs.getString(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public int getMedicineID(int caseID){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT medicineid FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
+            db.close();
+            rs.next();
+            return rs.getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
 
     public void saveUser(IUser user) {
         try {
@@ -112,7 +147,19 @@ public class SQLDatabase {
         }
         return null;
     }
-
+    public ResultSet getAllUsers() {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users");
+            db.close();
+            return rs;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public Map<String, IUser> getUsers() {
         Map<String, IUser> users = new HashMap<>();
         try {
@@ -145,12 +192,12 @@ public class SQLDatabase {
         }
     }
 
-    public void saveMedicine(String dosage, String caseID) {
+    public void saveMedicine(String vnr, String dosage, String name, int caseID) {
         String id;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO Medicine(Dosage) VALUES ('" + dosage + "')  RETURNING id;");
+            ResultSet rs = st.executeQuery("INSERT INTO Medicine(vnr, dosage, name) VALUES ('" + vnr + "','" + dosage + "','" + name + "')  RETURNING id;");
             id = rs.getString(1);
             st.execute("INSERT INTO Associated VALUES ('" + caseID + "','" + id + "');");
             db.close();
@@ -158,5 +205,32 @@ public class SQLDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public void saveToCaseLog(int userID, int changedUserID, String date, String time){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','UserID:" + changedUserID + "','" + date + "','" + time + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public ResultSet getCaseLog() {
+
+        List<DataLog> Log = new ArrayList<>();
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM caselog;");
+            db.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 }

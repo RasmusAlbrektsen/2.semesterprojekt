@@ -1,7 +1,14 @@
 package business;
 
 import Acq.ICaseLogger;
+import data.DataLog;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -38,6 +45,25 @@ public class CaseLogger implements ICaseLogger {
     public String toString(){
         String s = "CaseNum: " + caseNumber + " UserID: " + userIDNumber + " Date: " + date;
         return s;
+    }
+    
+    public List<CaseLog> getCaseLogs() {
+
+        List<CaseLog> Log = new ArrayList<>();
+        ResultSet rs = Business.getInstance().getData().getCaseLog();
+           try{
+            while (rs.next()) {
+                Log.add(new CaseLog(rs.getInt("UserID"),
+                        rs.getInt("CaseID"),
+                        rs.getString("Date"),
+                        rs.getString("Time")));
+            }
+            return Log;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
 }

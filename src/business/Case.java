@@ -30,7 +30,7 @@ public class Case implements ICase{
 
     @Override
     public boolean createMedicine(String name, String VNR, String dosage) {
-        medicineList.add(new Medicine(name, dosage, VNR));
+        medicineList.add(new Medicine(name, VNR, dosage, IDNum));
         return true;
     }
 

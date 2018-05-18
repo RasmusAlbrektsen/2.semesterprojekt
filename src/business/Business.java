@@ -58,8 +58,12 @@ public class Business {
         return calendar;
     }
     
-    public void setUserMap(Map<String, IUser> users){
-    
+    public void setUserMap(){
+        Map<String, IUser> users = new HashMap<>();
+        ResultSet rs = Business.getInstance().getData().getAllUsers();
+        while (rs.next()) {
+                users.put(rs.getString("username"), new User(rs.getInt("id"), rs.getBoolean("caseaccess"), rs.getBoolean("medicine"), rs.getBoolean("appointment"), rs.getBoolean("log"), rs.getString("username"), rs.getString("password")));
+            }
         for (Map.Entry<String, IUser> entry : users.entrySet()){
             userMap.put(entry.getKey(), new User(entry.getValue().getIDNumber(),
                                                  entry.getValue().getName(),
@@ -72,4 +76,9 @@ public class Business {
         }
   
     }
+
+    public IData getData() {
+        return data;
+    }
+    
 }
