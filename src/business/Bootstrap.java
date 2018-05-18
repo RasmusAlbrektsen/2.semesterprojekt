@@ -7,6 +7,7 @@ import data.DataFacade;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import presentation.GUIFacade;
+import presentation.UdredGUI;
 
 public class Bootstrap extends Application{
     
@@ -21,7 +22,11 @@ public class Bootstrap extends Application{
         IData data = new DataFacade();
         gui.injectBusiness(business);
         business.injectData(data);
+        Business.getInstance().setData(data);
         gui.start(primaryStage);
+        
+        
+       
         
         business.setUserMap(data.getUsers());
     }

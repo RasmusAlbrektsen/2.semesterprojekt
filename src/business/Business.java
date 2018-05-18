@@ -6,6 +6,7 @@
 package business;
 
 import Acq.ICalendar;
+import Acq.IData;
 import Acq.IUser;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 public class Business {
     private static Business business = null;
+    private IData data;
     private boolean loggedIn = false;
     private Map<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
@@ -21,6 +23,10 @@ public class Business {
     private Business() {
         calendar = new Calendar();
         business = this;
+    }
+    
+    public void setData(IData data){
+        this.data = data;
     }
     
     public static Business getInstance(){
