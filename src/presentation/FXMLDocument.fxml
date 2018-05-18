@@ -107,7 +107,7 @@
                         <Label layoutX="683.0" layoutY="113.0" text="CPR" />
                         <Label layoutX="681.0" layoutY="83.0" text="Dato" />
                         <Button fx:id="allCasesButton" layoutX="207.0" layoutY="33.0" mnemonicParsing="false" onAction="#allCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Alle sager" />
-                        <Button fx:id="allCasesButton1" layoutX="24.0" layoutY="236.0" mnemonicParsing="false" onAction="#allCasesButtonAction" prefHeight="39.0" prefWidth="125.0" styleClass="main-button" stylesheets="@styles.css" text="Administratorvindue" />
+                        <Button fx:id="adminWindowButton" layoutX="24.0" layoutY="236.0" mnemonicParsing="false" onAction="#adminWindowAction" prefHeight="39.0" prefWidth="125.0" styleClass="main-button" stylesheets="@styles.css" text="Administratorvindue" />
                      </children>
                   </AnchorPane>
             </content>

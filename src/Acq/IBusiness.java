@@ -1,6 +1,6 @@
 package Acq;
 
-import business.Business;
+import java.util.Map;
 
 
 /**
@@ -13,6 +13,6 @@ public interface IBusiness {
     boolean login(String username, String password);
     IUser getCurrentUser();
     ICalendar getCalendar();
-    Business getBus();
     IData getData();
+    void setUserMap(Map map);
 }
