@@ -39,5 +39,13 @@ public class BusinessFacade implements IBusiness {
         return bus.getCalendar();
     }
     
+    public Business getBus(){
+        return bus;
+    }
+    
+    public IData getData(){
+        return data; 
+    }
+    
 
 }

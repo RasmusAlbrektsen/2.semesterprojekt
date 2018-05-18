@@ -25,7 +25,8 @@ public class User implements IUser {
     private String name;
     private List<IAppointment> appointments;
 
-    public User(String name, String username, String password, boolean log, boolean medicine, boolean appointment, boolean caseAccess) {
+    public User(int IDNumber, String name, String username, String password, boolean log, boolean medicine, boolean appointment, boolean caseAccess) {
+        this.IDNumber = IDNumber;
         this.caseAccess = caseAccess;
         this.medicine = medicine;
         this.appointment = appointment;
@@ -35,6 +36,36 @@ public class User implements IUser {
         this.name = name;
         this.IDNumber = IDNumber;
         appointments = new ArrayList<>();
+    }
+    
+    
+    public User(int IDNumber, String name, String username, String password, int accessLevel){
+        this.IDNumber = IDNumber;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        appointments = new ArrayList<>();
+
+        switch (accessLevel) {
+            case 1:
+                appointment = true;
+                caseAccess = false;
+                medicine = false;
+                log = false;
+                break;
+            case 2:
+                appointment = true;
+                caseAccess = true;
+                medicine = true;
+                log = false;
+                break;
+            case 3:
+                appointment = true;
+                caseAccess = true;
+                medicine = true;
+                log = true;
+                break;
+        } 
     }
 
    

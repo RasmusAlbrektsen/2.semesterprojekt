@@ -1,5 +1,7 @@
 package Acq;
 
+import business.Business;
+
 
 /**
  *
@@ -11,4 +13,6 @@ public interface IBusiness {
     boolean login(String username, String password);
     IUser getCurrentUser();
     ICalendar getCalendar();
+    Business getBus();
+    IData getData();
 }
