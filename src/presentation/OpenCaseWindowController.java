@@ -97,6 +97,16 @@ public class OpenCaseWindowController implements Initializable {
     private TextField dailyNoteNameField;
     @FXML
     private TextArea readDailyNoteField;
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextField cPRTextField;
+    @FXML
+    private TextField adresseTextField;
+    @FXML
+    private TextField tlfTextField;
+    @FXML
+    private TextField sagsbehandlerTextField;
 
     /**
      * Initializes the controller class.
@@ -119,6 +129,7 @@ public class OpenCaseWindowController implements Initializable {
                 + samtykkeButtonNej.isSelected() + "\\"
                 + mundtligSamtykkeButton.isSelected() + "\\"
                 + skriftligSamtykkeButton.isSelected());
+        caseCombined.append(nameTextField.getText() + "\\" + cPRTextField.getText() + "\\" + adresseTextField.getText() + "\\" + tlfTextField.getText() + "\\" + sagsbehandlerTextField.getText());
         return caseCombined.toString();
     }
 
@@ -159,6 +170,11 @@ public class OpenCaseWindowController implements Initializable {
         if(caseSplitter[18].equalsIgnoreCase("true")) {
             skriftligSamtykkeButton.fire();
         }
+        nameTextField.setText(caseSplitter[19]);
+        cPRTextField.setText(caseSplitter[20]);
+        adresseTextField.setText(caseSplitter[21]);
+        tlfTextField.setText(caseSplitter[22]);
+        sagsbehandlerTextField.setText(caseSplitter[23]);
     }
 
     @FXML
