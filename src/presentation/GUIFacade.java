@@ -7,6 +7,9 @@ package presentation;
 
 import Acq.IBusiness;
 import Acq.IGUI;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -35,7 +38,12 @@ public class GUIFacade implements IGUI {
 
     @Override
     public void start(Stage stage) throws Exception {
-        new UdredGUI(stage, business);
+        UdredGUI.getInstance().setBusiness(business);
+        Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
         
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
     }
 }
