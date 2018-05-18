@@ -37,4 +37,16 @@ public class UdredGUI {
     public IBusiness getBusiness(){
         return business;
     }
+    
+    public void loadController(Stage stage, String name){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(name+".fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

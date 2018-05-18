@@ -144,12 +144,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void createNewCaseLinkAction(ActionEvent event) throws IOException {
-        tabPane.getSelectionModel().select(newCaseTab);
-    }
-    
-    @FXML
-    private void openCalendarLinkAction(ActionEvent event) {
-        tabPane.getSelectionModel().select(calendarTab);
+        Stage stage = new Stage();
+        UdredGUI.getInstance().loadController(stage, "OpenCaseWindow");
     }
     
     private void updateDailyCalendar(IUser user) {
