@@ -21,6 +21,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -88,6 +89,14 @@ public class OpenCaseWindowController implements Initializable {
     private RadioButton mundtligSamtykkeButton;
     @FXML
     private RadioButton skriftligSamtykkeButton;
+    @FXML
+    private TextArea writeNewDailyNoteField;
+    @FXML
+    private Pagination dailyNotePagination;
+    @FXML
+    private TextField dailyNoteNameField;
+    @FXML
+    private TextArea readDailyNoteField;
 
     /**
      * Initializes the controller class.

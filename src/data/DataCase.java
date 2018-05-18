@@ -9,9 +9,6 @@ import Acq.ICase;
 import Acq.IDailyNote;
 import Acq.IMedicine;
 import Acq.IOffer;
-import business.Medicine;
-import business.Offer;
-import business.User;
 import java.util.Date;
 import java.util.List;
 
@@ -27,8 +24,7 @@ public class DataCase implements ICase {
     private String CPR;
     private boolean isActive;
     private List<IMedicine> medicineList;
-    private Offer offer;
-    private User caseWorker;
+    private IOffer offer;
     private List<IDailyNote> dailyNotes;
 
     public DataCase(int caseNumber, Date creationDate, List<IDailyNote> dailyNotes) {
@@ -103,7 +99,20 @@ public class DataCase implements ICase {
     @Override
     public boolean createDailyNote(String note) {
         dailyNotes.add(new DataDailyNote(note));
-        return true;}
+        return true;
+    }
+    
+    @Override
+    public String toString(){
+        return "Sagsnummer: "+ this.caseNumber +", oprettelsesdato: " + this.creationDate.toString() + " sag: "+activityString();
+    }
+    
+    private String activityString(){
+        if (isActive) {
+            return "åben";
+        }
+        return "lukket";
+    }
 
 
 }

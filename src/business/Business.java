@@ -8,11 +8,12 @@ package business;
 import Acq.ICalendar;
 import Acq.IUser;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class Business {
     private boolean loggedIn = false;
-    private HashMap<String, IUser> userMap = new HashMap<>();
+    private Map<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
     private ICalendar calendar;
     
@@ -24,13 +25,10 @@ public class Business {
      
     public boolean login(String username, String password) {
         
-        //User admin = new User("admin", "admin", 10, 10);
-        //userMap.put("admin", admin);
         if (userMap.containsKey(username)) {
             if (password.equals(userMap.get(username).getPassword())) {
                 currentUser = userMap.get(username);
                 return true;
-            } else {
             }
         }
         return false;
@@ -45,5 +43,20 @@ public class Business {
     
     public ICalendar getCalendar(){
         return calendar;
+    }
+    
+    public void setUserMap(Map<String, IUser> users){
+    
+        for (Map.Entry<String, IUser> entry : users.entrySet()){
+            userMap.put(entry.getKey(), new User(entry.getValue().getIDNumber(),
+                                                 entry.getValue().getName(),
+                                                 entry.getValue().getUsername(),
+                                                 entry.getValue().getPassword(),
+                                                 entry.getValue().getLog(),
+                                                 entry.getValue().getMedicine(),
+                                                 entry.getValue().getAppointment(),
+                                                 entry.getValue().getCaseaccess()));
+        }
+  
     }
 }

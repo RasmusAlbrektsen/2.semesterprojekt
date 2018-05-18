@@ -12,5 +12,12 @@ import Acq.IData;
  * @author nitra
  */
 public class DataFacade implements IData{
+ 
+    private SQLDatabase data = new SQLDatabase();
+    
+    public SQLDatabase getData(){
+        return data;
+    }
+    
     
 }

@@ -15,10 +15,6 @@ import java.sql.Statement;
  * @author hejoo
  */
 public class DataSaveMedicine {
-    String url = "jdbc:postgresql://horton.elephantsql.com:5432/zibscemz";
-    String username = "zibscemz";
-    String passwd = "7A1e6LvgBXjitm0pjGI3tIOf5aCpr0Qe";
-    
 
     }
 
