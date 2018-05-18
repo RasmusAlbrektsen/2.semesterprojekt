@@ -26,6 +26,7 @@ public class Bootstrap extends Application{
         gui.start(primaryStage);
         
         
+        
        
         
         business.setUserMap(data.getUsers());

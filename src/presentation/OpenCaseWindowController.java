@@ -94,8 +94,6 @@ public class OpenCaseWindowController implements Initializable {
     @FXML
     private Pagination dailyNotePagination;
     @FXML
-    private TextField dailyNoteNameField;
-    @FXML
     private TextArea readDailyNoteField;
     @FXML
     private TextField nameTextField;
@@ -189,6 +187,15 @@ public class OpenCaseWindowController implements Initializable {
         } catch (IOException e) {
 
         }
+    }
+    
+    private void getDailyNotes(){
+//        dailyNotePagination
+//        readDailyNoteField
+                
+                
+                
+        
     }
 
 }

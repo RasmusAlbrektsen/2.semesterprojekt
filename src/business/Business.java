@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Business {
+public class Business{
     private static Business business = null;
     private IData data;
     private boolean loggedIn = false;
@@ -71,5 +71,9 @@ public class Business {
                                                  entry.getValue().getCaseaccess()));
         }
   
+    }
+    
+    public IData getData(){
+        return data;
     }
 }
