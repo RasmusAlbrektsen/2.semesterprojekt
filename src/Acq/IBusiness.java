@@ -14,5 +14,5 @@ public interface IBusiness {
     IUser getCurrentUser();
     ICalendar getCalendar();
     IData getData();
-    void setUserMap(Map map);
+    void setUserMap();
 }

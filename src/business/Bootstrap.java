@@ -28,6 +28,6 @@ public class Bootstrap extends Application{
         
        
         
-        business.setUserMap(data.getUsers());
+        business.setUserMap();
     }
 }

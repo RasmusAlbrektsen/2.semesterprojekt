@@ -45,8 +45,8 @@ public class BusinessFacade implements IBusiness {
         return data; 
     }
     @Override
-    public void setUserMap(Map map){
-        bus.setUserMap(map);
+    public void setUserMap(){
+        bus.setUserMap();
     }
     
 
