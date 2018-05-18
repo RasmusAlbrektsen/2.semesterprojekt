@@ -8,41 +8,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sun.security.jca.GetInstance;
 
 
 /**
  *
  * @author Bruger
  */
-public class UdredGUI extends Application {
+public class UdredGUI {
     
-    private static UdredGUI ui;
+    private static UdredGUI ui = null;
     private IBusiness business;
 
-    public UdredGUI(Stage stage, IBusiness business) {
-        this.business = business;
+    private UdredGUI() {
         ui = this;
-        try {
-            start(stage);   
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
-    
-    @Override
-    public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
-        
+    public void setBusiness(IBusiness business){
+        this.business = business;
     }
-    
     public static UdredGUI getInstance(){
+        if (ui == null){
+            ui = new UdredGUI();
+        }
         return ui;
     }
+    
     
     public IBusiness getBusiness(){
         return business;
