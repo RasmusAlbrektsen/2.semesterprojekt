@@ -220,7 +220,6 @@ public class SQLDatabase {
     
     public ResultSet getCaseLog() {
 
-        List<DataLog> Log = new ArrayList<>();
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -233,4 +232,19 @@ public class SQLDatabase {
         return null;
 
     }
+    
+    public ResultSet getAppointments(String userID) {
+        
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM appointments WHERE appointmentID = (SELECT appointmentID FROM has WHERE userID = " + userID + ")");
+            db.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 }
