@@ -9,7 +9,7 @@ public interface ICase {
 
     int getCaseNumber();
 
-    Date getCreationDate();
+    String getCreationDate();
 
     String getCPR();
 

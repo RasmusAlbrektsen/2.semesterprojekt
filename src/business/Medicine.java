@@ -6,6 +6,7 @@
 package business;
 
 import Acq.IMedicine;
+import java.sql.ResultSet;
 
 /**
  *
@@ -37,17 +38,23 @@ public class Medicine implements IMedicine {
         this.dosage = dosage;
         this.VNR = VNR;
         this.name = name;
-        Business.getInstance().getData().saveMedicine(VNR, dosage, name, caseID);
-        this.medicineID = Business.getInstance().getData().getMedicineID(caseID);
+        Business.getInstance().getData().saveMedicine(this, caseID);
+        this.medicineID = Business.getInstance().getData().getMedicineID(caseID, VNR);
         
         
     }
     
     public Medicine(int caseID) {
-        this.medicineID = Business.getInstance().getData().getMedicineID(caseID);
-        this.dosage = Business.getInstance().getData().getMedicineDosage(caseID);
-        this.name = Business.getInstance().getData().getMedicineName(caseID);
-        this.VNR = Business.getInstance().getData().getMedicineVNR(caseID);
+        ResultSet rs = Business.getInstance().getData().getMedicine(caseID); 
+        try {
+        this.VNR = rs.getString("VNR");
+        this.dosage = rs.getString("dosage");
+        this.name = rs.getString("name");
+        this.medicineID = rs.getInt("medicineID");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @Override
@@ -63,5 +70,9 @@ public class Medicine implements IMedicine {
 
     public void setDosage(String dosage) {
         this.dosage = dosage;
+    }
+    
+    public void pushMedicine(int caseID) {
+        Business.getInstance().getData().saveMedicine(this, caseID);
     }
 }

@@ -74,16 +74,6 @@ public class Business {
 
                                         
                 }
-            for (Map.Entry<String, IUser> entry : userMap.entrySet()){
-                userMap.put(entry.getKey(), new User(entry.getValue().getIDNumber(),
-                                                     entry.getValue().getName(),
-                                                     entry.getValue().getUsername(),
-                                                     entry.getValue().getPassword(),
-                                                     entry.getValue().getLog(),
-                                                     entry.getValue().getMedicine(),
-                                                     entry.getValue().getAppointment(),
-                                                     entry.getValue().getCaseaccess()));
-            }
         } catch(Exception e){
             e.printStackTrace();
         }

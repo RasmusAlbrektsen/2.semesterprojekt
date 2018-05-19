@@ -3,6 +3,8 @@ package data;
 import Acq.ICase;
 import Acq.IDailyNote;
 import Acq.IUser;
+import Acq.IAppointment;
+import Acq.IMedicine;
 import java.io.File;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -20,7 +22,133 @@ public class SQLDatabase {
     public void loadData() {
 
     }
-
+    //MEDICINE
+    public int getMedicineID(int caseID, String VNR){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT medicine.medicineid FROM (Medicine INNER JOIN Associated on medicine.medicineid = associated.medicineid) WHERE caseid = " + caseID + " AND VNR = '" + VNR + "'");
+            db.close();
+            rs.next();
+            return rs.getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    public void saveMedicine(IMedicine Medicine, int caseID) {
+        String id;
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("INSERT INTO Medicine(vnr, dosage, name) VALUES ('" + Medicine.getVNR() + "','" + Medicine.getDosage() + "','" + Medicine.getName() + "')  RETURNING id;");
+            id = rs.getString(1);
+            st.execute("INSERT INTO Associated VALUES ('" + caseID + "','" + id + "');");
+            db.close();
+            System.out.println(rs.getString(0));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public ResultSet getMedicine(int caseID){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT medicine.medicineid, vnr, dosage, name FROM (medicine INNER JOIN associated on medicine.medicineid = associated.medicineid) WHERE caseID = " + caseID);
+            db.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    //CASELOG
+    
+    public void saveToCaseLog(int userID, int caseID, String date, String time){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','CaseID:" + caseID + "','" + date + "','" + time + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public ResultSet getCaseLog() {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM caselog;");
+            db.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    //USERLOG
+    public void saveToUserLog(int userID, int changedUserID, String date, String time){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO userlog VALUES('UserID:" + userID + "','UserID:" + changedUserID + "','" + date + "','" + time + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public ResultSet getUserLog() {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM userlog;");
+            db.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    //USERS 
+    public void saveUser(IUser user) {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO users"
+                    + "(name, username, password, log, caseaccess, medicine, appointment) "
+                    + "VALUES('" + user.getName()
+                    + "', '" + user.getUsername()
+                    + "', '" + user.getPassword()
+                    + "', '" + user.getLog()
+                    + "', '" + user.getCaseaccess()
+                    + "', '" + user.getMedicine()
+                    + "', '" + user.getAppointment() + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public ResultSet getAllUsers() {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users");
+            db.close();
+            return rs;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    //CASES
     public void saveCase(ICase aCase) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -46,54 +174,37 @@ public class SQLDatabase {
         }
     }
     
-    
-    public String getMedicineDosage(int caseID){
+    public ResultSet getAllCases() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT dosage FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
+            ResultSet rs = st.executeQuery("SELECT * FROM cases");
             db.close();
-            rs.next();
-            return rs.getString(1);
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    //APPOINTMENTS
+    public ResultSet getAppointments(int userID) {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT appointments.appointmentid, note, date, time FROM (appointments INNER JOIN has on appointments.appointmentid = has.appointmentid) WHERE userID = " + userID);
+            db.close();
+            return rs;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
     
-    public String getMedicineName(int caseID){
+    public int getAppointmentID(int userID, String date, String time){
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT name FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
-            db.close();
-            rs.next();
-            return rs.getString(1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-    public String getMedicineVNR(int caseID){
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT vnr FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
-            db.close();
-            rs.next();
-            return rs.getString(1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
-    public int getMedicineID(int caseID){
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT medicineid FROM Medicine WHERE medicineid = (SELECT Associated.medicineid FROM Associated WHERE caseid = '" + caseID + "');");
+            ResultSet rs = st.executeQuery("SELECT appointments.appointmentid FROM (appointments INNER JOIN has on appointments.appointmentid = has.appointmentid) WHERE userID = " + userID + " AND Date = '" + date + "' AND time = '" + time + "'");
             db.close();
             rs.next();
             return rs.getInt(1);
@@ -103,86 +214,28 @@ public class SQLDatabase {
         return 0;
     }
     
-
-    public void saveUser(IUser user) {
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            st.execute("INSERT INTO users"
-                    + "(name, username, password, log, caseaccess, medicine, appointment) "
-                    + "VALUES('" + user.getName()
-                    + "', '" + user.getUsername()
-                    + "', '" + user.getPassword()
-                    + "', '" + user.getLog()
-                    + "', '" + user.getCaseaccess()
-                    + "', '" + user.getMedicine()
-                    + "', '" + user.getAppointment() + "');");
-            db.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<ICase> getCases() {
-        List<ICase> cases = new ArrayList<>();
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM cases");
-            ResultSet rs2;
-            while (rs.next()) {
-                st = db.createStatement();
-                rs2 = st.executeQuery("SELECT * FROM Daily_Note WHERE noteid = (SELECT Has_A.noteid FROM Has_A WHERE caseid = '" + rs.getInt("caseid") + "');");
-                List<IDailyNote> notes = new ArrayList<>();
-                while (rs2.next()) {
-                    notes.add(new DataDailyNote(rs2.getDate("date"), rs2.getString("note")));
-                }
-                File caseFile = new File(rs.getString("case_directory"));
-                cases.add(new DataCase(rs.getInt("caseid"), rs.getDate("creation_date"), notes));
-            }
-            db.close();
-            return cases;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public ResultSet getAllUsers() {
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users");
-            db.close();
-            return rs;
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public Map<String, IUser> getUsers() {
-        Map<String, IUser> users = new HashMap<>();
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users");
-            db.close();
-            while (rs.next()) {
-                users.put(rs.getString("username"), new DataUser(rs.getInt("id"), rs.getBoolean("caseaccess"), rs.getBoolean("medicine"), rs.getBoolean("appointment"), rs.getBoolean("log"), rs.getString("username"), rs.getString("password")));
-            }
-            return users;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public void saveNote(String note, String caseID, String Date) {
+    public void saveAppointment(IAppointment Appointment, int caseID) {
         String id;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO Daily_note(note) VALUES ('" + note + "','" + Date + "')  RETURNING id;");
+            ResultSet rs = st.executeQuery("INSERT INTO appointment(note, date, time) VALUES ('" + Appointment.getNote() + "','" + Appointment.getDate() + "','" + Appointment.getTime() + "')  RETURNING id;");
+            id = rs.getString(1);
+            st.execute("INSERT INTO Associated VALUES ('" + caseID + "','" + id + "');");
+            db.close();
+            System.out.println(rs.getString(0));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+    }
+    
+    //DAILYNOTE
+    public void saveDailyNote(IDailyNote DailyNote, int caseID) {
+        String id;
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("INSERT INTO Daily_note(note, date) VALUES ('" + DailyNote.getNote() + "','" + DailyNote.getDate() + "')  RETURNING id;");
             id = rs.getString(1);
             st.execute("INSERT INTO Has_A VALUES ('" + caseID + "','" + id + "');");
             db.close();
@@ -192,59 +245,34 @@ public class SQLDatabase {
         }
     }
 
-    public void saveMedicine(String vnr, String dosage, String name, int caseID) {
-        String id;
+    public int getDailyNoteID(int caseID, String note, String date){
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO Medicine(vnr, dosage, name) VALUES ('" + vnr + "','" + dosage + "','" + name + "')  RETURNING id;");
-            id = rs.getString(1);
-            st.execute("INSERT INTO Associated VALUES ('" + caseID + "','" + id + "');");
+            ResultSet rs = st.executeQuery("SELECT daily_note.noteid, note, date FROM (daily_note INNER JOIN has_a on daily_note.noteid = has_a.noteid) WHERE caseID = " + caseID + " AND Date = '" + date + "' AND note = '" + note + "'");
             db.close();
-            System.out.println(rs.getString(0));
+            rs.next();
+            return rs.getInt(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
     
-    public void saveToCaseLog(int userID, int changedUserID, String date, String time){
+    public ResultSet getDailyNote(int caseID){
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','UserID:" + changedUserID + "','" + date + "','" + time + "');");
+            ResultSet rs = st.executeQuery("SELECT daily_note.noteid, note, date FROM (daily_note INNER JOIN has_a on daily_note.noteid = has_a.noteid) WHERE caseID = " + caseID);
             db.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public ResultSet getCaseLog() {
-
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM caselog;");
-            db.close();
-            return rs;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-
-    }
-    
-    public ResultSet getAppointments(String userID) {
-        
-        try {
-            Connection db = DriverManager.getConnection(url, username, passwd);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM appointments WHERE appointmentID = (SELECT appointmentID FROM has WHERE userID = " + userID + ")");
-            db.close();
+            rs.next();
             return rs;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+    
+    
     
 }
