@@ -35,7 +35,7 @@ public class Case implements ICase{
         this.creationDate = creationDate;
         this.isActive = isActive;
         dailyNotes = new ArrayList<>();
-        ResultSet rs = Business.getInstance().getData().getAppointments(IDNum);
+        ResultSet rs = Business.getInstance().getData().getDailyNote(IDNum);
         try {
         while (rs.next()) {
                     dailyNotes.add(new DailyNote(rs.getInt("daily_note.noteid"),
