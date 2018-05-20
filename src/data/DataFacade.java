@@ -26,7 +26,7 @@ public class DataFacade implements IData{
 
     @Override
     public ResultSet getCaseLog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getCaseLog();
     }
 
     @Override
@@ -36,77 +36,77 @@ public class DataFacade implements IData{
 
     @Override
     public int getMedicineID(int caseID, String VNR) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getMedicineID(caseID, VNR);
     }
 
     @Override
     public void saveMedicine(IMedicine medicine, int caseID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        data.saveMedicine(medicine, caseID);
     }
 
     @Override
     public ResultSet getMedicine(int caseID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getMedicine(caseID);
     }
 
     @Override
     public void saveToCaseLog(int userID, int changedUserID, String date, String time) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        data.saveToCaseLog(userID, userID, date, time);
     }
 
     @Override
     public void saveToUserLog(int userID, int changedUserID, String date, String time) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        data.saveToUserLog(userID, changedUserID, date, time);
     }
 
     @Override
     public ResultSet getUserLog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getUserLog();
     }
 
     @Override
     public void saveUser(IUser user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        data.saveUser(user);
     }
 
     @Override
     public void saveCase(ICase aCase) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        data.saveCase(aCase);
     }
 
     @Override
     public ResultSet getAllCases() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getAllCases();
     }
 
     @Override
     public void saveAppointment(IAppointment Appointment, int caseID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        data.saveAppointment(Appointment, caseID);
     }
 
     @Override
     public ResultSet getAppointments(int userID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getAppointments(userID);
     }
 
     @Override
     public int getAppointmentID(int userID, String date, String time) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getAppointmentID(userID, date, time);
     }
 
     @Override
     public void saveDailyNote(IDailyNote DailyNote, int caseID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        data.saveDailyNote(DailyNote, caseID);
     }
 
     @Override
     public int getDailyNoteID(int caseID, String note, String date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getDailyNoteID(caseID, note, date);
     }
 
     @Override
     public ResultSet getDailyNote(int caseID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return data.getDailyNote(caseID);
     }
 
     
