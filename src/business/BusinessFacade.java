@@ -53,12 +53,12 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void setCaseList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        bus.setCaseList();
     }
 
     @Override
     public List<ICase> getCases() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return bus.getCases();
     }
     
 
