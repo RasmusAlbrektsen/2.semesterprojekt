@@ -6,10 +6,13 @@
 package business;
 
 import Acq.ICalendar;
+import Acq.ICase;
 import Acq.IData;
 import Acq.IUser;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -20,6 +23,7 @@ public class Business {
     private Map<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
     private ICalendar calendar;
+    private List<ICase> cases = new ArrayList<>();
     
     private Business() {
         calendar = new Calendar();
@@ -83,5 +87,27 @@ public class Business {
     public IData getData() {
         return data;
     }
+    
+    public void setCaseList() {
+        ResultSet rs = Business.getInstance().getData().getAllCases();
+        try{
+            while (rs.next()) {
+                    cases.add(new Case(rs.getInt("id"),
+                                         rs.getString("case_directory"),
+                                         rs.getString("creation_date"), 
+                                         rs.getString("cpr"),
+                                         rs.getBoolean("is_active")));
+
+                                        
+                }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public List<ICase> getCases() {
+        return cases;
+    }
+    
     
 }

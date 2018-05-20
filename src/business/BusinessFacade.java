@@ -7,8 +7,10 @@ package business;
 
 import Acq.IBusiness;
 import Acq.ICalendar;
+import Acq.ICase;
 import Acq.IData;
 import Acq.IUser;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,6 +49,16 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void setUserMap(){
         bus.setUserMap();
+    }
+
+    @Override
+    public void setCaseList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<ICase> getCases() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 

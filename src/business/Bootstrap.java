@@ -23,6 +23,7 @@ public class Bootstrap extends Application{
         gui.injectBusiness(business);
         business.injectData(data);
         Business.getInstance().setData(data);
+        Business.getInstance().setCaseList();
         gui.start(primaryStage);
         
         

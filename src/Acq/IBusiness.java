@@ -1,5 +1,6 @@
 package Acq;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -15,4 +16,6 @@ public interface IBusiness {
     ICalendar getCalendar();
     IData getData();
     void setUserMap();
+    void setCaseList();
+    List<ICase> getCases();
 }
