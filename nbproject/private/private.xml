@@ -4,16 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/Acq/IDailyNote.java</file>
+            <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/data/DataFacade.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/Acq/IData.java</file>
-            <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/business/User.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/business/DailyNote.java</file>
-            <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/Acq/IUser.java</file>
+            <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/business/User.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/business/Case.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/Acq/ICase.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/business/Appointment.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/data/SQLDatabase.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/Acq/IAppointment.java</file>
-            <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/Acq/IOffer.java</file>
             <file>file:/C:/Users/Marc/Documents/GitHub/2.semesterprojekt/src/business/Medicine.java</file>
         </group>
     </open-files>
