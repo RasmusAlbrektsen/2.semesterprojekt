@@ -92,7 +92,7 @@ public class Business {
         ResultSet rs = Business.getInstance().getData().getAllCases();
         try{
             while (rs.next()) {
-                    cases.add(new Case(rs.getInt("id"),
+                    cases.add(new Case(rs.getInt("caseid"),
                                          rs.getString("case_directory"),
                                          rs.getString("creation_date"), 
                                          rs.getString("cpr"),
