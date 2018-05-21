@@ -137,6 +137,7 @@ public class FXMLDocumentController implements Initializable {
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
+        updateAllCases();
         
         
         
@@ -244,16 +245,15 @@ public class FXMLDocumentController implements Initializable {
     }
     
     public void updateAllCases(){
-        caseList.clear();
-        for (ICase aCase : business.getCases()) {
-            caseList.add(aCase);
-        }
+        caseList = FXCollections.observableArrayList(business.getCases());
+        caseListView.setItems(caseList);
     }
 
     public void updateMyCases(){
         caseList.clear();
         for (ICase aCase : business.getCases()) {
             }
+        caseListView.setItems(caseList);
         }
 
     @FXML
