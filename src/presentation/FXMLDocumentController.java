@@ -246,7 +246,7 @@ public class FXMLDocumentController implements Initializable {
     public void updateAllCases(){
         caseList.clear();
         for (ICase aCase : business.getCases()) {
-            caseList.add(aCase.toString());
+            caseList.add(aCase);
         }
     }
 

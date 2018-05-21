@@ -24,7 +24,7 @@ public class Business {
     private Map<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
     private ICalendar calendar;
-    private List<ICase> allCases;
+    private List<ICase> allCases = new ArrayList();
     
     private Business() {
         calendar = new Calendar();
@@ -89,7 +89,7 @@ public class Business {
         ResultSet rs = Business.getInstance().getData().getAllCases();
         try{
             while (rs.next()) {
-                    cases.add(new Case(rs.getInt("caseid"),
+                    allCases.add(new Case(rs.getInt("caseid"),
                                          rs.getString("case_directory"),
                                          rs.getString("creation_date"), 
                                          rs.getString("cpr"),
@@ -103,7 +103,7 @@ public class Business {
     }
 
     public List<ICase> getCases() {
-        return cases;
+        return allCases;
     }
     
     
