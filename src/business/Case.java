@@ -116,4 +116,8 @@ public class Case implements ICase{
     public List<IDailyNote> getDailyNotes() {
         return dailyNotes;
     }
+    @Override
+    public void updateCase() {
+        Business.getInstance().getData().saveCase(this);
+    }
 }

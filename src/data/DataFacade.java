@@ -109,6 +109,16 @@ public class DataFacade implements IData{
         return data.getDailyNote(caseID);
     }
 
+    @Override
+    public void updateUser(IUser user) {
+        data.updateUser(user);
+    }
+
+    @Override
+    public void updateCase(ICase aCase) {
+        data.updateCase(aCase);
+    }
+
     
     
 }

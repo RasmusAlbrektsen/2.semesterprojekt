@@ -23,10 +23,12 @@ public interface IData {
     //USERS
     ResultSet getAllUsers();
     void saveUser(IUser user);
+    void updateUser(IUser user);
     
     //CASES
     void saveCase(ICase aCase);
     ResultSet getAllCases();
+    void updateCase(ICase aCase);
     
     //APPOINTMENTS
     void saveAppointment(IAppointment Appointment, int caseID);
