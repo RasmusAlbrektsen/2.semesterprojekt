@@ -11,6 +11,7 @@ import Acq.IData;
 import Acq.IUser;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class Business {
     private Map<String, IUser> userMap = new HashMap<>();
     private IUser currentUser;
     private ICalendar calendar;
-    private List<ICase> cases = new ArrayList<>();
+    private List<ICase> allCases;
     
     private Business() {
         calendar = new Calendar();
@@ -83,10 +84,6 @@ public class Business {
         }
   
     }
-
-    public IData getData() {
-        return data;
-    }
     
     public void setCaseList() {
         ResultSet rs = Business.getInstance().getData().getAllCases();
@@ -110,4 +107,78 @@ public class Business {
     }
     
     
+    public IData getData(){
+        return  data;
+    }
+    
+    public List<ICase> searchCases(Date date){
+        List<ICase> cases = new ArrayList<>();
+        for (ICase aCase : allCases) {
+            if(aCase.getCreationDate().equals(date)){
+                cases.add(aCase);
+            }
+        }
+        return cases;
+    }
+    
+    public List<ICase> searchCases(String CPR){
+        List<ICase> cases = new ArrayList<>();
+        for (ICase aCase : allCases) {
+            if(aCase.getCPR().equals(CPR)){
+                cases.add(aCase);
+            }
+        }
+        return cases;
+    }
+    
+    public List<ICase> searchCases(int id){
+        List<ICase> cases = new ArrayList<>();
+        for (ICase aCase : allCases) {
+            if(aCase.getCaseNumber() == id){
+                cases.add(aCase);
+            }
+        }
+        return cases;
+    }
+    
+    public List<ICase> searchCases(Date date, String CPR){
+        List<ICase> cases = new ArrayList<>();
+        for (ICase aCase : allCases) {
+            if(aCase.getCreationDate().equals(date) && aCase.getCPR().equals(CPR)){
+                cases.add(aCase);
+            }
+        }
+        return cases;
+    }
+    
+    public List<ICase> searchCases(Date date, int id){
+        List<ICase> cases = new ArrayList<>();
+                for (ICase aCase : allCases) {
+            if(aCase.getCreationDate().equals(date) && aCase.getCaseNumber() == id){
+                cases.add(aCase);
+            }
+        }
+        return cases;
+    }
+    
+    public List<ICase> searchCases(String CPR, int id){
+        List<ICase> cases = new ArrayList<>();
+                for (ICase aCase : allCases) {
+            if(aCase.getCPR().equals(CPR) && aCase.getCaseNumber()== id){
+                cases.add(aCase);
+            }
+        }
+
+        return cases;
+    }
+    
+    public List<ICase> searchCases(Date date, String CPR, int id){
+        List<ICase> cases = new ArrayList<>();
+                for (ICase aCase : allCases) {
+            if(aCase.getCreationDate().equals(date) && aCase.getCPR().equals(CPR) && aCase.getCaseNumber() == id){
+                cases.add(aCase);
+            }
+        }
+        return cases;
+    }
 }

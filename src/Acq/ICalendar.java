@@ -13,6 +13,7 @@ public interface ICalendar {
     public String getTodaysDateString();
     public Date getTodaysDate();
     public String formatLocalDate(LocalDate date);
+    public Date parseDate(LocalDate date);
     public String formatToString(Date date);
     
 }

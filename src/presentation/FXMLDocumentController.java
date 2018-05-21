@@ -8,6 +8,8 @@ import Acq.ICase;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -104,7 +106,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<?> medicinListView;
     @FXML
-    private ListView<?> caseListView;
+    private ListView<ICase> caseListView;
     @FXML
     private TextField searchNumberField;
     @FXML
@@ -120,7 +122,7 @@ public class FXMLDocumentController implements Initializable {
     
     private IBusiness business = UdredGUI.getInstance().getBusiness();    
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
-    private ObservableList<String> caseList = FXCollections.observableArrayList();
+    private ObservableList<ICase> caseList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = business.getCalendar();
@@ -147,7 +149,6 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = new Stage();
         UdredGUI.getInstance().loadController(stage, "OpenCaseWindow");
     }
-    
     private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
@@ -198,6 +199,30 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void searchCasesButtonAction(ActionEvent event) {
+        List<ICase> searchResult = new ArrayList<>();
+        if(searchDatePicker.getValue() != null && searchCPRField.getText() == null && searchNumberField.getText() == null){
+            searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()));
+        }
+        if(searchDatePicker.getValue() != null && searchCPRField.getText() != null && searchNumberField.getText() == null){
+            searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()), searchCPRField.getText());
+        }
+        if(searchDatePicker.getValue() != null && searchCPRField.getText() != null && searchNumberField.getText() != null){
+            searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()), searchCPRField.getText(), (Integer.parseInt(searchNumberField.getText())));
+        }
+        if(searchDatePicker.getValue() != null && searchCPRField.getText() == null && searchNumberField.getText() != null){
+            searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()), Integer.parseInt(searchNumberField.getText()));
+        }
+        if(searchDatePicker.getValue() == null && searchCPRField.getText() != null && searchNumberField.getText() == null){
+            searchResult = business.searchCases(searchCPRField.getText());
+        }
+        if(searchDatePicker.getValue() == null && searchCPRField.getText() != null && searchNumberField.getText() != null){
+            searchResult = business.searchCases(searchCPRField.getText(), Integer.parseInt(searchNumberField.getText()));
+        }
+        if(searchDatePicker.getValue() == null && searchCPRField.getText() == null && searchNumberField.getText() != null){
+            searchResult = business.searchCases(Integer.parseInt(searchNumberField.getText()));
+        }
+        caseList = FXCollections.observableList(searchResult);
+        caseListView.setItems(caseList);
     }
 
     @FXML

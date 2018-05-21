@@ -1,5 +1,7 @@
 package Acq;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -18,4 +20,11 @@ public interface IBusiness {
     void setUserMap();
     void setCaseList();
     List<ICase> getCases();
+    List<ICase> searchCases(Date date);
+    List<ICase> searchCases(String CPR);
+    List<ICase> searchCases(int id);
+    List<ICase> searchCases(Date date, String CPR);
+    List<ICase> searchCases(Date date, int id);
+    List<ICase> searchCases(String CPR, int id);
+    List<ICase> searchCases(Date date, String CPR, int id);
 }

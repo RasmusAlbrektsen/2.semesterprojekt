@@ -56,6 +56,15 @@ public class Calendar implements ICalendar{
         String s = date.format(DateTimeFormatter.ofPattern("dd-MM-uuuu"));
         return s;
     }
+    @Override
+    public Date parseDate(LocalDate date) {
+        try {
+            Date d = sdf.parse(date.format(DateTimeFormatter.ofPattern("dd-MM-uuuu")));
+            return d;
+        } catch (Exception e) {
+        }
+        return null;
+    }
     
     @Override
     public String formatToString(Date date) {
