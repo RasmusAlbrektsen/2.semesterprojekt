@@ -214,7 +214,7 @@ public class SQLDatabase {
         return 0;
     }
     
-    public void saveAppointment(IAppointment Appointment, int caseID) {
+    public void saveAppointment(IAppointment Appointment, int userID) {
         String id;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -222,9 +222,8 @@ public class SQLDatabase {
             ResultSet rs = st.executeQuery("INSERT INTO appointments(note, date, time) VALUES ('" + Appointment.getNote() + "','" + Appointment.getDate() + "','" + Appointment.getTime() + "')  RETURNING appointmentid;");
             rs.next();
             id = rs.getString(1);
-            st.execute("INSERT INTO Associated VALUES ('" + caseID + "','" + id + "');");
+            st.execute("INSERT INTO has VALUES ('" + id + "','" + userID + "');");
             db.close();
-            System.out.println(rs.getString(0));
         } catch (Exception e) {
             e.printStackTrace();
         }        
