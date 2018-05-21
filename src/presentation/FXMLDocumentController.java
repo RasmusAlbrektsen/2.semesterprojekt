@@ -75,23 +75,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private ToggleGroup lookingForGroup;
-    @FXML
-    private ToggleGroup inqButtons;
-    @FXML
-    private ToggleGroup elInformation;
-    @FXML
-    private ToggleGroup consent;
-    @FXML
-    private ToggleGroup consentInfo;
-    @FXML
-    private Tab newCaseTab;
-    @FXML
     private Tab calendarTab;
-    @FXML
-    private Hyperlink openCalendarLink;
-    @FXML
-    private Button caseChecklistButton;
     @FXML
     private ListView<String> dailyCalendarListView;
     @FXML
@@ -127,6 +111,10 @@ public class FXMLDocumentController implements Initializable {
     private ICalendar c = business.getCalendar();
     @FXML
     private Button adminWindowButton;
+    @FXML
+    private Button resetSearchButton;
+    @FXML
+    private Button openCaseButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -180,7 +168,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
     private void caseChecklistButtonAction(ActionEvent event) {
         try {
             Stage stage = new Stage();
@@ -264,5 +251,16 @@ public class FXMLDocumentController implements Initializable {
     private void adminWindowAction(ActionEvent event) {
         Stage stage = new Stage();
         UdredGUI.getInstance().loadController(stage, "AdministratorWindow");
+    }
+
+    @FXML
+    private void resetSearchButtonAction(ActionEvent event) {
+        searchDatePicker.setValue(null);
+        searchCPRField.clear();
+        searchNumberField.clear();
+    }
+
+    @FXML
+    private void openCaseButtonAction(ActionEvent event) {
     }
 }
