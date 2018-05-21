@@ -21,7 +21,7 @@
    <tabs>
       <Tab text="Sagsåbning">
          <content>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="750.0" vmax="2.0" vvalue="2.0">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="750.0" vmax="2.0" vvalue="0.2">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2250.0" prefWidth="650.0">
                      <children>
@@ -78,7 +78,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="værgeMålTexBox" layoutX="210.0" layoutY="937.0" prefHeight="161.0" prefWidth="414.0" text="HER MANGLER NOGET!!!!" />
+                        <TextArea fx:id="værgeMålTexBox" layoutX="210.0" layoutY="937.0" prefHeight="161.0" prefWidth="414.0" />
                         <Label layoutX="13.0" layoutY="1100.0" prefHeight="45.0" prefWidth="188.0" text="Rettigheder og pligter">
                            <font>
                               <Font size="14.0" />
@@ -118,7 +118,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="loadOplysningerTextBox" layoutX="210.0" layoutY="1453.0" prefHeight="161.0" prefWidth="414.0" text="HER MANGLER OGSÅ NOGET!!!" />
+                        <TextArea fx:id="loadOplysningerTextBox" layoutX="210.0" layoutY="1453.0" prefHeight="161.0" prefWidth="414.0" />
                         <Label layoutX="13.0" layoutY="1633.0" prefHeight="45.0" prefWidth="188.0" text="Borgerindragelse - &#10;særlige forhold">
                            <font>
                               <Font size="14.0" />

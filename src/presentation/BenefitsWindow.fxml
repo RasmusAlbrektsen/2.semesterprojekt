@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -149,6 +150,7 @@
             <CheckBox layoutX="600.0" layoutY="440.0" mnemonicParsing="false" text="rehabiliteringstilbud" />
             <CheckBox layoutX="600.0" layoutY="490.0" mnemonicParsing="false" text="Tilbud med myndighedsbeføjelse" />
             <CheckBox layoutX="600.0" layoutY="534.0" mnemonicParsing="false" text="Udgående tilbud til voksne" />
+            <Button fx:id="addButton" layoutX="685.0" layoutY="642.0" mnemonicParsing="false" onAction="#addButtonAction" text="Tilføj" />
          </children>
       </AnchorPane>
    </content>

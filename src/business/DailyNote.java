@@ -31,7 +31,7 @@ class DailyNote implements IDailyNote{
         this.date = date;
         this.note = note;
         Business.getInstance().getData().saveDailyNote(this, caseID);
-        
+        this.noteID = Business.getInstance().getData().getDailyNoteID(caseID, note, date);
         
     }
 

@@ -179,16 +179,13 @@ public class OpenCaseWindowController implements Initializable {
 
     @FXML
     private void caseChecklistButtonAction(ActionEvent event) {
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("BenefitsWindow.fxml"));
-            Scene scene = new Scene(root);
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-
-        }
+        
+        UdredGUI.getInstance().loadController(new Stage(), "BenefitsWindow");
     }
+    
+    public void setBenefits(String s){
+        ydelsesTextBox.setText(s);
+    }
+            
 
 }
