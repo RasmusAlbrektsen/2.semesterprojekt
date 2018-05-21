@@ -38,13 +38,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
 /**
  *
  * @author Bruger
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     @FXML
     private Hyperlink createNewCase;
     @FXML
@@ -76,23 +75,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private ToggleGroup lookingForGroup;
-    @FXML
-    private ToggleGroup inqButtons;
-    @FXML
-    private ToggleGroup elInformation;
-    @FXML
-    private ToggleGroup consent;
-    @FXML
-    private ToggleGroup consentInfo;
-    @FXML
-    private Tab newCaseTab;
-    @FXML
     private Tab calendarTab;
-    @FXML
-    private Hyperlink openCalendarLink;
-    @FXML
-    private Button caseChecklistButton;
     @FXML
     private ListView<String> dailyCalendarListView;
     @FXML
@@ -106,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<?> medicinListView;
     @FXML
-    private ListView<ICase> caseListView;
+    private ListView<HBoxCell> caseListView;
     @FXML
     private TextField searchNumberField;
     @FXML
@@ -119,16 +102,20 @@ public class FXMLDocumentController implements Initializable {
     private Button removeMedicineButton;
     @FXML
     private Button allCasesButton;
-    
-    private IBusiness business = UdredGUI.getInstance().getBusiness();    
+
+    private IBusiness business = UdredGUI.getInstance().getBusiness();
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
-    private ObservableList<ICase> caseList = FXCollections.observableArrayList();
+    private ObservableList<HBoxCell> caseList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = business.getCalendar();
     @FXML
     private Button adminWindowButton;
-    
+    @FXML
+    private Button resetSearchButton;
+    @FXML
+    private Button openCaseButton;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dailyCalendarListView.setItems(dailyAppointmentList);
@@ -137,23 +124,21 @@ public class FXMLDocumentController implements Initializable {
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
-        
-        
-        
-        
-    }   
-    
+        updateAllCases();
+
+    }
 
     @FXML
     private void createNewCaseLinkAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         UdredGUI.getInstance().loadController(stage, "OpenCaseWindow");
     }
+
     private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
         for (IAppointment appointment : business.getCurrentUser().getAppointments()) {
-            if(appointment.getDate().equals(c.formatToDataString(c.getTodaysDateString()))) {
+            if (appointment.getDate().equals(c.formatToDataString(c.getTodaysDateString()))) {
                 dailyAppointmentList.add(appointment.getNote());
             }
         }
@@ -161,73 +146,76 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void newAppointmentLinkAction(ActionEvent event) {
-        if(datePicker.getValue() != null) {
-        LocalDate date = datePicker.getValue();
-        String hour = Integer.toString(hourSpinner.getValue());
-        String minute = Integer.toString(minuteSpinner.getValue());
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Kalenderaftale");
-        dialog.setHeaderText("Kalenderaftale til datoen: " + c.formatLocalDate(date) + " Til tidspunktet: " + hour + ":" + minute  );
-        dialog.setContentText("Note til aftalen: ");
+        if (datePicker.getValue() != null) {
+            LocalDate date = datePicker.getValue();
+            String hour = Integer.toString(hourSpinner.getValue());
+            String minute = Integer.toString(minuteSpinner.getValue());
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Kalenderaftale");
+            dialog.setHeaderText("Kalenderaftale til datoen: " + c.formatLocalDate(date) + " Til tidspunktet: " + hour + ":" + minute);
+            dialog.setContentText("Note til aftalen: ");
 
-        Optional<String> result = dialog.showAndWait();
-        if(result.isPresent()) {
-            business.getCurrentUser().createAppointment(hour + ":" + minute + ": " + dialog.getResult(), c.formatToDataString(c.formatLocalDate(date)), hour + ":" + minute + ":00", business.getCurrentUser().getIDNumber());
-        }
-        updateDailyCalendar(business.getCurrentUser()); 
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                business.getCurrentUser().createAppointment(hour + ":" + minute + ": " + dialog.getResult(), c.formatToDataString(c.formatLocalDate(date)), hour + ":" + minute + ":00", business.getCurrentUser().getIDNumber());
+            }
+            updateDailyCalendar(business.getCurrentUser());
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Dato mangler!");
             alert.setContentText("Vælg en dato før du opretter en aftale.");
             alert.showAndWait();
         }
-    }    
+    }
 
-    @FXML
     private void caseChecklistButtonAction(ActionEvent event) {
         try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("BenefitsWindow.fxml"));
             Scene scene = new Scene(root);
-            
+
             stage.setScene(scene);
             stage.show();
-        } catch(IOException e) {
-            
+        } catch (IOException e) {
+
         }
     }
 
     @FXML
     private void searchCasesButtonAction(ActionEvent event) {
         List<ICase> searchResult = new ArrayList<>();
-        if(searchDatePicker.getValue() != null && searchCPRField.getText() == null && searchNumberField.getText() == null){
+        if (searchDatePicker.getValue() != null && searchCPRField.getText().trim().isEmpty() && searchNumberField.getText().trim().isEmpty()) {
             searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()));
         }
-        if(searchDatePicker.getValue() != null && searchCPRField.getText() != null && searchNumberField.getText() == null){
+        if (searchDatePicker.getValue() != null && !searchCPRField.getText().trim().isEmpty() && searchNumberField.getText().trim().isEmpty()) {
             searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()), searchCPRField.getText());
         }
-        if(searchDatePicker.getValue() != null && searchCPRField.getText() != null && searchNumberField.getText() != null){
+        if (searchDatePicker.getValue() != null && !searchCPRField.getText().trim().isEmpty() && !searchNumberField.getText().trim().isEmpty()) {
             searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()), searchCPRField.getText(), (Integer.parseInt(searchNumberField.getText())));
         }
-        if(searchDatePicker.getValue() != null && searchCPRField.getText() == null && searchNumberField.getText() != null){
+        if (searchDatePicker.getValue() != null && searchCPRField.getText().trim().isEmpty() && !searchNumberField.getText().trim().isEmpty()) {
             searchResult = business.searchCases(c.parseDate(searchDatePicker.getValue()), Integer.parseInt(searchNumberField.getText()));
         }
-        if(searchDatePicker.getValue() == null && searchCPRField.getText() != null && searchNumberField.getText() == null){
+        if (searchDatePicker.getValue() == null && !searchCPRField.getText().trim().isEmpty() && searchNumberField.getText().trim().isEmpty()) {
             searchResult = business.searchCases(searchCPRField.getText());
         }
-        if(searchDatePicker.getValue() == null && searchCPRField.getText() != null && searchNumberField.getText() != null){
-            searchResult = business.searchCases(searchCPRField.getText(), Integer.parseInt(searchNumberField.getText()));
+        if (searchDatePicker.getValue() == null && !searchCPRField.getText().trim().isEmpty() && !searchNumberField.getText().trim().isEmpty()) {
+            searchResult = business.searchCases(searchCPRField.getText(), (Integer.parseInt(searchNumberField.getText())));
         }
-        if(searchDatePicker.getValue() == null && searchCPRField.getText() == null && searchNumberField.getText() != null){
+        if (searchDatePicker.getValue() == null && searchCPRField.getText().trim().isEmpty() && !searchNumberField.getText().trim().isEmpty()) {
             searchResult = business.searchCases(Integer.parseInt(searchNumberField.getText()));
         }
-        caseList = FXCollections.observableList(searchResult);
+        
+        caseList.clear();
+        for (ICase iCase : searchResult) {
+            caseList.add(new HBoxCell(iCase));
+        }
         caseListView.setItems(caseList);
     }
 
     @FXML
     private void myCasesButtonAction(ActionEvent event) {
-        
+
     }
 
     @FXML
@@ -242,23 +230,37 @@ public class FXMLDocumentController implements Initializable {
     private void allCasesButtonAction(ActionEvent event) {
         updateAllCases();
     }
-    
-    public void updateAllCases(){
+
+    public void updateAllCases() {
         caseList.clear();
-        for (ICase aCase : business.getCases()) {
-            caseList.add(aCase);
+        for (ICase aCase: business.getCases()) {
+            caseList.add(new HBoxCell(aCase));
         }
+        caseListView.setItems(caseList);
     }
 
-    public void updateMyCases(){
+    public void updateMyCases() {
         caseList.clear();
         for (ICase aCase : business.getCases()) {
-            }
+            
         }
+        caseListView.setItems(caseList);
+    }
 
     @FXML
     private void adminWindowAction(ActionEvent event) {
         Stage stage = new Stage();
         UdredGUI.getInstance().loadController(stage, "AdministratorWindow");
+    }
+
+    @FXML
+    private void resetSearchButtonAction(ActionEvent event) {
+        searchDatePicker.setValue(null);
+        searchCPRField.clear();
+        searchNumberField.clear();
+    }
+
+    @FXML
+    private void openCaseButtonAction(ActionEvent event) {
     }
 }

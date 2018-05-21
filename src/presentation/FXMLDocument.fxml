@@ -121,6 +121,8 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
+                        <Button fx:id="resetSearchButton" layoutX="611.0" layoutY="176.0" mnemonicParsing="false" onAction="#resetSearchButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Nulstil" />
+                        <Button fx:id="openCaseButton" layoutX="544.0" layoutY="226.0" mnemonicParsing="false" onAction="#openCaseButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Åben sag" />
                      </children>
                   </AnchorPane>
             </content>
