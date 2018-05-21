@@ -152,8 +152,8 @@ public class FXMLDocumentController implements Initializable {
     private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
-        for (IAppointment appointment : user.getAppointments()) {
-            if(appointment.getDate().equals(c.getTodaysDateString())) {
+        for (IAppointment appointment : business.getCurrentUser().getAppointments()) {
+            if(appointment.getDate().equals(c.formatToDataString(c.getTodaysDateString()))) {
                 dailyAppointmentList.add(appointment.getNote());
             }
         }
