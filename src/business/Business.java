@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class Business {
+
     private static Business business = null;
     private IData data;
     private boolean loggedIn = false;
@@ -25,25 +25,25 @@ public class Business {
     private IUser currentUser;
     private ICalendar calendar;
     private List<ICase> allCases = new ArrayList();
-    
+
     private Business() {
         calendar = new Calendar();
         business = this;
     }
-    
-    public void setData(IData data){
+
+    public void setData(IData data) {
         this.data = data;
     }
-    
-    public static Business getInstance(){
-        if (business == null){
+
+    public static Business getInstance() {
+        if (business == null) {
             business = new Business();
         }
         return business;
     }
-     
+
     public boolean login(String username, String password) {
-        
+
         if (userMap.containsKey(username)) {
             if (password.equals(userMap.get(username).getPassword())) {
                 currentUser = userMap.get(username);
@@ -59,45 +59,43 @@ public class Business {
     public IUser getCurrentUser() {
         return currentUser;
     }
-    
-    public ICalendar getCalendar(){
+
+    public ICalendar getCalendar() {
         return calendar;
     }
-    
-    public void setUserMap(){
-        ResultSet rs = Business.getInstance().getData().getAllUsers();
-        try{
-            while (rs.next()) {
-                    userMap.put(rs.getString("username"), new User(rs.getInt("id"),
-                                                                   rs.getString("name"),
-                                                                   rs.getString("username"), 
-                                                                   rs.getString("password"),
-                                                                   rs.getBoolean("log"), 
-                                                                   rs.getBoolean("medicine"), 
-                                                                   rs.getBoolean("appointment"), 
-                                                                   rs.getBoolean("caseAccess")));
 
-                                        
-                }
-        } catch(Exception e){
+    public void setUserMap() {
+        ResultSet rs = Business.getInstance().getData().getAllUsers();
+        try {
+            while (rs.next()) {
+                userMap.put(rs.getString("username"), new User(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getBoolean("log"),
+                        rs.getBoolean("medicine"),
+                        rs.getBoolean("appointment"),
+                        rs.getBoolean("caseAccess")));
+
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-  
+
     }
-    
+
     public void setCaseList() {
         ResultSet rs = Business.getInstance().getData().getAllCases();
-        try{
+        try {
             while (rs.next()) {
-                    allCases.add(new Case(rs.getInt("caseid"),
-                                         rs.getString("case_directory"),
-                                         rs.getString("creation_date"), 
-                                         rs.getString("cpr"),
-                                         rs.getBoolean("is_active")));
+                allCases.add(new Case(rs.getInt("caseid"),
+                        rs.getString("case_directory"),
+                        rs.getString("creation_date"),
+                        rs.getString("cpr"),
+                        rs.getBoolean("is_active")));
 
-                                        
-                }
-        } catch(Exception e){
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -105,77 +103,76 @@ public class Business {
     public List<ICase> getCases() {
         return allCases;
     }
-    
-    
-    public IData getData(){
-        return  data;
+
+    public IData getData() {
+        return data;
     }
-    
-    public List<ICase> searchCases(Date date){
+
+    public List<ICase> searchCases(Date date) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
-            if(aCase.getCreationDate().equals(date)){
+            if (aCase.getCreationDate().equals(calendar.formatToString(date))) {
                 cases.add(aCase);
             }
         }
         return cases;
     }
-    
-    public List<ICase> searchCases(String CPR){
+
+    public List<ICase> searchCases(String CPR) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
-            if(aCase.getCPR().equals(CPR)){
+            if (aCase.getCPR().equals(CPR)) {
                 cases.add(aCase);
             }
         }
         return cases;
     }
-    
-    public List<ICase> searchCases(int id){
+
+    public List<ICase> searchCases(int id) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
-            if(aCase.getCaseNumber() == id){
+            if (aCase.getCaseNumber() == id) {
                 cases.add(aCase);
             }
         }
         return cases;
     }
-    
-    public List<ICase> searchCases(Date date, String CPR){
+
+    public List<ICase> searchCases(Date date, String CPR) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
-            if(aCase.getCreationDate().equals(date) && aCase.getCPR().equals(CPR)){
+            if (aCase.getCreationDate().equals(calendar.formatToString(date)) && aCase.getCPR().equals(CPR)) {
                 cases.add(aCase);
             }
         }
         return cases;
     }
-    
-    public List<ICase> searchCases(Date date, int id){
+
+    public List<ICase> searchCases(Date date, int id) {
         List<ICase> cases = new ArrayList<>();
-                for (ICase aCase : allCases) {
-            if(aCase.getCreationDate().equals(date) && aCase.getCaseNumber() == id){
+        for (ICase aCase : allCases) {
+            if (aCase.getCreationDate().equals(calendar.formatToString(date)) && aCase.getCaseNumber() == id) {
                 cases.add(aCase);
             }
         }
         return cases;
     }
-    
-    public List<ICase> searchCases(String CPR, int id){
+
+    public List<ICase> searchCases(String CPR, int id) {
         List<ICase> cases = new ArrayList<>();
-                for (ICase aCase : allCases) {
-            if(aCase.getCPR().equals(CPR) && aCase.getCaseNumber()== id){
+        for (ICase aCase : allCases) {
+            if (aCase.getCPR().equals(CPR) && aCase.getCaseNumber() == id) {
                 cases.add(aCase);
             }
         }
 
         return cases;
     }
-    
-    public List<ICase> searchCases(Date date, String CPR, int id){
+
+    public List<ICase> searchCases(Date date, String CPR, int id) {
         List<ICase> cases = new ArrayList<>();
-                for (ICase aCase : allCases) {
-            if(aCase.getCreationDate().equals(date) && aCase.getCPR().equals(CPR) && aCase.getCaseNumber() == id){
+        for (ICase aCase : allCases) {
+            if (aCase.getCreationDate().equals(calendar.formatToString(date)) && aCase.getCPR().equals(CPR) && aCase.getCaseNumber() == id) {
                 cases.add(aCase);
             }
         }

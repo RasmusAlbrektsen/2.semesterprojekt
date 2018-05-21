@@ -16,6 +16,7 @@ import java.util.Date;
 public class Calendar implements ICalendar{
     private User user;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    private SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
     
     public Calendar() {
         
@@ -83,7 +84,7 @@ public class Calendar implements ICalendar{
     
     @Override
     public String formatToString(Date date) {
-        String s = sdf.format(date);
+        String s = sdf2.format(date);
         return s;
     }
 }
