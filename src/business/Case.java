@@ -4,33 +4,53 @@ import Acq.ICase;
 import Acq.IDailyNote;
 import Acq.IMedicine;
 import Acq.IOffer;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Case implements ICase{
 
-    private int caseNumber;
     private int IDNum;
-    private Date creationDate;
-    private String CPR;
+    private String creationDate;
     private boolean isActive;
+    private String caseDirectory;
     private List<IMedicine> medicineList;
     private IOffer offer;
     private List<IDailyNote> dailyNotes;
+    private String CPR;
 
     public Case(String CPR, int IDNum) {
         this.CPR = CPR;
         this.IDNum = IDNum;
-        creationDate = new Date();
+        // creationDate = ;
         dailyNotes = new ArrayList<>();
         //appointments = new ArrayList<>();
         medicineList = new ArrayList<>();
     }
+    public Case(int IDNum, String caseDirectory, String creationDate, String CPR, boolean isActive) {
+        this.CPR = CPR;
+        this.IDNum = IDNum;
+        this.caseDirectory = caseDirectory;
+        this.creationDate = creationDate;
+        this.isActive = isActive;
+        dailyNotes = new ArrayList<>();
+        ResultSet rs = Business.getInstance().getData().getDailyNote(IDNum);
+        try {
+        while (rs.next()) {
+                    dailyNotes.add(new DailyNote(rs.getInt("daily_note.noteid"),
+                                                 rs.getString("note"),
+                                                 rs.getString("date")));
+        
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
 
     @Override
     public boolean createMedicine(String name, String VNR, String dosage) {
-        medicineList.add(new Medicine(name, dosage, VNR));
+        medicineList.add(new Medicine(name, VNR, dosage, IDNum));
         return true;
     }
 
@@ -64,11 +84,11 @@ public class Case implements ICase{
 
     @Override
     public int getCaseNumber() {
-        return caseNumber;
+        return IDNum;
     }
 
     @Override
-    public Date getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 

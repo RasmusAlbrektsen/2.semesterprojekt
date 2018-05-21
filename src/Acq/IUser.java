@@ -19,8 +19,8 @@ public interface IUser {
     boolean getCaseaccess();
 
     boolean getAppointment();
-    boolean createAppointment(String date, String CPR, String note);
-    boolean updateAppointment(IAppointment ap, Date date, String note);
+    boolean createAppointment(String note, String date, String time, int userID);
+    boolean updateAppointment(IAppointment ap, String note, String date, String time);
     boolean removeAppointment(IAppointment ap);
     List<IAppointment> getAppointments();
    

@@ -9,6 +9,7 @@ import Acq.ICalendar;
 import Acq.ICase;
 import Acq.IData;
 import Acq.IUser;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -63,20 +64,48 @@ public class Business {
         return calendar;
     }
     
-    public void setUserMap(Map<String, IUser> users){
-    
-        for (Map.Entry<String, IUser> entry : users.entrySet()){
-            userMap.put(entry.getKey(), new User(entry.getValue().getIDNumber(),
-                                                 entry.getValue().getName(),
-                                                 entry.getValue().getUsername(),
-                                                 entry.getValue().getPassword(),
-                                                 entry.getValue().getLog(),
-                                                 entry.getValue().getMedicine(),
-                                                 entry.getValue().getAppointment(),
-                                                 entry.getValue().getCaseaccess()));
+    public void setUserMap(){
+        ResultSet rs = Business.getInstance().getData().getAllUsers();
+        try{
+            while (rs.next()) {
+                    userMap.put(rs.getString("username"), new User(rs.getInt("id"),
+                                                                   rs.getString("name"),
+                                                                   rs.getString("username"), 
+                                                                   rs.getString("password"),
+                                                                   rs.getBoolean("log"), 
+                                                                   rs.getBoolean("medicine"), 
+                                                                   rs.getBoolean("appointment"), 
+                                                                   rs.getBoolean("caseAccess")));
+
+                                        
+                }
+        } catch(Exception e){
+            e.printStackTrace();
         }
   
     }
+    
+    public void setCaseList() {
+        ResultSet rs = Business.getInstance().getData().getAllCases();
+        try{
+            while (rs.next()) {
+                    cases.add(new Case(rs.getInt("caseid"),
+                                         rs.getString("case_directory"),
+                                         rs.getString("creation_date"), 
+                                         rs.getString("cpr"),
+                                         rs.getBoolean("is_active")));
+
+                                        
+                }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public List<ICase> getCases() {
+        return cases;
+    }
+    
     
     public IData getData(){
         return  data;
@@ -152,5 +181,4 @@ public class Business {
         }
         return cases;
     }
-    
 }

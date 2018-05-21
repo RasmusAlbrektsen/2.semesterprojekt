@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.ResultSet;
 
 /**
  *
@@ -36,8 +37,19 @@ public class User implements IUser {
         this.name = name;
         this.IDNumber = IDNumber;
         appointments = new ArrayList<>();
+        ResultSet rs = Business.getInstance().getData().getAppointments(IDNumber);
+        try {
+        while (rs.next()) {
+                    appointments.add(new Appointment(rs.getInt("appointmentid"),
+                                                     rs.getString("note"),
+                                                     rs.getString("date"), 
+                                                     rs.getString("time")));
+        
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }     
     }
-    
     
     public User(int IDNumber, String name, String username, String password, int accessLevel){
         this.IDNumber = IDNumber;
@@ -101,9 +113,9 @@ public class User implements IUser {
     } */
 
     @Override
-    public boolean createAppointment(String date, String CPR, String note) {
+    public boolean createAppointment(String note, String date, String time, int userID) {
         try {
-            appointments.add(new Appointment(date, CPR, note));
+            appointments.add(new Appointment(note, date, time, userID));
         } catch (ParseException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,10 +123,11 @@ public class User implements IUser {
     }
 
     @Override
-    public boolean updateAppointment(IAppointment ap, Date date, String note) {
+    public boolean updateAppointment(IAppointment ap, String note, String date, String time) {
         for (IAppointment appointment : appointments) {
             if(appointment == ap) {
                appointment.setDate(date);
+               appointment.setTime(time);
                appointment.setNote(note);
                return true;
             }
@@ -189,5 +202,9 @@ public class User implements IUser {
   
     public int getIDNumber() {
         return IDNumber;
+    }
+    
+    public void pushUser() {
+        Business.getInstance().getData().saveUser(this);
     }
 }

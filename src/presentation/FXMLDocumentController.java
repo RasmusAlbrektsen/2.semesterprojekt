@@ -153,7 +153,7 @@ public class FXMLDocumentController implements Initializable {
         frontpageDateLabel.setText(c.getTodaysDateString());
         dailyAppointmentList.clear();
         for (IAppointment appointment : user.getAppointments()) {
-            if(c.formatToString(appointment.getDate()).equals(c.getTodaysDateString())) {
+            if(appointment.getDate().equals(c.getTodaysDateString())) {
                 dailyAppointmentList.add(appointment.getNote());
             }
         }
@@ -172,7 +172,7 @@ public class FXMLDocumentController implements Initializable {
 
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
-            business.getCurrentUser().createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult());
+            business.getCurrentUser().createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult(), business.getCurrentUser().getIDNumber());
         }
         updateDailyCalendar(business.getCurrentUser()); 
         } else {
@@ -245,14 +245,14 @@ public class FXMLDocumentController implements Initializable {
     
     public void updateAllCases(){
         caseList.clear();
-        for (ICase aCase : business.getData().getCases()) {
-            caseList.add(aCase);
+        for (ICase aCase : business.getCases()) {
+            caseList.add(aCase.toString());
         }
     }
 
     public void updateMyCases(){
         caseList.clear();
-        for (ICase aCase : business.getData().getCases()) {
+        for (ICase aCase : business.getCases()) {
             }
         }
 

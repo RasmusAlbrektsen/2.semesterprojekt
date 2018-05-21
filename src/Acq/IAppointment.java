@@ -8,9 +8,10 @@ import java.util.Date;
  */
 public interface IAppointment {
     public int getIDNum();
-    public void setDate(Date date);
+    public void setDate(String date);
     public void setNote(String note);
-    public Date getDate();
-    public String getCpr();
+    public void setTime(String time);
+    public String getDate();
+    public String getTime();
     public String getNote();
 }

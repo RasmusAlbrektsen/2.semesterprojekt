@@ -17,7 +17,9 @@ public interface IBusiness {
     IUser getCurrentUser();
     ICalendar getCalendar();
     IData getData();
-    void setUserMap(Map map);
+    void setUserMap();
+    void setCaseList();
+    List<ICase> getCases();
     List<ICase> searchCases(Date date);
     List<ICase> searchCases(String CPR);
     List<ICase> searchCases(int id);
