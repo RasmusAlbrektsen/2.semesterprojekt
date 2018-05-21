@@ -18,6 +18,7 @@ public class UdredGUI {
     
     private static UdredGUI ui = null;
     private IBusiness business;
+    
 
     private UdredGUI() {
         ui = this;
@@ -48,4 +49,6 @@ public class UdredGUI {
             e.printStackTrace();
         }
     }
+    
+    
 }
