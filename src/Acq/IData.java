@@ -19,6 +19,7 @@ public interface IData {
     void saveToCaseLog(int userID, int changedUserID, String date, String time);
     void saveToUserLog(int userID, int changedUserID, String date, String time);
     ResultSet getUserLog();
+    
     //USERS
     ResultSet getAllUsers();
     void saveUser(IUser user);

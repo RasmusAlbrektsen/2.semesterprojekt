@@ -56,6 +56,21 @@ public class Calendar implements ICalendar{
         String s = date.format(DateTimeFormatter.ofPattern("dd-MM-uuuu"));
         return s;
     }
+    
+    @Override
+    public String formatToDataString(String date) {
+        String[] dateSplitter = date.split("-");
+        String dataString = dateSplitter[2] + "-" + dateSplitter[1] + "-" + dateSplitter[0];
+        return dataString;
+    }
+    
+    @Override
+    public String formatToPresentationString(String date) {
+        String[] dateSplitter = date.split("-");
+        String dataString = dateSplitter[2] + "-" + dateSplitter[1] + "-" + dateSplitter[0];
+        return dataString;
+    }
+    
     @Override
     public Date parseDate(LocalDate date) {
         try {

@@ -219,7 +219,8 @@ public class SQLDatabase {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO appointment(note, date, time) VALUES ('" + Appointment.getNote() + "','" + Appointment.getDate() + "','" + Appointment.getTime() + "')  RETURNING id;");
+            ResultSet rs = st.executeQuery("INSERT INTO appointments(note, date, time) VALUES ('" + Appointment.getNote() + "','" + Appointment.getDate() + "','" + Appointment.getTime() + "')  RETURNING appointmentid;");
+            rs.next();
             id = rs.getString(1);
             st.execute("INSERT INTO Associated VALUES ('" + caseID + "','" + id + "');");
             db.close();

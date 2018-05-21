@@ -172,7 +172,7 @@ public class FXMLDocumentController implements Initializable {
 
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent()) {
-            business.getCurrentUser().createAppointment(c.formatLocalDate(date), "Ingen cpr", hour + ":" + minute + ": " + dialog.getResult(), business.getCurrentUser().getIDNumber());
+            business.getCurrentUser().createAppointment(hour + ":" + minute + ": " + dialog.getResult(), c.formatToDataString(c.formatLocalDate(date)), hour + ":" + minute + ":00", business.getCurrentUser().getIDNumber());
         }
         updateDailyCalendar(business.getCurrentUser()); 
         } else {
