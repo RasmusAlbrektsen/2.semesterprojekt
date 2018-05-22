@@ -30,4 +30,6 @@ public interface ICase {
     boolean createDailyNote(String note);
     
     void updateCase();
+    
+    void saveCase(int currentUserID, String date, String time);
 }

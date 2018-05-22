@@ -118,6 +118,11 @@ public class Case implements ICase{
     }
     @Override
     public void updateCase() {
+        Business.getInstance().getData().updateCase(this);
+    }
+    @Override
+    public void saveCase(int currentUserID, String date, String time) {
         Business.getInstance().getData().saveCase(this);
+        Business.getInstance().getData().saveCreatedCaseLog(currentUserID, IDNum, date, time);
     }
 }

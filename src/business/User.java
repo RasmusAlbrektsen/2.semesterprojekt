@@ -57,7 +57,6 @@ public class User implements IUser {
         this.username = username;
         this.password = password;
         appointments = new ArrayList<>();
-
         switch (accessLevel) {
             case 1:
                 appointment = true;
@@ -208,5 +207,11 @@ public class User implements IUser {
     @Override
     public void updateUser() {
         Business.getInstance().getData().updateUser(this);
+    }
+    
+    @Override
+    public void saveUser(int currentUserID, String date, String time) {
+        Business.getInstance().getData().saveUser(this);
+        Business.getInstance().getData().saveCreatedUserLog(currentUserID, IDNumber, date, time);
     }
 }

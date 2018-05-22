@@ -119,6 +119,16 @@ public class DataFacade implements IData{
         data.updateCase(aCase);
     }
 
+    @Override
+    public void saveCreatedUserLog(int userID, int changedUserID, String date, String time) {
+        data.saveCreatedUserLog(userID, changedUserID, date, time);
+    }
+
+    @Override
+    public void saveCreatedCaseLog(int userID, int caseID, String date, String time) {
+        data.saveCreatedCaseLog(userID, caseID, date, time);
+    }
+
     
     
 }

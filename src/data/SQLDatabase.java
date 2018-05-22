@@ -77,6 +77,17 @@ public class SQLDatabase {
         }
     }
     
+    public void saveCreatedCaseLog(int userID, int caseID, String date, String time){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','New CaseID:" + caseID + "','" + date + "','" + time + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public ResultSet getCaseLog() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -101,6 +112,18 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
+    
+    public void saveCreatedUserLog(int userID, int changedUserID, String date, String time){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO userlog VALUES('UserID:" + userID + "','New UserID:" + changedUserID + "','" + date + "','" + time + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     public ResultSet getUserLog() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
