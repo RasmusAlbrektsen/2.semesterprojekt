@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -115,6 +117,8 @@ public class FXMLDocumentController implements Initializable {
     private Button resetSearchButton;
     @FXML
     private Button openCaseButton;
+    
+    private HBoxCell selectedCase;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -125,6 +129,10 @@ public class FXMLDocumentController implements Initializable {
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
         updateAllCases();
+        /*caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCell>(){
+            @Override
+            public void changed()
+        });*/
 
     }
 
@@ -206,6 +214,8 @@ public class FXMLDocumentController implements Initializable {
             searchResult = business.searchCases(Integer.parseInt(searchNumberField.getText()));
         }
         
+        selectedCase = null;
+        
         caseList.clear();
         for (ICase iCase : searchResult) {
             caseList.add(new HBoxCell(iCase));
@@ -258,9 +268,12 @@ public class FXMLDocumentController implements Initializable {
         searchDatePicker.setValue(null);
         searchCPRField.clear();
         searchNumberField.clear();
+        selectedCase = null;
     }
 
     @FXML
     private void openCaseButtonAction(ActionEvent event) {
+        
     }
+    
 }
