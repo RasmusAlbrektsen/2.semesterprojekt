@@ -204,12 +204,12 @@ public class SQLDatabase {
             rs.next();
             int caseID = rs.getInt("caseid");
             st.execute("UPDATE cases "
-                    + "SET case_directory = 'cases\\case"
+                    + "SET case_directory = 'cases/case"
                     + rs.getInt("caseid") + ".txt" + "' WHERE caseid = '"
                     + caseID + "'");
             db.close();
 
-            PrintWriter out = new PrintWriter("cases\\case" + caseID + ".txt");
+            PrintWriter out = new PrintWriter("cases/case" + caseID + ".txt");
             out.println(info);
             out.close();
         } catch (Exception e) {
