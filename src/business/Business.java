@@ -107,6 +107,11 @@ public class Business {
     public IData getData() {
         return data;
     }
+    
+     public Map<String, IUser> getUserMap() {
+        return userMap;
+    }
+
 
     public List<ICase> searchCases(Date date) {
         List<ICase> cases = new ArrayList<>();

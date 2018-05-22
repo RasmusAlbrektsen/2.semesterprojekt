@@ -6,8 +6,15 @@
 package presentation;
 
 import Acq.IBusiness;
+import Acq.ICase;
+import Acq.IUser;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,9 +29,9 @@ import javafx.scene.control.ListView;
 public class AdministratorWindowController implements Initializable {
 
     @FXML
-    private ListView<?> userListView;
+    private ListView<String> userListView;
     @FXML
-    private ListView<?> logListView;
+    private ListView<String> logListView;
     @FXML
     private Button showUsersButton;
     @FXML
@@ -37,17 +44,23 @@ public class AdministratorWindowController implements Initializable {
     private Button updateUserButton;
     
     private IBusiness business = UdredGUI.getInstance().getBusiness();
+    private ObservableList<String> userList = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        showUsersButton.fire();
     }    
 
     @FXML
     private void showUsersAction(ActionEvent event) {
+        userList.clear();
+        for (Map.Entry<String, IUser> entry : business.getUserMap().entrySet()) {
+            userList.add(entry.getKey());
+        }
+        userListView.setItems(userList);
     }
 
     @FXML

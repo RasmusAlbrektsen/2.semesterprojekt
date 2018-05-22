@@ -4,25 +4,29 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
+<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="170.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="200.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="103.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="235.44439697265625" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="97.55560302734375" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="277.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="113.33334350585938" minHeight="10.0" prefHeight="113.33334350585938" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="251.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="365.66668701171875" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="25.111175537109375" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="88.88882446289062" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <ListView fx:id="userListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -62,6 +66,72 @@
          </font>
          <GridPane.margin>
             <Insets bottom="30.0" />
+         </GridPane.margin>
+      </Label>
+      <TextField fx:id="nameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="130.0" prefHeight="25.0" prefWidth="130.0" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="usernameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="90.0" prefHeight="25.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="passwordField" maxHeight="20.0" maxWidth="110.0" minHeight="25.0" minWidth="80.0" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="120.0" />
+         </GridPane.margin>
+      </TextField>
+      <Label text="Adgang:" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="40.0" prefWidth="215.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <VBox prefHeight="64.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" text="Log" />
+                  <RadioButton fx:id="medicineAccessRadio" mnemonicParsing="false" text="Medicin" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <RadioButton fx:id="calendarAccessRadio" mnemonicParsing="false" text="Kalender" />
+                  <RadioButton fx:id="caseAccessRadio" mnemonicParsing="false" text="Sagsadgang" />
+               </children>
+            </VBox>
+         </children>
+         <GridPane.margin>
+            <Insets top="30.0" />
+         </GridPane.margin>
+      </HBox>
+      <Label text="Navn" GridPane.rowIndex="2">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="5.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Brugernavn" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Kodeord" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="70.0" />
          </GridPane.margin>
       </Label>
    </children>
