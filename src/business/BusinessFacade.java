@@ -61,7 +61,12 @@ public class BusinessFacade implements IBusiness {
     public List<ICase> getCases() {
         return bus.getCases();
     }
-
+    
+    @Override
+    public Map<String, IUser> getUserMap() {
+        return bus.getUserMap();
+    }
+    
     @Override
     public List<ICase> searchCases(Date date) {
         return bus.searchCases(date);

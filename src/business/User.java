@@ -198,7 +198,39 @@ public class User implements IUser {
     public int getIDNumber() {
         return IDNumber;
     }
+  
+    public void setIDNumber(int IDNumber) {
+        this.IDNumber = IDNumber;
+    }
 
+    public void setCaseAccess(boolean caseAccess) {
+        this.caseAccess = caseAccess;
+    }
+
+    public void setMedicine(boolean medicine) {
+        this.medicine = medicine;
+    }
+
+    public void setLog(boolean log) {
+        this.log = log;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAppointment(boolean appointment) {
+        this.appointment = appointment;
+    }
+    
     @Override
     public void updateUser() {
         Business.getInstance().getData().updateUser(this);

@@ -164,7 +164,7 @@ public class SQLDatabase {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
             st.execute("UPDATE users SET "
-                    + "name = " + user.getName()
+                    + "name = '" + user.getName()
                     + "',username = '" + user.getUsername()
                     + "',password = '" + user.getPassword()
                     + "',log = '" + user.getLog()
