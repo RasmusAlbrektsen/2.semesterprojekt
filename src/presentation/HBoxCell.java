@@ -31,5 +31,9 @@ public class HBoxCell extends HBox{
         
     }
     
+    public ICase getCase(){
+        return aCase;
+    }
+    
     
 }

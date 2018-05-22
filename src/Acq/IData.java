@@ -29,8 +29,9 @@ public interface IData {
     
     
     //CASES
-    void saveCase(ICase aCase);
+    void saveCase(ICase aCase, String data);
     ResultSet getAllCases();
+    String getCaseInfo(String directory);
     void updateCase(ICase aCase);
     
     //APPOINTMENTS

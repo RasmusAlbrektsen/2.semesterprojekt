@@ -5,9 +5,12 @@
  */
 package presentation;
 
+import business.Case;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,13 +103,17 @@ public class OpenCaseWindowController implements Initializable {
     @FXML
     private TextField nameTextField;
     @FXML
-    private TextField cPRTextField;
+    private TextField CPRTextField;
     @FXML
     private TextField adresseTextField;
     @FXML
     private TextField tlfTextField;
     @FXML
     private TextField sagsbehandlerTextField;
+    @FXML
+    private Button saveCaseButton;
+    @FXML
+    private Button updateCaseButton;
 
     /**
      * Initializes the controller class.
@@ -118,23 +125,36 @@ public class OpenCaseWindowController implements Initializable {
 
     public String getCaseInformation() {
         StringBuilder caseCombined = new StringBuilder();
-        caseCombined.append(henvendelseTextBox.getText() + "\\" + ydelsesTextBox.getText() + "\\" + henvendelseFraTextBox.getText() + "\\" + aftaleForløbTextBox.getText() + "\\" + værgeMålTexBox.getText() + "\\" + rettighederTextBox.getText() + "\\" + loadOplysningerTextBox.getText() + "\\" + særligeForholdTextBox.getText() + "\\" + kommuneTextBox.getText());
-        caseCombined.append(borgerSøgButtonJa.isSelected() + "\\"
-                + borgerSøgButtonNej.isSelected() + "\\"
-                + borgerIndforståetButtonJa.isSelected() + "\\"
-                + borgerIndforståetButtonNej.isSelected() + "\\"
-                + borgerInfoButtonJa.isSelected() + "\\"
-                + borgerInfoButtonNej.isSelected() + "\\"
-                + samtykkeButtonJa.isSelected() + "\\"
-                + samtykkeButtonNej.isSelected() + "\\"
-                + mundtligSamtykkeButton.isSelected() + "\\"
-                + skriftligSamtykkeButton.isSelected());
-        caseCombined.append(nameTextField.getText() + "\\" + cPRTextField.getText() + "\\" + adresseTextField.getText() + "\\" + tlfTextField.getText() + "\\" + sagsbehandlerTextField.getText());
+        caseCombined.append(henvendelseTextBox.getText() + "\\},\\{"
+                + ydelsesTextBox.getText() + "\\},\\{"
+                + henvendelseFraTextBox.getText() + "\\},\\{"
+                + aftaleForløbTextBox.getText() + "\\},\\{"
+                + værgeMålTexBox.getText() + "\\},\\{"
+                + rettighederTextBox.getText() + "\\},\\{"
+                + loadOplysningerTextBox.getText() + "\\},\\{"
+                + særligeForholdTextBox.getText() + "\\},\\{"
+                + kommuneTextBox.getText() + "\\},\\{");
+        caseCombined.append(borgerSøgButtonJa.isSelected() + "\\},\\{"
+                + borgerSøgButtonNej.isSelected() + "\\},\\{"
+                + borgerIndforståetButtonJa.isSelected() + "\\},\\{"
+                + borgerIndforståetButtonNej.isSelected() + "\\},\\{"
+                + borgerInfoButtonJa.isSelected() + "\\},\\{"
+                + borgerInfoButtonNej.isSelected() + "\\},\\{"
+                + samtykkeButtonJa.isSelected() + "\\},\\{"
+                + samtykkeButtonNej.isSelected() + "\\},\\{"
+                + mundtligSamtykkeButton.isSelected() + "\\},\\{"
+                + skriftligSamtykkeButton.isSelected() + "\\},\\{");
+        caseCombined.append(nameTextField.getText() + "\\},\\{"
+                + CPRTextField.getText() + "\\},\\{"
+                + adresseTextField.getText() + "\\},\\{"
+                + tlfTextField.getText() + "\\},\\{"
+                + sagsbehandlerTextField.getText());
         return caseCombined.toString();
     }
 
-    public void loadCaseInformation(String string) {
-        String[] caseSplitter = string.split("\\");
+    public void loadCaseInformation(String info) {
+        StringTokenizer token = new StringTokenizer(info, "\\},\\{");
+        String[] caseSplitter = info.split(Pattern.quote("\\},\\{"));
         henvendelseTextBox.setText(caseSplitter[0]);
         ydelsesTextBox.setText(caseSplitter[1]);
         henvendelseFraTextBox.setText(caseSplitter[2]);
@@ -144,34 +164,34 @@ public class OpenCaseWindowController implements Initializable {
         loadOplysningerTextBox.setText(caseSplitter[6]);
         særligeForholdTextBox.setText(caseSplitter[7]);
         kommuneTextBox.setText(caseSplitter[8]);
-        if(caseSplitter[9].equalsIgnoreCase("true")) {
-          borgerSøgButtonJa.fire();
+        if (caseSplitter[9].equalsIgnoreCase("true")) {
+            borgerSøgButtonJa.fire();
         } else {
             borgerSøgButtonNej.fire();
         }
-        if(caseSplitter[11].equalsIgnoreCase("true")) {
+        if (caseSplitter[11].equalsIgnoreCase("true")) {
             borgerIndforståetButtonJa.fire();
         } else {
             borgerIndforståetButtonNej.fire();
         }
-        if(caseSplitter[13].equalsIgnoreCase("true")) {
+        if (caseSplitter[13].equalsIgnoreCase("true")) {
             borgerInfoButtonJa.fire();
         } else {
             borgerInfoButtonNej.fire();
         }
-        if(caseSplitter[15].equalsIgnoreCase("true")) {
+        if (caseSplitter[15].equalsIgnoreCase("true")) {
             samtykkeButtonJa.fire();
         } else {
             samtykkeButtonNej.fire();
         }
-        if(caseSplitter[17].equalsIgnoreCase("true")) {
+        if (caseSplitter[17].equalsIgnoreCase("true")) {
             mundtligSamtykkeButton.fire();
-        } 
-        if(caseSplitter[18].equalsIgnoreCase("true")) {
+        }
+        if (caseSplitter[18].equalsIgnoreCase("true")) {
             skriftligSamtykkeButton.fire();
         }
         nameTextField.setText(caseSplitter[19]);
-        cPRTextField.setText(caseSplitter[20]);
+        CPRTextField.setText(caseSplitter[20]);
         adresseTextField.setText(caseSplitter[21]);
         tlfTextField.setText(caseSplitter[22]);
         sagsbehandlerTextField.setText(caseSplitter[23]);
@@ -179,13 +199,24 @@ public class OpenCaseWindowController implements Initializable {
 
     @FXML
     private void caseChecklistButtonAction(ActionEvent event) {
-        
+
         UdredGUI.getInstance().loadController(new Stage(), "BenefitsWindow");
     }
-    
-    public void setBenefits(String s){
+
+    public void setBenefits(String s) {
         ydelsesTextBox.setText(s);
     }
-            
+
+    @FXML
+    private void saveCaseButtonAction(ActionEvent event) {
+        UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
+    }
+    
+    public void changeModeUpdate(){
+        saveCaseButton.setDisable(true);
+        saveCaseButton.setVisible(false);
+        updateCaseButton.setDisable(false);
+        updateCaseButton.setVisible(true);
+    }
 
 }
