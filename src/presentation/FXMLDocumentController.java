@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -117,7 +118,7 @@ public class FXMLDocumentController implements Initializable {
     private Button resetSearchButton;
     @FXML
     private Button openCaseButton;
-    
+
     private HBoxCell selectedCase;
 
     @Override
@@ -129,10 +130,13 @@ public class FXMLDocumentController implements Initializable {
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
         updateAllCases();
-        /*caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCell>(){
+        caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCell>() {
             @Override
-            public void changed()
-        });*/
+            public void changed(ObservableValue<? extends HBoxCell> observableList, HBoxCell oldHBoxCell, HBoxCell newHBoxCell) {
+                selectedCase = newHBoxCell;
+                System.out.println(selectedCase);
+            }
+        });
 
     }
 
@@ -213,9 +217,9 @@ public class FXMLDocumentController implements Initializable {
         if (searchDatePicker.getValue() == null && searchCPRField.getText().trim().isEmpty() && !searchNumberField.getText().trim().isEmpty()) {
             searchResult = business.searchCases(Integer.parseInt(searchNumberField.getText()));
         }
-        
+
         selectedCase = null;
-        
+
         caseList.clear();
         for (ICase iCase : searchResult) {
             caseList.add(new HBoxCell(iCase));
@@ -243,7 +247,7 @@ public class FXMLDocumentController implements Initializable {
 
     public void updateAllCases() {
         caseList.clear();
-        for (ICase aCase: business.getCases()) {
+        for (ICase aCase : business.getCases()) {
             caseList.add(new HBoxCell(aCase));
         }
         caseListView.setItems(caseList);
@@ -252,7 +256,7 @@ public class FXMLDocumentController implements Initializable {
     public void updateMyCases() {
         caseList.clear();
         for (ICase aCase : business.getCases()) {
-            
+
         }
         caseListView.setItems(caseList);
     }
@@ -273,7 +277,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void openCaseButtonAction(ActionEvent event) {
+        Stage stage = new Stage();
+        OpenCaseWindowController caseWindow = UdredGUI.getInstance().loadController(stage, "OpenCaseWindow").getController();
         
     }
-    
+
 }

@@ -9,46 +9,46 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 /**
  *
  * @author Bruger
  */
 public class UdredGUI {
-    
+
     private static UdredGUI ui = null;
     private IBusiness business;
-    
 
     private UdredGUI() {
         ui = this;
     }
-    public void setBusiness(IBusiness business){
+
+    public void setBusiness(IBusiness business) {
         this.business = business;
     }
-    public static UdredGUI getInstance(){
-        if (ui == null){
+
+    public static UdredGUI getInstance() {
+        if (ui == null) {
             ui = new UdredGUI();
         }
         return ui;
     }
-    
-    
-    public IBusiness getBusiness(){
+
+    public IBusiness getBusiness() {
         return business;
     }
-    
-    public void loadController(Stage stage, String name){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(name+".fxml"));
+
+    public FXMLLoader loadController(Stage stage, String name) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(name + ".fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch(Exception e){
+            return loader;
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
-    
-    
+
 }

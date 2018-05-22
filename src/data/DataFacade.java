@@ -70,8 +70,8 @@ public class DataFacade implements IData{
     }
 
     @Override
-    public void saveCase(ICase aCase) {
-        data.saveCase(aCase);
+    public void saveCase(ICase aCase, String info) {
+        data.saveCase(aCase, info);
     }
 
     @Override

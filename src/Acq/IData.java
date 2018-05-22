@@ -25,7 +25,7 @@ public interface IData {
     void saveUser(IUser user);
     
     //CASES
-    void saveCase(ICase aCase);
+    void saveCase(ICase aCase, String data);
     ResultSet getAllCases();
     
     //APPOINTMENTS

@@ -149,7 +149,7 @@ public class SQLDatabase {
     }
     
     //CASES
-    public void saveCase(ICase aCase) {
+    public void saveCase(ICase aCase, String info) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -166,8 +166,7 @@ public class SQLDatabase {
             db.close();
 
             PrintWriter out = new PrintWriter("case" + caseID + ".txt");
-            out.println(aCase.isActive());
-            out.println(aCase.getCreationDate());
+            out.println(info);
             out.close();
         } catch (Exception e) {
             e.printStackTrace();

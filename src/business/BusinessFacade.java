@@ -97,5 +97,9 @@ public class BusinessFacade implements IBusiness {
         return bus.searchCases(date, CPR, id);
     }
     
+    @Override
+    public void saveCase (String CPR, String info){
+        data.saveCase(new Case(CPR), info);
+    }
 
 }

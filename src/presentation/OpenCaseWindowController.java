@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import business.Case;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -100,7 +101,7 @@ public class OpenCaseWindowController implements Initializable {
     @FXML
     private TextField nameTextField;
     @FXML
-    private TextField cPRTextField;
+    private TextField CPRTextField;
     @FXML
     private TextField adresseTextField;
     @FXML
@@ -129,7 +130,7 @@ public class OpenCaseWindowController implements Initializable {
                 + samtykkeButtonNej.isSelected() + "\\"
                 + mundtligSamtykkeButton.isSelected() + "\\"
                 + skriftligSamtykkeButton.isSelected());
-        caseCombined.append(nameTextField.getText() + "\\" + cPRTextField.getText() + "\\" + adresseTextField.getText() + "\\" + tlfTextField.getText() + "\\" + sagsbehandlerTextField.getText());
+        caseCombined.append(nameTextField.getText() + "\\" + CPRTextField.getText() + "\\" + adresseTextField.getText() + "\\" + tlfTextField.getText() + "\\" + sagsbehandlerTextField.getText());
         return caseCombined.toString();
     }
 
@@ -171,7 +172,7 @@ public class OpenCaseWindowController implements Initializable {
             skriftligSamtykkeButton.fire();
         }
         nameTextField.setText(caseSplitter[19]);
-        cPRTextField.setText(caseSplitter[20]);
+        CPRTextField.setText(caseSplitter[20]);
         adresseTextField.setText(caseSplitter[21]);
         tlfTextField.setText(caseSplitter[22]);
         sagsbehandlerTextField.setText(caseSplitter[23]);
@@ -185,6 +186,11 @@ public class OpenCaseWindowController implements Initializable {
     
     public void setBenefits(String s){
         ydelsesTextBox.setText(s);
+    }
+
+    @FXML
+    private void saveCaseButtonAction(ActionEvent event) {
+        //UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
     }
             
 

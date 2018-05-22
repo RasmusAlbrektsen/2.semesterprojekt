@@ -1,5 +1,6 @@
 package business;
 
+import Acq.ICalendar;
 import Acq.ICase;
 import Acq.IDailyNote;
 import Acq.IMedicine;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Case implements ICase{
+public class Case implements ICase {
 
     private int IDNum;
     private String creationDate;
@@ -20,14 +21,14 @@ public class Case implements ICase{
     private List<IDailyNote> dailyNotes;
     private String CPR;
 
-    public Case(String CPR, int IDNum) {
+    public Case(String CPR) {
         this.CPR = CPR;
-        this.IDNum = IDNum;
-        // creationDate = ;
+        //this.IDNum = IDNum;
+        creationDate = Business.getInstance().getCalendar().getTodaysDateString();
         dailyNotes = new ArrayList<>();
-        //appointments = new ArrayList<>();
         medicineList = new ArrayList<>();
     }
+
     public Case(int IDNum, String caseDirectory, String creationDate, String CPR, boolean isActive) {
         this.CPR = CPR;
         this.IDNum = IDNum;
@@ -37,15 +38,15 @@ public class Case implements ICase{
         dailyNotes = new ArrayList<>();
         ResultSet rs = Business.getInstance().getData().getDailyNote(IDNum);
         try {
-        while (rs.next()) {
-                    dailyNotes.add(new DailyNote(rs.getInt("daily_note.noteid"),
-                                                 rs.getString("note"),
-                                                 rs.getString("date")));
-        
-        }
+            while (rs.next()) {
+                dailyNotes.add(new DailyNote(rs.getInt("daily_note.noteid"),
+                        rs.getString("note"),
+                        rs.getString("date")));
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     @Override
@@ -54,12 +55,11 @@ public class Case implements ICase{
         return true;
     }
 
-
     @Override
     public boolean updateMedicine(IMedicine medicine, String amount, String dose) {
         for (IMedicine med : medicineList) {
-            if(med == medicine) {
-                med.setDosage(dose);                
+            if (med == medicine) {
+                med.setDosage(dose);
                 return true;
             }
         }
@@ -75,7 +75,7 @@ public class Case implements ICase{
     public boolean createOffer(String residence, Date startDate, Date endDate) {
         return true;
     }
-    
+
     @Override
     public boolean createDailyNote(String note) {
         dailyNotes.add(new DailyNote(note));
@@ -96,7 +96,7 @@ public class Case implements ICase{
     public String getCPR() {
         return CPR;
     }
-    
+
     @Override
     public boolean isActive() {
         return isActive;
