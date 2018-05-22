@@ -41,7 +41,6 @@ public class AdministratorWindowController implements Initializable {
     private ListView<String> userListView;
     @FXML
     private ListView<String> logListView;
-    @FXML
     private Button showUsersButton;
     @FXML
     private Button removeUserButton;
@@ -78,7 +77,7 @@ public class AdministratorWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        showUsersButton.fire();
+        showUsers();
         userListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -95,22 +94,29 @@ public class AdministratorWindowController implements Initializable {
         usernameField.setText(user.getUsername());
         passwordField.setText(user.getPassword());
         if (user.getLog() == true) {
-            logAccessRadio.fire();
+            logAccessRadio.setSelected(true);
+        } else {
+            logAccessRadio.setSelected(false);
         }
         if (user.getAppointment() == true) {
-            calendarAccessRadio.fire();
+            calendarAccessRadio.setSelected(true);
+        } else {
+            calendarAccessRadio.setSelected(false);
         }
         if (user.getMedicine() == true) {
-            medicineAccessRadio.fire();
+            medicineAccessRadio.setSelected(true);
+        } else {
+            medicineAccessRadio.setSelected(false);
         }
         if (user.getCaseaccess() == true) {
-            caseAccessRadio.fire();
+            caseAccessRadio.setSelected(true);
+        } else {
+            caseAccessRadio.setSelected(false);
         }
 
     }
 
-    @FXML
-    private void showUsersAction(ActionEvent event) {
+    public void showUsers() {
         userList.clear();
         for (Map.Entry<String, IUser> entry : business.getUserMap().entrySet()) {
             userList.add(entry.getKey());
@@ -195,5 +201,6 @@ public class AdministratorWindowController implements Initializable {
     @FXML
     private void showCaseLogAction(ActionEvent event) {
     }
+
 
 }

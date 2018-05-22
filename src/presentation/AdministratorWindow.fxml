@@ -31,11 +31,6 @@
    <children>
       <ListView fx:id="userListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <ListView fx:id="logListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <Button fx:id="showUsersButton" mnemonicParsing="false" onAction="#showUsersAction" text="Vis brugere" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets top="60.0" />
-         </GridPane.margin>
-      </Button>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <children>
             <Button fx:id="removeUserButton" minWidth="100.0" mnemonicParsing="false" onAction="#removeUserAction" prefWidth="70.0" text="Fjern bruger" />
