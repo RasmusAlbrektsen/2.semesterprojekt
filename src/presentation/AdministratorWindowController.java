@@ -46,8 +46,6 @@ public class AdministratorWindowController implements Initializable {
     @FXML
     private Button removeUserButton;
     @FXML
-    private Button showLogButton;
-    @FXML
     private Button updateUserButton;
     @FXML
     private TextField nameField;
@@ -70,6 +68,10 @@ public class AdministratorWindowController implements Initializable {
     private ObservableList<String> userList = FXCollections.observableArrayList();
     private ObservableList<String> logList = FXCollections.observableArrayList();
     private String selectedUser;
+    @FXML
+    private Button showUserLogButton;
+    @FXML
+    private Button showCaseLogButton;
 
     /**
      * Initializes the controller class.
@@ -172,7 +174,6 @@ public class AdministratorWindowController implements Initializable {
                 user.updateUser();
     }
 
-    @FXML
     private void showLogAction(ActionEvent event) {
         logList.clear();
         
@@ -185,6 +186,14 @@ public class AdministratorWindowController implements Initializable {
     
     private void updateUseListView() {
         
+    }
+
+    @FXML
+    private void showUserLogAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void showCaseLogAction(ActionEvent event) {
     }
 
 }
