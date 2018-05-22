@@ -20,6 +20,7 @@ public interface IUser {
 
     boolean getAppointment();
     
+    public void setAppointment(boolean appointment);
     public void setIDNumber(int IDNumber);
     public void setCaseAccess(boolean caseAccess);
     public void setMedicine(boolean medicine);

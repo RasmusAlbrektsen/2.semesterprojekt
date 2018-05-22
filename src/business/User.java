@@ -232,6 +232,12 @@ public class User implements IUser {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setAppointment(boolean appointment) {
+        this.appointment = appointment;
+    }
+    
+    
     
     @Override
     public void updateUser() {
