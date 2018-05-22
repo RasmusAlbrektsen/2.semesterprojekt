@@ -27,4 +27,6 @@ public interface IUser {
     int getIDNumber();
     
     void updateUser();
+    
+    void saveUser(int currentUserID); 
 }

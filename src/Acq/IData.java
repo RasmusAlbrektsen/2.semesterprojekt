@@ -16,14 +16,17 @@ public interface IData {
     
     //LOGS
     ResultSet getCaseLog();
+    ResultSet getUserLog();
     void saveToCaseLog(int userID, int changedUserID, String date, String time);
     void saveToUserLog(int userID, int changedUserID, String date, String time);
-    ResultSet getUserLog();
+    void saveCreatedUserLog(int userID, int changedUserID, String date, String time);
+    void saveCreatedCaseLog(int userID, int caseID, String date, String time);
     
     //USERS
     ResultSet getAllUsers();
     void saveUser(IUser user);
     void updateUser(IUser user);
+    
     
     //CASES
     void saveCase(ICase aCase);
