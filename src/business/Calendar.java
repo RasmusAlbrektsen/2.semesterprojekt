@@ -17,6 +17,7 @@ public class Calendar implements ICalendar{
     private User user;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     private SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat sdf3 = new SimpleDateFormat("HH:mm:ss");
     
     public Calendar() {
         
@@ -36,6 +37,13 @@ public class Calendar implements ICalendar{
             }
         }
         System.out.println(s);
+        return s;
+    }
+    
+    @Override
+    public String getTodaysTimeString() {
+        Date todaysDate = new Date();
+        String s = sdf3.format(todaysDate);
         return s;
     }
     

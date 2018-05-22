@@ -7,6 +7,8 @@ import Acq.IAppointment;
 import Acq.IMedicine;
 import java.io.File;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,8 +24,9 @@ public class SQLDatabase {
     public void loadData() {
 
     }
+
     //MEDICINE
-    public int getMedicineID(int caseID, String VNR){
+    public int getMedicineID(int caseID, String VNR) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -36,7 +39,7 @@ public class SQLDatabase {
         }
         return 0;
     }
-    
+
     public void saveMedicine(IMedicine Medicine, int caseID) {
         String id;
         try {
@@ -51,8 +54,8 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-    
-    public ResultSet getMedicine(int caseID){
+
+    public ResultSet getMedicine(int caseID) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -65,8 +68,8 @@ public class SQLDatabase {
         return null;
     }
     //CASELOG
-    
-    public void saveToCaseLog(int userID, int caseID, String date, String time){
+
+    public void saveToCaseLog(int userID, int caseID, String date, String time) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -76,7 +79,17 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-    
+  
+    public void saveCreatedCaseLog(int userID, int caseID, String date, String time){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','New CaseID:" + caseID + "','" + date + "','" + time + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public ResultSet getCaseLog() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -89,9 +102,9 @@ public class SQLDatabase {
         }
         return null;
     }
-    
+
     //USERLOG
-    public void saveToUserLog(int userID, int changedUserID, String date, String time){
+    public void saveToUserLog(int userID, int changedUserID, String date, String time) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -101,6 +114,18 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
+    
+    public void saveCreatedUserLog(int userID, int changedUserID, String date, String time){
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("INSERT INTO userlog VALUES('UserID:" + userID + "','New UserID:" + changedUserID + "','" + date + "','" + time + "');");
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+  
     public ResultSet getUserLog() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -113,7 +138,7 @@ public class SQLDatabase {
         }
         return null;
     }
-    
+
     //USERS 
     public void saveUser(IUser user) {
         try {
@@ -152,7 +177,7 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }    
-    
+
     public ResultSet getAllUsers() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -160,33 +185,32 @@ public class SQLDatabase {
             ResultSet rs = st.executeQuery("SELECT * FROM users");
             db.close();
             return rs;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-    
+
     //CASES
-    public void saveCase(ICase aCase) {
+    public void saveCase(ICase aCase, String info) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("INSERT INTO cases"
-                    + "(creation_date, is_active) "
+                    + "(creation_date, cpr, is_active) "
                     + "VALUES('" + aCase.getCreationDate()
+                    + "', '" + aCase.getCPR()
                     + "', 'true') RETURNING caseid;");
             rs.next();
             int caseID = rs.getInt("caseid");
             st.execute("UPDATE cases "
                     + "SET case_directory = 'cases\\case"
-                    + rs.getInt("caseid") + "' WHERE caseid = '"
+                    + rs.getInt("caseid") + ".txt" + "' WHERE caseid = '"
                     + caseID + "'");
             db.close();
 
-            PrintWriter out = new PrintWriter("case" + caseID + ".txt");
-            out.println(aCase.isActive());
-            out.println(aCase.getCreationDate());
+            PrintWriter out = new PrintWriter("cases\\case" + caseID + ".txt");
+            out.println(info);
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -220,6 +244,7 @@ public class SQLDatabase {
         }
         return null;
     }
+
     //APPOINTMENTS
     public ResultSet getAppointments(int userID) {
         try {
@@ -233,8 +258,8 @@ public class SQLDatabase {
         }
         return null;
     }
-    
-    public int getAppointmentID(int userID, String date, String time){
+
+    public int getAppointmentID(int userID, String date, String time) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -247,7 +272,7 @@ public class SQLDatabase {
         }
         return 0;
     }
-    
+
     public void saveAppointment(IAppointment Appointment, int userID) {
         String id;
         try {
@@ -260,9 +285,9 @@ public class SQLDatabase {
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }        
+        }
     }
-    
+
     //DAILYNOTE
     public void saveDailyNote(IDailyNote DailyNote, int caseID) {
         String id;
@@ -279,7 +304,7 @@ public class SQLDatabase {
         }
     }
 
-    public int getDailyNoteID(int caseID, String note, String date){
+    public int getDailyNoteID(int caseID, String note, String date) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -292,8 +317,8 @@ public class SQLDatabase {
         }
         return 0;
     }
-    
-    public ResultSet getDailyNote(int caseID){
+
+    public ResultSet getDailyNote(int caseID) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -306,7 +331,9 @@ public class SQLDatabase {
         }
         return null;
     }
-    
-    
-    
+
+    public String getCaseInfo(String directory) throws Exception {
+        return new String(Files.readAllBytes(Paths.get(directory)));
+    }
+
 }

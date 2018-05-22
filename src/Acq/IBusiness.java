@@ -28,4 +28,5 @@ public interface IBusiness {
     List<ICase> searchCases(Date date, int id);
     List<ICase> searchCases(String CPR, int id);
     List<ICase> searchCases(Date date, String CPR, int id);
+    void saveCase(String CPR, String info);
 }

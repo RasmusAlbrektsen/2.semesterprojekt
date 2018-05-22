@@ -19,6 +19,8 @@ public interface ICase {
 
     List<IDailyNote> getDailyNotes();
     
+    String getInfo();
+    
     boolean createMedicine(String name, String amount, String dose);
     
     boolean updateMedicine(IMedicine medicine, String amount, String dose);
@@ -30,4 +32,6 @@ public interface ICase {
     boolean createDailyNote(String note);
     
     void updateCase();
+    
+    void saveCase(int currentUserID);
 }

@@ -14,15 +14,16 @@ import Acq.IUser;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nitra
  */
-public class DataFacade implements IData{
- 
-    private SQLDatabase data = new SQLDatabase();
+public class DataFacade implements IData {
 
+    private SQLDatabase data = new SQLDatabase();
 
     @Override
     public ResultSet getCaseLog() {
@@ -70,8 +71,8 @@ public class DataFacade implements IData{
     }
 
     @Override
-    public void saveCase(ICase aCase) {
-        data.saveCase(aCase);
+    public void saveCase(ICase aCase, String info) {
+        data.saveCase(aCase, info);
     }
 
     @Override
@@ -110,6 +111,15 @@ public class DataFacade implements IData{
     }
 
     @Override
+    public String getCaseInfo(String directory) {
+        try {
+            return data.getCaseInfo(directory);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     public void updateUser(IUser user) {
         data.updateUser(user);
     }
@@ -119,6 +129,13 @@ public class DataFacade implements IData{
         data.updateCase(aCase);
     }
 
-    
-    
+    @Override
+    public void saveCreatedUserLog(int userID, int changedUserID, String date, String time) {
+        data.saveCreatedUserLog(userID, changedUserID, date, time);
+    }
+
+    @Override
+    public void saveCreatedCaseLog(int userID, int caseID, String date, String time) {
+        data.saveCreatedCaseLog(userID, caseID, date, time);
+    }
 }
