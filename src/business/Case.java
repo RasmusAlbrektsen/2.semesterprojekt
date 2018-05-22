@@ -124,4 +124,17 @@ public class Case implements ICase {
     public List<IDailyNote> getDailyNotes() {
         return dailyNotes;
     }
+    @Override
+    public void updateCase() {
+        Business.getInstance().getData().updateCase(this);
+    }
+    @Override
+    public void saveCase(int currentUserID) {
+        Business.getInstance().getData().saveCase(this);
+        Business.getInstance().getData().saveCreatedCaseLog(currentUserID, 
+                IDNum, 
+                Business.getInstance().getCalendar().getTodaysDateString(), 
+                Business.getInstance().getCalendar().getTodaysTimeString());
+        
+    }
 }

@@ -25,4 +25,8 @@ public interface IUser {
     List<IAppointment> getAppointments();
    
     int getIDNumber();
+    
+    void updateUser();
+    
+    void saveUser(int currentUserID); 
 }
