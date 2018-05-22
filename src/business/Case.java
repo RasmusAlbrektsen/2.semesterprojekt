@@ -5,6 +5,7 @@ import Acq.ICase;
 import Acq.IDailyNote;
 import Acq.IMedicine;
 import Acq.IOffer;
+import java.io.FileReader;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,7 @@ public class Case implements ICase {
     private String creationDate;
     private boolean isActive;
     private String caseDirectory;
+    private String info;
     private List<IMedicine> medicineList;
     private IOffer offer;
     private List<IDailyNote> dailyNotes;
@@ -24,7 +26,7 @@ public class Case implements ICase {
     public Case(String CPR) {
         this.CPR = CPR;
         //this.IDNum = IDNum;
-        creationDate = Business.getInstance().getCalendar().getTodaysDateString();
+        creationDate = Business.getInstance().getCalendar().formatToString(new Date());
         dailyNotes = new ArrayList<>();
         medicineList = new ArrayList<>();
     }
@@ -33,6 +35,7 @@ public class Case implements ICase {
         this.CPR = CPR;
         this.IDNum = IDNum;
         this.caseDirectory = caseDirectory;
+        this.info = Business.getInstance().getData().getCaseInfo(caseDirectory);
         this.creationDate = creationDate;
         this.isActive = isActive;
         dailyNotes = new ArrayList<>();
@@ -95,6 +98,11 @@ public class Case implements ICase {
     @Override
     public String getCPR() {
         return CPR;
+    }
+    
+    @Override
+    public String getInfo(){
+        return info;
     }
 
     @Override

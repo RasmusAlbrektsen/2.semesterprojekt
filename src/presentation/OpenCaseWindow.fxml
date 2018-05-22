@@ -131,7 +131,7 @@
                            </font>
                         </Label>
                         <TextArea fx:id="kommuneTextBox" layoutX="210.0" layoutY="1837.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Button layoutX="561.0" layoutY="2020.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" text="Gem sag" />
+                        <Button fx:id="saveCaseButton" layoutX="561.0" layoutY="2020.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" text="Gem sag" />
                         <TextField fx:id="nameTextField" layoutX="200.0" layoutY="2075.0" />
                         <TextField fx:id="CPRTextField" layoutX="200.0" layoutY="2130.0" />
                         <TextField fx:id="adresseTextField" layoutX="475.0" layoutY="2075.0" />
@@ -142,6 +142,7 @@
                         <Label layoutX="200.0" layoutY="2165.0" text="Sagsbehandler" />
                         <Label layoutX="475.0" layoutY="2060.0" text="Adresse" />
                         <Label layoutX="475.0" layoutY="2115.0" text="Tlf:" />
+                        <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" text="Opdater sag" visible="false" />
                      </children>
                   </AnchorPane>
                </content>

@@ -101,5 +101,4 @@ public class BusinessFacade implements IBusiness {
     public void saveCase (String CPR, String info){
         data.saveCase(new Case(CPR), info);
     }
-
 }

@@ -14,15 +14,16 @@ import Acq.IUser;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nitra
  */
-public class DataFacade implements IData{
- 
-    private SQLDatabase data = new SQLDatabase();
+public class DataFacade implements IData {
 
+    private SQLDatabase data = new SQLDatabase();
 
     @Override
     public ResultSet getCaseLog() {
@@ -109,6 +110,14 @@ public class DataFacade implements IData{
         return data.getDailyNote(caseID);
     }
 
-    
-    
+    @Override
+    public String getCaseInfo(String directory) {
+        try {
+            return data.getCaseInfo(directory);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
 }
