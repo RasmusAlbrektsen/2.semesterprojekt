@@ -200,11 +200,13 @@ public class User implements IUser {
         return appointment;
     }
   
+    @Override
     public int getIDNumber() {
         return IDNumber;
     }
     
-    public void pushUser() {
-        Business.getInstance().getData().saveUser(this);
+    @Override
+    public void updateUser() {
+        Business.getInstance().getData().updateUser(this);
     }
 }

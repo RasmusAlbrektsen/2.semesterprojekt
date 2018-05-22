@@ -134,6 +134,25 @@ public class SQLDatabase {
         }
     }
     
+    public void updateUser(IUser user) {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("UPDATE users SET "
+                    + "name = " + user.getName()
+                    + "',username = '" + user.getUsername()
+                    + "',password = '" + user.getPassword()
+                    + "',log = '" + user.getLog()
+                    + "',caseaccess = '" + user.getCaseaccess()
+                    + "',medicine = '" + user.getMedicine()
+                    + "',appointment = '" + user.getAppointment()
+                    + "' WHERE id = " + user.getIDNumber());
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }    
+    
     public ResultSet getAllUsers() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -169,6 +188,21 @@ public class SQLDatabase {
             out.println(aCase.isActive());
             out.println(aCase.getCreationDate());
             out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateCase(ICase aCase) {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("UPDATE cases SET "
+                    + "creation_date = " + aCase.getCreationDate()
+                    + "',cpr = '" + aCase.getCPR()
+                    + "',is_active = '" + aCase.isActive()
+                    + "' WHERE id = " + aCase.getCaseNumber());
+            db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
