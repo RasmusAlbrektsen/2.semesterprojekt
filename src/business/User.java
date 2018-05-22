@@ -246,4 +246,9 @@ public class User implements IUser {
         
 
     }
+    
+    @Override
+    public void deleteUser() {
+        Business.getInstance().getData().deleteUser(this);
+    }
 }

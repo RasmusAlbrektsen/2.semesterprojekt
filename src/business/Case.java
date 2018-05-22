@@ -137,4 +137,9 @@ public class Case implements ICase {
                 Business.getInstance().getCalendar().getTodaysTimeString());
         
     }
+    
+    @Override
+    public void deleteCase() {
+        Business.getInstance().getData().deleteCase(this);
+    }
 }

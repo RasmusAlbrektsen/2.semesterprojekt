@@ -190,6 +190,29 @@ public class SQLDatabase {
         }
         return null;
     }
+    
+    public void deleteUser(IUser user) {
+        List<Integer> appointmentIDs = new ArrayList();
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM has WHERE userid = " +  user.getIDNumber());
+            while(rs.next()) {
+                appointmentIDs.add(rs.getInt("appointmentID"));
+            }
+            st.execute("DELETE FROM has WHERE userid = " + user.getIDNumber());
+            st.execute("DELETE FROM edited_user WHERE userid = " + user.getIDNumber() + " OR changeduserid = " + user.getIDNumber());
+            st.execute("DELETE FROM works_on WHERE userid = " + user.getIDNumber());
+            st.execute("DELETE FROM edited_case WHERE userid = " + user.getIDNumber());
+            for (Integer appointmentID : appointmentIDs) {
+                st.execute("DELETE FROM daily_note WHERE noteID = " + appointmentID);
+            }
+            st.execute("DELETE FROM users WHERE userid = " + user.getIDNumber());
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //CASES
     public void saveCase(ICase aCase, String info) {
@@ -215,6 +238,10 @@ public class SQLDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public String getCaseInfo(String directory) throws Exception {
+        return new String(Files.readAllBytes(Paths.get(directory)));
     }
     
     public void updateCase(ICase aCase) {
@@ -244,6 +271,39 @@ public class SQLDatabase {
         }
         return null;
     }
+    
+    public void deleteCase(ICase aCase) {
+        List<Integer> medicineIDs = new ArrayList();
+        List<Integer> dailyNoteIDs = new ArrayList();
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM has_a WHERE caseid = " +  aCase.getCaseNumber());
+            while(rs.next()) {
+                dailyNoteIDs.add(rs.getInt("noteID"));
+            }
+            st.execute("DELETE FROM has_a WHERE caseid = " + aCase.getCaseNumber());
+            ResultSet rs1 = st.executeQuery("SELECT * FROM associated WHERE caseid = " + aCase.getCaseNumber());
+            while(rs1.next()){
+                medicineIDs.add(rs.getInt("medicineID"));
+            }
+            st.execute("DELETE FROM associated WHERE caseid = " + aCase.getCaseNumber());          
+            st.execute("DELETE FROM edited_case WHERE caseid = " + aCase.getCaseNumber());
+            st.execute("DELETE FROM cansee WHERE caseid = " + aCase.getCaseNumber());
+            st.execute("DELETE FROM works_on WHERE caseid = " + aCase.getCaseNumber());
+            for (Integer dailyNoteID : dailyNoteIDs) {
+                st.execute("DELETE FROM daily_note WHERE noteID = " + dailyNoteID);
+            }
+            for (Integer medicineID : medicineIDs) {
+                st.execute("DELETE FROM medicine WHERE medicineid = " + medicineID);
+            }
+            st.execute("DELETE FROM cases WHERE caseid = " + aCase.getCaseNumber());
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     //APPOINTMENTS
     public ResultSet getAppointments(int userID) {
@@ -332,8 +392,6 @@ public class SQLDatabase {
         return null;
     }
 
-    public String getCaseInfo(String directory) throws Exception {
-        return new String(Files.readAllBytes(Paths.get(directory)));
-    }
+    
 
 }

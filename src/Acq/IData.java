@@ -26,6 +26,7 @@ public interface IData {
     ResultSet getAllUsers();
     void saveUser(IUser user);
     void updateUser(IUser user);
+    void deleteUser(IUser user);
     
     
     //CASES
@@ -33,6 +34,7 @@ public interface IData {
     ResultSet getAllCases();
     String getCaseInfo(String directory);
     void updateCase(ICase aCase);
+    void deleteCase(ICase aCase);
     
     //APPOINTMENTS
     void saveAppointment(IAppointment Appointment, int caseID);

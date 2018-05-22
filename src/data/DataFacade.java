@@ -138,4 +138,14 @@ public class DataFacade implements IData {
     public void saveCreatedCaseLog(int userID, int caseID, String date, String time) {
         data.saveCreatedCaseLog(userID, caseID, date, time);
     }
+
+    @Override
+    public void deleteCase(ICase aCase) {
+        data.deleteCase(aCase);
+    }
+
+    @Override
+    public void deleteUser(IUser user) {
+        data.deleteUser(user);
+    }
 }
