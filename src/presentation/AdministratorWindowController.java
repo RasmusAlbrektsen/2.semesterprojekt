@@ -44,17 +44,11 @@ public class AdministratorWindowController implements Initializable {
     @FXML
     private Button showUsersButton;
     @FXML
-    private Button addUserButton;
-    @FXML
     private Button removeUserButton;
     @FXML
     private Button showLogButton;
     @FXML
     private Button updateUserButton;
-
-    private IBusiness business = UdredGUI.getInstance().getBusiness();
-    private ObservableList<String> userList = FXCollections.observableArrayList();
-    private String selectedUser;
     @FXML
     private TextField nameField;
     @FXML
@@ -69,6 +63,13 @@ public class AdministratorWindowController implements Initializable {
     private RadioButton calendarAccessRadio;
     @FXML
     private RadioButton caseAccessRadio;
+    @FXML
+    private Button createNewUserButton;
+    
+    private IBusiness business = UdredGUI.getInstance().getBusiness();
+    private ObservableList<String> userList = FXCollections.observableArrayList();
+    private ObservableList<String> logList = FXCollections.observableArrayList();
+    private String selectedUser;
 
     /**
      * Initializes the controller class.
@@ -115,9 +116,6 @@ public class AdministratorWindowController implements Initializable {
         userListView.setItems(userList);
     }
 
-    @FXML
-    private void addUserAction(ActionEvent event) {
-    }
 
     @FXML
     private void removeUserAction(ActionEvent event) {
@@ -125,7 +123,7 @@ public class AdministratorWindowController implements Initializable {
 
     @FXML
     private void updateUserAction(ActionEvent event) {
-        if (usernameField.getText() != null) {
+        if (business.getUserMap().containsKey(usernameField.getText())) {
             IUser user = business.getUserMap().get(usernameField.getText());
             ButtonType save = new ButtonType("Gem", ButtonBar.ButtonData.OK_DONE);
             ButtonType cancel = new ButtonType("Annuller", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -138,8 +136,17 @@ public class AdministratorWindowController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == save) {
-                //Set username and password
-                user.setName(nameField.getText());
+                updateUserInformation(user);
+            } else if (result.get() == cancel) {
+                alert.close();
+            }
+        } else {
+            
+        }
+    }
+    
+    private void updateUserInformation(IUser user) {
+        user.setName(nameField.getText());
                 user.setPassword(passwordField.getText());
                 //Set access for user
                 if (logAccessRadio.isSelected()) {
@@ -162,17 +169,22 @@ public class AdministratorWindowController implements Initializable {
                 } else {
                     user.setCaseAccess(false);
                 }
-                business.getData().updateUser(user);
-
-            } else if (result.get() == cancel) {
-                alert.close();
-            }
-        }
+                user.updateUser();
     }
 
     @FXML
-    private void showLogAction(ActionEvent event
-    ) {
+    private void showLogAction(ActionEvent event) {
+        logList.clear();
+        
+    }
+
+    @FXML
+    private void createNewUserAction(ActionEvent event) {
+       
+    }
+    
+    private void updateUseListView() {
+        
     }
 
 }

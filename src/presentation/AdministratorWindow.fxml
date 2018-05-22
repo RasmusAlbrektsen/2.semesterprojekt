@@ -38,8 +38,7 @@
       </Button>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <children>
-            <Button fx:id="addUserButton" mnemonicParsing="false" onAction="#addUserAction" prefWidth="70.0" text="Tilføj" />
-            <Button fx:id="removeUserButton" mnemonicParsing="false" onAction="#removeUserAction" prefWidth="70.0" text="Fjern" />
+            <Button fx:id="removeUserButton" minWidth="100.0" mnemonicParsing="false" onAction="#removeUserAction" prefWidth="70.0" text="Fjern bruger" />
          </children>
          <padding>
             <Insets left="20.0" />
@@ -90,7 +89,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <HBox prefHeight="60.0" prefWidth="207.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+      <HBox prefHeight="60.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <children>
             <VBox prefHeight="64.0" prefWidth="100.0" spacing="10.0">
                <children>
@@ -104,11 +103,12 @@
                   <RadioButton fx:id="caseAccessRadio" mnemonicParsing="false" text="Sagsadgang" />
                </children>
             </VBox>
-            <Button fx:id="updateUserButton" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="25.0" prefWidth="104.0" text="Gem ændringer">
-               <HBox.margin>
-                  <Insets left="30.0" top="10.0" />
-               </HBox.margin>
-            </Button>
+            <VBox minWidth="120.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Button fx:id="updateUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="25.0" prefWidth="120.0" text="Gem ændringer" />
+                  <Button fx:id="createNewUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#createNewUserAction" prefWidth="120.0" text="Opret ny bruger" />
+               </children>
+            </VBox>
          </children>
          <GridPane.margin>
             <Insets top="30.0" />
