@@ -39,19 +39,19 @@ public class User implements IUser {
         appointments = new ArrayList<>();
         ResultSet rs = Business.getInstance().getData().getAppointments(IDNumber);
         try {
-        while (rs.next()) {
-                    appointments.add(new Appointment(rs.getInt("appointmentid"),
-                                                     rs.getString("note"),
-                                                     rs.getString("date"), 
-                                                     rs.getString("time")));
-        
-        }
+            while (rs.next()) {
+                appointments.add(new Appointment(rs.getInt("appointmentid"),
+                        rs.getString("note"),
+                        rs.getString("date"),
+                        rs.getString("time")));
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        }     
+        }
     }
-    
-    public User(int IDNumber, String name, String username, String password, int accessLevel){
+
+    public User(int IDNumber, String name, String username, String password, int accessLevel) {
         this.IDNumber = IDNumber;
         this.name = name;
         this.username = username;
@@ -76,11 +76,8 @@ public class User implements IUser {
                 medicine = true;
                 log = true;
                 break;
-        } 
+        }
     }
-
-   
-
 
     /*public boolean login(String username, String password) {
         return true;
@@ -110,7 +107,6 @@ public class User implements IUser {
     public boolean createOffer(String residence, Date startDate, Date endDate) {
         return true;
     } */
-
     @Override
     public boolean createAppointment(String note, String date, String time, int userID) {
         try {
@@ -124,11 +120,11 @@ public class User implements IUser {
     @Override
     public boolean updateAppointment(IAppointment ap, String note, String date, String time) {
         for (IAppointment appointment : appointments) {
-            if(appointment == ap) {
-               appointment.setDate(date);
-               appointment.setTime(time);
-               appointment.setNote(note);
-               return true;
+            if (appointment == ap) {
+                appointment.setDate(date);
+                appointment.setTime(time);
+                appointment.setNote(note);
+                return true;
             }
         }
         return false;
@@ -136,10 +132,10 @@ public class User implements IUser {
 
     @Override
     public boolean removeAppointment(IAppointment ap) {
-         for (IAppointment appointment : appointments) {
-            if(appointment == ap) {
-               appointments.remove(ap);
-               return true;
+        for (IAppointment appointment : appointments) {
+            if (appointment == ap) {
+                appointments.remove(ap);
+                return true;
             }
         }
         return false;
@@ -149,8 +145,7 @@ public class User implements IUser {
     public List<IAppointment> getAppointments() {
         return appointments;
     }
-    
-    
+
     /*
 
     public boolean createUser(String un, String pw, int accessLevel) {
@@ -198,20 +193,25 @@ public class User implements IUser {
     public boolean getAppointment() {
         return appointment;
     }
-  
+
     @Override
     public int getIDNumber() {
         return IDNumber;
     }
-    
+
     @Override
     public void updateUser() {
         Business.getInstance().getData().updateUser(this);
     }
-    
+
     @Override
-    public void saveUser(int currentUserID, String date, String time) {
+    public void saveUser(int currentUserID) {
         Business.getInstance().getData().saveUser(this);
-        Business.getInstance().getData().saveCreatedUserLog(currentUserID, IDNumber, date, time);
+        Business.getInstance().getData().saveCreatedUserLog(currentUserID,
+                IDNumber, 
+                Business.getInstance().getCalendar().getTodaysDateString(), 
+                Business.getInstance().getCalendar().getTodaysTimeString());
+        
+
     }
 }

@@ -31,5 +31,5 @@ public interface ICase {
     
     void updateCase();
     
-    void saveCase(int currentUserID, String date, String time);
+    void saveCase(int currentUserID);
 }

@@ -28,5 +28,5 @@ public interface IUser {
     
     void updateUser();
     
-    void saveUser(int currentUserID, String date, String time); 
+    void saveUser(int currentUserID); 
 }
