@@ -176,7 +176,7 @@ public class AdministratorWindowController implements Initializable {
         } else {
             user.setCaseAccess(false);
         }
-        user.updateUser();
+        user.updateUser(business.getCurrentUser().getIDNumber());
     }
 
     private void showLogAction(ActionEvent event) {
