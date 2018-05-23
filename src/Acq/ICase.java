@@ -31,7 +31,7 @@ public interface ICase {
     
     boolean createDailyNote(String note);
     
-    void updateCase();
+    void updateCase(int currentUserID, String info);
     
     void saveCase(int currentUserID);
     

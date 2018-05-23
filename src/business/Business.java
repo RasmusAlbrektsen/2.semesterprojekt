@@ -107,11 +107,18 @@ public class Business {
     public IData getData() {
         return data;
     }
-    
-     public Map<String, IUser> getUserMap() {
+
+    public Map<String, IUser> getUserMap() {
         return userMap;
     }
 
+    public void saveCase(String CPR, String info) {
+        new Case(CPR).saveCase(currentUser.getIDNumber());
+    }
+    
+    public void updateCase(ICase aCase, String info){
+        aCase.updateCase(currentUser.getIDNumber(),info);
+    }
 
     public List<ICase> searchCases(Date date) {
         List<ICase> cases = new ArrayList<>();
@@ -183,9 +190,8 @@ public class Business {
         }
         return cases;
     }
-    
+  
     public void saveUser(String name, String username, String password) {
         new User(name, username, password).saveUser(getCurrentUser().getIDNumber());
     }
-    
 }

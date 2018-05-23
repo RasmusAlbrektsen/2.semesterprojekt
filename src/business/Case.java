@@ -125,9 +125,11 @@ public class Case implements ICase {
         return dailyNotes;
     }
     @Override
-    public void updateCase() {
+    public void updateCase(int currentUserID, String info) {
+        this.info = info;
         Business.getInstance().getData().updateCase(this);
     }
+    
     @Override
     public void saveCase(int currentUserID) {
         IDNum = Business.getInstance().getData().saveCase(this, info);

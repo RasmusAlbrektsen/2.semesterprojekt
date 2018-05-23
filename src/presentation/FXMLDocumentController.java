@@ -279,9 +279,7 @@ public class FXMLDocumentController implements Initializable {
     private void openCaseButtonAction(ActionEvent event) {
         Stage stage = new Stage();
         OpenCaseWindowController caseWindow = UdredGUI.getInstance().loadController(stage, "OpenCaseWindow").getController();
-        caseWindow.changeModeUpdate();
-        caseWindow.loadCaseInformation(selectedCase.getCase().getInfo());
-        
+        caseWindow.setCase(selectedCase.getCase());
     }
 
 }
