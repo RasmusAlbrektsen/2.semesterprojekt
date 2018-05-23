@@ -125,11 +125,15 @@ public class Business {
     }
 
     public void saveCase(String CPR, String info) {
-        new Case(CPR).saveCase(currentUser.getIDNumber());
+        new Case(CPR, info).saveCase(currentUser.getIDNumber());
     }
     
     public void updateCase(ICase aCase, String info){
         aCase.updateCase(currentUser.getIDNumber(),info);
+    }
+    
+    public void deleteCase(ICase aCase){
+        aCase.deleteCase();
     }
     
     public void saveUser(String name, String username, String password) {

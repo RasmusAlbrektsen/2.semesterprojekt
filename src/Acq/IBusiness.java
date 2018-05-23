@@ -35,4 +35,5 @@ public interface IBusiness {
     void saveCase(String CPR, String info);
     void updateCase(ICase aCase, String info);
     void saveUser(String name, String username, String password);
+    void deleteCase(ICase aCase);
 }

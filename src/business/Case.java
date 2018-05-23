@@ -23,9 +23,9 @@ public class Case implements ICase {
     private List<IDailyNote> dailyNotes;
     private String CPR;
 
-    public Case(String CPR) {
+    public Case(String CPR, String info) {
         this.CPR = CPR;
-        //this.IDNum = IDNum;
+        this.info = info;
         creationDate = Business.getInstance().getCalendar().formatToString(new Date());
         dailyNotes = new ArrayList<>();
         medicineList = new ArrayList<>();

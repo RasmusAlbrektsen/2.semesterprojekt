@@ -293,7 +293,8 @@ public class SQLDatabase {
                 medicineIDs.add(rs.getInt("medicineID"));
             }
             st.execute("DELETE FROM associated WHERE caseid = " + aCase.getCaseNumber());
-            st.execute("DELETE FROM edited_case WHERE caseid = " + aCase.getCaseNumber());
+            // Det her er fakin useless
+            //st.execute("DELETE FROM edited_case WHERE caseid = " + aCase.getCaseNumber());
             st.execute("DELETE FROM cansee WHERE caseid = " + aCase.getCaseNumber());
             st.execute("DELETE FROM works_on WHERE caseid = " + aCase.getCaseNumber());
             for (Integer dailyNoteID : dailyNoteIDs) {
