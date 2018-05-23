@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import Acq.ICase;
 import business.Case;
 import java.io.IOException;
 import java.net.URL;
@@ -114,7 +115,13 @@ public class OpenCaseWindowController implements Initializable {
     private Button saveCaseButton;
     @FXML
     private Button updateCaseButton;
-
+    @FXML
+    private TextField caseNumber;
+    @FXML
+    private Label caseLabel;
+    
+    private ICase currentCase;
+    
     /**
      * Initializes the controller class.
      */
@@ -212,11 +219,22 @@ public class OpenCaseWindowController implements Initializable {
         UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
     }
     
-    public void changeModeUpdate(){
+    public void setCase(ICase aCase){
         saveCaseButton.setDisable(true);
         saveCaseButton.setVisible(false);
         updateCaseButton.setDisable(false);
         updateCaseButton.setVisible(true);
+        caseLabel.setVisible(true);
+        caseNumber.setVisible(true);
+        CPRTextField.setEditable(false);
+        nameTextField.setEditable(false);
+        currentCase = aCase;
+        loadCaseInformation(currentCase.getInfo());
+    }
+
+    @FXML
+    private void updateCaseButtonAction(ActionEvent event) {
+        UdredGUI.getInstance().getBusiness().updateCase(currentCase, getCaseInformation());
     }
 
 }

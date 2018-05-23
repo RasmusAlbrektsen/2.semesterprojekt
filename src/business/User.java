@@ -197,7 +197,7 @@ public class User implements IUser {
     public int getIDNumber() {
         return IDNumber;
     }
-  
+
     public void setIDNumber(int IDNumber) {
         this.IDNumber = IDNumber;
     }
@@ -229,7 +229,7 @@ public class User implements IUser {
     public void setAppointment(boolean appointment) {
         this.appointment = appointment;
     }
-    
+
     @Override
     public void updateUser() {
         Business.getInstance().getData().updateUser(this);
@@ -239,13 +239,12 @@ public class User implements IUser {
     public void saveUser(int currentUserID) {
         IDNumber = Business.getInstance().getData().saveUser(this);
         Business.getInstance().getData().saveCreatedUserLog(currentUserID,
-                IDNumber, 
-                Business.getInstance().getCalendar().getTodaysDateString(), 
+                IDNumber,
+                Business.getInstance().getCalendar().getTodaysDateString(),
                 Business.getInstance().getCalendar().getTodaysTimeString());
-        
 
     }
-    
+
     @Override
     public void deleteUser() {
         Business.getInstance().getData().deleteUser(this);
