@@ -30,4 +30,5 @@ public interface IBusiness {
     List<ICase> searchCases(Date date, String CPR, int id);
     void saveCase(String CPR, String info);
     void updateCase(ICase aCase, String info);
+    void saveUser(String name, String username, String password);
 }

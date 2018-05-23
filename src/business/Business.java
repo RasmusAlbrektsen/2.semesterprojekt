@@ -190,5 +190,8 @@ public class Business {
         }
         return cases;
     }
-
+  
+    public void saveUser(String name, String username, String password) {
+        new User(name, username, password).saveUser(getCurrentUser().getIDNumber());
+    }
 }
