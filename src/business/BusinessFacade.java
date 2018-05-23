@@ -8,8 +8,10 @@ package business;
 import Acq.IBusiness;
 import Acq.ICalendar;
 import Acq.ICase;
+import Acq.ICaseLog;
 import Acq.IData;
 import Acq.IUser;
+import Acq.IUserLog;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +49,17 @@ public class BusinessFacade implements IBusiness {
     public IData getData(){
         return data; 
     }
+    
+    @Override
+    public List<ICaseLog> getCaseLog() {
+        return bus.getCaseLog();
+    }
+
+    @Override
+    public List<IUserLog> getUserLog() {
+        return bus.getUserLog();
+    }
+    
     @Override
     public void setUserMap(){
         bus.setUserMap();
@@ -55,6 +68,16 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void setCaseList() {
         bus.setCaseList();
+    }
+    @Override
+    public void setCaseLogs() {
+        bus.setCaseLogs();
+    }
+    
+    
+    @Override
+    public void setUserLogs() {
+        bus.setUserLogs();
     }
 
     @Override

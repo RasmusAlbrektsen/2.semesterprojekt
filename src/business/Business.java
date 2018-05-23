@@ -5,8 +5,10 @@
  */
 package business;
 
+import Acq.IUserLog;
 import Acq.ICalendar;
 import Acq.ICase;
+import Acq.ICaseLog;
 import Acq.IData;
 import Acq.IUser;
 import java.sql.ResultSet;
@@ -25,6 +27,8 @@ public class Business {
     private IUser currentUser;
     private ICalendar calendar;
     private List<ICase> allCases = new ArrayList();
+    private List<ICaseLog> caseLog = new ArrayList();
+    private List<IUserLog> userLog = new ArrayList<>();
 
     private Business() {
         calendar = new Calendar();
@@ -112,6 +116,14 @@ public class Business {
         return userMap;
     }
 
+    public List<ICaseLog> getCaseLog() {
+        return caseLog;
+    }
+
+    public List<IUserLog> getUserLog() {
+        return userLog;
+    }
+
     public void saveCase(String CPR, String info) {
         new Case(CPR).saveCase(currentUser.getIDNumber());
     }
@@ -190,5 +202,32 @@ public class Business {
         }
         return cases;
     }
-
+    
+    public void setCaseLogs() {
+        ResultSet rs = Business.getInstance().getData().getCaseLog();
+           try{
+            while (rs.next()) {
+                caseLog.add(new CaseLog(rs.getInt("UserID"),
+                        rs.getInt("CaseID"),
+                        rs.getString("Date"),
+                        rs.getString("Time")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+     
+    public void setUserLogs() {
+        ResultSet rs = Business.getInstance().getData().getCaseLog();
+           try{
+            while (rs.next()) {
+                userLog.add(new UserLog(rs.getInt("UserID"),
+                        rs.getInt("ChangedUserID"),
+                        rs.getString("Date"),
+                        rs.getString("Time")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

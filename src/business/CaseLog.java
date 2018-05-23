@@ -5,11 +5,13 @@
  */
 package business;
 
+import Acq.ICaseLog;
+
 /**
  *
  * @author hejoo
  */
-public class CaseLog {
+public class CaseLog implements ICaseLog {
     int userID;
     int caseID;
     String date;
@@ -20,5 +22,31 @@ public class CaseLog {
         this.date = date;
         this.time = time;
         this.userID = userID;
+    }
+
+    @Override
+    public int getUserID() {
+        return userID;
+    }
+
+    @Override
+    public int getCaseID() {
+        return caseID;
+    }
+
+    @Override
+    public String getDate() {
+        return date;
+    }
+
+    @Override
+    public String getTime() {
+        return time;
+    }
+    
+    @Override
+    public String toString(){
+        String s = "Case ID: " + caseID + " User ID: " + userID + " Date: " + date + " Time: " + time;
+        return s;
     }
 }
