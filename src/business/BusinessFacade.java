@@ -104,6 +104,7 @@ public class BusinessFacade implements IBusiness {
     
     @Override
     public void saveCase (String CPR, String info){
-        data.saveCase(new Case(CPR), info);
+        new Case(CPR).saveCase(getCurrentUser().getIDNumber());
     }
+    
 }
