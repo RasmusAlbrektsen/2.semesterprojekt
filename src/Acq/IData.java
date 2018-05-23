@@ -17,7 +17,7 @@ public interface IData {
     //LOGS
     ResultSet getCaseLog();
     ResultSet getUserLog();
-    void saveToCaseLog(int userID, int changedUserID, String date, String time);
+    void saveToCaseLog(int userID, int caseID, String date, String time);
     void saveToUserLog(int userID, int changedUserID, String date, String time);
     void saveCreatedUserLog(int userID, int changedUserID, String date, String time);
     void saveCreatedCaseLog(int userID, int caseID, String date, String time);

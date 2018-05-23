@@ -150,7 +150,7 @@ public class SQLDatabase {
                     + "VALUES('" + user.getName()
                     + "', '" + user.getUsername()
                     + "', '" + user.getPassword()
-                    + "', '" + user.getLog()
+                    + "', '" + user.getAdmin()
                     + "', '" + user.getCaseaccess()
                     + "', '" + user.getMedicine()
                     + "', '" + user.getAppointment() + "') RETURNING id;");
@@ -171,7 +171,7 @@ public class SQLDatabase {
                     + "name = '" + user.getName()
                     + "',username = '" + user.getUsername()
                     + "',password = '" + user.getPassword()
-                    + "',log = '" + user.getLog()
+                    + "',log = '" + user.getAdmin()
                     + "',caseaccess = '" + user.getCaseaccess()
                     + "',medicine = '" + user.getMedicine()
                     + "',appointment = '" + user.getAppointment()

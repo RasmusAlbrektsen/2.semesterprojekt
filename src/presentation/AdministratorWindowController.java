@@ -97,7 +97,7 @@ public class AdministratorWindowController implements Initializable {
         nameField.setText(user.getName());
         usernameField.setText(user.getUsername());
         passwordField.setText(user.getPassword());
-        if (user.getLog() == true) {
+        if (user.getAdmin()== true) {
             logAccessRadio.setSelected(true);
         } else {
             logAccessRadio.setSelected(false);

@@ -133,7 +133,7 @@ public class Business {
     }
     
     public void deleteCase(ICase aCase){
-        aCase.deleteCase();
+        aCase.deleteCase(currentUser.getIDNumber());
     }
     
     public void saveUser(String name, String username, String password) {

@@ -141,7 +141,11 @@ public class Case implements ICase {
     }
     
     @Override
-    public void deleteCase() {
+    public void deleteCase(int currentUserID) {
         Business.getInstance().getData().deleteCase(this);
+        Business.getInstance().getData().saveToCaseLog(currentUserID,
+                IDNum,
+                Business.getInstance().getCalendar().getTodaysDateString(),
+                Business.getInstance().getCalendar().getTodaysTimeString());
     }
 }

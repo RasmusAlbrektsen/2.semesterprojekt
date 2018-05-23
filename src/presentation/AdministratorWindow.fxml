@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
+<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="170.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="235.44439697265625" />
@@ -87,11 +87,11 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <HBox prefHeight="60.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+      <HBox prefHeight="60.0" prefWidth="220.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <children>
-            <VBox prefHeight="64.0" prefWidth="100.0" spacing="10.0">
+            <VBox prefHeight="64.0" prefWidth="110.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" text="Log" />
+                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" text="Administrator" />
                   <RadioButton fx:id="medicineAccessRadio" mnemonicParsing="false" text="Medicin" />
                </children>
             </VBox>

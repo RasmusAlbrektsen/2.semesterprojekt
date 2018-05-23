@@ -224,6 +224,14 @@ public class OpenCaseWindowController implements Initializable {
         System.out.println(getCaseInformation());
         UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
     }
+    
+    public void isAdmin(boolean b) {
+        if(b){
+            System.out.println(b);
+            deleteCaseButton.setDisable(false);
+            deleteCaseButton.setVisible(true);
+        }
+    }
 
     public void setCase(ICase aCase) {
         currentCase = aCase;
