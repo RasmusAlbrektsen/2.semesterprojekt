@@ -40,4 +40,6 @@ public interface IUser {
     void updateUser();
     
     void saveUser(int currentUserID); 
+    
+    void deleteUser();
 }

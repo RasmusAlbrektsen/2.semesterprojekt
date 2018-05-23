@@ -34,4 +34,6 @@ public interface ICase {
     void updateCase();
     
     void saveCase(int currentUserID);
+    
+    void deleteCase();
 }
