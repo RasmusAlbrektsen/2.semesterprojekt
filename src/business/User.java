@@ -51,31 +51,11 @@ public class User implements IUser {
         }
     }
 
-    public User(String name, String username, String password, int accessLevel) {
+    public User(String name, String username, String password) {
         this.name = name;
         this.username = username;
         this.password = password;
         appointments = new ArrayList<>();
-        switch (accessLevel) {
-            case 1:
-                appointment = true;
-                caseAccess = false;
-                medicine = false;
-                log = false;
-                break;
-            case 2:
-                appointment = true;
-                caseAccess = true;
-                medicine = true;
-                log = false;
-                break;
-            case 3:
-                appointment = true;
-                caseAccess = true;
-                medicine = true;
-                log = true;
-                break;
-        }
     }
 
     /*public boolean login(String username, String password) {

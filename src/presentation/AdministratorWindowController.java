@@ -62,7 +62,7 @@ public class AdministratorWindowController implements Initializable {
     private RadioButton caseAccessRadio;
     @FXML
     private Button createNewUserButton;
-    
+
     private IBusiness business = UdredGUI.getInstance().getBusiness();
     private ObservableList<String> userList = FXCollections.observableArrayList();
     private ObservableList<String> logList = FXCollections.observableArrayList();
@@ -124,7 +124,6 @@ public class AdministratorWindowController implements Initializable {
         userListView.setItems(userList);
     }
 
-
     @FXML
     private void removeUserAction(ActionEvent event) {
     }
@@ -149,57 +148,95 @@ public class AdministratorWindowController implements Initializable {
                 alert.close();
             }
         } else {
-            
+
         }
     }
-    
+
     private void updateUserInformation(IUser user) {
         user.setName(nameField.getText());
-                user.setPassword(passwordField.getText());
-                //Set access for user
-                if (logAccessRadio.isSelected()) {
-                    user.setLog(true);
-                } else {
-                    user.setLog(false);
-                }
-                if (calendarAccessRadio.isSelected()) {
-                    user.setAppointment(true);
-                } else {
-                    user.setAppointment(false);
-                }
-                if (medicineAccessRadio.isSelected()) {
-                    user.setMedicine(true);
-                } else {
-                    user.setMedicine(false);
-                }
-                if (caseAccessRadio.isSelected()) {
-                    user.setCaseAccess(true);
-                } else {
-                    user.setCaseAccess(false);
-                }
-                user.updateUser();
+        user.setPassword(passwordField.getText());
+        //Set access for user
+        if (logAccessRadio.isSelected()) {
+            user.setLog(true);
+        } else {
+            user.setLog(false);
+        }
+        if (calendarAccessRadio.isSelected()) {
+            user.setAppointment(true);
+        } else {
+            user.setAppointment(false);
+        }
+        if (medicineAccessRadio.isSelected()) {
+            user.setMedicine(true);
+        } else {
+            user.setMedicine(false);
+        }
+        if (caseAccessRadio.isSelected()) {
+            user.setCaseAccess(true);
+        } else {
+            user.setCaseAccess(false);
+        }
+        user.updateUser();
     }
 
     private void showLogAction(ActionEvent event) {
         logList.clear();
-        
+
     }
 
     @FXML
     private void createNewUserAction(ActionEvent event) {
-       
+        if (!business.getUserMap().containsKey(usernameField.getText()) && checkBoxes() == true) {
+            ButtonType save = new ButtonType("Gem", ButtonBar.ButtonData.OK_DONE);
+            ButtonType cancel = new ButtonType("Annuller", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Alert alert = new Alert(AlertType.NONE,
+                    "Vil du oprette denne bruger?" + "\n" + nameField.getText()
+                    + "\n" + usernameField.getText() + "\n" + passwordField.getText(),
+                    save,
+                    cancel);
+
+            alert.setTitle("Ny bruger!");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == save) {
+                business.saveUser(nameField.getText(), usernameField.getText(), passwordField.getText());
+            } else if (result.get() == cancel) {
+                alert.close();
+            }
+        }
     }
     
-    private void updateUseListView() {
+    private boolean checkBoxes() {
+        if(!usernameField.getText().trim().isEmpty() &&
+                !nameField.getText().trim().isEmpty() && 
+                !passwordField.getText().trim().isEmpty()) {
+            return true;
+        } else {
+            ButtonType ok = new ButtonType("Okay", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Alert alert = new Alert(AlertType.NONE,
+                    "Information mangler! Udfyld alle felter",
+                    ok);
+
+            alert.setTitle("Felt ikke udfyldt");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == ok) {
+                business.saveUser(nameField.getText(), usernameField.getText(), passwordField.getText());
+            } 
+            return false;
+        }
+    }
+
+    private void updateUserListView() {
         
     }
 
     @FXML
-    private void showUserLogAction(ActionEvent event) {
+        private void showUserLogAction(ActionEvent event) {
     }
 
     @FXML
-    private void showCaseLogAction(ActionEvent event) {
+        private void showCaseLogAction(ActionEvent event) {
     }
 
 
