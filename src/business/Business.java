@@ -131,6 +131,10 @@ public class Business {
     public void updateCase(ICase aCase, String info){
         aCase.updateCase(currentUser.getIDNumber(),info);
     }
+    
+    public void saveUser(String name, String username, String password) {
+        new User(name, username, password).saveUser(getCurrentUser().getIDNumber());
+    }
 
     public List<ICase> searchCases(Date date) {
         List<ICase> cases = new ArrayList<>();
@@ -230,4 +234,5 @@ public class Business {
             e.printStackTrace();
         }
     }
+         
 }
