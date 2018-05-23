@@ -73,23 +73,24 @@ public class SQLDatabase {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','CaseID:" + caseID + "','" + date + "','" + time + "');");
+            st.execute("INSERT INTO caselog(userid, caseid, date, time) VALUES('" + userID + "','" + caseID + "','" + date + "','" + time + "');");
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-  
-    public void saveCreatedCaseLog(int userID, int caseID, String date, String time){
+
+    public void saveCreatedCaseLog(int userID, int caseID, String date, String time) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO caselog VALUES('UserID:" + userID + "','New CaseID:" + caseID + "','" + date + "','" + time + "');");
+            st.execute("INSERT INTO caselog(userid, caseid, date, time) VALUES('" + userID + "','" + caseID + "','" + date + "','" + time + "');");
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public ResultSet getCaseLog() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -114,8 +115,8 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-    
-    public void saveCreatedUserLog(int userID, int changedUserID, String date, String time){
+
+    public void saveCreatedUserLog(int userID, int changedUserID, String date, String time) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -125,7 +126,7 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-  
+
     public ResultSet getUserLog() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -140,11 +141,11 @@ public class SQLDatabase {
     }
 
     //USERS 
-    public void saveUser(IUser user) {
+    public int saveUser(IUser user) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO users"
+            ResultSet rs = st.executeQuery("INSERT INTO users"
                     + "(name, username, password, log, caseaccess, medicine, appointment) "
                     + "VALUES('" + user.getName()
                     + "', '" + user.getUsername()
@@ -152,13 +153,16 @@ public class SQLDatabase {
                     + "', '" + user.getLog()
                     + "', '" + user.getCaseaccess()
                     + "', '" + user.getMedicine()
-                    + "', '" + user.getAppointment() + "');");
+                    + "', '" + user.getAppointment() + "') RETURNING id;");
             db.close();
+            rs.next();
+            return rs.getInt("id");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
-    
+
     public void updateUser(IUser user) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -176,7 +180,7 @@ public class SQLDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }    
+    }
 
     public ResultSet getAllUsers() {
         try {
@@ -190,14 +194,14 @@ public class SQLDatabase {
         }
         return null;
     }
-    
+
     public void deleteUser(IUser user) {
         List<Integer> appointmentIDs = new ArrayList();
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM has WHERE userid = " +  user.getIDNumber());
-            while(rs.next()) {
+            ResultSet rs = st.executeQuery("SELECT * FROM has WHERE userid = " + user.getIDNumber());
+            while (rs.next()) {
                 appointmentIDs.add(rs.getInt("appointmentID"));
             }
             st.execute("DELETE FROM has WHERE userid = " + user.getIDNumber());
@@ -215,7 +219,7 @@ public class SQLDatabase {
     }
 
     //CASES
-    public void saveCase(ICase aCase, String info) {
+    public int saveCase(ICase aCase, String info) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -231,19 +235,20 @@ public class SQLDatabase {
                     + rs.getInt("caseid") + ".txt" + "' WHERE caseid = '"
                     + caseID + "'");
             db.close();
-
             PrintWriter out = new PrintWriter("cases/case" + caseID + ".txt");
             out.println(info);
             out.close();
+            return caseID;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
-    
+
     public String getCaseInfo(String directory) throws Exception {
         return new String(Files.readAllBytes(Paths.get(directory)));
     }
-    
+
     public void updateCase(ICase aCase) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -258,7 +263,7 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-    
+
     public ResultSet getAllCases() {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -271,23 +276,23 @@ public class SQLDatabase {
         }
         return null;
     }
-    
+
     public void deleteCase(ICase aCase) {
         List<Integer> medicineIDs = new ArrayList();
         List<Integer> dailyNoteIDs = new ArrayList();
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM has_a WHERE caseid = " +  aCase.getCaseNumber());
-            while(rs.next()) {
+            ResultSet rs = st.executeQuery("SELECT * FROM has_a WHERE caseid = " + aCase.getCaseNumber());
+            while (rs.next()) {
                 dailyNoteIDs.add(rs.getInt("noteID"));
             }
             st.execute("DELETE FROM has_a WHERE caseid = " + aCase.getCaseNumber());
             ResultSet rs1 = st.executeQuery("SELECT * FROM associated WHERE caseid = " + aCase.getCaseNumber());
-            while(rs1.next()){
+            while (rs1.next()) {
                 medicineIDs.add(rs.getInt("medicineID"));
             }
-            st.execute("DELETE FROM associated WHERE caseid = " + aCase.getCaseNumber());          
+            st.execute("DELETE FROM associated WHERE caseid = " + aCase.getCaseNumber());
             st.execute("DELETE FROM edited_case WHERE caseid = " + aCase.getCaseNumber());
             st.execute("DELETE FROM cansee WHERE caseid = " + aCase.getCaseNumber());
             st.execute("DELETE FROM works_on WHERE caseid = " + aCase.getCaseNumber());
@@ -303,7 +308,6 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
-
 
     //APPOINTMENTS
     public ResultSet getAppointments(int userID) {
@@ -391,7 +395,5 @@ public class SQLDatabase {
         }
         return null;
     }
-
-    
 
 }

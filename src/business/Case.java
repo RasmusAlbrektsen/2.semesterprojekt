@@ -130,7 +130,7 @@ public class Case implements ICase {
     }
     @Override
     public void saveCase(int currentUserID) {
-        Business.getInstance().getData().saveCase(this, info);
+        IDNum = Business.getInstance().getData().saveCase(this, info);
         Business.getInstance().getData().saveCreatedCaseLog(currentUserID, 
                 IDNum, 
                 Business.getInstance().getCalendar().getTodaysDateString(), 

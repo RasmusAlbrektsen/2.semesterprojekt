@@ -51,8 +51,7 @@ public class User implements IUser {
         }
     }
 
-    public User(int IDNumber, String name, String username, String password, int accessLevel) {
-        this.IDNumber = IDNumber;
+    public User(String name, String username, String password, int accessLevel) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -238,7 +237,7 @@ public class User implements IUser {
 
     @Override
     public void saveUser(int currentUserID) {
-        Business.getInstance().getData().saveUser(this);
+        IDNumber = Business.getInstance().getData().saveUser(this);
         Business.getInstance().getData().saveCreatedUserLog(currentUserID,
                 IDNumber, 
                 Business.getInstance().getCalendar().getTodaysDateString(), 

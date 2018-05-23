@@ -24,13 +24,13 @@ public interface IData {
     
     //USERS
     ResultSet getAllUsers();
-    void saveUser(IUser user);
+    int saveUser(IUser user);
     void updateUser(IUser user);
     void deleteUser(IUser user);
     
     
     //CASES
-    void saveCase(ICase aCase, String data);
+    int saveCase(ICase aCase, String data);
     ResultSet getAllCases();
     String getCaseInfo(String directory);
     void updateCase(ICase aCase);

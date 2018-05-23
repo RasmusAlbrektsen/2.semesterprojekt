@@ -66,13 +66,13 @@ public class DataFacade implements IData {
     }
 
     @Override
-    public void saveUser(IUser user) {
-        data.saveUser(user);
+    public int saveUser(IUser user) {
+       return data.saveUser(user);
     }
 
     @Override
-    public void saveCase(ICase aCase, String info) {
-        data.saveCase(aCase, info);
+    public int saveCase(ICase aCase, String info) {
+        return data.saveCase(aCase, info);
     }
 
     @Override
