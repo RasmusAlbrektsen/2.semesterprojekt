@@ -50,7 +50,7 @@ public class Calendar implements ICalendar{
     @Override
     public String getTodaysDateString() {
         Date todaysDate = new Date();
-        String s = sdf.format(todaysDate);
+        String s = sdf2.format(todaysDate);
         return s;
     }
     
