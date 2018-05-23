@@ -141,11 +141,11 @@ public class SQLDatabase {
     }
 
     //USERS 
-    public void saveUser(IUser user) {
+    public int saveUser(IUser user) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO users"
+            ResultSet rs = st.executeQuery("INSERT INTO users"
                     + "(name, username, password, log, caseaccess, medicine, appointment) "
                     + "VALUES('" + user.getName()
                     + "', '" + user.getUsername()
@@ -153,11 +153,14 @@ public class SQLDatabase {
                     + "', '" + user.getLog()
                     + "', '" + user.getCaseaccess()
                     + "', '" + user.getMedicine()
-                    + "', '" + user.getAppointment() + "');");
+                    + "', '" + user.getAppointment() + "') RETURNING id;");
             db.close();
+            rs.next();
+            return rs.getInt("id");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     public void updateUser(IUser user) {
@@ -216,7 +219,7 @@ public class SQLDatabase {
     }
 
     //CASES
-    public void saveCase(ICase aCase, String info) {
+    public int saveCase(ICase aCase, String info) {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
@@ -232,13 +235,14 @@ public class SQLDatabase {
                     + rs.getInt("caseid") + ".txt" + "' WHERE caseid = '"
                     + caseID + "'");
             db.close();
-
             PrintWriter out = new PrintWriter("cases/case" + caseID + ".txt");
             out.println(info);
             out.close();
+            return caseID;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     public String getCaseInfo(String directory) throws Exception {
