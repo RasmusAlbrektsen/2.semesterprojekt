@@ -211,10 +211,10 @@ public class Business {
         ResultSet rs = Business.getInstance().getData().getCaseLog();
            try{
             while (rs.next()) {
-                caseLog.add(new CaseLog(rs.getInt("UserID"),
-                        rs.getInt("CaseID"),
-                        rs.getString("Date"),
-                        rs.getString("Time")));
+                caseLog.add(new CaseLog(rs.getInt("userid"),
+                        rs.getInt("caseid"),
+                        rs.getString("date"),
+                        rs.getString("time")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -225,10 +225,10 @@ public class Business {
         ResultSet rs = Business.getInstance().getData().getCaseLog();
            try{
             while (rs.next()) {
-                userLog.add(new UserLog(rs.getInt("UserID"),
-                        rs.getInt("ChangedUserID"),
-                        rs.getString("Date"),
-                        rs.getString("Time")));
+                userLog.add(new UserLog(rs.getInt("userID"),
+                        rs.getInt(2),
+                        rs.getString("date"),
+                        rs.getString("time")));
             }
         } catch (Exception e) {
             e.printStackTrace();

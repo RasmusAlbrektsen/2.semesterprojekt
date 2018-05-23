@@ -44,4 +44,9 @@ public class UserLog implements IUserLog {
         return time;
     }
     
+    @Override
+    public String toString(){
+        String s = "ChangedUser: " + changeUserID + " UserID: " + userID + " Date: " + date + " Time: " + time;
+        return s;
+    }
 }

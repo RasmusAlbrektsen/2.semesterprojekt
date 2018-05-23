@@ -120,7 +120,7 @@ public class SQLDatabase {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO userlog VALUES('UserID:" + userID + "','New UserID:" + changedUserID + "','" + date + "','" + time + "');");
+            st.execute("INSERT INTO userlog(userID, changeduserid, date, time) VALUES('" + userID + "','" + changedUserID + "','" + date + "','" + time + "');");
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
