@@ -5,6 +5,7 @@ import Acq.IBusiness;
 import Acq.IUser;
 import Acq.ICalendar;
 import Acq.ICase;
+import Acq.IMedicine;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -91,7 +92,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField searchCPRField;
     @FXML
-    private ListView<?> medicinListView;
+    private ListView<String> medicinListView;
     @FXML
     private ListView<HBoxCell> caseListView;
     @FXML
@@ -109,6 +110,7 @@ public class FXMLDocumentController implements Initializable {
 
     private IBusiness business = UdredGUI.getInstance().getBusiness();
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
+    private ObservableList<String> medicineList = FXCollections.observableArrayList();
     private ObservableList<HBoxCell> caseList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
@@ -139,11 +141,20 @@ public class FXMLDocumentController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends HBoxCell> observableList, HBoxCell oldHBoxCell, HBoxCell newHBoxCell) {
                 selectedCase = newHBoxCell;
+                getCaseMeds(selectedCase.getCase());
                 System.out.println(selectedCase);
             }
         });
         
         checkAccess();
+    }
+    
+    private void getCaseMeds(ICase aCase){
+        medicineList.clear();
+        for (IMedicine medicine : aCase.getMedicine()) {
+            medicineList.add(medicine.toString());
+        }
+        medicinListView.setItems(medicineList);
     }
     
     private void checkAccess(){

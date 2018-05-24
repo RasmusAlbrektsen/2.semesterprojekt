@@ -84,7 +84,7 @@ public class LoginWindowController implements Initializable {
     private void loadMainWindow() {
         try {
             Stage stage = new Stage();
-            stage.setTitle("Log ind");
+            stage.setTitle("Sensum Udred");
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
             Scene scene = new Scene(root);
             

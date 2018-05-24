@@ -137,7 +137,11 @@ public class Business {
     }
     
     public void saveDailyNote(String note, int caseID){
-        new DailyNote(note).pushDailyNote(caseID);
+        new DailyNote(note).pushDailyNote(caseID, getCurrentUser().getIDNumber());
+    }
+    
+    public void saveMedicine(String name, String VNR, String dosage, int caseID){
+        new Medicine(name, VNR, dosage).pushMedicine(caseID, getCurrentUser().getIDNumber());
     }
     
     public void saveUser(String name, String username, String password) {

@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/business/BusinessFacade.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/business/Business.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/presentation/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/presentation/OpenCaseWindowController.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/business/CaseLogger.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/data/DataCase.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/presentation/OpenCaseWindow.fxml</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/business/User.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/business/Case.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/data/DataDailyNote.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/data/DataFacade.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/presentation/UdredGUI.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/business/Bootstrap.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/data/SQLDatabase.java</file>
-            <file>file:/C:/Users/Bruger/Documents/GitHub/2.semesterprojekt/src/business/Medicine.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import sun.security.tools.KeyStoreUtil;
 
 public class Case implements ICase {
 
@@ -50,11 +51,24 @@ public class Case implements ICase {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        ResultSet rs2 = Business.getInstance().getData().getMedicine(IDNum);
+        try {
+            while (rs2.next()) {
+                medicineList.add(new Medicine(rs2.getString("name"),
+                        rs2.getString("vnr"),
+                        rs2.getString("dosage"),
+                        rs2.getInt("medicineID")));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public boolean createMedicine(String name, String VNR, String dosage) {
         medicineList.add(new Medicine(name, VNR, dosage, IDNum));
+        Business.getInstance().getData().saveMedicine(new Medicine(name, VNR, dosage), IDNum);
         return true;
     }
 
