@@ -254,11 +254,14 @@ public class SQLDatabase {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
             st.execute("UPDATE cases SET "
-                    + "creation_date = " + aCase.getCreationDate()
+                    + "creation_date = '" + aCase.getCreationDate()
                     + "',cpr = '" + aCase.getCPR()
                     + "',is_active = '" + aCase.isActive()
-                    + "' WHERE id = " + aCase.getCaseNumber());
+                    + "' WHERE caseid = " + aCase.getCaseNumber());
             db.close();
+            PrintWriter out = new PrintWriter("cases/case" + aCase.getCaseNumber() + ".txt");
+            out.println(aCase.getInfo());
+            out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
