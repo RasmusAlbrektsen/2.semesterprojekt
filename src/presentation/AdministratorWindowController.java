@@ -81,7 +81,7 @@ public class AdministratorWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         business.setCaseLogs();
         business.setUserLogs();
-        showUsers();
+        updateUserListView();
         userListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -97,7 +97,7 @@ public class AdministratorWindowController implements Initializable {
         nameField.setText(user.getName());
         usernameField.setText(user.getUsername());
         passwordField.setText(user.getPassword());
-        if (user.getAdmin()== true) {
+        if (user.getAdmin() == true) {
             logAccessRadio.setSelected(true);
         } else {
             logAccessRadio.setSelected(false);
@@ -120,16 +120,26 @@ public class AdministratorWindowController implements Initializable {
 
     }
 
-    public void showUsers() {
-        userList.clear();
-        for (Map.Entry<String, IUser> entry : business.getUserMap().entrySet()) {
-            userList.add(entry.getKey());
-        }
-        userListView.setItems(userList);
-    }
-
     @FXML
     private void removeUserAction(ActionEvent event) {
+        IUser user = business.getUserMap().get(usernameField.getText());
+        ButtonType delete = new ButtonType("Slet", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancel = new ButtonType("Annuller", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(AlertType.NONE,
+                "Er du sikker på at du vil slette brugeren: "
+                + usernameField.getText(),
+                delete,
+                cancel);
+
+        alert.setTitle("Bruger slettes!");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == delete) {
+            user.deleteUser(business.getCurrentUser().getIDNumber());
+        } else if (result.get() == cancel) {
+            alert.close();
+        }
+        updateUserListView();
     }
 
     @FXML
@@ -181,6 +191,7 @@ public class AdministratorWindowController implements Initializable {
             user.setCaseAccess(false);
         }
         user.updateUser(business.getCurrentUser().getIDNumber());
+        updateUserListView();
     }
 
     @FXML
@@ -203,12 +214,13 @@ public class AdministratorWindowController implements Initializable {
                 alert.close();
             }
         }
+        updateUserListView();
     }
-    
+
     private boolean checkBoxes() {
-        if(!usernameField.getText().trim().isEmpty() &&
-                !nameField.getText().trim().isEmpty() && 
-                !passwordField.getText().trim().isEmpty()) {
+        if (!usernameField.getText().trim().isEmpty()
+                && !nameField.getText().trim().isEmpty()
+                && !passwordField.getText().trim().isEmpty()) {
             return true;
         } else {
             ButtonType ok = new ButtonType("Okay", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -221,32 +233,38 @@ public class AdministratorWindowController implements Initializable {
 
             if (result.get() == ok) {
                 business.saveUser(nameField.getText(), usernameField.getText(), passwordField.getText());
-            } 
+            }
             return false;
         }
     }
 
     private void updateUserListView() {
-        
+        business.getUserMap().clear();
+        userList.clear();
+        userListView.getItems().clear();
+        business.setUserMap();
+        for (Map.Entry<String, IUser> entry : business.getUserMap().entrySet()) {
+            userList.add(entry.getKey());
+        }
+        userListView.setItems(userList);
     }
 
     @FXML
-        private void showUserLogAction(ActionEvent event) {
-            logList.clear();
-            for(IUserLog userlog : business.getUserLog()) {
-                logList.add(userlog.toString());
-            }
-            logListView.setItems(logList);
+    private void showUserLogAction(ActionEvent event) {
+        logList.clear();
+        for (IUserLog userlog : business.getUserLog()) {
+            logList.add(userlog.toString());
+        }
+        logListView.setItems(logList);
     }
 
     @FXML
-        private void showCaseLogAction(ActionEvent event) {
-            logList.clear();
-            for(ICaseLog caselog : business.getCaseLog()) {
-                logList.add(caselog.toString());
-            }
-            logListView.setItems(logList);
+    private void showCaseLogAction(ActionEvent event) {
+        logList.clear();
+        for (ICaseLog caselog : business.getCaseLog()) {
+            logList.add(caselog.toString());
+        }
+        logListView.setItems(logList);
     }
-
 
 }

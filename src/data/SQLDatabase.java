@@ -211,7 +211,7 @@ public class SQLDatabase {
             for (Integer appointmentID : appointmentIDs) {
                 st.execute("DELETE FROM daily_note WHERE noteID = " + appointmentID);
             }
-            st.execute("DELETE FROM users WHERE userid = " + user.getIDNumber());
+            st.execute("DELETE FROM users WHERE id = " + user.getIDNumber());
             db.close();
         } catch (Exception e) {
             e.printStackTrace();

@@ -229,7 +229,11 @@ public class User implements IUser {
     }
 
     @Override
-    public void deleteUser() {
+    public void deleteUser(int currentUserID) {
         Business.getInstance().getData().deleteUser(this);
+        Business.getInstance().getData().saveToUserLog(currentUserID,
+                IDNumber,
+                Business.getInstance().getCalendar().getTodaysDateString(),
+                Business.getInstance().getCalendar().getTodaysTimeString());
     }
 }

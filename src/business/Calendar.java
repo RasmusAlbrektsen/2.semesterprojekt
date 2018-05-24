@@ -55,6 +55,13 @@ public class Calendar implements ICalendar{
     }
     
     @Override
+    public String getTodaysDateStringDK() {
+        Date todaysDate = new Date();
+        String s = sdf.format(todaysDate);
+        return s;
+    }
+    
+    @Override
     public Date getTodaysDate() {
         Date todaysDate = new Date();
         return todaysDate;

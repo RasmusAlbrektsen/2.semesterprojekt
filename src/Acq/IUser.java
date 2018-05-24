@@ -41,5 +41,5 @@ public interface IUser {
     
     void saveUser(int currentUserID); 
     
-    void deleteUser();
+    void deleteUser(int currentUserID);
 }
