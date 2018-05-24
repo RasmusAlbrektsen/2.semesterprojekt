@@ -11,6 +11,7 @@ public interface ICalendar {
     
     public String getDailyAppointments(String date, IUser user);
     public String getTodaysDateString();
+    public String getTodaysDateStringDK();
     public String getTodaysTimeString();
     public Date getTodaysDate();
     public String formatLocalDate(LocalDate date);
