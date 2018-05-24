@@ -43,7 +43,7 @@
                            </font>
                         </Text>
                         <Separator layoutX="-2.0" layoutY="282.0" prefHeight="12.0" prefWidth="171.0" />
-                        <Text layoutX="14.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kalender">
+                        <Text fx:id="calendarLabel" layoutX="14.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kalender">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Button fx:id="adminWindowButton" mnemonicParsing="false" onAction="#adminWindowAction" prefHeight="39.0" prefWidth="125.0" styleClass="main-button" stylesheets="@styles.css" text="Administratorvindue" />
                            </children>
                         </VBox>
-                        <VBox layoutX="17.0" layoutY="338.0" prefHeight="211.0" prefWidth="134.0" style="-fx-background-radius: 10; -fx-border-width: 10; -fx-border-radius: 10;">
+                        <VBox fx:id="calendarVBox" layoutX="17.0" layoutY="338.0" prefHeight="211.0" prefWidth="134.0" style="-fx-background-radius: 10; -fx-border-width: 10; -fx-border-radius: 10;">
                            <children>
                               <GridPane fx:id="frontpageDateGrid" prefHeight="243.0" prefWidth="134.0" styleClass="main-tab" stylesheets="@styles.css">
                                 <columnConstraints>

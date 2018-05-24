@@ -120,7 +120,7 @@ public class SQLDatabase {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            st.execute("INSERT INTO userlog VALUES('UserID:" + userID + "','New UserID:" + changedUserID + "','" + date + "','" + time + "');");
+            st.execute("INSERT INTO userlog(userID, changeduserid, date, time) VALUES('" + userID + "','" + changedUserID + "','" + date + "','" + time + "');");
             db.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -150,7 +150,7 @@ public class SQLDatabase {
                     + "VALUES('" + user.getName()
                     + "', '" + user.getUsername()
                     + "', '" + user.getPassword()
-                    + "', '" + user.getLog()
+                    + "', '" + user.getAdmin()
                     + "', '" + user.getCaseaccess()
                     + "', '" + user.getMedicine()
                     + "', '" + user.getAppointment() + "') RETURNING id;");
@@ -171,7 +171,7 @@ public class SQLDatabase {
                     + "name = '" + user.getName()
                     + "',username = '" + user.getUsername()
                     + "',password = '" + user.getPassword()
-                    + "',log = '" + user.getLog()
+                    + "',log = '" + user.getAdmin()
                     + "',caseaccess = '" + user.getCaseaccess()
                     + "',medicine = '" + user.getMedicine()
                     + "',appointment = '" + user.getAppointment()
@@ -254,11 +254,14 @@ public class SQLDatabase {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
             st.execute("UPDATE cases SET "
-                    + "creation_date = " + aCase.getCreationDate()
+                    + "creation_date = '" + aCase.getCreationDate()
                     + "',cpr = '" + aCase.getCPR()
                     + "',is_active = '" + aCase.isActive()
-                    + "' WHERE id = " + aCase.getCaseNumber());
+                    + "' WHERE caseid = " + aCase.getCaseNumber());
             db.close();
+            PrintWriter out = new PrintWriter("cases/case" + aCase.getCaseNumber() + ".txt");
+            out.println(aCase.getInfo());
+            out.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -293,7 +296,8 @@ public class SQLDatabase {
                 medicineIDs.add(rs.getInt("medicineID"));
             }
             st.execute("DELETE FROM associated WHERE caseid = " + aCase.getCaseNumber());
-            st.execute("DELETE FROM edited_case WHERE caseid = " + aCase.getCaseNumber());
+            // Det her er fakin useless
+            //st.execute("DELETE FROM edited_case WHERE caseid = " + aCase.getCaseNumber());
             st.execute("DELETE FROM cansee WHERE caseid = " + aCase.getCaseNumber());
             st.execute("DELETE FROM works_on WHERE caseid = " + aCase.getCaseNumber());
             for (Integer dailyNoteID : dailyNoteIDs) {

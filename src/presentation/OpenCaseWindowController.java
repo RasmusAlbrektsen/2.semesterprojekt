@@ -9,6 +9,7 @@ import Acq.ICase;
 import business.Case;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
@@ -18,7 +19,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
@@ -119,9 +123,11 @@ public class OpenCaseWindowController implements Initializable {
     private TextField caseNumber;
     @FXML
     private Label caseLabel;
-    
+
     private ICase currentCase;
-    
+    @FXML
+    private Button deleteCaseButton;
+
     /**
      * Initializes the controller class.
      */
@@ -160,7 +166,6 @@ public class OpenCaseWindowController implements Initializable {
     }
 
     public void loadCaseInformation(String info) {
-        StringTokenizer token = new StringTokenizer(info, "\\},\\{");
         String[] caseSplitter = info.split(Pattern.quote("\\},\\{"));
         henvendelseTextBox.setText(caseSplitter[0]);
         ydelsesTextBox.setText(caseSplitter[1]);
@@ -216,10 +221,21 @@ public class OpenCaseWindowController implements Initializable {
 
     @FXML
     private void saveCaseButtonAction(ActionEvent event) {
+        System.out.println(getCaseInformation());
         UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
     }
     
-    public void setCase(ICase aCase){
+    public void isAdmin(boolean b) {
+        if(b){
+            System.out.println(b);
+            deleteCaseButton.setDisable(false);
+            deleteCaseButton.setVisible(true);
+        }
+    }
+
+    public void setCase(ICase aCase) {
+        currentCase = aCase;
+        loadCaseInformation(currentCase.getInfo());
         saveCaseButton.setDisable(true);
         saveCaseButton.setVisible(false);
         updateCaseButton.setDisable(false);
@@ -228,13 +244,30 @@ public class OpenCaseWindowController implements Initializable {
         caseNumber.setVisible(true);
         CPRTextField.setEditable(false);
         nameTextField.setEditable(false);
-        currentCase = aCase;
-        loadCaseInformation(currentCase.getInfo());
     }
 
     @FXML
     private void updateCaseButtonAction(ActionEvent event) {
         UdredGUI.getInstance().getBusiness().updateCase(currentCase, getCaseInformation());
+    }
+
+    @FXML
+    private void deleteCaseButtonAction(ActionEvent event) {
+        ButtonType accept = new ButtonType("Accepter", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancel = new ButtonType("Annuller", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(Alert.AlertType.NONE,
+                "Vil du slette denne sag?",
+                accept,
+                cancel);
+
+        alert.setTitle("Ændringer til sag!");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == accept) {
+            UdredGUI.getInstance().getBusiness().deleteCase(currentCase);
+        } else if (result.get() == cancel) {
+            alert.close();
+        }
     }
 
 }

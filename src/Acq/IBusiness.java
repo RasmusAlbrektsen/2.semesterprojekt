@@ -17,9 +17,13 @@ public interface IBusiness {
     IUser getCurrentUser();
     ICalendar getCalendar();
     IData getData();
+    List<ICaseLog> getCaseLog();
+    List<IUserLog> getUserLog();
     Map<String, IUser> getUserMap();
     void setUserMap();
     void setCaseList();
+    void setCaseLogs();
+    void setUserLogs();
     List<ICase> getCases();
     List<ICase> searchCases(Date date);
     List<ICase> searchCases(String CPR);
@@ -31,4 +35,5 @@ public interface IBusiness {
     void saveCase(String CPR, String info);
     void updateCase(ICase aCase, String info);
     void saveUser(String name, String username, String password);
+    void deleteCase(ICase aCase);
 }

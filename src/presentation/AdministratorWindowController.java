@@ -7,7 +7,9 @@ package presentation;
 
 import Acq.IBusiness;
 import Acq.ICase;
+import Acq.ICaseLog;
 import Acq.IUser;
+import Acq.IUserLog;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +79,8 @@ public class AdministratorWindowController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        business.setCaseLogs();
+        business.setUserLogs();
         showUsers();
         userListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -93,7 +97,7 @@ public class AdministratorWindowController implements Initializable {
         nameField.setText(user.getName());
         usernameField.setText(user.getUsername());
         passwordField.setText(user.getPassword());
-        if (user.getLog() == true) {
+        if (user.getAdmin()== true) {
             logAccessRadio.setSelected(true);
         } else {
             logAccessRadio.setSelected(false);
@@ -179,11 +183,6 @@ public class AdministratorWindowController implements Initializable {
         user.updateUser(business.getCurrentUser().getIDNumber());
     }
 
-    private void showLogAction(ActionEvent event) {
-        logList.clear();
-
-    }
-
     @FXML
     private void createNewUserAction(ActionEvent event) {
         if (!business.getUserMap().containsKey(usernameField.getText()) && checkBoxes() == true) {
@@ -233,10 +232,20 @@ public class AdministratorWindowController implements Initializable {
 
     @FXML
         private void showUserLogAction(ActionEvent event) {
+            logList.clear();
+            for(IUserLog userlog : business.getUserLog()) {
+                logList.add(userlog.toString());
+            }
+            logListView.setItems(logList);
     }
 
     @FXML
         private void showCaseLogAction(ActionEvent event) {
+            logList.clear();
+            for(ICaseLog caselog : business.getCaseLog()) {
+                logList.add(caselog.toString());
+            }
+            logListView.setItems(logList);
     }
 
 

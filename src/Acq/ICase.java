@@ -35,5 +35,5 @@ public interface ICase {
     
     void saveCase(int currentUserID);
     
-    void deleteCase();
+    void deleteCase(int currentUserID);
 }

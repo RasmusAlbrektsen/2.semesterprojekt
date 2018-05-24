@@ -38,6 +38,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -120,6 +121,10 @@ public class FXMLDocumentController implements Initializable {
     private Button openCaseButton;
 
     private HBoxCell selectedCase;
+    @FXML
+    private Text calendarLabel;
+    @FXML
+    private VBox calendarVBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -137,7 +142,43 @@ public class FXMLDocumentController implements Initializable {
                 System.out.println(selectedCase);
             }
         });
-
+        
+        checkAccess();
+    }
+    
+    private void checkAccess(){
+        if(!business.getCurrentUser().getAdmin()){
+            adminWindowButton.setDisable(true);
+            adminWindowButton.setVisible(false);
+        }
+        if(!business.getCurrentUser().getCaseaccess() && !business.getCurrentUser().getAdmin()){
+            createNewCase.setDisable(true);
+            createNewCase.setVisible(false);
+            openCaseButton.setDisable(true);
+            openCaseButton.setVisible(false);
+        }
+        if(!business.getCurrentUser().getAppointment()){
+            newAppointmentLink.setDisable(true);
+            newAppointmentLink.setVisible(false);
+            datePicker.setDisable(true);
+            datePicker.setVisible(false);
+            hourSpinner.setDisable(true);
+            hourSpinner.setVisible(false);
+            minuteSpinner.setDisable(true);
+            minuteSpinner.setVisible(false);
+            calendarLabel.setVisible(false);
+            calendarVBox.setDisable(true);
+            calendarVBox.setVisible(false);
+        }
+        if(!business.getCurrentUser().getMedicine()){
+            medicinListView.setDisable(true);
+            medicinListView.setVisible(false);
+            addMedicineButton.setDisable(true);
+            addMedicineButton.setVisible(false);
+            removeMedicineButton.setDisable(true);
+            removeMedicineButton.setVisible(false);
+            
+        }
     }
 
     @FXML
@@ -280,6 +321,7 @@ public class FXMLDocumentController implements Initializable {
         Stage stage = new Stage();
         OpenCaseWindowController caseWindow = UdredGUI.getInstance().loadController(stage, "OpenCaseWindow").getController();
         caseWindow.setCase(selectedCase.getCase());
+        caseWindow.isAdmin(business.getCurrentUser().getAdmin());
     }
 
 }

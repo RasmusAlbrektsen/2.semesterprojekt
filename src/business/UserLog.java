@@ -5,11 +5,13 @@
  */
 package business;
 
+import Acq.IUserLog;
+
 /**
  *
  * @author hejoo
  */
-public class UserLog {
+public class UserLog implements IUserLog {
     int userID;
     int changeUserID;
     String date;
@@ -21,5 +23,30 @@ public class UserLog {
         this.date = date;
         this.time = time;
     }
+
+    @Override
+    public int getUserID() {
+        return userID;
+    }
+
+    @Override
+    public int getChangeUserID() {
+        return changeUserID;
+    }
+
+    @Override
+    public String getDate() {
+        return date;
+    }
+
+    @Override
+    public String getTime() {
+        return time;
+    }
     
+    @Override
+    public String toString(){
+        String s = "ChangedUser: " + changeUserID + " UserID: " + userID + " Date: " + date + " Time: " + time;
+        return s;
+    }
 }

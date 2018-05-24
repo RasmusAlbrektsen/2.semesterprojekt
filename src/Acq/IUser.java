@@ -12,7 +12,7 @@ public interface IUser {
 
     String getName();
 
-    boolean getLog();
+    boolean getAdmin();
 
     boolean getMedicine();
 

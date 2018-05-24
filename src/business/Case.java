@@ -23,9 +23,9 @@ public class Case implements ICase {
     private List<IDailyNote> dailyNotes;
     private String CPR;
 
-    public Case(String CPR) {
+    public Case(String CPR, String info) {
         this.CPR = CPR;
-        //this.IDNum = IDNum;
+        this.info = info;
         creationDate = Business.getInstance().getCalendar().formatToString(new Date());
         dailyNotes = new ArrayList<>();
         medicineList = new ArrayList<>();
@@ -128,6 +128,10 @@ public class Case implements ICase {
     public void updateCase(int currentUserID, String info) {
         this.info = info;
         Business.getInstance().getData().updateCase(this);
+        Business.getInstance().getData().saveCreatedCaseLog(currentUserID, 
+                IDNum, 
+                Business.getInstance().getCalendar().getTodaysDateString(), 
+                Business.getInstance().getCalendar().getTodaysTimeString());
     }
     
     @Override
@@ -141,7 +145,11 @@ public class Case implements ICase {
     }
     
     @Override
-    public void deleteCase() {
+    public void deleteCase(int currentUserID) {
         Business.getInstance().getData().deleteCase(this);
+        Business.getInstance().getData().saveToCaseLog(currentUserID,
+                IDNum,
+                Business.getInstance().getCalendar().getTodaysDateString(),
+                Business.getInstance().getCalendar().getTodaysTimeString());
     }
 }

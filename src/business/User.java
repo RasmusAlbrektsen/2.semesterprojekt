@@ -20,7 +20,7 @@ public class User implements IUser {
     private boolean caseAccess;
     private boolean medicine;
     private boolean appointment;
-    private boolean log;
+    private boolean admin;
     private String username;
     private String password;
     private String name;
@@ -31,7 +31,7 @@ public class User implements IUser {
         this.caseAccess = caseAccess;
         this.medicine = medicine;
         this.appointment = appointment;
-        this.log = log;
+        this.admin = log;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -154,8 +154,8 @@ public class User implements IUser {
     }
 
     @Override
-    public boolean getLog() {
-        return log;
+    public boolean getAdmin() {
+        return admin;
     }
 
     @Override
@@ -191,7 +191,7 @@ public class User implements IUser {
     }
 
     public void setLog(boolean log) {
-        this.log = log;
+        this.admin = log;
     }
 
     public void setUsername(String username) {

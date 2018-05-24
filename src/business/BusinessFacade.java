@@ -8,8 +8,10 @@ package business;
 import Acq.IBusiness;
 import Acq.ICalendar;
 import Acq.ICase;
+import Acq.ICaseLog;
 import Acq.IData;
 import Acq.IUser;
+import Acq.IUserLog;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +21,10 @@ import java.util.Map;
  * @author Bruger
  */
 public class BusinessFacade implements IBusiness {
-    
+
     private IData data;
     private Business bus = Business.getInstance();
-    
+
     @Override
     public void injectData(IData data) {
         this.data = data;
@@ -39,16 +41,27 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public ICalendar getCalendar(){
+    public ICalendar getCalendar() {
         return bus.getCalendar();
     }
-    
+
     @Override
-    public IData getData(){
-        return data; 
+    public IData getData() {
+        return data;
     }
+
     @Override
-    public void setUserMap(){
+    public List<ICaseLog> getCaseLog() {
+        return bus.getCaseLog();
+    }
+
+    @Override
+    public List<IUserLog> getUserLog() {
+        return bus.getUserLog();
+    }
+
+    @Override
+    public void setUserMap() {
         bus.setUserMap();
     }
 
@@ -58,15 +71,25 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
+    public void setCaseLogs() {
+        bus.setCaseLogs();
+    }
+
+    @Override
+    public void setUserLogs() {
+        bus.setUserLogs();
+    }
+
+    @Override
     public List<ICase> getCases() {
         return bus.getCases();
     }
-    
+
     @Override
     public Map<String, IUser> getUserMap() {
         return bus.getUserMap();
     }
-    
+
     @Override
     public List<ICase> searchCases(Date date) {
         return bus.searchCases(date);
@@ -101,9 +124,9 @@ public class BusinessFacade implements IBusiness {
     public List<ICase> searchCases(Date date, String CPR, int id) {
         return bus.searchCases(date, CPR, id);
     }
-    
+
     @Override
-    public void saveCase (String CPR, String info){
+    public void saveCase(String CPR, String info) {
         bus.saveCase(CPR, info);
     }
 
@@ -111,9 +134,15 @@ public class BusinessFacade implements IBusiness {
     public void updateCase(ICase aCase, String info) {
         bus.updateCase(aCase, info);
     }
+
     @Override
     public void saveUser(String name, String username, String password) {
         bus.saveUser(name, username, password);
     }
-    
+
+    @Override
+    public void deleteCase(ICase aCase) {
+        bus.deleteCase(aCase);
+    }
+
 }
