@@ -125,7 +125,7 @@ public class Business {
     }
 
     public void saveCase(String CPR, String info) {
-        new Case(CPR, info).saveCase(currentUser.getIDNumber());
+        new Case(CPR, info).saveCase(getCurrentUser().getIDNumber());
     }
     
     public void updateCase(ICase aCase, String info){
