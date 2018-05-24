@@ -13,10 +13,13 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -39,6 +42,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -102,8 +106,6 @@ public class OpenCaseWindowController implements Initializable {
     @FXML
     private Pagination dailyNotePagination;
     @FXML
-    private TextField dailyNoteNameField;
-    @FXML
     private TextArea readDailyNoteField;
     @FXML
     private TextField nameTextField;
@@ -127,13 +129,18 @@ public class OpenCaseWindowController implements Initializable {
     private ICase currentCase;
     @FXML
     private Button deleteCaseButton;
+    @FXML
+    private Button createNoteButton;
+    @FXML
+    private Tab dailyNoteTab;
+    @FXML
+    private Label dateOfNote;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
     public String getCaseInformation() {
@@ -224,9 +231,9 @@ public class OpenCaseWindowController implements Initializable {
         System.out.println(getCaseInformation());
         UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
     }
-    
+
     public void isAdmin(boolean b) {
-        if(b){
+        if (b) {
             System.out.println(b);
             deleteCaseButton.setDisable(false);
             deleteCaseButton.setVisible(true);
@@ -236,6 +243,7 @@ public class OpenCaseWindowController implements Initializable {
     public void setCase(ICase aCase) {
         currentCase = aCase;
         loadCaseInformation(currentCase.getInfo());
+        getDailyNotes();
         saveCaseButton.setDisable(true);
         saveCaseButton.setVisible(false);
         updateCaseButton.setDisable(false);
@@ -244,6 +252,22 @@ public class OpenCaseWindowController implements Initializable {
         caseNumber.setVisible(true);
         CPRTextField.setEditable(false);
         nameTextField.setEditable(false);
+        dailyNoteTab.setDisable(false);
+        addListenerPaginator();
+        readDailyNoteField.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getNote());
+    }
+
+    public void addListenerPaginator() {
+        dailyNotePagination.currentPageIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                readDailyNoteField.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getNote());
+            }
+        });
+    }
+
+    public void getDailyNotes() {
+        dailyNotePagination.setPageCount(currentCase.getDailyNotes().size());
     }
 
     @FXML
@@ -268,6 +292,11 @@ public class OpenCaseWindowController implements Initializable {
         } else if (result.get() == cancel) {
             alert.close();
         }
+    }
+
+    @FXML
+    private void createNoteButtonAction(ActionEvent event) {
+        UdredGUI.getInstance().getBusiness().saveDailyNote(writeNewDailyNoteField.getText(), currentCase.getCaseNumber());
     }
 
 }

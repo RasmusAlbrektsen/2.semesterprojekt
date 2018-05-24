@@ -136,6 +136,10 @@ public class Business {
         aCase.deleteCase(currentUser.getIDNumber());
     }
     
+    public void saveDailyNote(String note, int caseID){
+        new DailyNote(note).pushDailyNote(caseID);
+    }
+    
     public void saveUser(String name, String username, String password) {
         new User(name, username, password).saveUser(getCurrentUser().getIDNumber());
     }

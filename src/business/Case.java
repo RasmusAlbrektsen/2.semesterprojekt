@@ -42,7 +42,7 @@ public class Case implements ICase {
         ResultSet rs = Business.getInstance().getData().getDailyNote(IDNum);
         try {
             while (rs.next()) {
-                dailyNotes.add(new DailyNote(rs.getInt("daily_note.noteid"),
+                dailyNotes.add(new DailyNote(rs.getInt("noteid"),
                         rs.getString("note"),
                         rs.getString("date")));
 

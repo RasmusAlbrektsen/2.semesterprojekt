@@ -145,4 +145,9 @@ public class BusinessFacade implements IBusiness {
         bus.deleteCase(aCase);
     }
 
+    @Override
+    public void saveDailyNote(String note, int caseID) {
+        bus.saveDailyNote(note, caseID);
+    }
+
 }
