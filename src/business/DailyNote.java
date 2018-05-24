@@ -18,7 +18,7 @@ class DailyNote implements IDailyNote{
 
     public DailyNote(String note) {
         this.note = note;
-        // date =
+        date = Business.getInstance().getCalendar().formatToString(new Date());
     }
     
     public DailyNote (int noteID, String note, String date){

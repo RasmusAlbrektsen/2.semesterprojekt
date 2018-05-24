@@ -362,11 +362,11 @@ public class SQLDatabase {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO Daily_note(note, date) VALUES ('" + DailyNote.getNote() + "','" + DailyNote.getDate() + "')  RETURNING id;");
+            ResultSet rs = st.executeQuery("INSERT INTO Daily_note(note, date) VALUES ('" + DailyNote.getNote() + "','" + DailyNote.getDate() + "')  RETURNING NoteID;");
+            rs.next();
             id = rs.getString(1);
             st.execute("INSERT INTO Has_A VALUES ('" + caseID + "','" + id + "');");
             db.close();
-            System.out.println(rs.getString(0));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -392,7 +392,6 @@ public class SQLDatabase {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT daily_note.noteid, note, date FROM (daily_note INNER JOIN has_a on daily_note.noteid = has_a.noteid) WHERE caseID = " + caseID);
             db.close();
-            rs.next();
             return rs;
         } catch (Exception e) {
             e.printStackTrace();

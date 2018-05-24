@@ -19,7 +19,7 @@
 
 <TabPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.OpenCaseWindowController">
    <tabs>
-      <Tab text="Sagsåbning">
+      <Tab closable="false" text="Sagsåbning">
          <content>
             <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="750.0" vmax="2.0" vvalue="2.0">
                <content>
@@ -155,7 +155,7 @@
             </ScrollPane>
          </content>
       </Tab>
-      <Tab text="Dagsnotater">
+      <Tab fx:id="dailyNoteTab" closable="false" disable="true" text="Dagsnotater">
          <content>
             <GridPane prefHeight="600.0">
               <columnConstraints>
@@ -165,8 +165,8 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="824.4444580078125" minHeight="10.0" prefHeight="456.4444580078125" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="532.888916015625" minHeight="10.0" prefHeight="133.5555419921875" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="461.88885498046875" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="532.888916015625" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="461.88885498046875" minHeight="10.0" prefHeight="135.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <TextArea fx:id="writeNewDailyNoteField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -175,20 +175,11 @@
                      </GridPane.margin>
                   </TextArea>
                   <Pagination fx:id="dailyNotePagination" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="dailyNoteNameField" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextArea fx:id="readDailyNoteField" editable="false" prefHeight="334.0" prefWidth="550.0" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <Label text="Navn:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets bottom="50.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
                   <Label text="Dagsnotat:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                      <font>
                         <Font size="16.0" />
@@ -196,6 +187,15 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
+                  </Label>
+                  <Button fx:id="createNoteButton" mnemonicParsing="false" onAction="#createNoteButtonAction" text="Opret" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Label fx:id="dateOfNote" text="Dato" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </Label>
                </children>
             </GridPane>
