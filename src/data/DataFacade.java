@@ -56,8 +56,8 @@ public class DataFacade implements IData {
     }
 
     @Override
-    public void saveToCaseLog(int userID, int changedUserID, String date, String time) {
-        data.saveToCaseLog(userID, userID, date, time);
+    public void saveToCaseLog(int userID, int caseID, String date, String time) {
+        data.saveToCaseLog(userID, caseID, date, time);
     }
 
     @Override
