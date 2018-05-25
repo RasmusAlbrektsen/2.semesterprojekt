@@ -27,14 +27,6 @@ class DailyNote implements IDailyNote{
         this.noteID = noteID;
     }
     
-    public DailyNote (String note, String date, int caseID) {
-        this.date = date;
-        this.note = note;
-        Business.getInstance().getData().saveDailyNote(this, caseID);
-        this.noteID = Business.getInstance().getData().getDailyNoteID(caseID, note, date);
-        
-    }
-
     public String getDate() {
         return date;
     }
@@ -59,7 +51,11 @@ class DailyNote implements IDailyNote{
         this.noteID = noteID;
     }
     
-    public void pushDailyNote(int caseID) {
+    public void pushDailyNote(int caseID, int currentUserID) {
         Business.getInstance().getData().saveDailyNote(this, caseID);
+        Business.getInstance().getData().saveToCaseLog(currentUserID,
+                caseID,
+                Business.getInstance().getCalendar().getTodaysDateString(),
+                Business.getInstance().getCalendar().getTodaysTimeString());
     }
 }

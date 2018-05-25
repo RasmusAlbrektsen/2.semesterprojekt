@@ -138,15 +138,16 @@
                         <TextField fx:id="adresseTextField" layoutX="475.0" layoutY="2075.0" />
                         <TextField fx:id="tlfTextField" layoutX="475.0" layoutY="2130.0" />
                         <TextField fx:id="sagsbehandlerTextField" layoutX="200.0" layoutY="2180.0" />
+
                         <Label layoutX="200.0" layoutY="2060.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Navn" />
                         <Label layoutX="200.0" layoutY="2115.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="CPR Nummer" />
                         <Label layoutX="200.0" layoutY="2165.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Sagsbehandler" />
                         <Label layoutX="475.0" layoutY="2060.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Adresse" />
                         <Label layoutX="475.0" layoutY="2115.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tlf:" />
-                        <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" style="-fx-text-fill: white;" styleClass="main-button" stylesheets="@styles.css" text="Opdater sag" visible="false" />
-                        <TextField fx:id="caseNumber" disable="true" editable="false" layoutX="475.0" layoutY="2180.0" visible="false" />
-                        <Label fx:id="caseLabel" disable="true" layoutX="475.0" layoutY="2165.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Sagsnummer:" visible="false" />
-                        <Button fx:id="deleteCaseButton" disable="true" layoutX="35.0" layoutY="2194.0" mnemonicParsing="false" onAction="#deleteCaseButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Slet sag" visible="false" />
+                        <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" text="Opdater sag" visible="false" />
+                        <TextField fx:id="caseNumber" editable="false" layoutX="475.0" layoutY="2180.0" visible="false" />
+                        <Label fx:id="caseLabel" layoutX="475.0" layoutY="2165.0" text="Sagsnummer:" visible="false" />
+                        <Button fx:id="deleteCaseButton" disable="true" layoutX="35.0" layoutY="2194.0" mnemonicParsing="false" onAction="#deleteCaseButtonAction" text="Slet sag" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
