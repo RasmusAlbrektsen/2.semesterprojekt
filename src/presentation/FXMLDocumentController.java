@@ -5,6 +5,7 @@ import Acq.IBusiness;
 import Acq.IUser;
 import Acq.ICalendar;
 import Acq.ICase;
+import Acq.IMedicine;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -20,12 +21,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -91,9 +96,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField searchCPRField;
     @FXML
-    private ListView<?> medicinListView;
+    private ListView<String> medicinListView;
     @FXML
-    private ListView<HBoxCell> caseListView;
+    private ListView<HBoxCellCase> caseListView;
     @FXML
     private TextField searchNumberField;
     @FXML
@@ -109,7 +114,8 @@ public class FXMLDocumentController implements Initializable {
 
     private IBusiness business = UdredGUI.getInstance().getBusiness();
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
-    private ObservableList<HBoxCell> caseList = FXCollections.observableArrayList();
+    private ObservableList<String> medicineList = FXCollections.observableArrayList();
+    private ObservableList<HBoxCellCase> caseList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = business.getCalendar();
@@ -120,7 +126,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button openCaseButton;
 
-    private HBoxCell selectedCase;
+    private HBoxCellCase selectedCase;
+
+    private int selectedMedicine;
+
     @FXML
     private Text calendarLabel;
     @FXML
@@ -135,29 +144,48 @@ public class FXMLDocumentController implements Initializable {
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
         updateAllCases();
-        caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCell>() {
+
+        // Listener for caseListView
+        caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCellCase>() {
             @Override
-            public void changed(ObservableValue<? extends HBoxCell> observableList, HBoxCell oldHBoxCell, HBoxCell newHBoxCell) {
+            public void changed(ObservableValue<? extends HBoxCellCase> observableList, HBoxCellCase oldHBoxCell, HBoxCellCase newHBoxCell) {
                 selectedCase = newHBoxCell;
-                System.out.println(selectedCase);
+                selectedMedicine = 0;
+                getCaseMeds(selectedCase.getCase());
             }
         });
-        
+
+        // Listener for medicineListView
+        medicinListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValuev, String oldString, String newString) {
+                selectedMedicine = medicinListView.getSelectionModel().getSelectedIndex();
+            }
+        });
+
         checkAccess();
     }
-    
-    private void checkAccess(){
-        if(!business.getCurrentUser().getAdmin()){
+
+    private void getCaseMeds(ICase aCase) {
+        medicineList.clear();
+        for (IMedicine medicine : aCase.getMedicine()) {
+            medicineList.add(medicine.toString());
+        }
+        medicinListView.setItems(medicineList);
+    }
+
+    private void checkAccess() {
+        if (!business.getCurrentUser().getAdmin()) {
             adminWindowButton.setDisable(true);
             adminWindowButton.setVisible(false);
         }
-        if(!business.getCurrentUser().getCaseaccess() && !business.getCurrentUser().getAdmin()){
+        if (!business.getCurrentUser().getCaseaccess() && !business.getCurrentUser().getAdmin()) {
             createNewCase.setDisable(true);
             createNewCase.setVisible(false);
             openCaseButton.setDisable(true);
             openCaseButton.setVisible(false);
         }
-        if(!business.getCurrentUser().getAppointment()){
+        if (!business.getCurrentUser().getAppointment()) {
             newAppointmentLink.setDisable(true);
             newAppointmentLink.setVisible(false);
             datePicker.setDisable(true);
@@ -170,14 +198,14 @@ public class FXMLDocumentController implements Initializable {
             calendarVBox.setDisable(true);
             calendarVBox.setVisible(false);
         }
-        if(!business.getCurrentUser().getMedicine()){
+        if (!business.getCurrentUser().getMedicine()) {
             medicinListView.setDisable(true);
             medicinListView.setVisible(false);
             addMedicineButton.setDisable(true);
             addMedicineButton.setVisible(false);
             removeMedicineButton.setDisable(true);
             removeMedicineButton.setVisible(false);
-            
+
         }
     }
 
@@ -263,7 +291,7 @@ public class FXMLDocumentController implements Initializable {
 
         caseList.clear();
         for (ICase iCase : searchResult) {
-            caseList.add(new HBoxCell(iCase));
+            caseList.add(new HBoxCellCase(iCase));
         }
         caseListView.setItems(caseList);
     }
@@ -275,21 +303,65 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void addMedicineButtonAction(ActionEvent event) {
+        Dialog dialog = new Dialog<>();
+        dialog.setTitle("Tilføj medicin");
+        dialog.setHeaderText("Tilføj medicin til sag");
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+        
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        TextField name = new TextField();
+        name.setPromptText("Indtast navn");
+        TextField vnr = new TextField();
+        vnr.setPromptText("Indtast VNR");
+        TextField dosage = new TextField();
+        dosage.setPromptText("Indtast dosering");
+
+        grid.add(new Label("Navn:"), 0, 0);
+        grid.add(name, 1, 0);
+        grid.add(new Label("VNR:"), 0, 1);
+        grid.add(vnr, 1, 1);
+        grid.add(new Label("Dosering:"), 0, 2);
+        grid.add(dosage, 1, 2);
+        
+        dialog.getDialogPane().setContent(grid);
+        Optional result = dialog.showAndWait();
+        if (result.isPresent()) {
+            selectedCase.getCase().createMedicine(name.getText(), vnr.getText(), dosage.getText());
+        }
+        
     }
 
     @FXML
     private void removeMedicineButtonAction(ActionEvent event) {
+        selectedCase.getCase().getMedicine().get(selectedMedicine).deleteMedicine(selectedCase.getCase().getCaseNumber(), business.getCurrentUser().getIDNumber());
     }
 
     @FXML
     private void allCasesButtonAction(ActionEvent event) {
-        updateAllCases();
+        updateCaseListView();
     }
 
-    public void updateAllCases() {
+    // Might be useless
+    private void updateAllCases() {
         caseList.clear();
         for (ICase aCase : business.getCases()) {
-            caseList.add(new HBoxCell(aCase));
+            caseList.add(new HBoxCellCase(aCase));
+        }
+        caseListView.setItems(caseList);
+    }
+
+    private void updateCaseListView() {
+        business.getCases().clear();
+        caseList.clear();
+        caseListView.getItems().clear();
+        business.setCaseList();
+        for (ICase aCase : business.getCases()) {
+            caseList.add(new HBoxCellCase(aCase));
         }
         caseListView.setItems(caseList);
     }

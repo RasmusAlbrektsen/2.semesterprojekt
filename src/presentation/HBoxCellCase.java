@@ -13,13 +13,13 @@ import javafx.scene.layout.HBox;
  *
  * @author rasmusstamm
  */
-public class HBoxCell extends HBox{
+public class HBoxCellCase extends HBox{
     private Label IDnum = new Label();
     private Label CPR = new Label();
     private Label creationDate = new Label();
     private ICase aCase;
 
-    public HBoxCell(ICase aCase) {
+    public HBoxCellCase(ICase aCase) {
         super(10);
         this.aCase = aCase;
         

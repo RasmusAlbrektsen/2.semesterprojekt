@@ -144,8 +144,8 @@
                         <Label layoutX="475.0" layoutY="2060.0" text="Adresse" />
                         <Label layoutX="475.0" layoutY="2115.0" text="Tlf:" />
                         <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" text="Opdater sag" visible="false" />
-                        <TextField fx:id="caseNumber" disable="true" editable="false" layoutX="475.0" layoutY="2180.0" visible="false" />
-                        <Label fx:id="caseLabel" disable="true" layoutX="475.0" layoutY="2165.0" text="Sagsnummer:" visible="false" />
+                        <TextField fx:id="caseNumber" editable="false" layoutX="475.0" layoutY="2180.0" visible="false" />
+                        <Label fx:id="caseLabel" layoutX="475.0" layoutY="2165.0" text="Sagsnummer:" visible="false" />
                         <Button fx:id="deleteCaseButton" disable="true" layoutX="35.0" layoutY="2194.0" mnemonicParsing="false" onAction="#deleteCaseButtonAction" text="Slet sag" visible="false" />
                      </children>
                   </AnchorPane>

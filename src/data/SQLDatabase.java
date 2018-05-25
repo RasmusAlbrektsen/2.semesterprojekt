@@ -45,11 +45,11 @@ public class SQLDatabase {
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO Medicine(vnr, dosage, name) VALUES ('" + Medicine.getVNR() + "','" + Medicine.getDosage() + "','" + Medicine.getName() + "')  RETURNING id;");
+            ResultSet rs = st.executeQuery("INSERT INTO Medicine(vnr, dosage, name) VALUES ('" + Medicine.getVNR() + "','" + Medicine.getDosage() + "','" + Medicine.getName() + "')  RETURNING medicineid;");
+            rs.next();
             id = rs.getString(1);
             st.execute("INSERT INTO Associated VALUES ('" + caseID + "','" + id + "');");
             db.close();
-            System.out.println(rs.getString(0));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,6 +66,18 @@ public class SQLDatabase {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void deleteMedicine(IMedicine medicine) {
+        try {
+            Connection db = DriverManager.getConnection(url, username, passwd);
+            Statement st = db.createStatement();
+            st.execute("DELETE FROM associated WHERE medicineid = " + medicine.getMedicineID());
+            st.execute("DELETE FROM medicine WHERE medicineid = " + medicine.getMedicineID());
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     //CASELOG
 
