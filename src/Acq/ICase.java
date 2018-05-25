@@ -24,6 +24,8 @@ public interface ICase {
     boolean createMedicine(String name, String amount, String dose);
     
     boolean updateMedicine(IMedicine medicine, String amount, String dose);
+    
+    boolean removeMedicine(int currentUser, int medicineIndex);
 
     boolean createOffer(String residence, Date startDate);
     

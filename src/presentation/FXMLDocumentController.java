@@ -94,7 +94,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ListView<String> medicinListView;
     @FXML
-    private ListView<HBoxCell> caseListView;
+    private ListView<HBoxCellCase> caseListView;
     @FXML
     private TextField searchNumberField;
     @FXML
@@ -111,7 +111,7 @@ public class FXMLDocumentController implements Initializable {
     private IBusiness business = UdredGUI.getInstance().getBusiness();
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
     private ObservableList<String> medicineList = FXCollections.observableArrayList();
-    private ObservableList<HBoxCell> caseList = FXCollections.observableArrayList();
+    private ObservableList<HBoxCellCase> caseList = FXCollections.observableArrayList();
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = business.getCalendar();
@@ -122,7 +122,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button openCaseButton;
 
-    private HBoxCell selectedCase;
+    private HBoxCellCase selectedCase;
+    
+    private int selectedMedicine;
+    
     @FXML
     private Text calendarLabel;
     @FXML
@@ -137,38 +140,48 @@ public class FXMLDocumentController implements Initializable {
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
         updateAllCases();
-        caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCell>() {
+
+        // Listener for caseListView
+        caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCellCase>() {
             @Override
-            public void changed(ObservableValue<? extends HBoxCell> observableList, HBoxCell oldHBoxCell, HBoxCell newHBoxCell) {
+            public void changed(ObservableValue<? extends HBoxCellCase> observableList, HBoxCellCase oldHBoxCell, HBoxCellCase newHBoxCell) {
                 selectedCase = newHBoxCell;
+                selectedMedicine = 0;
                 getCaseMeds(selectedCase.getCase());
-                System.out.println(selectedCase);
             }
         });
-        
+
+        // Listener for medicineListView
+        medicinListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValuev, String oldString, String newString) {
+                selectedMedicine = medicinListView.getSelectionModel().getSelectedIndex();
+            }
+        });
+
         checkAccess();
     }
-    
-    private void getCaseMeds(ICase aCase){
+
+    private void getCaseMeds(ICase aCase) {
         medicineList.clear();
         for (IMedicine medicine : aCase.getMedicine()) {
             medicineList.add(medicine.toString());
         }
         medicinListView.setItems(medicineList);
     }
-    
-    private void checkAccess(){
-        if(!business.getCurrentUser().getAdmin()){
+
+    private void checkAccess() {
+        if (!business.getCurrentUser().getAdmin()) {
             adminWindowButton.setDisable(true);
             adminWindowButton.setVisible(false);
         }
-        if(!business.getCurrentUser().getCaseaccess() && !business.getCurrentUser().getAdmin()){
+        if (!business.getCurrentUser().getCaseaccess() && !business.getCurrentUser().getAdmin()) {
             createNewCase.setDisable(true);
             createNewCase.setVisible(false);
             openCaseButton.setDisable(true);
             openCaseButton.setVisible(false);
         }
-        if(!business.getCurrentUser().getAppointment()){
+        if (!business.getCurrentUser().getAppointment()) {
             newAppointmentLink.setDisable(true);
             newAppointmentLink.setVisible(false);
             datePicker.setDisable(true);
@@ -181,14 +194,14 @@ public class FXMLDocumentController implements Initializable {
             calendarVBox.setDisable(true);
             calendarVBox.setVisible(false);
         }
-        if(!business.getCurrentUser().getMedicine()){
+        if (!business.getCurrentUser().getMedicine()) {
             medicinListView.setDisable(true);
             medicinListView.setVisible(false);
             addMedicineButton.setDisable(true);
             addMedicineButton.setVisible(false);
             removeMedicineButton.setDisable(true);
             removeMedicineButton.setVisible(false);
-            
+
         }
     }
 
@@ -274,7 +287,7 @@ public class FXMLDocumentController implements Initializable {
 
         caseList.clear();
         for (ICase iCase : searchResult) {
-            caseList.add(new HBoxCell(iCase));
+            caseList.add(new HBoxCellCase(iCase));
         }
         caseListView.setItems(caseList);
     }
@@ -294,13 +307,25 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void allCasesButtonAction(ActionEvent event) {
-        updateAllCases();
+        updateCaseListView();
     }
 
-    public void updateAllCases() {
+    // Might be useless
+    private void updateAllCases() {
         caseList.clear();
         for (ICase aCase : business.getCases()) {
-            caseList.add(new HBoxCell(aCase));
+            caseList.add(new HBoxCellCase(aCase));
+        }
+        caseListView.setItems(caseList);
+    }
+    
+    private void updateCaseListView(){
+        business.getCases().clear();
+        caseList.clear();
+        caseListView.getItems().clear();
+        business.setCaseList();
+        for (ICase aCase : business.getCases()) {
+            caseList.add(new HBoxCellCase(aCase));
         }
         caseListView.setItems(caseList);
     }

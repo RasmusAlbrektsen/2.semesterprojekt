@@ -214,6 +214,7 @@ public class OpenCaseWindowController implements Initializable {
         adresseTextField.setText(caseSplitter[21]);
         tlfTextField.setText(caseSplitter[22]);
         sagsbehandlerTextField.setText(caseSplitter[23]);
+        caseNumber.setText(Integer.toString(currentCase.getCaseNumber()));
     }
 
     @FXML
@@ -255,6 +256,7 @@ public class OpenCaseWindowController implements Initializable {
         dailyNoteTab.setDisable(false);
         addListenerPaginator();
         readDailyNoteField.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getNote());
+        dateOfNote.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getDate());
     }
 
     public void addListenerPaginator() {
@@ -262,6 +264,7 @@ public class OpenCaseWindowController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 readDailyNoteField.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getNote());
+                dateOfNote.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getDate());
             }
         });
     }

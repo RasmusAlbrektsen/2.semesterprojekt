@@ -40,6 +40,7 @@ public class Case implements ICase {
         this.creationDate = creationDate;
         this.isActive = isActive;
         dailyNotes = new ArrayList<>();
+        medicineList = new ArrayList<>();
         ResultSet rs = Business.getInstance().getData().getDailyNote(IDNum);
         try {
             while (rs.next()) {
@@ -81,6 +82,12 @@ public class Case implements ICase {
             }
         }
         return false;
+    }
+    
+    @Override
+    public boolean removeMedicine(int currentUser, int medicineIndex){
+        
+        return true;
     }
 
     @Override
