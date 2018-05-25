@@ -46,6 +46,10 @@ public class Medicine implements IMedicine {
     public String getVNR() {
         return VNR;
     }
+    
+    public int getMedicineID(){
+        return medicineID;
+    }
 
 
     @Override
@@ -68,6 +72,14 @@ public class Medicine implements IMedicine {
         Business.getInstance().getData().saveToCaseLog(currentUserID,
                 caseID,
                 Business.getInstance().getCalendar().getTodaysDateString(),
+                Business.getInstance().getCalendar().getTodaysTimeString());
+    }
+    
+    public void deleteMedicine(int caseID, int currentUserID){
+        Business.getInstance().getData().deleteMedicine(this);
+        Business.getInstance().getData().saveToCaseLog(currentUserID, 
+                caseID, 
+                Business.getInstance().getCalendar().getTodaysDateString(), 
                 Business.getInstance().getCalendar().getTodaysTimeString());
     }
 }

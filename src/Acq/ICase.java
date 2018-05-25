@@ -21,7 +21,7 @@ public interface ICase {
     
     String getInfo();
     
-    boolean createMedicine(String name, String amount, String dose);
+    boolean createMedicine(String name, String VNR, String dose);
     
     boolean updateMedicine(IMedicine medicine, String amount, String dose);
     

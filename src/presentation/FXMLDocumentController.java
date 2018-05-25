@@ -21,12 +21,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -123,9 +127,9 @@ public class FXMLDocumentController implements Initializable {
     private Button openCaseButton;
 
     private HBoxCellCase selectedCase;
-    
+
     private int selectedMedicine;
-    
+
     @FXML
     private Text calendarLabel;
     @FXML
@@ -299,10 +303,42 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void addMedicineButtonAction(ActionEvent event) {
+        Dialog dialog = new Dialog<>();
+        dialog.setTitle("Tilføj medicin");
+        dialog.setHeaderText("Tilføj medicin til sag");
+
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+        
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        TextField name = new TextField();
+        name.setPromptText("Indtast navn");
+        TextField vnr = new TextField();
+        vnr.setPromptText("Indtast VNR");
+        TextField dosage = new TextField();
+        dosage.setPromptText("Indtast dosering");
+
+        grid.add(new Label("Navn:"), 0, 0);
+        grid.add(name, 1, 0);
+        grid.add(new Label("VNR:"), 0, 1);
+        grid.add(vnr, 1, 1);
+        grid.add(new Label("Dosering:"), 0, 2);
+        grid.add(dosage, 1, 2);
+        
+        dialog.getDialogPane().setContent(grid);
+        Optional result = dialog.showAndWait();
+        if (result.isPresent()) {
+            selectedCase.getCase().createMedicine(name.getText(), vnr.getText(), dosage.getText());
+        }
+        
     }
 
     @FXML
     private void removeMedicineButtonAction(ActionEvent event) {
+        selectedCase.getCase().getMedicine().get(selectedMedicine).deleteMedicine(selectedCase.getCase().getCaseNumber(), business.getCurrentUser().getIDNumber());
     }
 
     @FXML
@@ -318,8 +354,8 @@ public class FXMLDocumentController implements Initializable {
         }
         caseListView.setItems(caseList);
     }
-    
-    private void updateCaseListView(){
+
+    private void updateCaseListView() {
         business.getCases().clear();
         caseList.clear();
         caseListView.getItems().clear();

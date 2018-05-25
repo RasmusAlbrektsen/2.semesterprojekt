@@ -49,6 +49,11 @@ public class DataFacade implements IData {
     public ResultSet getMedicine(int caseID) {
         return data.getMedicine(caseID);
     }
+    
+    @Override
+    public void deleteMedicine(IMedicine medicine){
+        data.deleteMedicine(medicine);
+    }
 
     @Override
     public void saveToCaseLog(int userID, int changedUserID, String date, String time) {

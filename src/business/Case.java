@@ -70,6 +70,7 @@ public class Case implements ICase {
     public boolean createMedicine(String name, String VNR, String dosage) {
         medicineList.add(new Medicine(name, VNR, dosage, IDNum));
         Business.getInstance().getData().saveMedicine(new Medicine(name, VNR, dosage), IDNum);
+        System.out.println(name+VNR+dosage);
         return true;
     }
 
