@@ -58,6 +58,10 @@ public class User implements IUser {
         appointments = new ArrayList<>();
     }
 
+    public User(String string, String test_case) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /*public boolean login(String username, String password) {
         return true;
     }

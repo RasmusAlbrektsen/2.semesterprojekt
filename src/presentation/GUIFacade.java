@@ -39,11 +39,11 @@ public class GUIFacade implements IGUI {
     @Override
     public void start(Stage stage) throws Exception {
         UdredGUI.getInstance().setBusiness(business);
-        Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+//        Parent root = FXMLLoader.load(getClass().getResource("LoginWindow.fxml"));
+//        
+//        Scene scene = new Scene(root);
+//        
+//        stage.setScene(scene);
+//        stage.show();
     }
 }
