@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,41 +13,40 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
+<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="170.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="235.44439697265625" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="97.55560302734375" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="277.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="122.77783203125" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="266.22216796875" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="113.33334350585938" minHeight="10.0" prefHeight="113.33334350585938" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="365.66668701171875" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="25.111175537109375" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="88.88882446289062" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="113.33334350585938" minHeight="10.0" prefHeight="99.77777099609375" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="362.66668701171875" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="30.222259521484375" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="106.77774047851562" minHeight="10.0" prefHeight="106.77774047851562" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <ListView fx:id="userListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <ListView fx:id="logListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <children>
-            <Button fx:id="removeUserButton" minWidth="100.0" mnemonicParsing="false" onAction="#removeUserAction" prefWidth="70.0" text="Fjern bruger" />
+            <Button fx:id="removeUserButton" minWidth="100.0" mnemonicParsing="false" onAction="#removeUserAction" prefWidth="70.0" styleClass="main-button" stylesheets="@styles.css" text="Fjern bruger" />
          </children>
          <padding>
             <Insets left="20.0" />
          </padding>
       </VBox>
-      <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-         <padding>
-            <Insets right="20.0" />
-         </padding></Separator>
-      <Button fx:id="showUserLogButton" mnemonicParsing="false" onAction="#showUserLogAction" text="Vis brugerlog" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+      <Button fx:id="showUserLogButton" mnemonicParsing="false" onAction="#showUserLogAction" styleClass="main-button" stylesheets="@styles.css" text="Vis brugerlog" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </Button>
-      <Label text="Brugeradministration" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label style="-fx-text-fill: white;" text="Brugeradministration" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="30.0" right="20.0" />
          </GridPane.margin>
@@ -56,7 +54,7 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label text="Logadgang" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Label style="-fx-text-fill: white;" text="Logadgang" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
@@ -79,7 +77,7 @@
             <Insets left="120.0" />
          </GridPane.margin>
       </TextField>
-      <Label text="Adgang:" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Label style="-fx-text-fill: white;" text="Adgang:" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
@@ -91,20 +89,20 @@
          <children>
             <VBox prefHeight="64.0" prefWidth="110.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" text="Administrator" />
-                  <RadioButton fx:id="medicineAccessRadio" mnemonicParsing="false" text="Medicin" />
+                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Administrator" />
+                  <RadioButton fx:id="medicineAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Medicin" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="calendarAccessRadio" mnemonicParsing="false" text="Kalender" />
-                  <RadioButton fx:id="caseAccessRadio" mnemonicParsing="false" text="Sagsadgang" />
+                  <RadioButton fx:id="calendarAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Kalender" />
+                  <RadioButton fx:id="caseAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Sagsadgang" />
                </children>
             </VBox>
             <VBox minWidth="120.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                <children>
-                  <Button fx:id="updateUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="25.0" prefWidth="120.0" text="Gem ændringer" />
-                  <Button fx:id="createNewUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#createNewUserAction" prefWidth="120.0" text="Opret ny bruger" />
+                  <Button fx:id="updateUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="25.0" prefWidth="120.0" styleClass="main-button" stylesheets="@styles.css" text="Gem ændringer" />
+                  <Button fx:id="createNewUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#createNewUserAction" prefWidth="120.0" styleClass="main-button" stylesheets="@styles.css" text="Opret ny bruger" />
                </children>
             </VBox>
          </children>
@@ -112,7 +110,7 @@
             <Insets top="30.0" />
          </GridPane.margin>
       </HBox>
-      <Label text="Navn" GridPane.rowIndex="2">
+      <Label style="-fx-text-fill: white;" text="Navn" GridPane.rowIndex="2">
          <font>
             <Font size="16.0" />
          </font>
@@ -120,7 +118,7 @@
             <Insets left="5.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Brugernavn" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Label style="-fx-text-fill: white;" text="Brugernavn" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="16.0" />
          </font>
@@ -128,7 +126,7 @@
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Kodeord" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Label style="-fx-text-fill: white;" text="Kodeord" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -136,10 +134,13 @@
             <Insets left="70.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="showCaseLogButton" mnemonicParsing="false" onAction="#showCaseLogAction" text="Vis sagslog" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Button fx:id="showCaseLogButton" mnemonicParsing="false" onAction="#showCaseLogAction" styleClass="main-button" stylesheets="@styles.css" text="Vis sagslog" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </Button>
    </children>
 </GridPane>

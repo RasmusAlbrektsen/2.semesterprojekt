@@ -18,135 +18,135 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tabPane" styleClass="main-tabPane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.OpenCaseWindowController">
+<TabPane fx:id="tabPane" prefHeight="600.0" prefWidth="800.0" styleClass="main-tabPane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.OpenCaseWindowController">
    <tabs>
       <Tab fx:id="caseTab" closable="false" text="Sagsåbning">
          <content>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="750.0" vmax="2.0">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="750.0" stylesheets="@styles.css" vmax="2.0" vvalue="2.0">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2250.0" prefWidth="650.0" styleClass="main-tab" stylesheets="@styles.css">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2250.0" prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css">
                      <children>
-                        <Label layoutX="13.0" layoutY="9.0" prefHeight="45.0" prefWidth="188.0" text="Hvad drejer henvendelsen &#10;sig om?">
+                        <Label layoutX="13.0" layoutY="9.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Hvad drejer henvendelsen &#10;sig om?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="henvendelseTextBox" layoutX="210.0" layoutY="14.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="14.0" layoutY="199.0" prefHeight="45.0" prefWidth="188.0" text="Er det klart hvad borgeren &#10;søger om?">
+                        <Label layoutX="14.0" layoutY="199.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Er det klart hvad borgeren &#10;søger om?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="borgerSøgButtonJa" layoutX="210.0" layoutY="205.0" mnemonicParsing="false" text="Ja">
+                        <RadioButton fx:id="borgerSøgButtonJa" layoutX="210.0" layoutY="205.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="lookingForGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="borgerSøgButtonNej" layoutX="210.0" layoutY="230.0" mnemonicParsing="false" text="Nej" toggleGroup="$lookingForGroup" />
-                        <Label layoutX="14.0" layoutY="254.0" prefHeight="45.0" prefWidth="188.0" text="Hvis ja, angiv hvilke.">
+                        <RadioButton fx:id="borgerSøgButtonNej" layoutX="210.0" layoutY="230.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$lookingForGroup" />
+                        <Label layoutX="14.0" layoutY="254.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Hvis ja, angiv hvilke.">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="caseChecklistButton" layoutX="13.0" layoutY="288.0" mnemonicParsing="false" onAction="#caseChecklistButtonAction" text="Åben checkliste" />
+                        <Button fx:id="caseChecklistButton" layoutX="13.0" layoutY="288.0" mnemonicParsing="false" onAction="#caseChecklistButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Åben checkliste" />
                         <TextArea fx:id="ydelsesTextBox" editable="false" layoutX="210.0" layoutY="291.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="212.0" layoutY="268.0" text="Ydelser og tilbud valgt" />
-                        <Label layoutX="13.0" layoutY="471.0" prefHeight="45.0" prefWidth="188.0" text="Hvor kommer henvend-&#10;elsen fra?">
+                        <Label layoutX="212.0" layoutY="268.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ydelser og tilbud valgt" />
+                        <Label layoutX="13.0" layoutY="471.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Hvor kommer henvend-&#10;elsen fra?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="henvendelseFraTextBox" layoutX="210.0" layoutY="476.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="685.0" prefHeight="45.0" prefWidth="188.0" text="Er borgeren indeforstået&#10;med henvendelsen?">
+                        <Label layoutX="13.0" layoutY="685.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Er borgeren indeforstået&#10;med henvendelsen?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="borgerIndforståetButtonJa" layoutX="206.0" layoutY="687.0" mnemonicParsing="false" text="Ja">
+                        <RadioButton fx:id="borgerIndforståetButtonJa" layoutX="206.0" layoutY="687.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="inqButtons" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="borgerIndforståetButtonNej" layoutX="206.0" layoutY="712.0" mnemonicParsing="false" text="Nej" toggleGroup="$inqButtons" />
-                        <Label layoutX="13.0" layoutY="744.0" prefHeight="45.0" prefWidth="188.0" text="Aftaler om det videre&#10;forløb.">
+                        <RadioButton fx:id="borgerIndforståetButtonNej" layoutX="206.0" layoutY="712.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$inqButtons" />
+                        <Label layoutX="13.0" layoutY="744.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Aftaler om det videre&#10;forløb.">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="aftaleForløbTextBox" layoutX="210.0" layoutY="749.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="932.0" prefHeight="45.0" prefWidth="188.0" text="Værgemål og repræsen-&#10;tation. Angiv hvis relevant.">
+                        <Label layoutX="13.0" layoutY="932.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Værgemål og repræsen-&#10;tation. Angiv hvis relevant.">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="værgeMålTexBox" layoutX="210.0" layoutY="937.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1100.0" prefHeight="45.0" prefWidth="188.0" text="Rettigheder og pligter">
+                        <Label layoutX="13.0" layoutY="1100.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Rettigheder og pligter">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="rettighederTextBox" layoutX="210.0" layoutY="1113.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1286.0" prefHeight="88.0" prefWidth="188.0" text="Er borgeren informeret om at &#10;oplysningerne er registreret&#10;elektronisk?">
+                        <Label layoutX="13.0" layoutY="1286.0" prefHeight="88.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Er borgeren informeret om at &#10;oplysningerne er registreret&#10;elektronisk?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="borgerInfoButtonJa" layoutX="206.0" layoutY="1302.0" mnemonicParsing="false" text="Ja">
+                        <RadioButton fx:id="borgerInfoButtonJa" layoutX="206.0" layoutY="1302.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="elInformation" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="borgerInfoButtonNej" layoutX="206.0" layoutY="1327.0" mnemonicParsing="false" text="Nej" toggleGroup="$elInformation" />
-                        <Label layoutX="13.0" layoutY="1366.0" prefHeight="45.0" prefWidth="188.0" text="Samtykkeerklæring">
+                        <RadioButton fx:id="borgerInfoButtonNej" layoutX="206.0" layoutY="1327.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$elInformation" />
+                        <Label layoutX="13.0" layoutY="1366.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Samtykkeerklæring">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="samtykkeButtonJa" layoutX="210.0" layoutY="1381.0" mnemonicParsing="false" text="Ja">
+                        <RadioButton fx:id="samtykkeButtonJa" layoutX="210.0" layoutY="1381.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="consent" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="samtykkeButtonNej" layoutX="210.0" layoutY="1406.0" mnemonicParsing="false" text="Nej" toggleGroup="$consent" />
-                        <RadioButton fx:id="mundtligSamtykkeButton" layoutX="332.0" layoutY="1381.0" mnemonicParsing="false" text="Mundtligt samtykke">
+                        <RadioButton fx:id="samtykkeButtonNej" layoutX="210.0" layoutY="1406.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$consent" />
+                        <RadioButton fx:id="mundtligSamtykkeButton" layoutX="332.0" layoutY="1381.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Mundtligt samtykke">
                            <toggleGroup>
                               <ToggleGroup fx:id="consentInfo" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="skriftligSamtykkeButton" layoutX="332.0" layoutY="1406.0" mnemonicParsing="false" text="Skriftligt samtykke" toggleGroup="$consentInfo" />
-                        <Label layoutX="13.0" layoutY="1440.0" prefHeight="45.0" prefWidth="188.0" text="Indhentelse af oplysninger">
+                        <RadioButton fx:id="skriftligSamtykkeButton" layoutX="332.0" layoutY="1406.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Skriftligt samtykke" toggleGroup="$consentInfo" />
+                        <Label layoutX="13.0" layoutY="1440.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Indhentelse af oplysninger">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="loadOplysningerTextBox" layoutX="210.0" layoutY="1453.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1633.0" prefHeight="45.0" prefWidth="188.0" text="Borgerindragelse - &#10;særlige forhold">
+                        <Label layoutX="13.0" layoutY="1633.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Borgerindragelse - &#10;særlige forhold">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="særligeForholdTextBox" layoutX="210.0" layoutY="1640.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1828.0" prefHeight="45.0" prefWidth="188.0" text="Handle og &#10;betalingskommune">
+                        <Label layoutX="13.0" layoutY="1828.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Handle og &#10;betalingskommune">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextArea fx:id="kommuneTextBox" layoutX="210.0" layoutY="1837.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Button fx:id="saveCaseButton" layoutX="561.0" layoutY="2020.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" text="Gem sag" />
+                        <Button fx:id="saveCaseButton" layoutX="561.0" layoutY="2020.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Gem sag" />
                         <TextField fx:id="nameTextField" layoutX="200.0" layoutY="2075.0" />
                         <TextField fx:id="CPRTextField" layoutX="200.0" layoutY="2130.0" />
                         <TextField fx:id="adresseTextField" layoutX="475.0" layoutY="2075.0" />
                         <TextField fx:id="tlfTextField" layoutX="475.0" layoutY="2130.0" />
                         <TextField fx:id="sagsbehandlerTextField" layoutX="200.0" layoutY="2180.0" />
-                        <Label layoutX="200.0" layoutY="2060.0" text="Navn" />
-                        <Label layoutX="200.0" layoutY="2115.0" text="CPR Nummer" />
-                        <Label layoutX="200.0" layoutY="2165.0" text="Sagsbehandler" />
-                        <Label layoutX="475.0" layoutY="2060.0" text="Adresse" />
-                        <Label layoutX="475.0" layoutY="2115.0" text="Tlf:" />
-                        <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" text="Opdater sag" visible="false" />
+                        <Label layoutX="200.0" layoutY="2060.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Navn" />
+                        <Label layoutX="200.0" layoutY="2115.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="CPR Nummer" />
+                        <Label layoutX="200.0" layoutY="2165.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Sagsbehandler" />
+                        <Label layoutX="475.0" layoutY="2060.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Adresse" />
+                        <Label layoutX="475.0" layoutY="2115.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tlf:" />
+                        <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" style="-fx-text-fill: white;" styleClass="main-button" stylesheets="@styles.css" text="Opdater sag" visible="false" />
                         <TextField fx:id="caseNumber" disable="true" editable="false" layoutX="475.0" layoutY="2180.0" visible="false" />
-                        <Label fx:id="caseLabel" disable="true" layoutX="475.0" layoutY="2165.0" text="Sagsnummer:" visible="false" />
-                        <Button fx:id="deleteCaseButton" disable="true" layoutX="35.0" layoutY="2194.0" mnemonicParsing="false" onAction="#deleteCaseButtonAction" text="Slet sag" visible="false" />
+                        <Label fx:id="caseLabel" disable="true" layoutX="475.0" layoutY="2165.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Sagsnummer:" visible="false" />
+                        <Button fx:id="deleteCaseButton" disable="true" layoutX="35.0" layoutY="2194.0" mnemonicParsing="false" onAction="#deleteCaseButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Slet sag" visible="false" />
                      </children>
                   </AnchorPane>
                </content>
@@ -181,7 +181,7 @@
                         <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <Label text="Dagsnotat:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                  <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dagsnotat:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -190,7 +190,7 @@
                      </GridPane.margin>
                   </Label>
                   <Button fx:id="createNoteButton" mnemonicParsing="false" onAction="#createNoteButtonAction" text="Opret" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Label fx:id="dateOfNote" text="Dato" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                  <Label fx:id="dateOfNote" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dato" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets top="20.0" />
                      </GridPane.margin>
@@ -204,197 +204,205 @@
       </Tab>
       <Tab fx:id="benefitsTab" closable="false" text="Ydelser og tilbud">
          <content>
-            <AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="720.0" maxWidth="900.0" prefHeight="720.0" prefWidth="900.0">
-               <children>
-                  <GridPane layoutX="15.0" layoutY="14.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.888916015625" minWidth="10.0" prefWidth="12.000015258789062" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.99998474121094" minWidth="10.0" prefWidth="240.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.33334350585938" minWidth="10.0" prefWidth="22.666656494140625" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.3333435058594" minWidth="10.0" prefWidth="393.3333435058594" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
+            <ScrollPane prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css">
+               <content>
+                  <AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="720.0" maxWidth="900.0" prefHeight="720.0" prefWidth="900.0">
                      <children>
-                        <CheckBox fx:id="a1" mnemonicParsing="false" text="Aktivitets- og samværsydelse" GridPane.rowIndex="1" />
-                        <Label text="Befordring" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a2" mnemonicParsing="false" text="befordring til og fra et tilbud" GridPane.rowIndex="3" />
-                        <CheckBox fx:id="a3" mnemonicParsing="false" text="individuel befordring" GridPane.rowIndex="4" />
-                        <Label text="Behandling" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a5" mnemonicParsing="false" text="psykologisk behandling" GridPane.rowIndex="7" />
-                        <CheckBox fx:id="a6" mnemonicParsing="false" text="speciallægelig behandling" GridPane.rowIndex="8" />
-                        <CheckBox fx:id="a7" mnemonicParsing="false" text="terapi" GridPane.rowIndex="9" />
-                        <CheckBox fx:id="a8" mnemonicParsing="false" text="misbrugsbehandling" GridPane.rowIndex="10" />
-                        <CheckBox fx:id="a9" mnemonicParsing="false" text="Beskyttet beskæftigelseydelse" GridPane.rowIndex="12" />
-                        <CheckBox fx:id="a10" mnemonicParsing="false" text="Dagaflastning" GridPane.rowIndex="13" />
-                        <Label text="Kontantydelse" GridPane.rowIndex="15">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a11" mnemonicParsing="false" text="aflønning" GridPane.rowIndex="16" />
-                        <CheckBox fx:id="a12" mnemonicParsing="false" text="dækning af merudgift" GridPane.rowIndex="17" />
-                        <Label text="Kontrolordning" GridPane.rowIndex="18">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a13" mnemonicParsing="false" text="fastholdelse" GridPane.rowIndex="19" />
-                        <CheckBox fx:id="a14" mnemonicParsing="false" text="kontrol med færden" GridPane.rowIndex="20" />
-                        <Label text="Ophold" GridPane.rowIndex="22">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a15" mnemonicParsing="false" text="døgnaflastning" GridPane.rowIndex="23" />
-                        <CheckBox fx:id="a16" mnemonicParsing="false" text="længerevarende ophold" GridPane.rowIndex="24" />
-                        <CheckBox fx:id="a17" mnemonicParsing="false" text="midlertidigt ophold" GridPane.rowIndex="25" />
-                        <CheckBox fx:id="a18" mnemonicParsing="false" text="Personlig hjælp og pleje" GridPane.rowIndex="26" />
-                        <CheckBox fx:id="a19" mnemonicParsing="false" text="Praktisk hjælp" GridPane.rowIndex="27" />
-                        <Label text="Ydelser">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label text="Socialpædagogisk støtte" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a20" mnemonicParsing="false" text="støtte til administration" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <CheckBox fx:id="a21" mnemonicParsing="false" text="støtte til indkøb og kost" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <CheckBox fx:id="a22" mnemonicParsing="false" text="støtte til kontakt og samvær" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <CheckBox fx:id="a23" mnemonicParsing="false" text="støtte til medicinhåndtering" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <CheckBox fx:id="a24" mnemonicParsing="false" text="støtte til personlig pleje" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                        <CheckBox fx:id="a25" mnemonicParsing="false" text="støtte til praktiske opgaver i hjemmet" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                        <CheckBox fx:id="a26" mnemonicParsing="false" text="støtte til uddannelse og beskæftigelse" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                        <CheckBox fx:id="a27" mnemonicParsing="false" text="støtte til  varetagelse af forældrerollen" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-                        <Label text="Støttepersonordning" GridPane.columnIndex="2" GridPane.rowIndex="10">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a28" mnemonicParsing="false" text="afløsning" GridPane.columnIndex="2" GridPane.rowIndex="11" />
-                        <CheckBox fx:id="a29" mnemonicParsing="false" text="borgerstyret personlig assistance" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-                        <CheckBox fx:id="a30" mnemonicParsing="false" text="kontaktperson for døvblinde" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-                        <CheckBox fx:id="a31" mnemonicParsing="false" text="ledsageordning" GridPane.columnIndex="2" GridPane.rowIndex="14" />
-                        <CheckBox fx:id="a32" mnemonicParsing="false" text="pasning af pårørende" GridPane.columnIndex="2" GridPane.rowIndex="15" />
-                        <Label text="Støtteredskab" GridPane.columnIndex="2" GridPane.rowIndex="16">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a33" mnemonicParsing="false" text="hjælpemiddel" GridPane.columnIndex="2" GridPane.rowIndex="17" />
-                        <CheckBox fx:id="a34" mnemonicParsing="false" text="støtte til bil" GridPane.columnIndex="2" GridPane.rowIndex="18" />
-                        <CheckBox fx:id="a35" mnemonicParsing="false" text="støtte til boligindretning" GridPane.columnIndex="2" GridPane.rowIndex="20" />
-                        <CheckBox fx:id="a36" mnemonicParsing="false" text="støtte til forbrugsgode" GridPane.columnIndex="2" GridPane.rowIndex="19" />
-                        <Label text="Træning" GridPane.columnIndex="2" GridPane.rowIndex="21">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a37" mnemonicParsing="false" text="genoptræning" GridPane.columnIndex="2" GridPane.rowIndex="22" />
-                        <CheckBox fx:id="a38" mnemonicParsing="false" text="vedligelseholdelsestræning" GridPane.columnIndex="2" GridPane.rowIndex="23" />
-                        <Label text="Undervisning" GridPane.columnIndex="2" GridPane.rowIndex="24">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a39" mnemonicParsing="false" text="kompenserende specialundervisning" GridPane.columnIndex="2" GridPane.rowIndex="25" />
-                        <CheckBox fx:id="a40" mnemonicParsing="false" prefHeight="53.0" prefWidth="212.0" text="ungdomsuddannelse for unge med &#10;særlige behov" GridPane.columnIndex="2" GridPane.rowIndex="26" />
-                        <Label text="Ikke-visiterede ydelser" GridPane.columnIndex="2" GridPane.rowIndex="27">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a41" mnemonicParsing="false" text="rådgivning" GridPane.columnIndex="2" GridPane.rowIndex="28" />
-                        <CheckBox fx:id="a42" mnemonicParsing="false" text="støtte- og kontaktperson" GridPane.columnIndex="2" GridPane.rowIndex="29" />
-                        <Label text="Ambulant tilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a43" mnemonicParsing="false" text="ambulant behandlingstilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Label text="Tilbud" GridPane.columnIndex="4">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label text="Dagtilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="4">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a44" mnemonicParsing="false" text="aktivitets- og samværstilbud" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                        <CheckBox fx:id="a45" mnemonicParsing="false" text="beskyttet beskæftigelsestilbud" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                        <CheckBox fx:id="a46" mnemonicParsing="false" text="dagbehandlingstilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-                        <CheckBox fx:id="a47" mnemonicParsing="false" text="uddannelsestilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-                        <Label text="Botilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="9">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <CheckBox fx:id="a48" mnemonicParsing="false" text="almen plejebolig" GridPane.columnIndex="4" GridPane.rowIndex="10" />
-                        <CheckBox fx:id="a49" mnemonicParsing="false" text="almen ældrebolig/handicapvenlig bolig" GridPane.columnIndex="4" GridPane.rowIndex="11" />
-                        <CheckBox fx:id="a50" mnemonicParsing="false" text="bofællesskab" GridPane.columnIndex="4" GridPane.rowIndex="12" />
-                        <CheckBox fx:id="a51" mnemonicParsing="false" text="døgnbehandlingstilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="13" />
-                        <CheckBox fx:id="a52" mnemonicParsing="false" text="forsorgshjem/herberg" GridPane.columnIndex="4" GridPane.rowIndex="14" />
-                        <CheckBox fx:id="a53" mnemonicParsing="false" text="krisecenter" GridPane.columnIndex="4" GridPane.rowIndex="15" />
-                        <CheckBox fx:id="a54" mnemonicParsing="false" text="sikret botilbud" GridPane.columnIndex="4" GridPane.rowIndex="16" />
-                        <CheckBox fx:id="a55" mnemonicParsing="false" text="andet længerevarende botilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="17" />
-                        <CheckBox fx:id="a56" mnemonicParsing="false" text="midlertidigt botildbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="18" />
-                        <CheckBox fx:id="a57" mnemonicParsing="false" text="plejehjem" GridPane.columnIndex="4" GridPane.rowIndex="19" />
-                        <CheckBox fx:id="a58" mnemonicParsing="false" text="rehabiliteringstilbud" GridPane.columnIndex="4" GridPane.rowIndex="20" />
-                        <CheckBox fx:id="a59" mnemonicParsing="false" text="Tilbud med myndighedsbeføjelse" GridPane.columnIndex="4" GridPane.rowIndex="22" />
-                        <CheckBox fx:id="a60" mnemonicParsing="false" text="Udgående tilbud til voksne" GridPane.columnIndex="4" GridPane.rowIndex="24" />
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonAction" text="Tilføj" GridPane.columnIndex="4" GridPane.rowIndex="28" GridPane.rowSpan="2">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
+                        <GridPane layoutX="15.0" layoutY="14.0" prefHeight="720.0" prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="83.77774810791016" minWidth="9.11108112335205" prefWidth="17.999998092651367" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.88891887664795" minWidth="10.0" prefWidth="242.00000190734863" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.888916015625" minWidth="10.0" prefWidth="12.000015258789062" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.99998474121094" minWidth="10.0" prefWidth="240.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.33334350585938" minWidth="10.0" prefWidth="22.666656494140625" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.3333435058594" minWidth="10.0" prefWidth="393.3333435058594" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <CheckBox fx:id="a1" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Aktivitets- og samværsydelse" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Befordring" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a2" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="befordring til og fra et tilbud" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <CheckBox fx:id="a3" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="individuel befordring" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Behandling" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a5" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="psykologisk behandling" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <CheckBox fx:id="a6" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="speciallægelig behandling" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <CheckBox fx:id="a7" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="terapi" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <CheckBox fx:id="a8" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="misbrugsbehandling" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                              <CheckBox fx:id="a9" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Beskyttet beskæftigelseydelse" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                              <CheckBox fx:id="a10" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dagaflastning" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Kontantydelse" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a11" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="aflønning" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+                              <CheckBox fx:id="a12" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="dækning af merudgift" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Kontrolordning" GridPane.columnIndex="1" GridPane.rowIndex="18">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a13" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="fastholdelse" GridPane.columnIndex="1" GridPane.rowIndex="19" />
+                              <CheckBox fx:id="a14" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="kontrol med færden" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ophold" GridPane.columnIndex="1" GridPane.rowIndex="22">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a15" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="døgnaflastning" GridPane.columnIndex="1" GridPane.rowIndex="23" />
+                              <CheckBox fx:id="a16" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="længerevarende ophold" GridPane.columnIndex="1" GridPane.rowIndex="24" />
+                              <CheckBox fx:id="a17" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="midlertidigt ophold" GridPane.columnIndex="1" GridPane.rowIndex="25" />
+                              <CheckBox fx:id="a18" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Personlig hjælp og pleje" GridPane.columnIndex="1" GridPane.rowIndex="26" />
+                              <CheckBox fx:id="a19" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Praktisk hjælp" GridPane.columnIndex="1" GridPane.rowIndex="27" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ydelser" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Socialpædagogisk støtte" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a20" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til administration" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <CheckBox fx:id="a21" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til indkøb og kost" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <CheckBox fx:id="a22" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til kontakt og samvær" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <CheckBox fx:id="a23" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til medicinhåndtering" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <CheckBox fx:id="a24" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til personlig pleje" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                              <CheckBox fx:id="a25" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til praktiske opgaver i hjemmet" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                              <CheckBox fx:id="a26" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til uddannelse og beskæftigelse" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                              <CheckBox fx:id="a27" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til  varetagelse af forældrerollen" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Støttepersonordning" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a28" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="afløsning" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                              <CheckBox fx:id="a29" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="borgerstyret personlig assistance" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+                              <CheckBox fx:id="a30" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="kontaktperson for døvblinde" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+                              <CheckBox fx:id="a31" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="ledsageordning" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+                              <CheckBox fx:id="a32" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="pasning af pårørende" GridPane.columnIndex="3" GridPane.rowIndex="15" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Støtteredskab" GridPane.columnIndex="3" GridPane.rowIndex="16">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a33" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="hjælpemiddel" GridPane.columnIndex="3" GridPane.rowIndex="17" />
+                              <CheckBox fx:id="a34" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til bil" GridPane.columnIndex="3" GridPane.rowIndex="18" />
+                              <CheckBox fx:id="a35" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til boligindretning" GridPane.columnIndex="3" GridPane.rowIndex="20" />
+                              <CheckBox fx:id="a36" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte til forbrugsgode" GridPane.columnIndex="3" GridPane.rowIndex="19" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Træning" GridPane.columnIndex="3" GridPane.rowIndex="21">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a37" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="genoptræning" GridPane.columnIndex="3" GridPane.rowIndex="22" />
+                              <CheckBox fx:id="a38" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="vedligelseholdelsestræning" GridPane.columnIndex="3" GridPane.rowIndex="23" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Undervisning" GridPane.columnIndex="3" GridPane.rowIndex="24">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a39" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="kompenserende specialundervisning" GridPane.columnIndex="3" GridPane.rowIndex="25" />
+                              <CheckBox fx:id="a40" mnemonicParsing="false" prefHeight="53.0" prefWidth="212.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="ungdomsuddannelse for unge med &#10;særlige behov" GridPane.columnIndex="3" GridPane.rowIndex="26" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ikke-visiterede ydelser" GridPane.columnIndex="3" GridPane.rowIndex="27">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a41" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="rådgivning" GridPane.columnIndex="3" GridPane.rowIndex="28" />
+                              <CheckBox fx:id="a42" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="støtte- og kontaktperson" GridPane.columnIndex="3" GridPane.rowIndex="29" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ambulant tilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a43" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="ambulant behandlingstilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tilbud" GridPane.columnIndex="5">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dagtilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a44" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="aktivitets- og samværstilbud" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                              <CheckBox fx:id="a45" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="beskyttet beskæftigelsestilbud" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                              <CheckBox fx:id="a46" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="dagbehandlingstilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                              <CheckBox fx:id="a47" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="uddannelsestilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                              <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Botilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="9">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="a48" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="almen plejebolig" GridPane.columnIndex="5" GridPane.rowIndex="10" />
+                              <CheckBox fx:id="a49" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="almen ældrebolig/handicapvenlig bolig" GridPane.columnIndex="5" GridPane.rowIndex="11" />
+                              <CheckBox fx:id="a50" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="bofællesskab" GridPane.columnIndex="5" GridPane.rowIndex="12" />
+                              <CheckBox fx:id="a51" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="døgnbehandlingstilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="13" />
+                              <CheckBox fx:id="a52" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="forsorgshjem/herberg" GridPane.columnIndex="5" GridPane.rowIndex="14" />
+                              <CheckBox fx:id="a53" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="krisecenter" GridPane.columnIndex="5" GridPane.rowIndex="15" />
+                              <CheckBox fx:id="a54" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="sikret botilbud" GridPane.columnIndex="5" GridPane.rowIndex="16" />
+                              <CheckBox fx:id="a55" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="andet længerevarende botilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="17" />
+                              <CheckBox fx:id="a56" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="midlertidigt botildbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="18" />
+                              <CheckBox fx:id="a57" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="plejehjem" GridPane.columnIndex="5" GridPane.rowIndex="19" />
+                              <CheckBox fx:id="a58" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="rehabiliteringstilbud" GridPane.columnIndex="5" GridPane.rowIndex="20" />
+                              <CheckBox fx:id="a59" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tilbud med myndighedsbeføjelse" GridPane.columnIndex="5" GridPane.rowIndex="22" />
+                              <CheckBox fx:id="a60" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Udgående tilbud til voksne" GridPane.columnIndex="5" GridPane.rowIndex="24" />
+                              <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonAction" styleClass="add-button" stylesheets="@styles.css" text="Tilføj" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="26" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="50.0" />
+                                 </GridPane.margin>
+                              </Button>
+                           </children>
+                        </GridPane>
                      </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
          </content>
       </Tab>
    </tabs>
