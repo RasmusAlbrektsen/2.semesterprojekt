@@ -87,6 +87,8 @@ public class LoginWindowController implements Initializable {
             stage.setTitle("Sensum Udred");
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
             Scene scene = new Scene(root);
+            stage.setMinHeight(600);
+            stage.setMinWidth(800);
             
             stage.setScene(scene);
             stage.showAndWait();

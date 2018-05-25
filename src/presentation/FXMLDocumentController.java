@@ -64,27 +64,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label frontpageDateLabel;
     @FXML
-    private ChoiceBox<?> monthSelectorBox;
-    @FXML
-    private Text firstDayText;
-    @FXML
-    private Text seconddDayText;
-    @FXML
-    private Text thirddDayText;
-    @FXML
-    private Text fourthDayText;
-    @FXML
-    private Text fifthDayText;
-    @FXML
-    private Text sixthDayText;
-    @FXML
-    private Text seventhDayText;
-    @FXML
     private Hyperlink newAppointmentLink;
     @FXML
     private DatePicker datePicker;
-    @FXML
-    private Tab calendarTab;
     @FXML
     private ListView<String> dailyCalendarListView;
     @FXML
