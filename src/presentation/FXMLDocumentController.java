@@ -293,8 +293,11 @@ public class FXMLDocumentController implements Initializable {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
-        
-        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        ButtonType add = new ButtonType("Tilføj", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancel = new ButtonType("Annuller", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        dialog.getDialogPane().getButtonTypes().addAll(add, cancel);
 
         TextField name = new TextField();
         name.setPromptText("Indtast navn");
@@ -309,13 +312,20 @@ public class FXMLDocumentController implements Initializable {
         grid.add(vnr, 1, 1);
         grid.add(new Label("Dosering:"), 0, 2);
         grid.add(dosage, 1, 2);
-        
+
         dialog.getDialogPane().setContent(grid);
         Optional result = dialog.showAndWait();
-        if (result.isPresent()) {
+
+        if (result.get() == add && !name.getText().trim().isEmpty()
+                && !vnr.getText().trim().isEmpty()
+                && !dosage.getText().trim().isEmpty()) {
             selectedCase.getCase().createMedicine(name.getText(), vnr.getText(), dosage.getText());
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("UDFYLD ALLE FELTER!");
+            alert.setHeaderText("Medicin kunne ikke tilføjes.");
+            alert.showAndWait();
         }
-        
     }
 
     @FXML
