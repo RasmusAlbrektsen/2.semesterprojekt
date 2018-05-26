@@ -31,7 +31,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="henvendelseTextBox" layoutX="407.0" layoutY="14.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="henvendelseTextBox" layoutX="407.0" layoutY="14.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="14.0" layoutY="199.0" prefHeight="70.0" prefWidth="230.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Er det klart hvad borgeren &#10;søger om?">
                            <font>
                               <Font size="14.0" />
@@ -56,14 +56,14 @@
                            </font>
                         </Label>
                         <Button fx:id="caseChecklistButton" layoutX="14.0" layoutY="388.0" mnemonicParsing="false" onAction="#caseChecklistButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Åben checkliste" />
-                        <TextArea fx:id="ydelsesTextBox" editable="false" layoutX="407.0" layoutY="289.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="ydelsesTextBox" editable="false" layoutX="407.0" layoutY="289.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="407.0" layoutY="254.0" prefHeight="28.0" prefWidth="301.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Ydelser og tilbud valgt" />
                         <Label layoutX="14.0" layoutY="493.0" prefHeight="103.0" prefWidth="353.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Hvor kommer henvend-&#10;elsen fra?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="henvendelseFraTextBox" layoutX="407.0" layoutY="477.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="henvendelseFraTextBox" layoutX="407.0" layoutY="477.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="13.0" layoutY="651.0" prefHeight="100.0" prefWidth="273.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Er borgeren indeforstået&#10;med henvendelsen?">
                            <font>
                               <Font size="14.0" />
@@ -87,19 +87,19 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="aftaleForløbTextBox" layoutX="407.0" layoutY="752.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="aftaleForløbTextBox" layoutX="407.0" layoutY="752.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="13.0" layoutY="932.0" prefHeight="113.0" prefWidth="345.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Værgemål og repræsen-&#10;tation. Angiv hvis relevant.">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="værgeMålTexBox" layoutX="407.0" layoutY="932.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="værgeMålTexBox" layoutX="407.0" layoutY="932.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="13.0" layoutY="1100.0" prefHeight="104.0" prefWidth="288.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Rettigheder og pligter">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="rettighederTextBox" layoutX="407.0" layoutY="1111.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="rettighederTextBox" layoutX="407.0" layoutY="1111.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="13.0" layoutY="1286.0" prefHeight="104.0" prefWidth="478.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Er borgeren informeret om at oplysningerne &#10;er registreret elektronisk?">
                            <font>
                               <Font size="14.0" />
@@ -154,32 +154,32 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="loadOplysningerTextBox" layoutX="412.0" layoutY="1448.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="loadOplysningerTextBox" layoutX="412.0" layoutY="1448.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="13.0" layoutY="1633.0" prefHeight="107.0" prefWidth="322.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Borgerindragelse - &#10;særlige forhold">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="særligeForholdTextBox" layoutX="412.0" layoutY="1633.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="særligeForholdTextBox" layoutX="412.0" layoutY="1633.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Label layoutX="13.0" layoutY="1828.0" prefHeight="123.0" prefWidth="299.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Handle og &#10;betalingskommune">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="kommuneTextBox" layoutX="412.0" layoutY="1836.0" prefHeight="161.0" prefWidth="650.0" />
+                        <TextArea fx:id="kommuneTextBox" layoutX="412.0" layoutY="1836.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
                         <Button fx:id="saveCaseButton" layoutX="1041.0" layoutY="2106.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" styleClass="add-button" stylesheets="@styles.css" text="Gem sag" />
-                        <TextField fx:id="nameTextField" layoutX="200.0" layoutY="2075.0" />
-                        <TextField fx:id="CPRTextField" layoutX="200.0" layoutY="2137.0" />
-                        <TextField fx:id="adresseTextField" layoutX="475.0" layoutY="2091.0" />
-                        <TextField fx:id="tlfTextField" layoutX="475.0" layoutY="2150.0" />
-                        <TextField fx:id="sagsbehandlerTextField" layoutX="200.0" layoutY="2194.0" />
+                        <TextField fx:id="nameTextField" layoutX="200.0" layoutY="2045.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="CPRTextField" layoutX="200.0" layoutY="2122.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="sagsbehandlerTextField" layoutX="200.0" layoutY="2194.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="adresseTextField" layoutX="475.0" layoutY="2085.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="tlfTextField" layoutX="475.0" layoutY="2160.0" styleClass="textfield-text" stylesheets="@styles.css" />
 
-                              <Label layoutX="202.0" layoutY="2045.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Navn">
+                              <Label layoutX="200.0" layoutY="2014.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Navn">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label layoutX="197.0" layoutY="2106.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="CPR Nummer">
+                        <Label layoutX="200.0" layoutY="2091.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="CPR Nummer">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -189,19 +189,19 @@
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label layoutX="475.0" layoutY="2060.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Adresse">
+                        <Label layoutX="479.0" layoutY="2051.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Adresse">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <Label layoutX="477.0" layoutY="2122.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tlf:">
+                        <Label layoutX="477.0" layoutY="2128.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tlf:">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Label>
                         <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" text="Opdater sag" visible="false" />
-                        <TextField fx:id="caseNumber" editable="false" layoutX="732.0" layoutY="2140.0" visible="false" />
-                        <Label fx:id="caseLabel" layoutX="733.0" layoutY="2112.0" style="-fx-text-fill: white;" text="Sagsnummer:" visible="false">
+                        <TextField fx:id="caseNumber" editable="false" layoutX="756.0" layoutY="2139.0" styleClass="textfield-text" stylesheets="@styles.css" visible="false" />
+                        <Label fx:id="caseLabel" layoutX="756.0" layoutY="2107.0" style="-fx-text-fill: white;" text="Sagsnummer:" visible="false">
                            <font>
                               <Font size="21.0" />
                            </font></Label>
@@ -229,20 +229,20 @@
                 <RowConstraints maxHeight="461.88885498046875" minHeight="10.0" prefHeight="135.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextArea fx:id="writeNewDailyNoteField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextArea fx:id="writeNewDailyNoteField" prefHeight="200.0" prefWidth="200.0" styleClass="textfield-text" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </TextArea>
                   <Pagination fx:id="dailyNotePagination" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                  <TextArea fx:id="readDailyNoteField" editable="false" prefHeight="334.0" prefWidth="550.0" GridPane.columnIndex="1">
+                  <TextArea fx:id="readDailyNoteField" editable="false" prefHeight="334.0" prefWidth="550.0" styleClass="textfield-text" stylesheets="@styles.css" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                      </GridPane.margin>
                   </TextArea>
                   <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dagsnotat:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="30.0" />
                      </font>
                      <GridPane.margin>
                         <Insets />
@@ -254,10 +254,10 @@
                      </GridPane.margin></Button>
                   <Label fx:id="dateOfNote" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dato" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                      <GridPane.margin>
-                        <Insets top="20.0" />
+                        <Insets top="5.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="35.0" />
                      </font>
                   </Label>
                </children>

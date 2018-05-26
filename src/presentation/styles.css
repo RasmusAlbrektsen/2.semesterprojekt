@@ -102,3 +102,11 @@
     -fx-text-fill: white;
     -fx-font-size: 24 px;
 }
+
+.list-cell {
+  -fx-font: 16pt "Arial";
+}
+
+.textfield-text {
+  -fx-font: 16pt "Arial";
+}

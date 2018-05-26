@@ -13,19 +13,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
+<GridPane alignment="CENTER" maxHeight="900.0" maxWidth="900.0" minHeight="600.0" minWidth="800.0" prefHeight="700.0" prefWidth="900.0" styleClass="main-tab" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AdministratorWindowController">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="170.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="235.44439697265625" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="164.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="251.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="122.77783203125" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="266.22216796875" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="113.33334350585938" minHeight="10.0" prefHeight="99.77777099609375" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="362.66668701171875" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.222259521484375" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="106.77774047851562" minHeight="10.0" prefHeight="106.77774047851562" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="415.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <ListView fx:id="userListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -62,17 +62,17 @@
             <Insets bottom="30.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="nameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="130.0" prefHeight="25.0" prefWidth="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="nameField" maxHeight="40.0" maxWidth="164.0" minHeight="40.0" prefHeight="40.0" prefWidth="164.0" styleClass="textfield-text" stylesheets="@styles.css" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="usernameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="90.0" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="usernameField" maxHeight="39.0" maxWidth="162.0" minHeight="40.0" prefHeight="38.0" prefWidth="162.0" styleClass="textfield-text" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="passwordField" maxHeight="20.0" maxWidth="150.0" minHeight="25.0" minWidth="80.0" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="passwordField" maxHeight="40.0" maxWidth="204.0" minHeight="40.0" prefHeight="40.0" prefWidth="204.0" styleClass="textfield-text" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="180.0" />
          </GridPane.margin>
@@ -126,7 +126,7 @@
             </VBox>
          </children>
          <GridPane.margin>
-            <Insets bottom="10.0" top="30.0" />
+            <Insets bottom="10.0" top="50.0" />
          </GridPane.margin>
       </HBox>
       <Label style="-fx-text-fill: white;" text="Navn" GridPane.rowIndex="2">

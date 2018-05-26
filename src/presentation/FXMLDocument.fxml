@@ -38,7 +38,7 @@
                         <RowConstraints />
                      </rowConstraints>
                      <children>
-                        <ListView fx:id="caseListView" prefHeight="466.0" prefWidth="325.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowSpan="3" GridPane.vgrow="ALWAYS">
+                        <ListView fx:id="caseListView" prefHeight="466.0" prefWidth="325.0" styleClass="list-cell" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowSpan="3" GridPane.vgrow="ALWAYS">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="50.0" right="50.0" top="100.0" />
                            </GridPane.margin>
@@ -119,7 +119,7 @@
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <ListView fx:id="dailyCalendarListView" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="316.0" VBox.vgrow="ALWAYS">
+                              <ListView fx:id="dailyCalendarListView" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="316.0" styleClass="list-cell" stylesheets="@styles.css" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </VBox.margin>
@@ -151,19 +151,28 @@
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
                                     <DatePicker fx:id="searchDatePicker" prefHeight="31.0" prefWidth="186.0" />
-                                    <Label text="Dato" textFill="WHITE" />
+                                    <Label text="Dato" textFill="WHITE">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font></Label>
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="searchCPRField" prefHeight="31.0" prefWidth="189.0" HBox.hgrow="NEVER" />
-                                    <Label text="CPR" textFill="WHITE" />
+                                    <TextField fx:id="searchCPRField" prefHeight="31.0" prefWidth="189.0" styleClass="textfield-text" HBox.hgrow="NEVER" />
+                                    <Label text="CPR" textFill="WHITE">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font></Label>
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="searchNumberField" prefHeight="29.0" prefWidth="191.0" HBox.hgrow="NEVER" />
-                                    <Label text="ID Nummer" textFill="WHITE" />
+                                    <TextField fx:id="searchNumberField" prefHeight="29.0" prefWidth="191.0" styleClass="textfield-text" HBox.hgrow="NEVER" />
+                                    <Label text="ID Nummer" textFill="WHITE">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font></Label>
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0">
@@ -195,7 +204,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </HBox>
-                              <ListView fx:id="medicinListView" maxHeight="1.7976931348623157E308" maxWidth="500.0" prefHeight="335.0" prefWidth="290.0" VBox.vgrow="ALWAYS">
+                              <ListView fx:id="medicinListView" maxHeight="1.7976931348623157E308" maxWidth="500.0" prefHeight="335.0" prefWidth="290.0" styleClass="list-cell" stylesheets="@styles.css" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets bottom="10.0" right="10.0" />
                                  </VBox.margin>
