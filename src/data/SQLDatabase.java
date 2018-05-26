@@ -189,12 +189,13 @@ public class SQLDatabase {
         int id;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
-            st = db.prepareStatement("INSERT INTO userlog(userID, changeduserid, date, time) VALUES(?,?,?,?)");
+            st = db.prepareStatement("INSERT INTO userlog(userID, changeduserid, date, time) VALUES(?,?,?,?) RETURNING userlogid");
             st.setInt(1, userID);
             st.setInt(2, changedUserID);
             st.setString(3, date);
             st.setString(4, time);
             ResultSet rs = st.executeQuery();
+            rs.next();
             id = rs.getInt("userlogid");
             st = db.prepareStatement("INSERT INTO edited_case VALUES (?,?,?)");
             st.setInt(1, userID);

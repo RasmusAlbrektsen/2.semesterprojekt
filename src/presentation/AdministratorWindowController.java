@@ -86,7 +86,9 @@ public class AdministratorWindowController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 selectedUser = newValue;
-                changeUserInfo(selectedUser);
+                if (selectedUser != null) {
+                    changeUserInfo(selectedUser);
+                }
             }
         });
     }
