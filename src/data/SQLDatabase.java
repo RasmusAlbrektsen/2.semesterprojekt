@@ -44,7 +44,7 @@ public class SQLDatabase {
     }
 
     public void saveMedicine(IMedicine medicine, int caseID) {
-        String id;
+        int id;
         PreparedStatement st = null;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
@@ -54,10 +54,10 @@ public class SQLDatabase {
             st.setString(3,medicine.getName());
             ResultSet rs = st.executeQuery();
             rs.next();
-            id = rs.getString(1);
+            id = rs.getInt(1);
             st = db.prepareStatement("INSERT INTO Associated VALUES (?,?);");
             st.setInt(1,caseID);
-            st.setString(2, id);
+            st.setInt(2, id);
             st.execute();
             db.close();
         } catch (Exception e) {
@@ -84,10 +84,10 @@ public class SQLDatabase {
         PreparedStatement st = null;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
-            st = db.prepareStatement("DELETE FROM associated WHERE mecidineid = ?");
+            st = db.prepareStatement("DELETE FROM associated WHERE medicineid = ?");
             st.setInt(1,medicine.getMedicineID());
             st.execute();
-            st = db.prepareStatement("DELETE FROM medicine WHERE mecidineid = ?");
+            st = db.prepareStatement("DELETE FROM medicine WHERE medicineid = ?");
             st.setInt(1,medicine.getMedicineID());
             st.execute();
             db.close();
@@ -108,8 +108,9 @@ public class SQLDatabase {
             st.setString(3,date);
             st.setString(4, time);
             ResultSet rs = st.executeQuery();
+            rs.next();
             id = rs.getInt("caselogid");
-            st = db.prepareStatement("INSERT INTO editec_case VALUES (?,?,?)");
+            st = db.prepareStatement("INSERT INTO edited_case VALUES (?,?,?)");
             st.setInt(1, userID);
             st.setInt(2, caseID);
             st.setInt(3, id);
@@ -128,11 +129,12 @@ public class SQLDatabase {
             st = db.prepareStatement("INSERT INTO caselog(userid, caseid, date, time) VALUES(?,?,?,?) RETURNING caselogid");
             st.setInt(1, userID);
             st.setInt(2, caseID);
-            st.setString(3, "new" + date);
+            st.setString(3, date);
             st.setString(4, time);
             ResultSet rs = st.executeQuery();
+            rs.next();
             id = rs.getInt("caselogid");
-            st = db.prepareStatement("INSERT INTO editec_case VALUES (?,?,?)");
+            st = db.prepareStatement("INSERT INTO edited_case VALUES (?,?,?)");
             st.setInt(1, userID);
             st.setInt(2, caseID);
             st.setInt(3, id);
@@ -169,8 +171,9 @@ public class SQLDatabase {
             st.setString(3, date);
             st.setString(4, time);
             ResultSet rs = st.executeQuery();
+            rs.next();
             id = rs.getInt("userlogid");
-            st = db.prepareStatement("INSERT INTO editec_user VALUES (?,?,?)");
+            st = db.prepareStatement("INSERT INTO edited_user VALUES (?,?,?)");
             st.setInt(1, userID);
             st.setInt(2, changedUserID);
             st.setInt(3, id);
@@ -193,7 +196,7 @@ public class SQLDatabase {
             st.setString(4, time);
             ResultSet rs = st.executeQuery();
             id = rs.getInt("userlogid");
-            st = db.prepareStatement("INSERT INTO editec_case VALUES (?,?,?)");
+            st = db.prepareStatement("INSERT INTO edited_case VALUES (?,?,?)");
             st.setInt(1, userID);
             st.setInt(2, changedUserID);
             st.setInt(3, id);
