@@ -126,7 +126,7 @@ public class SQLDatabase {
         int id;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
-            st = db.prepareStatement("INSERT INTO caselog(userid, changedcaseid, date, time) VALUES(?,?,?,?) RETURNING caselogid");
+            st = db.prepareStatement("INSERT INTO caselog(userid, caseid, date, time) VALUES(?,?,?,?) RETURNING caselogid");
             st.setInt(1, userID);
             st.setInt(2, caseID);
             st.setString(3, date);
