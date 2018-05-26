@@ -93,6 +93,11 @@
     -fx-text-fill: black;
 }
 
+.add-button:focused {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
 .case-label {
     -fx-text-fill: white;
     -fx-font-size: 24 px;

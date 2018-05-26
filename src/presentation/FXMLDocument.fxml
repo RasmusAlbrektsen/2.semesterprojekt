@@ -58,12 +58,12 @@
                               </Text>
                               <Hyperlink fx:id="createNewCase" onAction="#createNewCaseLinkAction" style="-fx-text-fill: white;" text="Opret ny sag">
                                  <font>
-                                    <Font name="System Bold Italic" size="28.0" />
+                                    <Font name="System Bold Italic" size="24.0" />
                                  </font>
                               </Hyperlink>
                               <Hyperlink fx:id="newAppointmentLink" onAction="#newAppointmentLinkAction" style="-fx-text-fill: white;" text="Opret ny kalenderaftale">
                                  <font>
-                                    <Font name="System Bold Italic" size="28.0" />
+                                    <Font name="System Bold Italic" size="24.0" />
                                  </font>
                               </Hyperlink>
                               <DatePicker fx:id="datePicker" editable="false" prefHeight="22.0" prefWidth="226.0" showWeekNumbers="true">
@@ -81,7 +81,7 @@
                               </HBox>
                               <Button fx:id="adminWindowButton" mnemonicParsing="false" onAction="#adminWindowAction" prefHeight="52.0" prefWidth="181.0" styleClass="main-button" stylesheets="@styles.css" text="Administratorvindue">
                                  <VBox.margin>
-                                    <Insets left="10.0" />
+                                    <Insets left="10.0" top="10.0" />
                                  </VBox.margin></Button>
                               <Separator prefHeight="11.0" prefWidth="245.0">
                                  <VBox.margin>

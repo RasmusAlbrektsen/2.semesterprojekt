@@ -62,19 +62,19 @@
             <Insets bottom="30.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="nameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="130.0" prefHeight="25.0" prefWidth="130.0" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="nameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="130.0" prefHeight="25.0" prefWidth="100.0" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="usernameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="90.0" prefHeight="25.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="usernameField" maxHeight="25.0" maxWidth="150.0" minHeight="25.0" minWidth="90.0" prefHeight="25.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="passwordField" maxHeight="20.0" maxWidth="110.0" minHeight="25.0" minWidth="80.0" prefHeight="25.0" prefWidth="80.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="passwordField" maxHeight="20.0" maxWidth="150.0" minHeight="25.0" minWidth="80.0" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="120.0" />
+            <Insets left="180.0" />
          </GridPane.margin>
       </TextField>
       <Label style="-fx-text-fill: white;" text="Adgang:" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
@@ -89,30 +89,49 @@
          <children>
             <VBox prefHeight="64.0" prefWidth="120.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" prefHeight="21.0" prefWidth="133.0" style="-fx-text-fill: white;" text="Administrator" />
-                  <RadioButton fx:id="medicineAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Medicin" />
+                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" prefHeight="21.0" prefWidth="133.0" style="-fx-text-fill: white;" text="Administrator">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></RadioButton>
+                  <RadioButton fx:id="medicineAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Medicin">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></RadioButton>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="120.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="calendarAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Kalender" />
-                  <RadioButton fx:id="caseAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Sagsadgang" />
+                  <RadioButton fx:id="calendarAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Kalender">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></RadioButton>
+                  <RadioButton fx:id="caseAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Sagsadgang">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding></RadioButton>
                </children>
             </VBox>
-            <VBox minWidth="150.0" prefHeight="200.0" prefWidth="150.0" spacing="5.0">
+            <VBox minWidth="140.0" prefHeight="80.0" prefWidth="232.0" spacing="5.0">
                <children>
-                  <Button fx:id="updateUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="36.0" prefWidth="139.0" styleClass="main-button" stylesheets="@styles.css" text="Gem ændringer" />
-                  <Button fx:id="createNewUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#createNewUserAction" prefHeight="36.0" prefWidth="144.0" styleClass="main-button" stylesheets="@styles.css" text="Opret ny bruger" />
+                  <Button fx:id="updateUserButton" maxHeight="0.0" minWidth="120.0" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="0.0" prefWidth="139.0" styleClass="main-button" stylesheets="@styles.css" text="Gem ændringer">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="createNewUserButton" maxHeight="0.0" minWidth="141.0" mnemonicParsing="false" onAction="#createNewUserAction" prefHeight="0.0" prefWidth="141.0" styleClass="main-button" stylesheets="@styles.css" text="Opret ny bruger" />
                </children>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
             </VBox>
          </children>
          <GridPane.margin>
-            <Insets top="30.0" />
+            <Insets bottom="10.0" top="30.0" />
          </GridPane.margin>
       </HBox>
       <Label style="-fx-text-fill: white;" text="Navn" GridPane.rowIndex="2">
          <font>
-            <Font size="16.0" />
+            <Font size="24.0" />
          </font>
          <GridPane.margin>
             <Insets left="5.0" />
@@ -120,18 +139,18 @@
       </Label>
       <Label style="-fx-text-fill: white;" text="Brugernavn" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
-            <Font size="16.0" />
+            <Font size="24.0" />
          </font>
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label style="-fx-text-fill: white;" text="Kodeord" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Label style="-fx-text-fill: white;" text="Kodeord" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
-            <Font size="16.0" />
+            <Font size="24.0" />
          </font>
          <GridPane.margin>
-            <Insets left="70.0" />
+            <Insets left="180.0" />
          </GridPane.margin>
       </Label>
       <Button fx:id="showCaseLogButton" mnemonicParsing="false" onAction="#showCaseLogAction" styleClass="main-button" stylesheets="@styles.css" text="Vis sagslog" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
