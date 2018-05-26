@@ -157,7 +157,7 @@
             </ScrollPane>
          </content>
       </Tab>
-      <Tab fx:id="dailyNoteTab" closable="false" text="Dagsnotater">
+      <Tab fx:id="dailyNoteTab" closable="false" disable="true" text="Dagsnotater">
          <content>
             <GridPane prefHeight="600.0">
               <columnConstraints>

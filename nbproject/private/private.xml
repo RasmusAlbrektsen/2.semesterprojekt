@@ -3,18 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/ICase.java</file>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/IAppointment.java</file>
             <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/LoginWindowController.java</file>
             <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/business/Medicine.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/OpenCaseWindowController.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/HBoxCellCase.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/AdministratorWindowController.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/LoginWindow.fxml</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/data/SQLDatabase.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/business/Case.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/business/User.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/IUser.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/ICase.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/IAppointment.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/UdredGUI.java</file>
             <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/IMedicine.java</file>
             <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/business/DailyNote.java</file>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/OpenCaseWindow.fxml</file>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/business/Case.java</file>
+            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/presentation/FXMLDocumentController.java</file>
             <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/IDailyNote.java</file>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/business/User.java</file>
             <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/business/Bootstrap.java</file>
-            <file>file:/C:/Users/Rasmus/Documents/GitHub/2.semesterprojekt/src/Acq/IUser.java</file>
         </group>
     </open-files>
 </project-private>
