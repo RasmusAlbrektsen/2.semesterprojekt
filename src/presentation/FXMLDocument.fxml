@@ -150,19 +150,19 @@
                               </Label>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <DatePicker fx:id="searchDatePicker" prefHeight="25.0" prefWidth="128.0" />
+                                    <DatePicker fx:id="searchDatePicker" prefHeight="31.0" prefWidth="186.0" />
                                     <Label text="Dato" textFill="WHITE" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="searchCPRField" prefHeight="25.0" prefWidth="130.0" HBox.hgrow="NEVER" />
+                                    <TextField fx:id="searchCPRField" prefHeight="31.0" prefWidth="189.0" HBox.hgrow="NEVER" />
                                     <Label text="CPR" textFill="WHITE" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="searchNumberField" prefHeight="25.0" prefWidth="130.0" HBox.hgrow="NEVER" />
+                                    <TextField fx:id="searchNumberField" prefHeight="29.0" prefWidth="191.0" HBox.hgrow="NEVER" />
                                     <Label text="ID Nummer" textFill="WHITE" />
                                  </children>
                               </HBox>

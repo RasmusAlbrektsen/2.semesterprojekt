@@ -200,8 +200,11 @@
                            </font>
                         </Label>
                         <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" text="Opdater sag" visible="false" />
-                        <TextField fx:id="caseNumber" editable="false" layoutX="475.0" layoutY="2180.0" visible="false" />
-                        <Label fx:id="caseLabel" layoutX="475.0" layoutY="2165.0" text="Sagsnummer:" visible="false" />
+                        <TextField fx:id="caseNumber" editable="false" layoutX="732.0" layoutY="2140.0" visible="false" />
+                        <Label fx:id="caseLabel" layoutX="733.0" layoutY="2112.0" style="-fx-text-fill: white;" text="Sagsnummer:" visible="false">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
                         <Button fx:id="deleteCaseButton" disable="true" layoutX="35.0" layoutY="2194.0" mnemonicParsing="false" onAction="#deleteCaseButtonAction" text="Slet sag" visible="false" />
                      </children>
                   </AnchorPane>
