@@ -93,19 +93,7 @@
     -fx-text-fill: black;
 }
 
-
-.main-calendarBox {
-    
-}
-
-.main-calendarGrid {
-    
-}
-
-main-header-text {
-    
-}
-
-main-subheader-text {
-    
+.case-label {
+    -fx-text-fill: white;
+    -fx-font-size: 24 px;
 }
