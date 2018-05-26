@@ -110,7 +110,7 @@ public class SQLDatabase {
             ResultSet rs = st.executeQuery();
             rs.next();
             id = rs.getInt("caselogid");
-            st = db.prepareStatement("INSERT INTO edited_case(userid, changedcaseid, date, time) VALUES (?,?,?)");
+            st = db.prepareStatement("INSERT INTO edited_case VALUES (?,?,?)");
             st.setInt(1, userID);
             st.setInt(2, caseID);
             st.setInt(3, id);
