@@ -1,1 +1,0 @@
-Hvorfor virker javadoc ikke?\},\{\},\{\},\{\},\{\},\{\},\{\},\{\},\{\},\{true\},\{false\},\{false\},\{false\},\{false\},\{false\},\{false\},\{false\},\{false\},\{false\},\{Rasmus\},\{1234567890\},\{\},\{\},\{
