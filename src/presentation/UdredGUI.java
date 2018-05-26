@@ -42,8 +42,8 @@ public class UdredGUI {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(name + ".fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
-            stage.setMinHeight(600);
-            stage.setMinWidth(800);
+            stage.setMinHeight(800);
+            stage.setMinWidth(1280);
             stage.setScene(scene);
             stage.show();
             return loader;

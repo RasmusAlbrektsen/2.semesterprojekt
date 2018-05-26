@@ -18,135 +18,193 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<TabPane fx:id="tabPane" prefHeight="600.0" prefWidth="800.0" styleClass="main-tabPane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.OpenCaseWindowController">
+<TabPane fx:id="tabPane" prefHeight="800.0" prefWidth="1280.0" styleClass="main-tabPane" stylesheets="@styles.css" tabMinHeight="40.0" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.OpenCaseWindowController">
    <tabs>
       <Tab fx:id="caseTab" closable="false" text="Sagsåbning">
          <content>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="750.0" stylesheets="@styles.css" vmax="2.0" vvalue="2.0">
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1280.0" stylesheets="@styles.css" vmax="2.0" vvalue="2.0">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2250.0" prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css">
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="2250.0" prefWidth="1280.0" styleClass="main-tab" stylesheets="@styles.css">
                      <children>
-                        <Label layoutX="13.0" layoutY="9.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Hvad drejer henvendelsen &#10;sig om?">
+                        <Label layoutX="13.0" layoutY="9.0" prefHeight="91.0" prefWidth="306.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Hvad drejer henvendelsen &#10;sig om?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="henvendelseTextBox" layoutX="210.0" layoutY="14.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="14.0" layoutY="199.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Er det klart hvad borgeren &#10;søger om?">
+                        <TextArea fx:id="henvendelseTextBox" layoutX="407.0" layoutY="14.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="14.0" layoutY="199.0" prefHeight="70.0" prefWidth="230.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Er det klart hvad borgeren &#10;søger om?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="borgerSøgButtonJa" layoutX="210.0" layoutY="205.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
+                        <RadioButton fx:id="borgerSøgButtonJa" layoutX="269.0" layoutY="211.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="lookingForGroup" />
                            </toggleGroup>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton fx:id="borgerSøgButtonNej" layoutX="210.0" layoutY="230.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$lookingForGroup" />
-                        <Label layoutX="14.0" layoutY="254.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Hvis ja, angiv hvilke.">
+                        <RadioButton fx:id="borgerSøgButtonNej" layoutX="269.0" layoutY="236.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$lookingForGroup">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <Label layoutX="13.0" layoutY="324.0" prefHeight="58.0" prefWidth="240.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Hvis ja, angiv hvilke.">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="caseChecklistButton" layoutX="13.0" layoutY="288.0" mnemonicParsing="false" onAction="#caseChecklistButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Åben checkliste" />
-                        <TextArea fx:id="ydelsesTextBox" editable="false" layoutX="210.0" layoutY="291.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="212.0" layoutY="268.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ydelser og tilbud valgt" />
-                        <Label layoutX="13.0" layoutY="471.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Hvor kommer henvend-&#10;elsen fra?">
+                        <Button fx:id="caseChecklistButton" layoutX="14.0" layoutY="388.0" mnemonicParsing="false" onAction="#caseChecklistButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Åben checkliste" />
+                        <TextArea fx:id="ydelsesTextBox" editable="false" layoutX="407.0" layoutY="289.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="407.0" layoutY="254.0" prefHeight="28.0" prefWidth="301.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Ydelser og tilbud valgt" />
+                        <Label layoutX="14.0" layoutY="493.0" prefHeight="103.0" prefWidth="353.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Hvor kommer henvend-&#10;elsen fra?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="henvendelseFraTextBox" layoutX="210.0" layoutY="476.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="685.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Er borgeren indeforstået&#10;med henvendelsen?">
+                        <TextArea fx:id="henvendelseFraTextBox" layoutX="407.0" layoutY="477.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="13.0" layoutY="651.0" prefHeight="100.0" prefWidth="273.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Er borgeren indeforstået&#10;med henvendelsen?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="borgerIndforståetButtonJa" layoutX="206.0" layoutY="687.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
+                        <RadioButton fx:id="borgerIndforståetButtonJa" layoutX="323.0" layoutY="678.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="inqButtons" />
                            </toggleGroup>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton fx:id="borgerIndforståetButtonNej" layoutX="206.0" layoutY="712.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$inqButtons" />
-                        <Label layoutX="13.0" layoutY="744.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Aftaler om det videre&#10;forløb.">
+                        <RadioButton fx:id="borgerIndforståetButtonNej" layoutX="323.0" layoutY="703.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$inqButtons">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <Label layoutX="13.0" layoutY="761.0" prefHeight="91.0" prefWidth="290.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Aftaler om det videre&#10;forløb.">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="aftaleForløbTextBox" layoutX="210.0" layoutY="749.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="932.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Værgemål og repræsen-&#10;tation. Angiv hvis relevant.">
+                        <TextArea fx:id="aftaleForløbTextBox" layoutX="407.0" layoutY="752.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="13.0" layoutY="932.0" prefHeight="113.0" prefWidth="345.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Værgemål og repræsen-&#10;tation. Angiv hvis relevant.">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="værgeMålTexBox" layoutX="210.0" layoutY="937.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1100.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Rettigheder og pligter">
+                        <TextArea fx:id="værgeMålTexBox" layoutX="407.0" layoutY="932.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="13.0" layoutY="1100.0" prefHeight="104.0" prefWidth="288.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Rettigheder og pligter">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="rettighederTextBox" layoutX="210.0" layoutY="1113.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1286.0" prefHeight="88.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Er borgeren informeret om at &#10;oplysningerne er registreret&#10;elektronisk?">
+                        <TextArea fx:id="rettighederTextBox" layoutX="407.0" layoutY="1111.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="13.0" layoutY="1286.0" prefHeight="104.0" prefWidth="478.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Er borgeren informeret om at oplysningerne &#10;er registreret elektronisk?">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="borgerInfoButtonJa" layoutX="206.0" layoutY="1302.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
+                        <RadioButton fx:id="borgerInfoButtonJa" layoutX="515.0" layoutY="1315.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="elInformation" />
                            </toggleGroup>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton fx:id="borgerInfoButtonNej" layoutX="206.0" layoutY="1327.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$elInformation" />
-                        <Label layoutX="13.0" layoutY="1366.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Samtykkeerklæring">
+                        <RadioButton fx:id="borgerInfoButtonNej" layoutX="515.0" layoutY="1340.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$elInformation">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <Label layoutX="16.0" layoutY="1386.0" prefHeight="45.0" prefWidth="226.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Samtykkeerklæring">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="samtykkeButtonJa" layoutX="210.0" layoutY="1381.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
+                        <RadioButton fx:id="samtykkeButtonJa" layoutX="427.0" layoutY="1383.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Ja">
                            <toggleGroup>
                               <ToggleGroup fx:id="consent" />
                            </toggleGroup>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton fx:id="samtykkeButtonNej" layoutX="210.0" layoutY="1406.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$consent" />
-                        <RadioButton fx:id="mundtligSamtykkeButton" layoutX="332.0" layoutY="1381.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Mundtligt samtykke">
+                        <RadioButton fx:id="samtykkeButtonNej" layoutX="427.0" layoutY="1408.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Nej" toggleGroup="$consent">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="mundtligSamtykkeButton" layoutX="549.0" layoutY="1383.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Mundtligt samtykke">
                            <toggleGroup>
                               <ToggleGroup fx:id="consentInfo" />
                            </toggleGroup>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton fx:id="skriftligSamtykkeButton" layoutX="332.0" layoutY="1406.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Skriftligt samtykke" toggleGroup="$consentInfo" />
-                        <Label layoutX="13.0" layoutY="1440.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Indhentelse af oplysninger">
+                        <RadioButton fx:id="skriftligSamtykkeButton" layoutX="549.0" layoutY="1408.0" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Skriftligt samtykke" toggleGroup="$consentInfo">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <Label layoutX="13.0" layoutY="1440.0" prefHeight="88.0" prefWidth="326.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Indhentelse af oplysninger">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="loadOplysningerTextBox" layoutX="210.0" layoutY="1453.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1633.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Borgerindragelse - &#10;særlige forhold">
+                        <TextArea fx:id="loadOplysningerTextBox" layoutX="412.0" layoutY="1448.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="13.0" layoutY="1633.0" prefHeight="107.0" prefWidth="322.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Borgerindragelse - &#10;særlige forhold">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="særligeForholdTextBox" layoutX="210.0" layoutY="1640.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Label layoutX="13.0" layoutY="1828.0" prefHeight="45.0" prefWidth="188.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Handle og &#10;betalingskommune">
+                        <TextArea fx:id="særligeForholdTextBox" layoutX="412.0" layoutY="1633.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Label layoutX="13.0" layoutY="1828.0" prefHeight="123.0" prefWidth="299.0" style="-fx-text-fill: white;" styleClass="case-label" stylesheets="@styles.css" text="Handle og &#10;betalingskommune">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="kommuneTextBox" layoutX="210.0" layoutY="1837.0" prefHeight="161.0" prefWidth="414.0" />
-                        <Button fx:id="saveCaseButton" layoutX="561.0" layoutY="2020.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Gem sag" />
-                        <TextField fx:id="nameTextField" layoutX="200.0" layoutY="2075.0" />
-                        <TextField fx:id="CPRTextField" layoutX="200.0" layoutY="2130.0" />
-                        <TextField fx:id="adresseTextField" layoutX="475.0" layoutY="2075.0" />
-                        <TextField fx:id="tlfTextField" layoutX="475.0" layoutY="2130.0" />
-                        <TextField fx:id="sagsbehandlerTextField" layoutX="200.0" layoutY="2180.0" />
+                        <TextArea fx:id="kommuneTextBox" layoutX="412.0" layoutY="1836.0" prefHeight="161.0" prefWidth="650.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <Button fx:id="saveCaseButton" layoutX="1041.0" layoutY="2106.0" mnemonicParsing="false" onAction="#saveCaseButtonAction" styleClass="add-button" stylesheets="@styles.css" text="Gem sag" />
+                        <TextField fx:id="nameTextField" layoutX="200.0" layoutY="2045.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="CPRTextField" layoutX="200.0" layoutY="2122.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="sagsbehandlerTextField" layoutX="200.0" layoutY="2194.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="adresseTextField" layoutX="475.0" layoutY="2085.0" styleClass="textfield-text" stylesheets="@styles.css" />
+                        <TextField fx:id="tlfTextField" layoutX="475.0" layoutY="2160.0" styleClass="textfield-text" stylesheets="@styles.css" />
 
-                        <Label layoutX="200.0" layoutY="2060.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Navn" />
-                        <Label layoutX="200.0" layoutY="2115.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="CPR Nummer" />
-                        <Label layoutX="200.0" layoutY="2165.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Sagsbehandler" />
-                        <Label layoutX="475.0" layoutY="2060.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Adresse" />
-                        <Label layoutX="475.0" layoutY="2115.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tlf:" />
+                              <Label layoutX="200.0" layoutY="2014.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Navn">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="200.0" layoutY="2091.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="CPR Nummer">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="200.0" layoutY="2165.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Sagsbehandler">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="479.0" layoutY="2051.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Adresse">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="477.0" layoutY="2128.0" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Tlf:">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
                         <Button fx:id="updateCaseButton" disable="true" layoutX="540.0" layoutY="2020.0" mnemonicParsing="false" onAction="#updateCaseButtonAction" text="Opdater sag" visible="false" />
-                        <TextField fx:id="caseNumber" editable="false" layoutX="475.0" layoutY="2180.0" visible="false" />
-                        <Label fx:id="caseLabel" layoutX="475.0" layoutY="2165.0" text="Sagsnummer:" visible="false" />
+                        <TextField fx:id="caseNumber" editable="false" layoutX="756.0" layoutY="2139.0" styleClass="textfield-text" stylesheets="@styles.css" visible="false" />
+                        <Label fx:id="caseLabel" layoutX="756.0" layoutY="2107.0" style="-fx-text-fill: white;" text="Sagsnummer:" visible="false">
+                           <font>
+                              <Font size="21.0" />
+                           </font></Label>
                         <Button fx:id="deleteCaseButton" disable="true" layoutX="35.0" layoutY="2194.0" mnemonicParsing="false" onAction="#deleteCaseButtonAction" text="Slet sag" visible="false" />
                      </children>
                   </AnchorPane>
@@ -161,9 +219,9 @@
          <content>
             <GridPane prefHeight="600.0">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" prefWidth="500.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" prefWidth="500.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="824.4444580078125" minHeight="10.0" prefHeight="456.4444580078125" vgrow="SOMETIMES" />
@@ -171,32 +229,35 @@
                 <RowConstraints maxHeight="461.88885498046875" minHeight="10.0" prefHeight="135.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextArea fx:id="writeNewDailyNoteField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextArea fx:id="writeNewDailyNoteField" prefHeight="200.0" prefWidth="200.0" styleClass="textfield-text" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </TextArea>
                   <Pagination fx:id="dailyNotePagination" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                  <TextArea fx:id="readDailyNoteField" editable="false" prefHeight="334.0" prefWidth="550.0" GridPane.columnIndex="1">
+                  <TextArea fx:id="readDailyNoteField" editable="false" prefHeight="334.0" prefWidth="550.0" styleClass="textfield-text" stylesheets="@styles.css" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                      </GridPane.margin>
                   </TextArea>
                   <Label style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dagsnotat:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="30.0" />
                      </font>
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <Button fx:id="createNoteButton" mnemonicParsing="false" onAction="#createNoteButtonAction" text="Opret" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button fx:id="createNoteButton" mnemonicParsing="false" onAction="#createNoteButtonAction" styleClass="add-button" stylesheets="@styles.css" text="Opret" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin></Button>
                   <Label fx:id="dateOfNote" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Dato" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                      <GridPane.margin>
-                        <Insets top="20.0" />
+                        <Insets top="5.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="35.0" />
                      </font>
                   </Label>
                </children>
@@ -205,50 +266,50 @@
       </Tab>
       <Tab fx:id="benefitsTab" closable="false" text="Ydelser og tilbud">
          <content>
-            <ScrollPane prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css">
+            <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1280.0" styleClass="main-tab" stylesheets="@styles.css">
                <content>
-                  <AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="720.0" maxWidth="900.0" prefHeight="720.0" prefWidth="900.0">
+                  <AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="800.0" prefWidth="1280.0">
                      <children>
-                        <GridPane layoutX="15.0" layoutY="14.0" prefHeight="720.0" prefWidth="800.0" styleClass="main-tab" stylesheets="@styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane layoutX="15.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="750.0" minWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" styleClass="main-tab" stylesheets="@styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="83.77774810791016" minWidth="9.11108112335205" prefWidth="17.999998092651367" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="9.11108112335205" prefWidth="17.999998092651367" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.88891887664795" minWidth="10.0" prefWidth="242.00000190734863" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.888916015625" minWidth="10.0" prefWidth="12.000015258789062" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="12.000015258789062" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.99998474121094" minWidth="10.0" prefWidth="240.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.33334350585938" minWidth="10.0" prefWidth="22.666656494140625" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="22.666656494140625" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.3333435058594" minWidth="10.0" prefWidth="393.3333435058594" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
                               <CheckBox fx:id="a1" mnemonicParsing="false" style="-fx-text-fill: white;" stylesheets="@styles.css" text="Aktivitets- og samværsydelse" GridPane.columnIndex="1" GridPane.rowIndex="1" />

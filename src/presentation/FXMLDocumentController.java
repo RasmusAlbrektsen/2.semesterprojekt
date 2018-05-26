@@ -320,7 +320,7 @@ public class FXMLDocumentController implements Initializable {
                 && !vnr.getText().trim().isEmpty()
                 && !dosage.getText().trim().isEmpty()) {
             selectedCase.getCase().createMedicine(name.getText(), vnr.getText(), dosage.getText());
-        } else {
+        } else if (result.get() == add){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("UDFYLD ALLE FELTER!");
             alert.setHeaderText("Medicin kunne ikke tilføjes.");
