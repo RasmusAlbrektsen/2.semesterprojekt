@@ -24,7 +24,7 @@
    <rowConstraints>
       <RowConstraints maxHeight="113.33334350585938" minHeight="10.0" prefHeight="99.77777099609375" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="362.66668701171875" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="30.222259521484375" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.222259521484375" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="106.77774047851562" minHeight="10.0" prefHeight="106.77774047851562" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
@@ -32,7 +32,7 @@
       <ListView fx:id="logListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <children>
-            <Button fx:id="removeUserButton" minWidth="100.0" mnemonicParsing="false" onAction="#removeUserAction" prefWidth="70.0" styleClass="main-button" stylesheets="@styles.css" text="Fjern bruger" />
+            <Button fx:id="removeUserButton" minWidth="100.0" mnemonicParsing="false" onAction="#removeUserAction" prefHeight="36.0" prefWidth="111.0" styleClass="main-button" stylesheets="@styles.css" text="Fjern bruger" />
          </children>
          <padding>
             <Insets left="20.0" />
@@ -85,24 +85,24 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <HBox prefHeight="60.0" prefWidth="220.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+      <HBox prefHeight="60.0" prefWidth="0.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
          <children>
-            <VBox prefHeight="64.0" prefWidth="110.0" spacing="10.0">
+            <VBox prefHeight="64.0" prefWidth="120.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Administrator" />
+                  <RadioButton fx:id="logAccessRadio" mnemonicParsing="false" prefHeight="21.0" prefWidth="133.0" style="-fx-text-fill: white;" text="Administrator" />
                   <RadioButton fx:id="medicineAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Medicin" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <VBox prefHeight="200.0" prefWidth="120.0" spacing="10.0">
                <children>
                   <RadioButton fx:id="calendarAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Kalender" />
                   <RadioButton fx:id="caseAccessRadio" mnemonicParsing="false" style="-fx-text-fill: white;" text="Sagsadgang" />
                </children>
             </VBox>
-            <VBox minWidth="120.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+            <VBox minWidth="150.0" prefHeight="200.0" prefWidth="150.0" spacing="5.0">
                <children>
-                  <Button fx:id="updateUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="25.0" prefWidth="120.0" styleClass="main-button" stylesheets="@styles.css" text="Gem ændringer" />
-                  <Button fx:id="createNewUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#createNewUserAction" prefWidth="120.0" styleClass="main-button" stylesheets="@styles.css" text="Opret ny bruger" />
+                  <Button fx:id="updateUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#updateUserAction" prefHeight="36.0" prefWidth="139.0" styleClass="main-button" stylesheets="@styles.css" text="Gem ændringer" />
+                  <Button fx:id="createNewUserButton" minWidth="120.0" mnemonicParsing="false" onAction="#createNewUserAction" prefHeight="36.0" prefWidth="144.0" styleClass="main-button" stylesheets="@styles.css" text="Opret ny bruger" />
                </children>
             </VBox>
          </children>
@@ -134,7 +134,7 @@
             <Insets left="70.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="showCaseLogButton" mnemonicParsing="false" onAction="#showCaseLogAction" styleClass="main-button" stylesheets="@styles.css" text="Vis sagslog" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Button fx:id="showCaseLogButton" mnemonicParsing="false" onAction="#showCaseLogAction" styleClass="main-button" stylesheets="@styles.css" text="Vis sagslog" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin>

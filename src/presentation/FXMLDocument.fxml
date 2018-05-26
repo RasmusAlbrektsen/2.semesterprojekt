@@ -20,67 +20,69 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
+<AnchorPane id="AnchorPane" minHeight="600.0" minWidth="800.0" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.FXMLDocumentController">
    <children>
-      <TabPane fx:id="tabPane" layoutX="20.0" layoutY="-6.0" prefHeight="800.0" prefWidth="1280.0" styleClass="main-tabPane" stylesheets="@styles.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="100.0" tabMinHeight="30.0" tabMinWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane fx:id="tabPane" layoutX="20.0" layoutY="-6.0" prefHeight="800.0" prefWidth="1280.0" styleClass="main-tabPane" stylesheets="@styles.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0" tabMaxWidth="100.0" tabMinHeight="40.0" tabMinWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab fx:id="mainTab" text="Forside">
                <content>
                   <GridPane prefHeight="800.0" prefWidth="800.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="219.6666259765625" />
-                        <ColumnConstraints hgrow="ALWAYS" maxWidth="520.0000457763672" minWidth="0.0" prefWidth="325.3333740234375" />
-                        <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" minWidth="10.0" prefWidth="252.4444580078125" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="359.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="595.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="324.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="296.0" minHeight="10.0" prefHeight="53.4444580078125" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="291.1111145019531" minHeight="10.0" prefHeight="205.5555419921875" vgrow="ALWAYS" />
-                        <RowConstraints maxHeight="480.0" minHeight="10.0" prefHeight="301.3333435058594" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="367.0" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="390.0" vgrow="ALWAYS" />
+                        <RowConstraints />
                      </rowConstraints>
                      <children>
-                        <ListView fx:id="caseListView" prefHeight="466.0" prefWidth="325.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="3" GridPane.vgrow="ALWAYS">
+                        <ListView fx:id="caseListView" prefHeight="466.0" prefWidth="325.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowSpan="3" GridPane.vgrow="ALWAYS">
                            <GridPane.margin>
-                              <Insets bottom="10.0" right="10.0" />
+                              <Insets bottom="10.0" left="50.0" right="50.0" top="100.0" />
                            </GridPane.margin>
                         </ListView>
-                        <Separator prefHeight="9.0" prefWidth="303.0" GridPane.valignment="BOTTOM">
-                           <GridPane.margin>
-                              <Insets left="20.0" />
-                           </GridPane.margin>
-                        </Separator>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
-                           <font>
-                              <Font size="34.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="20.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <VBox alignment="CENTER_LEFT" prefHeight="206.0" prefWidth="273.0" spacing="5.0" GridPane.rowIndex="1">
+                        <VBox alignment="CENTER_LEFT" prefHeight="206.0" prefWidth="273.0" spacing="5.0">
                            <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+                                 <font>
+                                    <Font size="56.0" />
+                                 </font>
+                              </Text>
+                              <Separator prefHeight="9.0" prefWidth="303.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Opret">
                                  <font>
-                                    <Font size="22.0" />
+                                    <Font size="46.0" />
                                  </font>
                               </Text>
                               <Hyperlink fx:id="createNewCase" onAction="#createNewCaseLinkAction" style="-fx-text-fill: white;" text="Opret ny sag">
                                  <font>
-                                    <Font name="System Bold Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="28.0" />
                                  </font>
                               </Hyperlink>
                               <Hyperlink fx:id="newAppointmentLink" onAction="#newAppointmentLinkAction" style="-fx-text-fill: white;" text="Opret ny kalenderaftale">
                                  <font>
-                                    <Font name="System Bold Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="28.0" />
                                  </font>
                               </Hyperlink>
-                              <DatePicker fx:id="datePicker" editable="false" prefHeight="20.0" prefWidth="123.0" showWeekNumbers="true" />
-                              <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="126.0">
+                              <DatePicker fx:id="datePicker" editable="false" prefHeight="22.0" prefWidth="226.0" showWeekNumbers="true">
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin></DatePicker>
+                              <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="126.0" spacing="40.0">
                                  <children>
                                     <Spinner fx:id="hourSpinner" prefHeight="25.0" prefWidth="68.0" />
                                     <Spinner fx:id="minuteSpinner" prefHeight="25.0" prefWidth="70.0" />
                                  </children>
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
                               </HBox>
-                              <Button fx:id="adminWindowButton" mnemonicParsing="false" onAction="#adminWindowAction" prefHeight="39.0" prefWidth="125.0" styleClass="main-button" stylesheets="@styles.css" text="Administratorvindue" />
+                              <Button fx:id="adminWindowButton" mnemonicParsing="false" onAction="#adminWindowAction" prefHeight="52.0" prefWidth="181.0" styleClass="main-button" stylesheets="@styles.css" text="Administratorvindue">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin></Button>
                               <Separator prefHeight="11.0" prefWidth="245.0">
                                  <VBox.margin>
                                     <Insets top="5.0" />
@@ -91,69 +93,60 @@
                               <Insets left="20.0" />
                            </GridPane.margin>
                         </VBox>
-                        <VBox fx:id="calendarVBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-border-width: 10; -fx-border-radius: 10;" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                        <VBox fx:id="calendarVBox" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-border-width: 10; -fx-border-radius: 10;" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                            <children>
                               <Text fx:id="calendarLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Kalender">
                                  <font>
-                                    <Font size="22.0" />
+                                    <Font size="46.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </VBox.margin>
                               </Text>
-                              <GridPane fx:id="frontpageDateGrid" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="100.0" styleClass="main-tab" stylesheets="@styles.css">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints maxHeight="70.33334350585938" minHeight="10.0" prefHeight="56.666656494140625" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="100.0" minHeight="5.33331298828125" prefHeight="21.6666259765625" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="164.3333740234375" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Label fx:id="frontpageDateLabel" text="DateLabel" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <font>
-                                          <Font name="Arial" size="17.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets top="30.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <ListView fx:id="dailyCalendarListView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="161.0" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.vgrow="ALWAYS">
-                                       <GridPane.margin>
-                                          <Insets />
-                                       </GridPane.margin>
-                                    </ListView>
-                                    <Label text="Daglige aftaler" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                       <GridPane.margin>
-                                          <Insets bottom="30.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                                 <padding>
+                              <Label text="Daglige aftaler" textFill="WHITE">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="frontpageDateLabel" text="DateLabel" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial" size="25.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ListView fx:id="dailyCalendarListView" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="316.0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
                                     <Insets left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </GridPane>
+                                 </VBox.margin>
+                              </ListView>
                            </children>
                            <GridPane.margin>
-                              <Insets left="10.0" />
+                              <Insets bottom="20.0" left="10.0" />
                            </GridPane.margin>
                         </VBox>
-                        <Button fx:id="myCasesButton" mnemonicParsing="false" onAction="#myCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Mine sager" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                        <Button fx:id="myCasesButton" mnemonicParsing="false" onAction="#myCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Mine sager" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                            <GridPane.margin>
-                              <Insets right="10.0" />
+                              <Insets left="50.0" right="50.0" top="50.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="allCasesButton" mnemonicParsing="false" onAction="#allCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Alle sager" GridPane.columnIndex="1" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="allCasesButton" mnemonicParsing="false" onAction="#allCasesButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Alle sager" GridPane.columnIndex="1" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets left="50.0" right="50.0" top="50.0" />
+                           </GridPane.margin></Button>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="2">
                            <children>
                               <Label text="Søg efter en sag:" textFill="WHITE">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font size="36.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
                               </Label>
                               <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
@@ -185,15 +178,24 @@
                               <Button fx:id="openCaseButton" mnemonicParsing="false" onAction="#openCaseButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Åben sag" />
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                        <VBox prefHeight="0.0" prefWidth="150.0" spacing="5.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                            <children>
-                              <HBox prefHeight="25.0" prefWidth="253.0" spacing="50.0" VBox.vgrow="ALWAYS">
+                              <HBox maxHeight="0.0" prefHeight="0.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Button fx:id="addMedicineButton" mnemonicParsing="false" onAction="#addMedicineButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Tilføj Medicin" />
-                                    <Button fx:id="removeMedicineButton" mnemonicParsing="false" onAction="#removeMedicineButtonAction" styleClass="main-button" stylesheets="@styles.css" text="Fjern Medicin" />
+                                    <Button fx:id="addMedicineButton" mnemonicParsing="false" onAction="#addMedicineButtonAction" prefHeight="36.0" prefWidth="123.0" styleClass="main-button" stylesheets="@styles.css" text="Tilføj Medicin" />
+                                    <Button fx:id="removeMedicineButton" mnemonicParsing="false" onAction="#removeMedicineButtonAction" prefHeight="36.0" prefWidth="124.0" styleClass="main-button" stylesheets="@styles.css" text="Fjern Medicin">
+                                       <HBox.margin>
+                                          <Insets left="65.0" />
+                                       </HBox.margin></Button>
                                  </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                               </HBox>
-                              <ListView fx:id="medicinListView" maxHeight="300.0" maxWidth="500.0" prefHeight="220.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                              <ListView fx:id="medicinListView" maxHeight="1.7976931348623157E308" maxWidth="500.0" prefHeight="335.0" prefWidth="290.0" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets bottom="10.0" right="10.0" />
                                  </VBox.margin>
@@ -206,7 +208,6 @@
                               <Insets top="20.0" />
                            </GridPane.margin>
                         </VBox>
-                        <Separator orientation="VERTICAL" prefHeight="561.0" prefWidth="8.0" GridPane.halignment="RIGHT" GridPane.rowSpan="2147483647" />
                      </children>
                   </GridPane>
                </content>
