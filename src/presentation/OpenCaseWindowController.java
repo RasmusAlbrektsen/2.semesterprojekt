@@ -1,74 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
 import Acq.ICase;
-import business.Case;
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Pagination;
-import javafx.scene.control.Spinner;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.util.Callback;
 
-/**
- * FXML Controller class
- *
- * @author Bruger
- */
 public class OpenCaseWindowController implements Initializable {
 
-    @FXML
-    private ToggleGroup lookingForGroup;
-    @FXML
-    private Button caseChecklistButton;
-    @FXML
-    private ToggleGroup inqButtons;
-    @FXML
-    private ToggleGroup elInformation;
-    @FXML
-    private ToggleGroup consent;
-    @FXML
-    private ToggleGroup consentInfo;
     @FXML
     private TextArea henvendelseTextBox;
     @FXML
@@ -131,20 +92,14 @@ public class OpenCaseWindowController implements Initializable {
     private TextField caseNumber;
     @FXML
     private Label caseLabel;
-
-    private ICase currentCase;
     @FXML
     private Button deleteCaseButton;
-    @FXML
-    private Button createNoteButton;
     @FXML
     private Tab dailyNoteTab;
     @FXML
     private Label dateOfNote;
     @FXML
     private Tab benefitsTab;
-    @FXML
-    private AnchorPane anchorPane;
     @FXML
     private CheckBox a1;
     @FXML
@@ -265,13 +220,14 @@ public class OpenCaseWindowController implements Initializable {
     private CheckBox a60;
     @FXML
     private Button addButton;
-
-    private String benefitString;
-    private List<CheckBox> boxList;
     @FXML
     private TabPane tabPane;
     @FXML
-    private Tab caseTab;
+    private Tab caseTab;    
+    
+    private ICase currentCase;
+    private String benefitString;
+    private List<CheckBox> boxList;
 
     /**
      * Initializes the controller class.
@@ -285,6 +241,10 @@ public class OpenCaseWindowController implements Initializable {
                 a52, a53, a54, a55, a56, a57, a58, a59, a60);
     }
 
+    /**
+     * Gets the information that's written in the textAreas.
+     * @return 
+     */
     public String getCaseInformation() {
         StringBuilder caseCombined = new StringBuilder();
         caseCombined.append(henvendelseTextBox.getText() + "\\},\\{"
@@ -314,6 +274,10 @@ public class OpenCaseWindowController implements Initializable {
         return caseCombined.toString();
     }
 
+    /**
+     * Loads the case with the information that was saved.
+     * @param info 
+     */
     public void loadCaseInformation(String info) {
         String[] caseSplitter = info.split(Pattern.quote("\\},\\{"));
         henvendelseTextBox.setText(caseSplitter[0]);
@@ -364,6 +328,10 @@ public class OpenCaseWindowController implements Initializable {
         tabPane.getSelectionModel().select(benefitsTab);
     }
 
+    /**
+     * Setter for the ydelsesTextBox TextBox
+     * @param s 
+     */
     public void setBenefits(String s) {
         ydelsesTextBox.setText(s);
     }
@@ -381,6 +349,10 @@ public class OpenCaseWindowController implements Initializable {
         }
     }
 
+    /**
+     * Enables and disables the deleteCaseButton depending on if the boolean is true of false.
+     * @param b 
+     */
     public void isAdmin(boolean b) {
         if (b) {
             deleteCaseButton.setDisable(false);
@@ -388,6 +360,10 @@ public class OpenCaseWindowController implements Initializable {
         }
     }
 
+    /**
+     * Resets the window.
+     * @param aCase 
+     */
     public void setCase(ICase aCase) {
         currentCase = aCase;
         loadCaseInformation(currentCase.getInfo());
@@ -408,6 +384,9 @@ public class OpenCaseWindowController implements Initializable {
         }
     }
 
+    /**
+     * Checks if you changed page, in the dailyNote window.
+     */
     public void addListenerPaginator() {
         dailyNotePagination.currentPageIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -418,6 +397,9 @@ public class OpenCaseWindowController implements Initializable {
         });
     }
 
+    /**
+     * Sets the pageCount in the dailyNote window to the size of the dailyNotes.
+     */
     public void getDailyNotes() {
         dailyNotePagination.setPageCount(currentCase.getDailyNotes().size());
     }
@@ -467,6 +449,10 @@ public class OpenCaseWindowController implements Initializable {
         tabPane.getSelectionModel().select(caseTab);
     }
     
+    /**
+     * Closes the window
+     * @param event 
+     */
     private void closeWindow(Event event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }

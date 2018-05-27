@@ -1,18 +1,11 @@
 package presentation;
 
 import Acq.IBusiness;
-import java.io.IOException;
-import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Bruger
- */
 public class UdredGUI {
 
     private static UdredGUI ui = null;
@@ -22,10 +15,18 @@ public class UdredGUI {
         ui = this;
     }
 
+    /**
+     * Setter for the business.
+     * @param business 
+     */
     public void setBusiness(IBusiness business) {
         this.business = business;
     }
 
+    /**
+     * Getter that creates a new instance if it doesn't exist.
+     * @return 
+     */
     public static UdredGUI getInstance() {
         if (ui == null) {
             ui = new UdredGUI();
@@ -33,10 +34,20 @@ public class UdredGUI {
         return ui;
     }
 
+    /**
+     * Getter for the attribute business.
+     * @return IBusiness
+     */
     public IBusiness getBusiness() {
         return business;
     }
 
+    /**
+     * Loads a controller with the name parameter.
+     * @param stage
+     * @param name
+     * @return 
+     */
     public FXMLLoader loadController(Stage stage, String name) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(name + ".fxml"));

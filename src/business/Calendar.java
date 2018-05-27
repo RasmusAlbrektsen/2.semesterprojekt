@@ -9,10 +9,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-/**
- *
- * @author Bruger
- */
 public class Calendar implements ICalendar{
     private User user;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -23,6 +19,12 @@ public class Calendar implements ICalendar{
         
     }
     
+    /**
+     * Gets the string of the appointments of a specific user on a specific date
+     * @param date
+     * @param user
+     * @return String
+     */
     @Override
     public String getDailyAppointments(String date, IUser user) {
         String s = "";
@@ -40,6 +42,10 @@ public class Calendar implements ICalendar{
         return s;
     }
     
+    /**
+     * Gets the days time string
+     * @return String
+     */
     @Override
     public String getTodaysTimeString() {
         Date todaysDate = new Date();
@@ -47,6 +53,10 @@ public class Calendar implements ICalendar{
         return s;
     }
     
+    /**
+     * Gets the days date string
+     * @return String
+     */
     @Override
     public String getTodaysDateString() {
         Date todaysDate = new Date();
@@ -54,6 +64,10 @@ public class Calendar implements ICalendar{
         return s;
     }
     
+    /**
+     * Gets the days date string in the danish format
+     * @return String
+     */
     @Override
     public String getTodaysDateStringDK() {
         Date todaysDate = new Date();
@@ -61,18 +75,32 @@ public class Calendar implements ICalendar{
         return s;
     }
     
+    /**
+     * gets todays date
+     * @return Date
+     */
     @Override
     public Date getTodaysDate() {
         Date todaysDate = new Date();
         return todaysDate;
     }
     
+    /**
+     * Formats the localDate
+     * @param date
+     * @return String
+     */
     @Override
     public String formatLocalDate(LocalDate date) {
         String s = date.format(DateTimeFormatter.ofPattern("dd-MM-uuuu"));
         return s;
     }
     
+    /**
+     * Formats a date in a string, so it can be used on the database
+     * @param date
+     * @return String
+     */
     @Override
     public String formatToDataString(String date) {
         String[] dateSplitter = date.split("-");
@@ -80,6 +108,11 @@ public class Calendar implements ICalendar{
         return dataString;
     }
     
+    /**
+     * Formats a date in a string to the presentation layer.
+     * @param date
+     * @return String
+     */
     @Override
     public String formatToPresentationString(String date) {
         String[] dateSplitter = date.split("-");
@@ -87,6 +120,11 @@ public class Calendar implements ICalendar{
         return dataString;
     }
     
+    /**
+     * Parses a localDate to correct Date order.
+     * @param date
+     * @return Date
+     */
     @Override
     public Date parseDate(LocalDate date) {
         try {
@@ -97,6 +135,11 @@ public class Calendar implements ICalendar{
         return null;
     }
     
+    /**
+     * Formats a date to string
+     * @param date
+     * @return String
+     */
     @Override
     public String formatToString(Date date) {
         String s = sdf2.format(date);

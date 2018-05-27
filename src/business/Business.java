@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import Acq.IUserLog;
@@ -35,10 +30,18 @@ public class Business {
         business = this;
     }
 
+    /**
+     * Setter for the attribute data
+     * @param data
+     */
     public void setData(IData data) {
         this.data = data;
     }
 
+    /**
+     * Getter that constructs an instance of Business if it's null
+     * @return Business
+     */
     public static Business getInstance() {
         if (business == null) {
             business = new Business();
@@ -46,6 +49,12 @@ public class Business {
         return business;
     }
 
+    /**
+     * Logs in if the username is a key in the map, and the password fits the user objects password
+     * @param username
+     * @param password
+     * @return boolean
+     */
     public boolean login(String username, String password) {
 
         if (userMap.containsKey(username)) {
@@ -58,16 +67,25 @@ public class Business {
     }
 
     /**
-     * @return the currentUser
+     * Getter for the currentUser attribute
+     * @return IUser
      */
     public IUser getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * Getter for the calendar attribute
+     * @return ICalendar
+     */
     public ICalendar getCalendar() {
         return calendar;
     }
 
+    /**
+     * Setter for the userMap map.
+     * Gets the data for the SQL Database
+     */
     public void setUserMap() {
         ResultSet rs = Business.getInstance().getData().getAllUsers();
         try {
@@ -88,6 +106,10 @@ public class Business {
 
     }
 
+    /**
+     * Setter for the allCases list.
+     * Gets the data from the SQL Database
+     */
     public void setCaseList() {
         ResultSet rs = Business.getInstance().getData().getAllCases();
         try {
@@ -104,50 +126,107 @@ public class Business {
         }
     }
 
+    /**
+     * Getter for the list allCases
+     * @return List
+     */
     public List<ICase> getCases() {
         return allCases;
     }
 
+    /**
+     * Getter for the attribute data
+     * @return IData
+     */
     public IData getData() {
         return data;
     }
 
+    /**
+     * Getter for the map userMap
+     * @return Map
+     */
     public Map<String, IUser> getUserMap() {
         return userMap;
     }
 
+    /**
+     * Getter for the list caseLog
+     * @return List
+     */
     public List<ICaseLog> getCaseLog() {
         return caseLog;
     }
 
+    /**
+     * Getter for the list userLog
+     * @return List
+     */
     public List<IUserLog> getUserLog() {
         return userLog;
     }
 
+    /**
+     * Saves a new case, by calling the case constructor
+     * @param CPR
+     * @param info
+     */
     public void saveCase(String CPR, String info) {
         new Case(CPR, info).saveCase(getCurrentUser().getIDNumber());
     }
     
+    /**
+     * updates an already saved case.
+     * @param aCase
+     * @param info
+     */
     public void updateCase(ICase aCase, String info){
         aCase.updateCase(currentUser.getIDNumber(),info);
     }
     
+    /**
+     * Deletes a case.
+     * @param aCase
+     */
     public void deleteCase(ICase aCase){
         aCase.deleteCase(currentUser.getIDNumber());
     }
     
+    /**
+     * Saves a DailyNote on the case with the specified caseID, with the string as the note
+     * @param note
+     * @param caseID
+     */
     public void saveDailyNote(String note, int caseID){
         new DailyNote(note).pushDailyNote(caseID, getCurrentUser().getIDNumber());
     }
     
+    /**
+     * Saves medicine by constructing a new medicine
+     * @param name
+     * @param VNR
+     * @param dosage
+     * @param caseID
+     */
     public void saveMedicine(String name, String VNR, String dosage, int caseID){
         new Medicine(name, VNR, dosage).pushMedicine(caseID, getCurrentUser().getIDNumber());
     }
     
+    /**
+     * Saves a user by constructing a new user.
+     * @param name
+     * @param username
+     * @param password
+     */
     public void saveUser(String name, String username, String password) {
         new User(name, username, password).saveUser(getCurrentUser().getIDNumber());
     }
 
+    /**
+     * Searches for cases with the specific creationDate as the parameter.
+     * @param date
+     * @return List
+     */
     public List<ICase> searchCases(Date date) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
@@ -158,6 +237,11 @@ public class Business {
         return cases;
     }
 
+    /**
+     * Searches for cases with the specific CPR as the parameter.
+     * @param CPR
+     * @return List
+     */
     public List<ICase> searchCases(String CPR) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
@@ -168,6 +252,11 @@ public class Business {
         return cases;
     }
 
+    /**
+     * Searches for cases with the specific id as the parameter.
+     * @param id
+     * @return List
+     */
     public List<ICase> searchCases(int id) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
@@ -178,6 +267,12 @@ public class Business {
         return cases;
     }
 
+    /**
+     * Searches for cases with the specific creationDate and CPR as the parameters.
+     * @param date
+     * @param CPR
+     * @return List
+     */
     public List<ICase> searchCases(Date date, String CPR) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
@@ -187,7 +282,13 @@ public class Business {
         }
         return cases;
     }
-
+    
+/**
+ * Searches for cases with the specific data and id as the parameters
+ * @param date
+ * @param id
+ * @return List
+ */
     public List<ICase> searchCases(Date date, int id) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
@@ -198,6 +299,12 @@ public class Business {
         return cases;
     }
 
+    /**
+     * Searches for cases with the specific CPR and id as the parameters
+     * @param CPR
+     * @param id
+     * @return List
+     */
     public List<ICase> searchCases(String CPR, int id) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
@@ -209,6 +316,13 @@ public class Business {
         return cases;
     }
 
+    /**
+     * Searches for cases with the specific data, CPR and id as the parameters.
+     * @param date
+     * @param CPR
+     * @param id
+     * @return List
+     */
     public List<ICase> searchCases(Date date, String CPR, int id) {
         List<ICase> cases = new ArrayList<>();
         for (ICase aCase : allCases) {
@@ -219,6 +333,9 @@ public class Business {
         return cases;
     }
     
+    /**
+     * Setter for the list caseLog, getting the data from the SQL database
+     */
     public void setCaseLogs() {
         ResultSet rs = Business.getInstance().getData().getCaseLog();
            try{
@@ -233,6 +350,9 @@ public class Business {
         }
     }
      
+    /**
+     * Setter for the list userLog, getting the data from the SQL database
+     */
     public void setUserLogs() {
         ResultSet rs = Business.getInstance().getData().getCaseLog();
            try{

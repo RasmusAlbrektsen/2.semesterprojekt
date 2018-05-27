@@ -1,9 +1,5 @@
 package Acq;
 
-/**
- *
- * @author rasmusstamm
- */
 public interface IMedicine {
 
     String getName();

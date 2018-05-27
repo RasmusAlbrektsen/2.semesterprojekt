@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data;
 
 import Acq.IAppointment;
@@ -12,15 +7,7 @@ import Acq.IData;
 import Acq.IMedicine;
 import Acq.IUser;
 import java.sql.ResultSet;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author nitra
- */
 public class DataFacade implements IData {
 
     private SQLDatabase data = new SQLDatabase();

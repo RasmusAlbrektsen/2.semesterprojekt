@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
 import Acq.IBusiness;
-import business.Business;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,11 +20,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author nitra
- */
 public class LoginWindowController implements Initializable {
     @FXML
     private PasswordField passwordField;
@@ -44,7 +33,7 @@ public class LoginWindowController implements Initializable {
     private IBusiness r = UdredGUI.getInstance().getBusiness();
     
     /**
-     * Initializes the controller class.
+     * Initialises the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -81,6 +70,9 @@ public class LoginWindowController implements Initializable {
         }
     }
     
+    /**
+     * Loads the main window.
+     */
     private void loadMainWindow() {
         try {
             Stage stage = new Stage();

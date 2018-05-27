@@ -1,19 +1,9 @@
- /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import Acq.IAppointment;
 import java.text.ParseException;
-import java.util.Date;
 import java.text.SimpleDateFormat;
 
-/**
- *
- * @author Bruger
- */
 public class Appointment implements IAppointment{
 
     private String date;
@@ -37,36 +27,64 @@ public class Appointment implements IAppointment{
         this.IDNum = IDNum;
     }
 
+    /**
+     * Getter method for the attribute IDNum
+     * @return integer
+     */
     @Override
     public int getIDNum() {
         return IDNum;
     }
 
+    /**
+     * Setter for the attribute date
+     * @param date
+     */
     @Override
     public void setDate(String date) {
         this.date = date;
     }
 
+    /**
+     * Setter for the attribute note
+     * @param note
+     */
     @Override
     public void setNote(String note) {
         this.note = note;
     }
     
+    /**
+     * Setter for the attribute time
+     * @param time
+     */
     @Override
     public void setTime(String time) {
         this.note = time;
     }
 
+    /**
+     * Getter for the attribute date
+     * @return String
+     */
     @Override
     public String getDate() {
         return date;
     }
 
+    /**
+     * Getter for the attribute time
+     * @return String
+     */
     @Override
     public String getTime() {
         return time;
     }
 
+    /**
+     * Getter for the attribute note
+     * @return String
+     */
     @Override
     public String getNote() {
         return note;

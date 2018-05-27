@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import java.util.Date;
@@ -11,10 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author rasmusstamm
- */
 public class UserLogger implements IUserLogger{
 
     private int changedUserID;
@@ -27,26 +18,47 @@ public class UserLogger implements IUserLogger{
         date = new Date();
     }
 
+    /**
+     * Getter for the attribute changedUserID
+     * @return integer
+     */
     @Override
     public int getChangedUserID() {
         return changedUserID;
     }
 
+    /**
+     * Getter for the attribute userID
+     * @return integer
+     */
     @Override
     public int getUserID() {
         return userID;
     }
 
+    /**
+     * Getter for the attribute date
+     * @return Date
+     */
     @Override
     public Date getDate() {
         return date;
     }
     
+    /**
+     * Creates a string that contains information about the object.
+     * @return String
+     */
     @Override
     public String toString(){
         String s = "ChangedUser: " + changedUserID + " UserID: " + userID + " Date: " + date;
         return s;
     }
+    
+    /**
+     * Gets a list of all the userLogs from the database
+     * @return List
+     */
     public List<UserLog> getUserLogs() {
 
         List<UserLog> Log = new ArrayList<>();
@@ -63,6 +75,5 @@ public class UserLogger implements IUserLogger{
             e.printStackTrace();
         }
         return null;
-
     }
 }

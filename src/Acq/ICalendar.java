@@ -3,10 +3,6 @@ package Acq;
 import java.time.LocalDate;
 import java.util.Date;
 
-/**
- *
- * @author Kasper
- */
 public interface ICalendar {
     
     public String getDailyAppointments(String date, IUser user);

@@ -5,27 +5,30 @@ import Acq.IDailyNote;
 import Acq.IUser;
 import Acq.IAppointment;
 import Acq.IMedicine;
-import java.io.File;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SQLDatabase {
 
-    String url = "jdbc:postgresql://horton.elephantsql.com:5432/zibscemz";
-    String username = "zibscemz";
-    String passwd = "7A1e6LvgBXjitm0pjGI3tIOf5aCpr0Qe";
+    private String url = "jdbc:postgresql://horton.elephantsql.com:5432/zibscemz";
+    private String username = "zibscemz";
+    private String passwd = "7A1e6LvgBXjitm0pjGI3tIOf5aCpr0Qe";
 
     public void loadData() {
 
     }
 
     //MEDICINE
+    /**
+     * Gets a specific medicine id, on a case with the specific caseID and VNR.
+     * @param caseID
+     * @param VNR
+     * @return integer
+     */
     public int getMedicineID(int caseID, String VNR) {
         PreparedStatement st = null;
         try {
@@ -43,6 +46,11 @@ public class SQLDatabase {
         return 0;
     }
 
+    /**
+     * Saves a medicine object to the database
+     * @param medicine
+     * @param caseID 
+     */
     public void saveMedicine(IMedicine medicine, int caseID) {
         int id;
         PreparedStatement st = null;
@@ -65,6 +73,11 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Gets all the medicine from the database from the case with the parameter caseID.
+     * @param caseID
+     * @return ResultSet
+     */
     public ResultSet getMedicine(int caseID) {
         PreparedStatement st = null;
         try {
@@ -80,6 +93,10 @@ public class SQLDatabase {
         return null;
     }
 
+    /**
+     * Deletes the medicine object from the database.
+     * @param medicine 
+     */
     public void deleteMedicine(IMedicine medicine) {
         PreparedStatement st = null;
         try {
@@ -95,8 +112,15 @@ public class SQLDatabase {
             e.printStackTrace();
         }
     }
+    
     //CASELOG
-
+    /**
+     * Saves a log of a user editing a case.
+     * @param userID
+     * @param caseID
+     * @param date
+     * @param time 
+     */
     public void saveToCaseLog(int userID, int caseID, String date, String time) {
         PreparedStatement st = null;
         int id;
@@ -121,6 +145,13 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Saves that a user created a case to the database.
+     * @param userID
+     * @param caseID
+     * @param date
+     * @param time 
+     */
     public void saveCreatedCaseLog(int userID, int caseID, String date, String time) {
         PreparedStatement st = null;
         int id;
@@ -145,6 +176,10 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Gets everything from the CaseLog table in the database
+     * @return ResultSet
+     */
     public ResultSet getCaseLog() {
         PreparedStatement st = null;
         try {
@@ -160,6 +195,13 @@ public class SQLDatabase {
     }
 
     //USERLOG
+    /**
+     * Saves that a user edited another user to the database
+     * @param userID
+     * @param changedUserID
+     * @param date
+     * @param time 
+     */
     public void saveToUserLog(int userID, int changedUserID, String date, String time) {
         PreparedStatement st = null;
         int id;
@@ -184,6 +226,13 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Saves that a user created a new user on the database.
+     * @param userID
+     * @param changedUserID
+     * @param date
+     * @param time 
+     */
     public void saveCreatedUserLog(int userID, int changedUserID, String date, String time) {
         PreparedStatement st = null;
         int id;
@@ -208,6 +257,10 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Gets all the information from the UserLog table in the database
+     * @return ResultSet
+     */
     public ResultSet getUserLog() {
         PreparedStatement st = null;
         try {
@@ -223,6 +276,11 @@ public class SQLDatabase {
     }
 
     //USERS 
+    /**
+     * Saves a new user on the database 
+     * @param user
+     * @return integer
+     */
     public int saveUser(IUser user) {
         PreparedStatement st = null;
         try {
@@ -245,6 +303,10 @@ public class SQLDatabase {
         return 0;
     }
 
+    /**
+     * Saves an updated user on the database
+     * @param user 
+     */
     public void updateUser(IUser user) {
         PreparedStatement st = null;
         try {
@@ -265,6 +327,10 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Gets all users from the database.
+     * @return ResultSet
+     */
     public ResultSet getAllUsers() {
         PreparedStatement st = null;
         try {
@@ -279,6 +345,10 @@ public class SQLDatabase {
         return null;
     }
 
+    /**
+     * Deletes a user from the database.
+     * @param user 
+     */
     public void deleteUser(IUser user) {
         List<Integer> appointmentIDs = new ArrayList();
         PreparedStatement st = null;
@@ -318,6 +388,12 @@ public class SQLDatabase {
     }
 
     //CASES
+    /**
+     * Saves a case on the database.
+     * @param aCase
+     * @param info
+     * @return integer
+     */
     public int saveCase(ICase aCase, String info) {
         PreparedStatement st = null;
         try {
@@ -344,10 +420,20 @@ public class SQLDatabase {
         return 0;
     }
 
+    /**
+     * Gets the text in the file with the name that's identical to the paramenter
+     * @param directory
+     * @return String
+     * @throws Exception 
+     */
     public String getCaseInfo(String directory) throws Exception {
         return new String(Files.readAllBytes(Paths.get(directory)));
     }
 
+    /**
+     * Updates a case with the caseID, on the database
+     * @param aCase 
+     */
     public void updateCase(ICase aCase) {
         PreparedStatement st = null;
         try {
@@ -367,6 +453,10 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Gets all the cases from the database
+     * @return ResultSet
+     */
     public ResultSet getAllCases() {
         PreparedStatement st = null;
         try {
@@ -381,6 +471,10 @@ public class SQLDatabase {
         return null;
     }
 
+    /**
+     * Deletes a case from the database, this includes everything that's related to the case.
+     * @param aCase 
+     */
     public void deleteCase(ICase aCase) {
         List<Integer> medicineIDs = new ArrayList();
         List<Integer> dailyNoteIDs = new ArrayList();
@@ -434,6 +528,11 @@ public class SQLDatabase {
     }
 
     //APPOINTMENTS
+    /**
+     * Gets all the appointments the user with the parameter has.
+     * @param userID
+     * @return ResultSet
+     */
     public ResultSet getAppointments(int userID) {
         PreparedStatement st = null;
         try {
@@ -449,6 +548,13 @@ public class SQLDatabase {
         return null;
     }
 
+    /**
+     * Gets the appointmentID from the datbase with the correct attributes.
+     * @param userID
+     * @param date
+     * @param time
+     * @return integer
+     */
     public int getAppointmentID(int userID, String date, String time) {
         PreparedStatement st = null;
         try {
@@ -467,15 +573,20 @@ public class SQLDatabase {
         return 0;
     }
 
-    public void saveAppointment(IAppointment Appointment, int userID) {
+    /**
+     * Saves the appointment to the database
+     * @param appointment
+     * @param userID 
+     */
+    public void saveAppointment(IAppointment appointment, int userID) {
         int id;
         PreparedStatement st = null;
         try {
             Connection db = DriverManager.getConnection(url, username, passwd);
             st = db.prepareStatement("INSERT INTO appointments(note, date, time) VALUES (?,?,?)  RETURNING appointmentid;");
-            st.setString(1, Appointment.getNote());
-            st.setString(2, Appointment.getDate());
-            st.setString(3, Appointment.getTime());
+            st.setString(1, appointment.getNote());
+            st.setString(2, appointment.getDate());
+            st.setString(3, appointment.getTime());
             ResultSet rs = st.executeQuery();
             rs.next();
             id = rs.getInt(1);
@@ -490,6 +601,11 @@ public class SQLDatabase {
     }
 
     //DAILYNOTE
+    /**
+     * Saves the dailyNote object to the database
+     * @param DailyNote
+     * @param caseID 
+     */
     public void saveDailyNote(IDailyNote DailyNote, int caseID) {
         int id;
         PreparedStatement st = null;
@@ -511,6 +627,13 @@ public class SQLDatabase {
         }
     }
 
+    /**
+     * Gets the dailynoteID from the case with the specific parameters.
+     * @param caseID
+     * @param note
+     * @param date
+     * @return 
+     */
     public int getDailyNoteID(int caseID, String note, String date) {
         PreparedStatement st = null;
         try {
@@ -529,6 +652,11 @@ public class SQLDatabase {
         return 0;
     }
 
+    /**
+     * Gets the dailyNote on the case.
+     * @param caseID
+     * @return 
+     */
     public ResultSet getDailyNote(int caseID) {
         PreparedStatement st = null;
         try {

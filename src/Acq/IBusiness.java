@@ -1,15 +1,9 @@
 package Acq;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-
-/**
- *
- * @author Bruger
- */
 public interface IBusiness {
     
     public void injectData(IData data);
