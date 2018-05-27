@@ -133,7 +133,9 @@ public class FXMLDocumentController implements Initializable {
             public void changed(ObservableValue<? extends HBoxCellCase> observableList, HBoxCellCase oldHBoxCell, HBoxCellCase newHBoxCell) {
                 selectedCase = newHBoxCell;
                 selectedMedicine = 0;
-                getCaseMeds(selectedCase.getCase());
+                if (selectedCase != null) {
+                    getCaseMeds(selectedCase.getCase());
+                }
             }
         });
 
@@ -320,6 +322,7 @@ public class FXMLDocumentController implements Initializable {
                 && !vnr.getText().trim().isEmpty()
                 && !dosage.getText().trim().isEmpty()) {
             selectedCase.getCase().createMedicine(name.getText(), vnr.getText(), dosage.getText());
+            updateCaseListView();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("UDFYLD ALLE FELTER!");
@@ -331,6 +334,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void removeMedicineButtonAction(ActionEvent event) {
         selectedCase.getCase().getMedicine().get(selectedMedicine).deleteMedicine(selectedCase.getCase().getCaseNumber(), business.getCurrentUser().getIDNumber());
+        updateCaseListView();
     }
 
     @FXML
@@ -348,6 +352,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void updateCaseListView() {
+        medicinListView.getItems().clear();
         business.getCases().clear();
         caseList.clear();
         caseListView.getItems().clear();

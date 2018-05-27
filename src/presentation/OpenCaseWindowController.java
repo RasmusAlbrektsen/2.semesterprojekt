@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -376,6 +377,7 @@ public class OpenCaseWindowController implements Initializable {
             alert.showAndWait();
         } else {
             UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
+            closeWindow(event);
         }
     }
 
@@ -423,6 +425,7 @@ public class OpenCaseWindowController implements Initializable {
     @FXML
     private void updateCaseButtonAction(ActionEvent event) {
         UdredGUI.getInstance().getBusiness().updateCase(currentCase, getCaseInformation());
+        closeWindow(event);
     }
 
     @FXML
@@ -444,6 +447,7 @@ public class OpenCaseWindowController implements Initializable {
         } else if (result.get() == cancel) {
             alert.close();
         }
+        closeWindow(event);
     }
 
     @FXML
@@ -461,6 +465,10 @@ public class OpenCaseWindowController implements Initializable {
         }
         ydelsesTextBox.setText(benefitString);
         tabPane.getSelectionModel().select(caseTab);
+    }
+    
+    private void closeWindow(Event event) {
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
 }
