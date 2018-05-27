@@ -69,17 +69,11 @@ public class Medicine implements IMedicine {
     
     public void pushMedicine(int caseID, int currentUserID) {
         Business.getInstance().getData().saveMedicine(this, caseID);
-        Business.getInstance().getData().saveToCaseLog(currentUserID,
-                caseID,
-                Business.getInstance().getCalendar().getTodaysDateString(),
-                Business.getInstance().getCalendar().getTodaysTimeString());
+        Business.getInstance().getData().saveToCaseLog(currentUserID, caseID, Business.getInstance().getCalendar().getTodaysDateString(), Business.getInstance().getCalendar().getTodaysTimeString());
     }
     
     public void deleteMedicine(int caseID, int currentUserID){
         Business.getInstance().getData().deleteMedicine(this);
-        Business.getInstance().getData().saveToCaseLog(currentUserID, 
-                caseID, 
-                Business.getInstance().getCalendar().getTodaysDateString(), 
-                Business.getInstance().getCalendar().getTodaysTimeString());
+        Business.getInstance().getData().saveToCaseLog(currentUserID, caseID, Business.getInstance().getCalendar().getTodaysDateString(), Business.getInstance().getCalendar().getTodaysTimeString());
     }
 }
