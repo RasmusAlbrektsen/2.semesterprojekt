@@ -376,7 +376,6 @@ public class OpenCaseWindowController implements Initializable {
             alert.showAndWait();
         } else {
             UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
-            dailyNoteTab.setDisable(false);
         }
     }
 

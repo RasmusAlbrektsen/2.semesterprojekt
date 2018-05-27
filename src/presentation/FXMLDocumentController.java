@@ -378,6 +378,7 @@ public class FXMLDocumentController implements Initializable {
         searchCPRField.clear();
         searchNumberField.clear();
         selectedCase = null;
+        updateCaseListView();
     }
 
     @FXML
