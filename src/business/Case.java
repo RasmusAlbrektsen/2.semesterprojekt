@@ -1,16 +1,13 @@
 package business;
 
-import Acq.ICalendar;
 import Acq.ICase;
 import Acq.IDailyNote;
 import Acq.IMedicine;
 import Acq.IOffer;
-import java.io.FileReader;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import sun.security.tools.KeyStoreUtil;
 
 public class Case implements ICase {
 
@@ -24,6 +21,11 @@ public class Case implements ICase {
     private List<IDailyNote> dailyNotes;
     private String CPR;
 
+    /**
+     * Constructor for when making a new case, that doesn't exist on the database.
+     * @param CPR
+     * @param info 
+     */
     public Case(String CPR, String info) {
         this.CPR = CPR;
         this.info = info;
@@ -31,7 +33,14 @@ public class Case implements ICase {
         dailyNotes = new ArrayList<>();
         medicineList = new ArrayList<>();
     }
-
+    /**
+     * Constructor for when loading the case from the datebase.
+     * @param IDNum
+     * @param caseDirectory
+     * @param creationDate
+     * @param CPR
+     * @param isActive 
+     */
     public Case(int IDNum, String caseDirectory, String creationDate, String CPR, boolean isActive) {
         this.CPR = CPR;
         this.IDNum = IDNum;
@@ -66,6 +75,13 @@ public class Case implements ICase {
         }
     }
 
+    /**
+     * Creates a new medicine and adds it to the medicineList
+     * @param name
+     * @param VNR
+     * @param dosage
+     * @return boolean
+     */
     @Override
     public boolean createMedicine(String name, String VNR, String dosage) {
         medicineList.add(new Medicine(name, VNR, dosage, IDNum));
@@ -74,6 +90,13 @@ public class Case implements ICase {
         return true;
     }
 
+    /**
+     * Updates the medicine in the parameter, with the other parameters
+     * @param medicine
+     * @param amount
+     * @param dose
+     * @return boolean
+     */
     @Override
     public boolean updateMedicine(IMedicine medicine, String amount, String dose) {
         for (IMedicine med : medicineList) {
@@ -85,63 +108,119 @@ public class Case implements ICase {
         return false;
     }
     
+    /**
+     * Not implemented!
+     * @param currentUser
+     * @param medicineIndex
+     * @return 
+     */
     @Override
     public boolean removeMedicine(int currentUser, int medicineIndex){
         
         return true;
     }
 
+    /**
+     * Not implemented!
+     * @param residence
+     * @param startDate
+     * @return 
+     */
     @Override
     public boolean createOffer(String residence, Date startDate) {
         return true;
     }
 
+    /**
+     * Not implemented!
+     * @param residence
+     * @param startDate
+     * @param endDate
+     * @return 
+     */
     @Override
     public boolean createOffer(String residence, Date startDate, Date endDate) {
         return true;
     }
 
+    /**
+     * Adds a dailyNote to the cases dailyNotes list by calling the dailyNote constructor.
+     * @param note
+     * @return boolean
+     */
     @Override
     public boolean createDailyNote(String note) {
         dailyNotes.add(new DailyNote(note));
         return true;
     }
 
+    /**
+     * Getter for the attribute IDNumber.
+     * @return integer 
+     */
     @Override
     public int getCaseNumber() {
         return IDNum;
     }
 
+    /**
+     * Getter for the attribute creationDate
+     * @return String
+     */
     @Override
     public String getCreationDate() {
         return creationDate;
     }
 
+    /**
+     * Getter for the attribute CPR
+     * @return String
+     */
     @Override
     public String getCPR() {
         return CPR;
     }
     
+    /**
+     * Getter for the attribute info
+     * @return String
+     */
     @Override
     public String getInfo(){
         return info;
     }
 
+    /**
+     * Getter for the attribute isActive
+     * @return boolean
+     */
     @Override
     public boolean isActive() {
         return isActive;
     }
 
+    /**
+     * Getter for the list medicineList
+     * @return List
+     */
     @Override
     public List<IMedicine> getMedicine() {
         return medicineList;
     }
 
+    /**
+     * Getter for the attribute offer
+     * @return IOffer
+     */
     @Override
     public IOffer getOffer() {
         return offer;
     }
 
+    /**
+     * Getter for the list dailyNotes
+     * @return List
+     */
     @Override
     public List<IDailyNote> getDailyNotes() {
         return dailyNotes;
@@ -156,6 +235,10 @@ public class Case implements ICase {
                 Business.getInstance().getCalendar().getTodaysTimeString());
     }
     
+    /**
+     * Saves the case, the ID parameter, will be added to the CaseLog table on the datebase
+     * @param currentUserID 
+     */
     @Override
     public void saveCase(int currentUserID) {
         IDNum = Business.getInstance().getData().saveCase(this, info);
@@ -166,6 +249,10 @@ public class Case implements ICase {
         
     }
     
+    /**
+     * Deletes a case from the database, the ID parameter will be added to the CaseLog table on the database
+     * @param currentUserID 
+     */
     @Override
     public void deleteCase(int currentUserID) {
         Business.getInstance().getData().deleteCase(this);

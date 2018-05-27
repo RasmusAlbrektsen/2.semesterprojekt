@@ -1,13 +1,7 @@
 package Acq;
 
 import java.sql.ResultSet;
-import java.util.List;
-import java.util.Map;
 
-/**
- *
- * @author Bruger
- */
 public interface IData {
 
     //MEDICINE

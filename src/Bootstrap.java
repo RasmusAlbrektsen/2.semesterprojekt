@@ -1,13 +1,12 @@
-package business;
-
 import Acq.IBusiness;
 import Acq.IData;
 import Acq.IGUI;
+import business.Business;
+import business.BusinessFacade;
 import data.DataFacade;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import presentation.GUIFacade;
-import presentation.UdredGUI;
 
 public class Bootstrap extends Application{
     
@@ -25,10 +24,7 @@ public class Bootstrap extends Application{
         Business.getInstance().setData(data);
         Business.getInstance().setCaseList();
         gui.start(primaryStage);
-        
-        
-       
-        
+
         business.setUserMap();
     }
 }

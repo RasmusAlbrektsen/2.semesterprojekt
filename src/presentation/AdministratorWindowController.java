@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
 import Acq.IBusiness;
-import Acq.ICase;
 import Acq.ICaseLog;
 import Acq.IUser;
 import Acq.IUserLog;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -32,11 +24,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author Bruger
- */
 public class AdministratorWindowController implements Initializable {
 
     @FXML
@@ -64,18 +51,19 @@ public class AdministratorWindowController implements Initializable {
     private RadioButton caseAccessRadio;
     @FXML
     private Button createNewUserButton;
-
-    private IBusiness business = UdredGUI.getInstance().getBusiness();
-    private ObservableList<String> userList = FXCollections.observableArrayList();
-    private ObservableList<String> logList = FXCollections.observableArrayList();
-    private String selectedUser;
     @FXML
     private Button showUserLogButton;
     @FXML
     private Button showCaseLogButton;
-
+    
+    
+    private IBusiness business = UdredGUI.getInstance().getBusiness();
+    private ObservableList<String> userList = FXCollections.observableArrayList();
+    private ObservableList<String> logList = FXCollections.observableArrayList();
+    private String selectedUser;
+    
     /**
-     * Initializes the controller class.
+     * Initialises the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,6 +81,10 @@ public class AdministratorWindowController implements Initializable {
         });
     }
 
+    /**
+     * Changes depending on the selected user in the GUI.
+     * @param username 
+     */
     private void changeUserInfo(String username) {
         IUser user;
         user = business.getUserMap().get(username);
@@ -168,6 +160,10 @@ public class AdministratorWindowController implements Initializable {
         }
     }
 
+    /**
+     * Saves the changes in the user.
+     * @param user 
+     */
     private void updateUserInformation(IUser user) {
         user.setName(nameField.getText());
         user.setPassword(passwordField.getText());
@@ -219,6 +215,10 @@ public class AdministratorWindowController implements Initializable {
         updateUserListView();
     }
 
+    /**
+     * Makes sure that when making a new user the username, password and name field aren't empty.
+     * @return 
+     */
     private boolean checkBoxes() {
         if (!usernameField.getText().trim().isEmpty()
                 && !nameField.getText().trim().isEmpty()
@@ -240,6 +240,9 @@ public class AdministratorWindowController implements Initializable {
         }
     }
 
+    /**
+     * Updates the userListView.
+     */
     private void updateUserListView() {
         business.getUserMap().clear();
         userList.clear();

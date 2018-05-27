@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
 import Acq.ICase;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-/**
- *
- * @author rasmusstamm
- */
 public class HBoxCellCase extends HBox{
     private Label IDnum = new Label();
     private Label CPR = new Label();
@@ -28,12 +19,13 @@ public class HBoxCellCase extends HBox{
         this.creationDate.setText("Oprettelsesdato: " + aCase.getCreationDate());
         
         this.getChildren().addAll(this.IDnum, this.CPR, this.creationDate);
-        
     }
     
+    /**
+     * Getter for the attribute aCase
+     * @return ICase
+     */
     public ICase getCase(){
         return aCase;
     }
-    
-    
 }

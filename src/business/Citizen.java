@@ -2,10 +2,6 @@ package business;
 
 import Acq.ICitizen;
 
-/**
- *
- * @author Bruger
- */
 public class Citizen implements ICitizen{
 
     private String CPR;
@@ -15,6 +11,13 @@ public class Citizen implements ICitizen{
         this.CPR = CPR;
     }
     
+    /**
+     * Not implemented!
+     * @param un
+     * @param pw
+     * @return 
+     */
+    @Override
     public boolean login(String un, String pw){
         return true;
     }

@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import Acq.ICaseLog;
 
-/**
- *
- * @author hejoo
- */
 public class CaseLog implements ICaseLog {
     int userID;
     int caseID;
@@ -24,26 +15,46 @@ public class CaseLog implements ICaseLog {
         this.userID = userID;
     }
 
+    /**
+     * Getter for the attribute userID
+     * @return integer
+     */
     @Override
     public int getUserID() {
         return userID;
     }
 
+    /**
+     * Getter for the attribute caseID
+     * @return integer
+     */
     @Override
     public int getCaseID() {
         return caseID;
     }
 
+    /**
+     * Getter for the attribute date
+     * @return String
+     */
     @Override
     public String getDate() {
         return date;
     }
 
+    /**
+     * Getter for the attribute time
+     * @return String
+     */
     @Override
     public String getTime() {
         return time;
     }
     
+    /**
+     * Creates a string that contains information of the current object.
+     * @return String 
+     */
     @Override
     public String toString(){
         String s = "Case ID: " + caseID + " User ID: " + userID + " Date: " + date + " Time: " + time;

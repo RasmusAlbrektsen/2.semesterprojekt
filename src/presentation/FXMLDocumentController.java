@@ -28,7 +28,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Hyperlink;
@@ -40,17 +39,11 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Bruger
- */
 public class FXMLDocumentController implements Initializable {
 
     @FXML
@@ -93,7 +86,19 @@ public class FXMLDocumentController implements Initializable {
     private Button removeMedicineButton;
     @FXML
     private Button allCasesButton;
-
+    @FXML
+    private Button adminWindowButton;
+    @FXML
+    private Button resetSearchButton;
+    @FXML
+    private Button openCaseButton;
+    @FXML
+    private HBoxCellCase selectedCase;
+    @FXML
+    private Text calendarLabel;
+    @FXML
+    private VBox calendarVBox;
+    
     private IBusiness business = UdredGUI.getInstance().getBusiness();
     private ObservableList<String> dailyAppointmentList = FXCollections.observableArrayList();
     private ObservableList<String> medicineList = FXCollections.observableArrayList();
@@ -101,21 +106,7 @@ public class FXMLDocumentController implements Initializable {
     private SpinnerValueFactory svf1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 23, 12);
     private SpinnerValueFactory svf2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 30, 10);
     private ICalendar c = business.getCalendar();
-    @FXML
-    private Button adminWindowButton;
-    @FXML
-    private Button resetSearchButton;
-    @FXML
-    private Button openCaseButton;
-
-    private HBoxCellCase selectedCase;
-
     private int selectedMedicine;
-
-    @FXML
-    private Text calendarLabel;
-    @FXML
-    private VBox calendarVBox;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -125,7 +116,7 @@ public class FXMLDocumentController implements Initializable {
         svf2.setWrapAround(true);
         hourSpinner.setValueFactory(svf1);
         minuteSpinner.setValueFactory(svf2);
-        updateAllCases();
+        updateCaseListView();
 
         // Listener for caseListView
         caseListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<HBoxCellCase>() {
@@ -150,6 +141,10 @@ public class FXMLDocumentController implements Initializable {
         checkAccess();
     }
 
+    /**
+     * Calls the different methods in the other layers, getting the medicine on the case,
+     * @param aCase 
+     */
     private void getCaseMeds(ICase aCase) {
         medicineList.clear();
         for (IMedicine medicine : aCase.getMedicine()) {
@@ -199,6 +194,10 @@ public class FXMLDocumentController implements Initializable {
         UdredGUI.getInstance().loadController(stage, "OpenCaseWindow");
     }
 
+    /**
+     * Updates the dailyCalendar listView
+     * @param user 
+     */
     private void updateDailyCalendar(IUser user) {
         frontpageDateLabel.setText(c.getTodaysDateStringDK());
         dailyAppointmentList.clear();
@@ -233,6 +232,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    @FXML
     private void caseChecklistButtonAction(ActionEvent event) {
         try {
             Stage stage = new Stage();
@@ -342,15 +342,9 @@ public class FXMLDocumentController implements Initializable {
         updateCaseListView();
     }
 
-    // Might be useless
-    private void updateAllCases() {
-        caseList.clear();
-        for (ICase aCase : business.getCases()) {
-            caseList.add(new HBoxCellCase(aCase));
-        }
-        caseListView.setItems(caseList);
-    }
-
+    /**
+     * Updates the caseListView
+     */
     private void updateCaseListView() {
         medicinListView.getItems().clear();
         business.getCases().clear();
@@ -363,6 +357,9 @@ public class FXMLDocumentController implements Initializable {
         caseListView.setItems(caseList);
     }
 
+    /**
+     * Not implemented.
+     */
     public void updateMyCases() {
         caseList.clear();
         for (ICase aCase : business.getCases()) {

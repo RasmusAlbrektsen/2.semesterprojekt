@@ -1,32 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package presentation;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.layout.AnchorPane;
 
-/**
- * FXML Controller class
- *
- * @author Kasper Møller
- */
 public class BenefitsWindowController implements Initializable {
-    @FXML
-    private static AnchorPane anchorPane;
-    private static List<CheckBox> checkBoxList;
+
     @FXML
     private Button addButton;
     @FXML
@@ -149,10 +134,10 @@ public class BenefitsWindowController implements Initializable {
     private CheckBox a59;
     
     private List<CheckBox> boxList; 
-    String  benefitString;
+    String benefitString;
 
     /**
-     * Initializes the controller class.
+     * Initialises the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -174,10 +159,18 @@ public class BenefitsWindowController implements Initializable {
         }
     }
     
+    /**
+     * Getter for the attribute benefitString.
+     * @return String
+     */
     public String getBenefitString() {
         return benefitString;
     }
     
+    /**
+     * Getter for the addButton button.
+     * @return Button
+     */
     public Button getAddButton() {
         return addButton;
     }
