@@ -383,11 +383,13 @@ public class FXMLDocumentController implements Initializable {
         searchCPRField.clear();
         searchNumberField.clear();
         selectedCase = null;
+        updateCaseListView();
     }
 
     @FXML
     private void openCaseButtonAction(ActionEvent event) {
         Stage stage = new Stage();
+        stage.setOnHiding( n -> {updateCaseListView();} );
         OpenCaseWindowController caseWindow = UdredGUI.getInstance().loadController(stage, "OpenCaseWindow").getController();
         caseWindow.setCase(selectedCase.getCase());
         caseWindow.isAdmin(business.getCurrentUser().getAdmin());

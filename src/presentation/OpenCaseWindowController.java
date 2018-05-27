@@ -56,7 +56,6 @@ import javafx.util.Callback;
  * @author Bruger
  */
 public class OpenCaseWindowController implements Initializable {
-    
 
     @FXML
     private ToggleGroup lookingForGroup;
@@ -266,23 +265,24 @@ public class OpenCaseWindowController implements Initializable {
     private CheckBox a60;
     @FXML
     private Button addButton;
-    
+
     private String benefitString;
     private List<CheckBox> boxList;
     @FXML
     private TabPane tabPane;
     @FXML
     private Tab caseTab;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         boxList = Arrays.asList(a1, a2, a3, a5, a6, a7, a8, a9, a10, a11, a12, a13,
-                 a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25,
-                 a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38,
-                 a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51,
-                 a52, a53, a54, a55, a56, a57, a58, a59, a60);
+                a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25,
+                a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, a36, a37, a38,
+                a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51,
+                a52, a53, a54, a55, a56, a57, a58, a59, a60);
     }
 
     public String getCaseInformation() {
@@ -370,14 +370,19 @@ public class OpenCaseWindowController implements Initializable {
 
     @FXML
     private void saveCaseButtonAction(ActionEvent event) {
-        System.out.println(getCaseInformation());
-        UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
-        closeWindow(event);
+        if (nameTextField.getText().isEmpty() || CPRTextField.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Felter er tomme!");
+            alert.setContentText("Udfyld felterne (Navn og CPR) inden du prøver at gemme sagen");
+            alert.showAndWait();
+        } else {
+            UdredGUI.getInstance().getBusiness().saveCase(CPRTextField.getText(), getCaseInformation());
+            closeWindow(event);
+        }
     }
 
     public void isAdmin(boolean b) {
         if (b) {
-            System.out.println(b);
             deleteCaseButton.setDisable(false);
             deleteCaseButton.setVisible(true);
         }
@@ -397,8 +402,10 @@ public class OpenCaseWindowController implements Initializable {
         nameTextField.setEditable(false);
         dailyNoteTab.setDisable(false);
         addListenerPaginator();
-        readDailyNoteField.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getNote());
-        dateOfNote.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getDate());
+        if (!currentCase.getDailyNotes().isEmpty()) {
+            readDailyNoteField.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getNote());
+            dateOfNote.setText(currentCase.getDailyNotes().get(dailyNotePagination.getCurrentPageIndex()).getDate());
+        }
     }
 
     public void addListenerPaginator() {
@@ -435,6 +442,8 @@ public class OpenCaseWindowController implements Initializable {
 
         if (result.get() == accept) {
             UdredGUI.getInstance().getBusiness().deleteCase(currentCase);
+            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+            
         } else if (result.get() == cancel) {
             alert.close();
         }
@@ -450,9 +459,9 @@ public class OpenCaseWindowController implements Initializable {
     private void addButtonAction(ActionEvent event) {
         benefitString = "";
         for (CheckBox cb : boxList) {
-                if(cb.selectedProperty().get()){
-                    benefitString += cb.getText() + "\n";
-                }
+            if (cb.selectedProperty().get()) {
+                benefitString += cb.getText() + "\n";
+            }
         }
         ydelsesTextBox.setText(benefitString);
         tabPane.getSelectionModel().select(caseTab);
